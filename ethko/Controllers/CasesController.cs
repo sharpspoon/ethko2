@@ -43,7 +43,9 @@ namespace ethko.Controllers
         public ActionResult New()
         {
             var practiceAreas = new SelectList(entities.PracticeAreas.ToList(), "PracticeAreaName", "PracticeAreaName");
-            ViewData["DBContactGroups"] = practiceAreas;
+            ViewData["DBContactGroupsPracticeArea"] = practiceAreas;
+            var caseStages = new SelectList(entities.CaseStages.ToList(), "CaseStageName", "CaseStageName");
+            ViewData["DBContactGroupsCaseStage"] = caseStages;
             return View();
         }
 

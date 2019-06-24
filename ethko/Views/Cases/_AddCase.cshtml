@@ -51,7 +51,7 @@
                         Practice Area
                     </div>
                     <div class="col-md-10" align="left">
-                        @Html.DropDownList("PracticeAreas", (IEnumerable<SelectListItem>)ViewData["DBContactGroups"], new { @class = "form-control" })
+                        @Html.DropDownList("PracticeAreas", (IEnumerable<SelectListItem>)ViewData["DBContactGroupsPracticeArea"], new { @class = "form-control" })
                         @Html.ActionLink("Add new practice area", "NewPracticeArea")
                     </div>
                 </div>
@@ -61,10 +61,7 @@
                         Case Stage
                     </div>
                     <div class="col-md-10" align="left">
-                        <select class="form-control" id="sel1">
-                            <option>No</option>
-                            <option>Yes</option>
-                        </select>
+                        @Html.DropDownList("CaseStages", (IEnumerable<SelectListItem>)ViewData["DBContactGroupsCaseStage"], new { @class = "form-control" })
                         @Html.ActionLink("Manage case stages in Settings", "CaseStages", "Manage")
                     </div>
                 </div>
@@ -92,7 +89,7 @@
                         Office
                     </div>
                     <div class="col-md-10" align="left">
-                        @Html.DropDownList("PracticeAreas", (IEnumerable<SelectListItem>)ViewData["DBContactGroups"], new { @class = "form-control" })
+                        @Html.DropDownList("PracticeAreas", (IEnumerable<SelectListItem>)ViewData["DBContactGroupsPracticeArea"], new { @class = "form-control" })
                         @Html.ActionLink("Manage office locations in Settings", "NewPracticeArea")
                     </div>
                 </div>
