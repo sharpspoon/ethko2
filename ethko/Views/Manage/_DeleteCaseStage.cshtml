@@ -1,0 +1,25 @@
+﻿@model ethko.CaseStage
+@{
+    ViewBag.Title = "Delete Case Stage";
+}
+
+<br />
+<a class="btn btn-default" href='@Url.Action("CaseStages", "Manage")'>Back</a>&nbsp;
+<br />
+<h1>Delete Contact</h1>
+
+@using (Html.BeginForm("DeleteConfirmed", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <font color="red">
+        <h3>Really DELETE this case stage?  This action is irreversible!</h3>
+    </font>
+    <br />
+    <h3>CaseStageId: @Html.DisplayFor(m => m.CaseStageId)</h3>
+    <br />
+    <br />
+    <br />
+    <br />
+    @Html.AntiForgeryToken()
+    <a class="btn btn-danger" href='@Url.Action("DeleteConfirmed", "Manage", new { CaseStageId = Model.CaseStageId })'>Delete Case Stage</a>
+}
+

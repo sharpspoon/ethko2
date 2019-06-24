@@ -7,12 +7,15 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ethko.Models;
+using System.Net;
 
 namespace ethko.Controllers
 {
+    
     [Authorize]
     public class ManageController : Controller
     {
+        ethko_dbEntities entities = new ethko_dbEntities();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -422,6 +425,29 @@ namespace ethko.Controllers
             RemoveLoginSuccess,
             RemovePhoneSuccess,
             Error
+        }
+
+        public ActionResult DeleteCaseStage(int? CaseStageId)
+        {
+            if (CaseStageId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ethko_dbEntities entities = new ethko_dbEntities();
+            CaseStage caseStages = entities.CaseStages.Where(m => m.CaseStageId == CaseStageId).Single();
+            return View(caseStages);
+        }
+
+        public ActionResult DeleteConfirmed(int? CaseStageId)
+        {
+            if (CaseStageId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            CaseStage caseStages = entities.CaseStages.Find(CaseStageId);
+            entities.CaseStages.Remove(caseStages);
+            entities.SaveChanges();
+            return View();
         }
 
         #endregion

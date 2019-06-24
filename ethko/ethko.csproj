@@ -474,6 +474,10 @@
     <Content Include="Views\Manage\CaseStages.cshtml" />
     <Content Include="Views\Manage\NewCaseStage.cshtml" />
     <Content Include="Views\Manage\_AddCaseStage.cshtml" />
+    <Content Include="Views\Manage\DeleteCaseStage.cshtml" />
+    <Content Include="Views\Manage\_DeleteCaseStage.cshtml" />
+    <Content Include="Views\Manage\DeleteConfirmed.cshtml" />
+    <Content Include="Views\Manage\_DeleteConfirmed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
