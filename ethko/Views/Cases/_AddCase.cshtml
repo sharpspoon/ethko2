@@ -90,7 +90,7 @@
                     </div>
                     <div class="col-md-10" align="left">
                         @Html.DropDownList("PracticeAreas", (IEnumerable<SelectListItem>)ViewData["DBContactGroupsPracticeArea"], new { @class = "form-control" })
-                        @Html.ActionLink("Manage office locations in Settings", "NewPracticeArea")
+                        @Html.ActionLink("Manage office locations in Settings","Offices", "Manage")
                     </div>
                 </div>
 
