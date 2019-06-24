@@ -471,6 +471,9 @@
     <Content Include="Views\Cases\_AddPracticeArea.cshtml" />
     <Content Include="Views\Cases\_DeleteConfirmed.cshtml" />
     <Content Include="Views\Cases\_DeletePracticeArea.cshtml" />
+    <Content Include="Views\Manage\CaseStages.cshtml" />
+    <Content Include="Views\Manage\NewCaseStage.cshtml" />
+    <Content Include="Views\Manage\_AddCaseStage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

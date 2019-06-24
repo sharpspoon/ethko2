@@ -333,6 +333,46 @@ namespace ethko.Controllers
             base.Dispose(disposing);
         }
 
+        public ActionResult NewCaseStage()
+        {
+            return View();
+        }
+
+        public CaseStage ConvertViewModelToModel(AddCaseStageViewModel vm)
+        {
+            return new CaseStage()
+            {
+                CaseStageName = vm.CaseStageName
+            };
+        }
+
+        [HttpPost]
+        public ActionResult NewCaseStage(AddCaseStageViewModel model)
+        {
+            var user = User.Identity.GetUserName().ToString();
+            var caseStageModel = ConvertViewModelToModel(model);
+
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                entities.CaseStages.Add(caseStageModel);
+                caseStageModel.InsDate = DateTime.Now;
+                caseStageModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+                entities.SaveChanges();
+            }
+            return RedirectToAction("CaseStages");
+        }
+
+        [HttpGet]
+        public ActionResult CaseStages()
+        {
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                var caseStages = from c in entities.CaseStages
+                                    select new GetCaseStagesViewModel() { CaseStageId = c.CaseStageId.ToString(), CaseStageName = c.CaseStageName, InsDate = c.InsDate.ToString(), UserId = c.FstUser };
+                return View(caseStages.ToList());
+            }
+        }
+
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";

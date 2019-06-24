@@ -83,4 +83,26 @@ namespace ethko.Models
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
+
+    public class AddCaseStageViewModel
+    {
+        [Required]
+        [Display(Name = "Case Stage")]
+        public string CaseStageName { get; set; }
+    }
+
+    public class GetCaseStagesViewModel
+    {
+        [Display(Name = "Case Stage")]
+        public string CaseStageName { get; set; }
+
+        [Display(Name = "Case Stage Id")]
+        public string CaseStageId { get; set; }
+
+        [Display(Name = "UserId")]
+        public string UserId { get; set; }
+
+        [Display(Name = "InsDate")]
+        public string InsDate { get; set; }
+    }
 }

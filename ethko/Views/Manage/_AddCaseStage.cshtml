@@ -1,0 +1,31 @@
+﻿@model ethko.Models.AddCaseStageViewModel
+
+<br />
+<a class="btn btn-primary" href='@Url.Action("NewCaseStage", "Manage")'>Add Case Stage</a>&nbsp;
+
+
+<br />
+<h1>Add Case Stage</h1>
+<center>
+    <p>
+        <div class="col-md-12">
+            @using (Html.BeginForm("NewCaseStage", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    <div class="col-md-4" align="left">
+                        @Html.TextBoxFor(m => m.CaseStageName, new { @class = "form-control", placeholder = "Case Stage Name" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <a class="btn btn-default" href='@Url.Action("CaseStages", "Manage")'>Cancel</a>
+                        <input type="submit" class="btn btn-success" value="Save Case Stage" />
+                    </div>
+                </div>
+            }
+        </div>
+    </p>
+</center>
