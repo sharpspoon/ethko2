@@ -1,0 +1,28 @@
+﻿@model ethko.PracticeArea
+@{
+    ViewBag.Title = "Delete Practice Area";
+}
+
+<br />
+<a class="btn btn-default" href='@Url.Action("Index", "Cases")'>Cases</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("PracticeAreas", "Cases")'>Practice Areas</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("CaseInsights", "Cases")'>Case Insights</a>&nbsp;
+<a class="btn btn-primary" href='@Url.Action("NewPracticeArea", "Cases")'>Add Practice Area</a>&nbsp;
+<br />
+<h1>Delete Contact</h1>
+
+@using (Html.BeginForm("DeleteConfirmed", "Cases", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <font color="red">
+        <h3>Really DELETE this practice area?  This action is irreversible!</h3>
+    </font>
+    <br />
+    <h3>PracticeAreaId: @Html.DisplayFor(m => m.PracticeAreaId)</h3>
+    <br />
+    <br />
+    <br />
+    <br />
+    @Html.AntiForgeryToken()
+    <a class="btn btn-danger" href='@Url.Action("DeleteConfirmed", "Cases", new { PracticeAreaId = Model.PracticeAreaId })'>Delete Practice Area</a>
+}
+

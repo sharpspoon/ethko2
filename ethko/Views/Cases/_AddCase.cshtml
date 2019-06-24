@@ -1,0 +1,151 @@
+﻿@model ethko.Models.AddCaseViewModel
+<br />
+<a class="btn btn-default" href='@Url.Action("Index", "Cases")'>Cases</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("PracticeAreas", "Cases")'>Practice Areas</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("CaseInsights", "Cases")'>Case Insights</a>&nbsp;
+<a class="btn btn-primary" href='@Url.Action("New", "Contacts")'>Add Case</a>&nbsp;
+
+
+<br />
+<h1>Add Case</h1>
+
+    <p>
+        <div class="col-md-12">
+            @using (Html.BeginForm("New", "Cases", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                <h3>Case Details</h3>
+
+                <div class="form-group">
+                    <div class="col-md-2" align="left">
+                        Client Name
+                    </div>
+                    <div class="col-md-4" align="left">
+                        @Html.TextBoxFor(m => m.CaseContact, new { @class = "form-control", placeholder = "Search for an existing contact or company" })
+                        @Html.ActionLink("Add a new contact", "New", "Contacts")
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-2" align="left">
+                        Case Name
+                    </div>
+                    <div class="col-md-10" align="left">
+                        @Html.TextBoxFor(m => m.CaseName, new { @class = "form-control", placeholder = "e.g. John Doe - Divorce" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-2" align="left">
+                        Case Number
+                    </div>
+                    <div class="col-md-10" align="left">
+                        @Html.TextBoxFor(m => m.CaseName, new { @class = "form-control", placeholder = "A Unique Identifier" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-2" align="left">
+                        Practice Area
+                    </div>
+                    <div class="col-md-10" align="left">
+                        @Html.DropDownList("PracticeAreas", (IEnumerable<SelectListItem>)ViewData["DBContactGroups"], new { @class = "form-control" })
+                        @Html.ActionLink("Add new practice area", "NewPracticeArea")
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-2" align="left">
+                        Case Stage
+                    </div>
+                    <div class="col-md-10" align="left">
+                        <select class="form-control" id="sel1">
+                            <option>No</option>
+                            <option>Yes</option>
+                        </select>
+                        @Html.ActionLink("Manage case stages in Settings", "CaseStages", "Manage")
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-2" align="left">
+                        Date Opened
+                    </div>
+                    <div class="col-md-10" align="left">
+                            <div class="row">
+                                <div class='col-sm-6'>
+                                    <input type='text' class="form-control" id='datetimepicker4' />
+                                </div>
+                                <script type="text/javascript">
+                                    $(function () {
+                                        $('#datetimepicker4').datetimepicker();
+                                    });
+                                </script>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-2" align="left">
+                        Office
+                    </div>
+                    <div class="col-md-10" align="left">
+                        @Html.DropDownList("PracticeAreas", (IEnumerable<SelectListItem>)ViewData["DBContactGroups"], new { @class = "form-control" })
+                        @Html.ActionLink("Manage office locations in Settings", "NewPracticeArea")
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-2" align="left">
+                        Description
+                    </div>
+                    <div class="col-md-10" align="left">
+                        @Html.TextBoxFor(m => m.Office, new { @class = "form-control", placeholder = "Apartment B" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-2" align="left">
+                        Statute of Limitations
+                    </div>
+                    <div class="col-md-10" align="left">
+                        @Html.TextBoxFor(m => m.Description, new { @class = "form-control", placeholder = "Birmingham" })
+                    </div>
+                </div>
+
+                <h3>Billing</h3>
+
+                <div class="form-group">
+                    <div class="col-md-2" align="left">
+                        Billing Contact
+                    </div>
+                    <div class="col-md-10" align="left">
+                        @Html.TextBoxFor(m => m.Statute, new { @class = "form-control", placeholder = "AL" })
+                        Choosing a billing contact allows you to batch bill this case.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-2" align="left">
+                        Billing Method
+                    </div>
+                    <div class="col-md-10" align="left">
+                        <select class="form-control" id="sel1">
+                            <option>No</option>
+                            <option>Yes</option>
+                        </select>
+                        @Html.ActionLink("Manage billing methods in Settings", "NewPracticeArea")
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <a class="btn btn-default" href='@Url.Action("Index", "Cases")'>Cancel</a>
+                        <input type="submit" class="btn btn-success" value="Save Case" />
+                    </div>
+                </div>
+            }
+        </div>
+    </p>

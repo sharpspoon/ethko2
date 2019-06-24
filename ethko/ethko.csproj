@@ -253,6 +253,7 @@
       <DependentUpon>ethko.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CasesController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -457,6 +458,19 @@
     <Content Include="Views\Messages\Index.cshtml" />
     <Content Include="Views\Reporting\Index.cshtml" />
     <Content Include="Views\Tasks\Index.cshtml" />
+    <Content Include="Views\Cases\CaseInsights.cshtml" />
+    <Content Include="Views\Cases\Closed.cshtml" />
+    <Content Include="Views\Cases\DeleteConfirmed.cshtml" />
+    <Content Include="Views\Cases\DeletePracticeArea.cshtml" />
+    <Content Include="Views\Cases\EditPracticeArea.cshtml" />
+    <Content Include="Views\Cases\Index.cshtml" />
+    <Content Include="Views\Cases\New.cshtml" />
+    <Content Include="Views\Cases\NewPracticeArea.cshtml" />
+    <Content Include="Views\Cases\PracticeAreas.cshtml" />
+    <Content Include="Views\Cases\_AddCase.cshtml" />
+    <Content Include="Views\Cases\_AddPracticeArea.cshtml" />
+    <Content Include="Views\Cases\_DeleteConfirmed.cshtml" />
+    <Content Include="Views\Cases\_DeletePracticeArea.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
