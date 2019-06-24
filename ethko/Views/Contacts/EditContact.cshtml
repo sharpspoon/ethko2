@@ -1,0 +1,214 @@
+﻿@model ethko.Contact
+@{
+    ViewBag.Title = "Edit Contact";
+}
+
+<br />
+<a class="btn btn-default" href='@Url.Action("Index", "Contacts")'>Contacts</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("Companies", "Contacts")'>Companies</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("ContactGroups", "Contacts")'>Contact Groups</a>&nbsp;
+<a class="btn btn-primary" href='@Url.Action("ViewContact", "Contacts")'>Contact Details</a>&nbsp;
+<br />
+<br />
+<h2>
+    @ViewBag.Title
+</h2>
+
+
+
+
+@using (Html.BeginForm("EditContact", "Contacts", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <hr />
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Bootstrap.">
+        @Html.ValidationSummary(true)
+    </head>
+    <body style="margin:20px auto">
+        <div class="col-md-2">
+            <div class="well">
+                @Html.ValidationSummary(true)
+                <input type="submit" class="btn btn-success" value="Save Contact" />
+            </div>
+        </div>
+        <div class="col-md-10">
+            <div class="tabbable">
+                <!-- Only required for left/right tabs -->
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+                    <li><a href="#cases" data-toggle="tab">Cases</a></li>
+                    <li><a href="#activity" data-toggle="tab">Activity</a></li>
+                    <li><a href="#notes" data-toggle="tab">Notes</a></li>
+                    <li><a href="#billing" data-toggle="tab">Billing</a></li>
+                    <li><a href="#messages" data-toggle="tab">Messages</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="info">
+                        <div class="col-md-8">
+                            <br />
+                            <div class="well">
+                                <h4>Contact Information</h4>
+                                First Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.EditorFor(m => m.FName) @Html.ValidationMessageFor(m => m.FName)
+                                <br />
+                                <br />
+                                Middle Name:&nbsp;@Html.EditorFor(m => m.MName) @Html.ValidationMessageFor(m => m.MName)
+                                <br />
+                                <br />
+                                Last Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.EditorFor(m => m.LName) @Html.ValidationMessageFor(m => m.LName)
+                                <br />
+                                <br />
+                                Company:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.EditorFor(m => m.CompanyId) @Html.ValidationMessageFor(m => m.CompanyId)
+                                <br />
+                                <br />
+                                Job Title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.EditorFor(m => m.JobTitle) @Html.ValidationMessageFor(m => m.JobTitle)
+                                <br />
+                                <br />
+                                Group:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.EditorFor(m => m.ContactGroupId) @Html.ValidationMessageFor(m => m.ContactGroupId)
+                                <br />
+                                <br />
+                                Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.EditorFor(m => m.Email) @Html.ValidationMessageFor(m => m.Email)
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <br />
+                            <div class="well">
+                                <h4>Portal Access</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <br />
+                            <div class="well">
+                                <h4>Phone Numbers</h4>
+                                Home:&nbsp;@Html.EditorFor(m => m.HomePhone) @Html.ValidationMessageFor(m => m.HomePhone)
+                                <br />
+                                <br />
+                                Work:&nbsp;&nbsp;@Html.EditorFor(m => m.WorkPhone) @Html.ValidationMessageFor(m => m.WorkPhone)
+                                <br />
+                                <br />
+                                Cell:&nbsp;&nbsp;&nbsp;&nbsp;@Html.EditorFor(m => m.CellPhone) @Html.ValidationMessageFor(m => m.CellPhone)
+                                <br />
+                                <br />
+                                Fax:&nbsp;&nbsp;&nbsp;&nbsp;@Html.EditorFor(m => m.Fax) @Html.ValidationMessageFor(m => m.Fax)
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <br />
+                            <div class="well">
+                                <h4>Address</h4>
+                                Street:&nbsp;@Html.EditorFor(m => m.Address) @Html.ValidationMessageFor(m => m.Address)
+                                <br />
+                                <br />
+                                Apt:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.EditorFor(m => m.Address2) @Html.ValidationMessageFor(m => m.Address2)
+                                <br />
+                                <br />
+                                City:&nbsp;&nbsp;&nbsp;&nbsp;@Html.EditorFor(m => m.City) @Html.ValidationMessageFor(m => m.City)
+                                <br />
+                                <br />
+                                State:&nbsp;&nbsp;@Html.EditorFor(m => m.State) @Html.ValidationMessageFor(m => m.State)
+                                <br />
+                                <br />
+                                Zip:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.EditorFor(m => m.Zip) @Html.ValidationMessageFor(m => m.Zip)
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <br />
+                            <div class="well">
+                                <h4>Other Information</h4>
+                                Birthday:&nbsp;@Html.EditorFor(m => m.Birthday) @Html.ValidationMessageFor(m => m.Birthday)
+                                <br />
+                                <br />
+                                License:&nbsp;&nbsp;@Html.EditorFor(m => m.License) @Html.ValidationMessageFor(m => m.License)
+                                <br />
+                                <br />
+                                Website:&nbsp;@Html.EditorFor(m => m.Website) @Html.ValidationMessageFor(m => m.Website)
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <br />
+                            <div class="well">
+                                <h4>Notes</h4>
+                                @Html.EditorFor(m => m.Notes) @Html.ValidationMessageFor(m => m.Notes)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="cases">
+                        <div class="well">
+                            <p>Howdy, I'm in Section 2.</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="activity">
+                        <div class="well">
+                            <p>Howdy, I'm in Section 2.</p>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="notes">
+                        <div class="well">
+                            <p>Howdy, I'm in Section 2.</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="billing">
+                        <div class="well">
+                            <p>Howdy, I'm in Section 2.</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="messages">
+                        <div class="well">
+                            <p>Howdy, I'm in Section 2.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <br />
+
+        </div>
+    </body>
+
+</html>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#myTable').dataTable();
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <style>
+
+        .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+            background-color: #c4c4c4;
+        }
+    </style>
+
+
+    <script>
+        function filterText() {
+            var rex = new RegExp($('#filterText').val());
+            if (rex == "/all/") { clearFilter() } else {
+                $('.content').hide();
+                $('.content').filter(function () {
+                    return rex.test($(this).text());
+                }).show();
+            }
+        }
+
+        function clearFilter() {
+            $('.filterText').val('');
+            $('.content').show();
+        }
+    </script>
+}

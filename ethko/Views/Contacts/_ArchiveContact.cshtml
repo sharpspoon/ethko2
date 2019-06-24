@@ -1,0 +1,30 @@
+﻿@model ethko.Contact
+@{
+    ViewBag.Title = "Archive Contact";
+}
+<head>
+    <meta http-equiv="refresh" content="1;url=./Index" />
+</head>
+<br />
+<a class="btn btn-default" href='@Url.Action("Index", "Contacts")'>Contacts</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("Companies", "Contacts")'>Companies</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("ContactGroups", "Contacts")'>Contact Groups</a>&nbsp;
+<a class="btn btn-primary" href='@Url.Action("ViewContact", "Contacts")'>Contact Details</a>&nbsp;
+<br />
+@if (Model.Archived == 1)
+{
+    <h1>Archive Contact</h1>
+    <h2><font color="green">Archive Action Successful!</font></h2>
+    <br />
+    <h3><font color="green">Redirecting in 1 second...</font></h3>
+}
+else
+{
+    <h1>Activate Contact</h1>
+    <h2><font color="green">Activate Action Successful!</font></h2>
+    <br />
+    <h3><font color="green">Redirecting in 1 second...</font></h3>
+}
+
+
+

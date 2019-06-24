@@ -1,0 +1,202 @@
+﻿@model ethko.Models.GetIndividualContactViewModel
+@{
+    ViewBag.Title = "Contact Details";
+}
+
+<br />
+<a class="btn btn-default" href='@Url.Action("Index", "Contacts")'>Contacts</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("Companies", "Contacts")'>Companies</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("ContactGroups", "Contacts")'>Contact Groups</a>&nbsp;
+<a class="btn btn-primary" href='@Url.Action("ViewContact", "Contacts")'>Contact Details</a>&nbsp;
+<br />
+<br />
+<h2>
+    @ViewBag.Title
+</h2>
+
+
+
+@using (Html.BeginForm("ViewContact", "Contacts", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <hr />
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Final Output</title>
+        <meta name="description" content="Bootstrap.">
+
+    </head>
+    <body style="margin:20px auto">
+        <div class="col-md-2">
+            <div class="well">
+                <a class="btn btn-primary" href='@Url.Action("EditContact", "Contacts", new { ContactId = Model.ContactId })'>Edit Contact</a>
+                <br />
+                <br />
+                @if (Model.Archived == 1)
+                {
+                    <a class="btn btn-danger" href='@Url.Action("Archive", "Contacts", new { ContactId = Model.ContactId })'>Activate Contact</a>
+                }
+                else
+                {
+                    <a class="btn btn-danger" href='@Url.Action("Archive", "Contacts", new { ContactId = Model.ContactId })'>Archive Contact</a>
+                }
+
+                <br />
+                <br />
+                <a class="btn btn-danger" href='@Url.Action("Delete", "Contacts", new { ContactId = Model.ContactId })'>Delete Contact</a>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <div class="tabbable">
+                <!-- Only required for left/right tabs -->
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+                    <li><a href="#cases" data-toggle="tab">Cases</a></li>
+                    <li><a href="#activity" data-toggle="tab">Activity</a></li>
+                    <li><a href="#notes" data-toggle="tab">Notes</a></li>
+                    <li><a href="#billing" data-toggle="tab">Billing</a></li>
+                    <li><a href="#messages" data-toggle="tab">Messages</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="info">
+                        <div class="col-md-8">
+                            <br />
+                            <div class="well">
+                                <h4>Contact Information</h4>
+                                Name:  @Html.DisplayFor(m => m.FName)   @Html.DisplayFor(m => m.MName)   @Html.DisplayFor(m => m.LName)
+                                <br />
+                                <br />
+                                Company:  @Html.DisplayFor(m => m.CompanyId)
+                                <br />
+                                <br />
+                                Job Title:  @Html.DisplayFor(m => m.JobTitle)
+                                <br />
+                                <br />
+                                Group:  @Html.DisplayFor(m => m.ContactGroupId)
+                                <br />
+                                <br />
+                                Email:  @Html.DisplayFor(m => m.Email)
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <br />
+                            <div class="well">
+                                <h4>Portal Access</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <br />
+                            <div class="well">
+                                <h4>Phone Numbers</h4>
+                                Home:  @Html.DisplayFor(m => m.HomePhone)
+                                <br />
+                                <br />
+                                Work:  @Html.DisplayFor(m => m.WorkPhone)
+                                <br />
+                                <br />
+                                Cell:  @Html.DisplayFor(m => m.CellPhone)
+                                <br />
+                                <br />
+                                Fax:  @Html.DisplayFor(m => m.Fax)
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <br />
+                            <div class="well">
+                                <h4>Address</h4>
+                                Street:  @Html.DisplayFor(m => m.Address)
+                                <br />
+                                <br />
+                                Apt:  @Html.DisplayFor(m => m.Address2)
+                                <br />
+                                <br />
+                                City:  @Html.DisplayFor(m => m.City)
+                                <br />
+                                <br />
+                                State:  @Html.DisplayFor(m => m.State)
+                                <br />
+                                <br />
+                                Zip:  @Html.DisplayFor(m => m.Zip)
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <br />
+                            <div class="well">
+                                <h4>Other Information</h4>
+                                Birthday:  @Html.DisplayFor(m => m.Birthday)
+                                <br />
+                                <br />
+                                License:  @Html.DisplayFor(m => m.License)
+                                <br />
+                                <br />
+                                Website:  @Html.DisplayFor(m => m.Website)
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <br />
+                            <div class="well">
+                                <h4>Notes</h4>
+                                @Html.DisplayFor(m => m.Notes)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="cases">
+                        <div class="well">
+                            <p>Howdy, I'm in Section 2.</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="activity">
+                        <div class="well">
+                            <p>Howdy, I'm in Section 2.</p>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="notes">
+                        <div class="well">
+                            <p>Howdy, I'm in Section 2.</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="billing">
+                        <div class="well">
+                            <p>Howdy, I'm in Section 2.</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="messages">
+                        <div class="well">
+                            <p>Howdy, I'm in Section 2.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <br />
+
+        </div>
+    </body>
+
+</html>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#myTable').dataTable();
+        });
+    </script>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <style>
+
+        .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+            background-color: #c4c4c4;
+        }
+    </style>
+}
