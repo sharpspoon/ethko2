@@ -105,4 +105,26 @@ namespace ethko.Models
         [Display(Name = "InsDate")]
         public string InsDate { get; set; }
     }
+
+    public class GetOfficesViewModel
+    {
+        [Display(Name = "Office Name")]
+        public string OfficeName { get; set; }
+
+        [Display(Name = "Office Id")]
+        public string OfficeId { get; set; }
+
+        [Display(Name = "FstUser")]
+        public string FstUser { get; set; }
+
+        [Display(Name = "InsDate")]
+        public string InsDate { get; set; }
+    }
+
+    public class AddOfficeViewModel
+    {
+        [Required]
+        [Display(Name = "Office")]
+        public string OfficeName { get; set; }
+    }
 }

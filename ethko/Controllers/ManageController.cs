@@ -450,6 +450,46 @@ namespace ethko.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult Offices()
+        {
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                var offices = from o in entities.Offices
+                                 select new GetOfficesViewModel() { OfficeId = o.OfficeId.ToString(), OfficeName = o.OfficeName, InsDate = o.InsDate.ToString(), FstUser = o.FstUser };
+                return View(offices.ToList());
+            }
+        }
+
+        public ActionResult NewOffice()
+        {
+            return View();
+        }
+
+        public Office ConvertViewModelToModel(AddOfficeViewModel vm)
+        {
+            return new Office()
+            {
+                OfficeName = vm.OfficeName
+            };
+        }
+
+        [HttpPost]
+        public ActionResult NewOffice(AddOfficeViewModel model)
+        {
+            var user = User.Identity.GetUserName().ToString();
+            var officeModel = ConvertViewModelToModel(model);
+
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                entities.Offices.Add(officeModel);
+                officeModel.InsDate = DateTime.Now;
+                officeModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+                entities.SaveChanges();
+            }
+            return RedirectToAction("Offices");
+        }
+
         #endregion
     }
 }
