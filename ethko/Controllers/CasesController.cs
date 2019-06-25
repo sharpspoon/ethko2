@@ -102,5 +102,20 @@ namespace ethko.Controllers
             }
             return RedirectToAction("PracticeAreas");
         }
+
+        [HttpPost]
+        public JsonResult AutoComplete(string prefix)
+        {
+            ethko_dbEntities entities = new ethko_dbEntities();
+            var contacts = (from c in entities.Contacts
+                             where c.FName.StartsWith(prefix)
+                             select new
+                             {
+                                 label = c.FName,
+                                 val = c.ContactId
+                             }).ToList();
+
+            return Json(contacts);
+        }
     }
 }

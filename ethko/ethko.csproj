@@ -381,11 +381,11 @@
     <Content Include="ethko.edmx.diagram">
       <DependentUpon>ethko.edmx</DependentUpon>
     </Content>
-    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.3.1.js" />
-    <Content Include="Scripts\jquery-3.3.1.min.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery-3.4.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.0.js" />
+    <Content Include="Scripts\jquery-3.4.0.min.js" />
+    <Content Include="Scripts\jquery-3.4.0.slim.js" />
+    <Content Include="Scripts\jquery-3.4.0.slim.min.js" />
     <Content Include="Scripts\knockout-3.4.2.debug.js" />
     <Content Include="Scripts\knockout-3.4.2.js" />
     <Content Include="Scripts\knockout.validation.js" />
@@ -511,8 +511,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Scripts\jquery-3.4.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.0.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -6,10 +6,8 @@
 <a class="btn btn-primary" href='@Url.Action("New", "Contacts")'>Add Case</a>&nbsp;
 
 <head>
-    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="~/Scripts/moment.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/bootstrap-datetimepicker.*js"></script>
     <!-- include your less or built css files  -->
     <!--
     bootstrap-datetimepicker-build.less will pull in "../bootstrap/variables.less" and "bootstrap-datetimepicker.less";
@@ -26,7 +24,10 @@
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary("", new { @class = "text-danger" })
-
+                <input type="hidden" id="hfCustomer" name="CustomerId" />
+                <br /><br />
+                <br /><br />
+                @ViewBag.Message
                 <h3>Case Details</h3>
 
                 <div class="form-group">
@@ -34,7 +35,9 @@
                         Client Name
                     </div>
                     <div class="col-md-4" align="left">
-                        @Html.TextBoxFor(m => m.CaseContact, new { @class = "form-control", placeholder = "Search for an existing contact or company" })
+                        @Html.TextBoxFor(m => m.CaseContact, new { @class = "form-control", @id = "txtCustomer", @name = "CustomerName", placeholder = "Search for an existing contact or company" })
+
+                        @ViewBag.Message
                         @Html.ActionLink("Add a new contact", "New", "Contacts")
                     </div>
                 </div>
@@ -82,16 +85,16 @@
                         Date Opened
                     </div>
                     <div class="col-md-10" align="left">
-                            <div class="row">
-                                <div class='col-sm-6'>
-                                    <input type='text' class="form-control" id='datetimepicker4' />
-                                </div>
-                                <script type="text/javascript">
-                                    $(function () {
-                                        $('#datetimepicker4').datetimepicker();
-                                    });
-                                </script>
+                        <div class="row">
+                            <div class='col-sm-6'>
+                                <input type='text' class="form-control" id='datetimepicker4' />
                             </div>
+                            <script type="text/javascript">
+                                $(function () {
+                                    $('#datetimepicker4').datetimepicker();
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
 
@@ -101,7 +104,7 @@
                     </div>
                     <div class="col-md-10" align="left">
                         @Html.DropDownList("Offices", (IEnumerable<SelectListItem>)ViewData["DBOffice"], new { @class = "form-control" })
-                        @Html.ActionLink("Manage office locations in Settings","Offices", "Manage")
+                        @Html.ActionLink("Manage office locations in Settings", "Offices", "Manage")
                     </div>
                 </div>
 
