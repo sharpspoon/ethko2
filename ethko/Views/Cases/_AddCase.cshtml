@@ -119,7 +119,16 @@
                         Statute of Limitations
                     </div>
                     <div class="col-md-10" align="left">
-                        @Html.TextBoxFor(m => m.Description, new { @class = "form-control", placeholder = "Birmingham" })
+                        <div class="row">
+                            <div class='col-sm-6'>
+                                <input type='text' class="form-control" id='datetimepicker5' />
+                            </div>
+                            <script type="text/javascript">
+                                $(function () {
+                                    $('#datetimepicker5').datetimepicker();
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
 
