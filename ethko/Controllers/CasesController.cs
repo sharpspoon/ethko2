@@ -46,6 +46,8 @@ namespace ethko.Controllers
             ViewData["DBContactGroupsPracticeArea"] = practiceAreas;
             var caseStages = new SelectList(entities.CaseStages.ToList(), "CaseStageName", "CaseStageName");
             ViewData["DBContactGroupsCaseStage"] = caseStages;
+            var offices = new SelectList(entities.Offices.ToList(), "OfficeName", "OfficeName");
+            ViewData["DBOffice"] = offices;
             return View();
         }
 
