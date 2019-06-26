@@ -108,10 +108,10 @@ namespace ethko.Controllers
         {
             ethko_dbEntities entities = new ethko_dbEntities();
             var contacts = (from c in entities.Contacts
-                             where c.FName.StartsWith(prefix)
-                             select new
+                             where (c.FName.Contains(prefix) || c.LName.Contains(prefix))
+                            select new
                              {
-                                 label = c.FName,
+                                 label = c.FName + " " + c.LName,
                                  val = c.ContactId
                              }).ToList();
 
