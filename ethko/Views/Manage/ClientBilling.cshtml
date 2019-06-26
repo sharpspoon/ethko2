@@ -1,0 +1,54 @@
+﻿@model ethko.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>Change your account settings</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <a class="btn btn-default" href='@Url.Action("Index", "Manage")'>Settings Dashboard</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("MyProfile", "Manage")'>My Profile</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("MySettings", "Manage")'>My Settings</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("MyNotifications", "Manage")'>My Notifications</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("FirmUsers", "Manage")'>Firm Users</a>
+            <br />
+            <br />
+            <a class="btn btn-primary" href='@Url.Action("FirmSettings", "Manage")'>Firm Settings</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("ClientBilling", "Manage")'>Client Billing</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("ImportExport", "Manage")'>Import/Export</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("CustomFields", "Manage")'>Custom Fields</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("IntakeForms", "Manage")'>Intake Forms</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("Workflows", "Manage")'>Workflows</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("CaseStages", "Manage")'>Case Stages</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("Leads", "Manage")'>Leads</a>
+        </dt>
+        <dd>info for this tab</dd>
+    </dl>
+</div>

@@ -481,6 +481,17 @@
     <Content Include="Views\Manage\Offices.cshtml" />
     <Content Include="Views\Manage\_AddOffice.cshtml" />
     <Content Include="Views\Manage\NewOffice.cshtml" />
+    <Content Include="Views\Manage\FirmSettings.cshtml" />
+    <Content Include="Views\Manage\MySettings.cshtml" />
+    <Content Include="Views\Manage\FirmUsers.cshtml" />
+    <Content Include="Views\Manage\MyProfile.cshtml" />
+    <Content Include="Views\Manage\MyNotifications.cshtml" />
+    <Content Include="Views\Manage\ClientBilling.cshtml" />
+    <Content Include="Views\Manage\ImportExport.cshtml" />
+    <Content Include="Views\Manage\CustomFields.cshtml" />
+    <Content Include="Views\Manage\Workflows.cshtml" />
+    <Content Include="Views\Manage\Leads.cshtml" />
+    <Content Include="Views\Manage\IntakeForms.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

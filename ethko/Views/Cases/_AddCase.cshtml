@@ -19,8 +19,6 @@
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary("", new { @class = "text-danger" })
                 <input type="hidden" id="hfCustomer" name="CustomerId" />
-                <br /><br />
-                <br /><br />
                 @ViewBag.Message
                 <h3>Case Details</h3>
 
@@ -107,7 +105,7 @@
                         Description
                     </div>
                     <div class="col-md-10" align="left">
-                        @Html.TextBoxFor(m => m.Office, new { @class = "form-control", placeholder = "Apartment B" })
+                        @Html.TextAreaFor(m => m.Office, new { @class = "form-control" })
                     </div>
                 </div>
 

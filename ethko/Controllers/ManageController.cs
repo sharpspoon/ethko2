@@ -490,6 +490,11 @@ namespace ethko.Controllers
             return RedirectToAction("Offices");
         }
 
+        public ActionResult FirmSettings()
+        {
+            return View();
+        }
+
         #endregion
     }
 }
