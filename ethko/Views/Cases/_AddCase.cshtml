@@ -144,11 +144,8 @@
                         Billing Method
                     </div>
                     <div class="col-md-10" align="left">
-                        <select class="form-control" id="sel1">
-                            <option>No</option>
-                            <option>Yes</option>
-                        </select>
-                        @Html.ActionLink("Manage billing methods in Settings", "NewPracticeArea")
+                        @Html.DropDownList("Offices", (IEnumerable<SelectListItem>)ViewData["DBOffice"], new { @class = "form-control" })
+                        @Html.ActionLink("Manage billing methods in Settings", "ClientBilling", "Manage")
                     </div>
                 </div>
 

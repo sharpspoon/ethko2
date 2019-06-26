@@ -550,6 +550,35 @@ namespace ethko.Controllers
             return View();
         }
 
+        public ActionResult NewBillingMethod()
+        {
+            return View();
+        }
+
+        public BillingMethod ConvertViewModelToModel(AddBillingMethodViewModel vm)
+        {
+            return new BillingMethod()
+            {
+                BillingMethodName = vm.BillingMethodName
+            };
+        }
+
+        [HttpPost]
+        public ActionResult NewBillingMethod(AddBillingMethodViewModel model)
+        {
+            var user = User.Identity.GetUserName().ToString();
+            var billingMthodModel = ConvertViewModelToModel(model);
+
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                entities.BillingMethods.Add(billingMthodModel);
+                billingMthodModel.InsDate = DateTime.Now;
+                billingMthodModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+                entities.SaveChanges();
+            }
+            return RedirectToAction("ClientBilling");
+        }
+
         #endregion
     }
 }

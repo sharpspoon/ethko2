@@ -492,6 +492,8 @@
     <Content Include="Views\Manage\Workflows.cshtml" />
     <Content Include="Views\Manage\Leads.cshtml" />
     <Content Include="Views\Manage\IntakeForms.cshtml" />
+    <Content Include="Views\Manage\_AddBillingMethod.cshtml" />
+    <Content Include="Views\Manage\NewBillingMethod.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

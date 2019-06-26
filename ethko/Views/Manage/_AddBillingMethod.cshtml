@@ -1,0 +1,29 @@
+﻿@model ethko.Models.AddBillingMethodViewModel
+
+<br />
+<a class="btn btn-primary" href='@Url.Action("NewBillingMethod", "Manage")'>Add Billing Method</a>&nbsp;
+
+
+<br />
+<h1>Add Billing Method</h1>
+    <p>
+        <div class="col-md-12">
+            @using (Html.BeginForm("NewBillingMethod", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    <div class="col-md-4" align="left">
+                        @Html.TextBoxFor(m => m.BillingMethodName, new { @class = "form-control", placeholder = "Billing Method Name" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <a class="btn btn-default" href='@Url.Action("ClientBilling", "Manage")'>Cancel</a>
+                        <input type="submit" class="btn btn-success" value="Save Billing Method" />
+                    </div>
+                </div>
+            }
+        </div>
+    </p>

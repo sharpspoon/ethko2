@@ -1,4 +1,4 @@
-﻿@model ethko.Models.IndexViewModel
+﻿@model IEnumerable<ethko.Models.GetCaseStagesViewModel>
 @{
     ViewBag.Title = "Manage";
 }
@@ -49,6 +49,58 @@
             <br />
             <a class="btn btn-default" href='@Url.Action("Leads", "Manage")'>Leads</a>
         </dt>
-        <dd>info for this tab</dd>
+        <dd>
+            <div class="col-md-12" align="left">
+                <h2>
+                    @ViewBag.Title
+                    <a class="btn btn-success" href='@Url.Action("NewBillingMethod", "Manage")' style="float: right">+ Add Billing Method</a>
+                </h2>
+                <table id="myTable" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Billing Methods</th>
+                            <th>Added</th>
+                            <th>Edit / Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.CaseStageId})'>@Html.DisplayFor(modelItem => item.CaseStageName)</a>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.InsDate)
+                                        by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.UserId)</a>
+                                    </td>
+                                    <td>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href='@Url.Action("EditPracticeArea", "Cases", new { CaseStageId = item.CaseStageId })'>Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href='@Url.Action("DeleteCaseStage", "Manage", new { CaseStageId = item.CaseStageId })'>Delete</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        @if (Model == null)
+                        {
+                            <tr>
+                                <td>
+                                    NULL
+                                </td>
+                                <td>
+                                    NULL
+                                </td>
+                                <td>
+                                    NULL
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </dd>
     </dl>
 </div>
