@@ -495,6 +495,56 @@ namespace ethko.Controllers
             return View();
         }
 
+        public ActionResult MyProfile()
+        {
+            return View();
+        }
+
+        public ActionResult MySettings()
+        {
+            return View();
+        }
+
+        public ActionResult MyNotifications()
+        {
+            return View();
+        }
+
+        public ActionResult FirmUsers()
+        {
+            return View();
+        }
+
+        public ActionResult ClientBilling()
+        {
+            return View();
+        }
+
+        public ActionResult ImportExport()
+        {
+            return View();
+        }
+
+        public ActionResult CustomFields()
+        {
+            return View();
+        }
+
+        public ActionResult IntakeForms()
+        {
+            return View();
+        }
+
+        public ActionResult Workflows()
+        {
+            return View();
+        }
+
+        public ActionResult Leads()
+        {
+            return View();
+        }
+
         #endregion
     }
 }
