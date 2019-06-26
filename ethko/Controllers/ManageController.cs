@@ -492,7 +492,12 @@ namespace ethko.Controllers
 
         public ActionResult FirmSettings()
         {
-            return View();
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                var offices = from o in entities.Offices
+                              select new GetOfficesViewModel() { OfficeId = o.OfficeId.ToString(), OfficeName = o.OfficeName, InsDate = o.InsDate.ToString(), FstUser = o.FstUser };
+                return View(offices.ToList());
+            }
         }
 
         public ActionResult MyProfile()
