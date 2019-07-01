@@ -493,6 +493,8 @@
     <Content Include="Views\Manage\IntakeForms.cshtml" />
     <Content Include="Views\Manage\_AddBillingMethod.cshtml" />
     <Content Include="Views\Manage\NewBillingMethod.cshtml" />
+    <Content Include="Views\Manage\_DeleteOffice.cshtml" />
+    <Content Include="Views\Manage\DeleteOffice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

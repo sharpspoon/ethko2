@@ -438,27 +438,31 @@ namespace ethko.Controllers
             return View(caseStages);
         }
 
-        public ActionResult DeleteConfirmed(int? CaseStageId)
+        public ActionResult DeleteConfirmed(int? CaseStageId, int? OfficeId)
         {
-            if (CaseStageId == null)
+            if (CaseStageId == null && OfficeId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CaseStage caseStages = entities.CaseStages.Find(CaseStageId);
-            entities.CaseStages.Remove(caseStages);
-            entities.SaveChanges();
-            return View();
-        }
 
-        [HttpGet]
-        public ActionResult Offices()
-        {
-            using (ethko_dbEntities entities = new ethko_dbEntities())
+            if (CaseStageId != null)
             {
-                var offices = from o in entities.Offices
-                                 select new GetOfficesViewModel() { OfficeId = o.OfficeId.ToString(), OfficeName = o.OfficeName, InsDate = o.InsDate.ToString(), FstUser = o.FstUser };
-                return View(offices.ToList());
+                CaseStage caseStages = entities.CaseStages.Find(CaseStageId);
+                entities.CaseStages.Remove(caseStages);
+                entities.SaveChanges();
             }
+
+            if (OfficeId != null)
+            {
+                Office offices = entities.Offices.Find(OfficeId);
+                entities.Offices.Remove(offices);
+                entities.SaveChanges();
+                Models.DeleteConfirmedViewModel delete = new Models.DeleteConfirmedViewModel();
+                delete.OfficeId = OfficeId;
+                return View(delete);
+            }
+
+            return View();
         }
 
         public ActionResult NewOffice()
@@ -487,7 +491,7 @@ namespace ethko.Controllers
                 officeModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 entities.SaveChanges();
             }
-            return RedirectToAction("Offices");
+            return RedirectToAction("FirmSettings");
         }
 
         public ActionResult FirmSettings()
@@ -583,6 +587,17 @@ namespace ethko.Controllers
                 entities.SaveChanges();
             }
             return RedirectToAction("ClientBilling");
+        }
+
+        public ActionResult DeleteOffice(int? OfficeId)
+        {
+            if (OfficeId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ethko_dbEntities entities = new ethko_dbEntities();
+            Office offices = entities.Offices.Where(m => m.OfficeId == OfficeId).Single();
+            return View(offices);
         }
 
         #endregion

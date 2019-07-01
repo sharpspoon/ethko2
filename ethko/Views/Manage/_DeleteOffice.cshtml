@@ -1,0 +1,25 @@
+﻿@model ethko.Office
+@{
+    ViewBag.Title = "Delete Office";
+}
+
+<br />
+<a class="btn btn-default" href='@Url.Action("FirmSettings", "Manage")'>Back</a>&nbsp;
+<br />
+<h1>Delete Office</h1>
+
+@using (Html.BeginForm("DeleteConfirmed", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <font color="red">
+        <h3>Really DELETE this office?  This action is irreversible!</h3>
+    </font>
+    <br />
+    <h3>OfficeId: @Html.DisplayFor(m => m.OfficeId)</h3>
+    <br />
+    <br />
+    <br />
+    <br />
+    @Html.AntiForgeryToken()
+    <a class="btn btn-danger" href='@Url.Action("DeleteConfirmed", "Manage", new { OfficeId = Model.OfficeId })'>Delete Office</a>
+}
+

@@ -1,10 +1,31 @@
-﻿@model ethko.CaseStage
+﻿@model ethko.Models.DeleteConfirmedViewModel
 @{
     ViewBag.Title = "Delete Complete";
 }
-<head>
-    <meta http-equiv="refresh" content="1;url=./CaseStages" />
-</head>
+@if (Model != null)
+{
+    if (Model.OfficeId != null)
+    {
+        <head>
+            <meta http-equiv="refresh" content="1;url=./FirmSettings" />
+        </head>
+    }
+
+    if (Model.BillingMethodId != null)
+    {
+        <head>
+            <meta http-equiv="refresh" content="1;url=./BillingMethods" />
+        </head>
+    }
+}
+
+@if (Model == null)
+{
+    <head>
+        <meta http-equiv="refresh" content="1;url=./Index" />
+    </head>
+}
+
 <br />
 <a class="btn btn-default" href='@Url.Action("Index", "Contacts")'>Contacts</a>&nbsp;
 <a class="btn btn-default" href='@Url.Action("Companies", "Contacts")'>Companies</a>&nbsp;
