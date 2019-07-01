@@ -8,12 +8,32 @@
 <head>
     <script type="text/javascript" src="~/Scripts/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="~/Scripts/moment.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".add-row").click(function () {
+                var name = $("#txtCustomer").val();
+                var email = $("#email").val();
+                var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + name + "</td><td>" + email + "</td></tr>";
+                $("table tbody").append(markup);
+            });
+
+            // Find and remove selected table rows
+            $(".delete-row").click(function () {
+                $("table tbody").find('input[name="record"]').each(function () {
+                    if ($(this).is(":checked")) {
+                        $(this).parents("tr").remove();
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <br />
 <h1>Add Case</h1>
 
-    <p>
-        <div class="col-md-12">
+<p>
+    <div class="col-md-12">
+        <div class="col-md-9">
             @using (Html.BeginForm("New", "Cases", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
@@ -26,12 +46,14 @@
                     <div class="col-md-2" align="left">
                         Client Name
                     </div>
-                    <div class="col-md-4" align="left">
-                        @Html.TextBoxFor(m => m.CaseContact, new { @class = "form-control", @id = "txtCustomer", @name = "CustomerName", placeholder = "Search for an existing contact or company" })
-
+                    <div class="col-md-10" align="left">
                         @ViewBag.Message
                         @Html.ActionLink("Add a new contact", "New", "Contacts")
+                        @Html.TextBoxFor(m => m.CaseContact, new { @class = "form-control", @id = "txtCustomer", @name = "CustomerName", placeholder = "Search for an existing contact or company" })@Html.ActionLink("Add contact to case", "New", "Contacts")
+
+
                     </div>
+
                 </div>
 
                 <div class="form-group">
@@ -96,7 +118,7 @@
                     </div>
                     <div class="col-md-10" align="left">
                         @Html.DropDownList("Offices", (IEnumerable<SelectListItem>)ViewData["DBOffice"], new { @class = "form-control" })
-                        @Html.ActionLink("Manage office locations in Settings", "Offices", "Manage")
+                        @Html.ActionLink("Manage office locations in Settings", "FirmSettings", "Manage")
                     </div>
                 </div>
 
@@ -157,4 +179,22 @@
                 </div>
             }
         </div>
-    </p>
+        <div class="col-md-3">
+            <table id="myTable" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Contacts Added to Case</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+</p>
