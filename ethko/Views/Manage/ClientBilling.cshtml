@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ethko.Models.GetCaseStagesViewModel>
+﻿@model IEnumerable<ethko.Models.GetClientBillingViewModel>
 @{
     ViewBag.Title = "Manage";
 }
@@ -52,7 +52,7 @@
         <dd>
             <div class="col-md-12" align="left">
                 <h2>
-                    @ViewBag.Title
+                    Billing Methods
                     <a class="btn btn-success" href='@Url.Action("NewBillingMethod", "Manage")' style="float: right">+ Add Billing Method</a>
                 </h2>
                 <table id="myTable" class="table table-hover">
@@ -70,15 +70,15 @@
                             {
                                 <tr>
                                     <td>
-                                        <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.CaseStageId})'>@Html.DisplayFor(modelItem => item.CaseStageName)</a>
+                                        <a href='@Url.Action("ViewContact", "Contacts", new { BillingMethodId = item.BillingMethodId})'>@Html.DisplayFor(modelItem => item.BillingMethodName)</a>
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.InsDate)
-                                        by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.UserId)</a>
+                                        by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.FstUser)</a>
                                     </td>
                                     <td>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href='@Url.Action("EditPracticeArea", "Cases", new { CaseStageId = item.CaseStageId })'>Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                        &nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href='@Url.Action("DeleteCaseStage", "Manage", new { CaseStageId = item.CaseStageId })'>Delete</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href='@Url.Action("EditPracticeArea", "Cases", new { BillingMethodId = item.BillingMethodId })'>Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href='@Url.Action("DeleteCaseStage", "Manage", new { BillingMethodId = item.BillingMethodId })'>Delete</a>&nbsp;&nbsp;&nbsp;&nbsp;
                                     </td>
                                 </tr>
                             }

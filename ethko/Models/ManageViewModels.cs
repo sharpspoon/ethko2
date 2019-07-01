@@ -134,4 +134,19 @@ namespace ethko.Models
         [Display(Name = "Billing Method")]
         public string BillingMethodName { get; set; }
     }
+
+    public class GetClientBillingViewModel
+    {
+        [Display(Name = "Billing Method Name")]
+        public string BillingMethodName { get; set; }
+
+        [Display(Name = "Billing Method Id")]
+        public string BillingMethodId { get; set; }
+
+        [Display(Name = "FstUser")]
+        public string FstUser { get; set; }
+
+        [Display(Name = "InsDate")]
+        public string InsDate { get; set; }
+    }
 }
