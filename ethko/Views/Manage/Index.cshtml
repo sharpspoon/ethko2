@@ -49,24 +49,36 @@
             <br />
             <a class="btn btn-default" href='@Url.Action("Leads", "Manage")'>Leads</a>
         </dt>
-        <dd>info for this tab</dd>
-        <dt>Password:</dt>
         <dd>
-            [
-            @if (Model.HasPassword)
-            {
-                @Html.ActionLink("Change your password", "ChangePassword")
-            }
-            else
-            {
-                @Html.ActionLink("Create", "SetPassword")
-            }
-            ]
-        </dd>
-        <dt>External Logins:</dt>
-        <dd>
-            @Model.Logins.Count [
-            @Html.ActionLink("Manage", "ManageLogins") ]
+            <div class="col-md-2" align="right">
+                <strong>Password:</strong>
+            </div>
+            <div class="col-md-10" align="left">
+                [
+                @if (Model.HasPassword)
+                {
+                    @Html.ActionLink("Change your password", "ChangePassword")
+                }
+                else
+                {
+                    @Html.ActionLink("Create", "SetPassword")
+                }
+                ]
+            </div>
+            <div class="col-md-2" align="right">
+                <strong>External Logins:</strong>
+            </div>
+            <div class="col-md-10" align="left">
+                @Model.Logins.Count [
+                @Html.ActionLink("Manage", "ManageLogins") ]
+            </div>
+            <div class="col-md-2" align="right">
+                <strong>Two-Factor Authentication:</strong>
+            </div>
+            <div class="col-md-10" align="left">
+                There are no two-factor authentication providers configured. See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
+                for details on setting up this ASP.NET application to support two-factor authentication.
+            </div>
         </dd>
         @*
             Phone Numbers can used as a second factor of verification in a two-factor authentication system.
@@ -95,12 +107,6 @@
                 }
             </dd>
         *@
-        <dt>Two-Factor Authentication:</dt>
-        <dd>
-            <p>
-                There are no two-factor authentication providers configured. See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support two-factor authentication.
-            </p>
             @*@if (Model.TwoFactor)
                 {
                     using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -121,12 +127,5 @@
                         </text>
                     }
                 }*@
-        </dd>
-        <dt>Offices:</dt>
-        <dd>
-            <p>
-                @Html.ActionLink("Manage Offices", "Offices")
-            </p>
-        </dd>
     </dl>
 </div>

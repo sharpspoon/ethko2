@@ -495,6 +495,8 @@
     <Content Include="Views\Manage\NewBillingMethod.cshtml" />
     <Content Include="Views\Manage\_DeleteOffice.cshtml" />
     <Content Include="Views\Manage\DeleteOffice.cshtml" />
+    <Content Include="Views\Manage\DeleteBillingMethod.cshtml" />
+    <Content Include="Views\Manage\_DeleteBillingMethod.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
