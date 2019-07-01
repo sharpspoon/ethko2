@@ -438,9 +438,9 @@ namespace ethko.Controllers
             return View(caseStages);
         }
 
-        public ActionResult DeleteConfirmed(int? CaseStageId, int? OfficeId)
+        public ActionResult DeleteConfirmed(int? CaseStageId, int? OfficeId, int? BillingMethodId)
         {
-            if (CaseStageId == null && OfficeId == null)
+            if (CaseStageId == null && OfficeId == null && BillingMethodId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -459,6 +459,16 @@ namespace ethko.Controllers
                 entities.SaveChanges();
                 Models.DeleteConfirmedViewModel delete = new Models.DeleteConfirmedViewModel();
                 delete.OfficeId = OfficeId;
+                return View(delete);
+            }
+
+            if (BillingMethodId != null)
+            {
+                BillingMethod billingMethods = entities.BillingMethods.Find(BillingMethodId);
+                entities.BillingMethods.Remove(billingMethods);
+                entities.SaveChanges();
+                Models.DeleteConfirmedViewModel delete = new Models.DeleteConfirmedViewModel();
+                delete.BillingMethodId = BillingMethodId;
                 return View(delete);
             }
 
@@ -598,6 +608,17 @@ namespace ethko.Controllers
             ethko_dbEntities entities = new ethko_dbEntities();
             Office offices = entities.Offices.Where(m => m.OfficeId == OfficeId).Single();
             return View(offices);
+        }
+
+        public ActionResult DeleteBillingMethod(int? BillingMethodId)
+        {
+            if (BillingMethodId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ethko_dbEntities entities = new ethko_dbEntities();
+            BillingMethod billingMethods = entities.BillingMethods.Where(m => m.BillingMethodId == BillingMethodId).Single();
+            return View(billingMethods);
         }
 
         #endregion

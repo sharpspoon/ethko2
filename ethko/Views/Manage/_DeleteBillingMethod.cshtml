@@ -1,25 +1,25 @@
-﻿@model ethko.CaseStage
+﻿@model ethko.BillingMethod
 @{
-    ViewBag.Title = "Delete Case Stage";
+    ViewBag.Title = "Delete Billing Method";
 }
 
 <br />
-<a class="btn btn-default" href='@Url.Action("CaseStages", "Manage")'>Back</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("ClientBilling", "Manage")'>Back</a>&nbsp;
 <br />
-<h1>Delete Contact</h1>
+<h1>Delete Billing Method</h1>
 
 @using (Html.BeginForm("DeleteConfirmed", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     <font color="red">
-        <h3>Really DELETE this case stage?  This action is irreversible!</h3>
+        <h3>Really DELETE this billing method?  This action is irreversible!</h3>
     </font>
     <br />
-    <h3>CaseStageId: @Html.DisplayFor(m => m.CaseStageId)</h3>
+    <h3>BillingMethodId: @Html.DisplayFor(m => m.BillingMethodId)</h3>
     <br />
     <br />
     <br />
     <br />
     @Html.AntiForgeryToken()
-    <a class="btn btn-danger" href='@Url.Action("DeleteConfirmed", "Manage", new { CaseStageId = Model.CaseStageId })'>Delete Case Stage</a>
+    <a class="btn btn-danger" href='@Url.Action("DeleteConfirmed", "Manage", new { BillingMethodId = Model.BillingMethodId })'>Delete Billing Method</a>
 }
 

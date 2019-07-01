@@ -153,7 +153,7 @@ namespace ethko.Models
     public class DeleteConfirmedViewModel
     {
         [Display(Name = "Billing Method Id")]
-        public string BillingMethodId { get; set; }
+        public int? BillingMethodId { get; set; }
 
         [Display(Name = "Office Id")]
         public int? OfficeId { get; set; }
