@@ -14,6 +14,7 @@
                 var name = $("#txtCustomer").val();
                 var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + name + "</td><td>"  + "</td></tr>";
                 $("table tbody").append(markup);
+                document.getElementById('txtCustomer').value = "";
             });
 
             // Find and remove selected table rows
@@ -174,6 +175,7 @@
             }
         </div>
         <div class="col-md-3">
+            <input type="button" class="btn btn-sm btn-danger delete-row" value="Remove" />
             <table id="myTable" class="table table-hover">
                 <thead>
                     <tr>
@@ -182,8 +184,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    </tr>
+                    <tr></tr>
                 </tbody>
             </table>
         </div>
