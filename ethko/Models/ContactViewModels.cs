@@ -134,6 +134,28 @@ namespace ethko.Models
         public ContactGroup ContactGroup { get; set; }
     }
 
+    [Table("Contacts")]
+    public class GetContactArchiveListViewModel
+    {
+        [Required]
+        [Display(Name = "ContactId")]
+        public string ContactId { get; set; }
+        [Display(Name = "First Name")]
+        public string FName { get; set; }
+        [Display(Name = "Last Name")]
+        public string LName { get; set; }
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+        [Display(Name = "InsDate")]
+        public string InsDate { get; set; }
+        [Display(Name = "UserId")]
+        public string UserId { get; set; }
+        [Display(Name = "ContactGroupList")]
+        public string ContactGroupList { get; set; }
+        public Contact Contact { get; set; }
+        public ContactGroup ContactGroup { get; set; }
+    }
+
     public class GetIndividualContactViewModel
     {
         [Display(Name = "ContactId")]

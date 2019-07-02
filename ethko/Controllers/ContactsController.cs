@@ -75,9 +75,6 @@ namespace ethko.Controllers
                                join u in entities.AspNetUsers on c.UserId equals u.Id
                                where c.Archived == 0
                                select new GetContactListViewModel() { ContactId = c.ContactId.ToString(), FName = c.FName, LName = c.LName, Email = c.Email, UserId = u.UserName, InsDate = c.InsDate.ToString(), ContactGroupList = cg.ContactGroupName};
-
-                //IEnumerable<Contact> contacts = entities.Contacts.Where(m => m.Archived == 0).ToList();
-                //var contactModel = ConvertViewModelToModel(contacts);
                 return View(contacts.ToList());
             }
         }
@@ -86,10 +83,15 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult ContactsArchive()
         {
-            ethko_dbEntities entities = new ethko_dbEntities();
-            IEnumerable<Contact> contacts = entities.Contacts.Where(m => m.Archived == 1).ToList();
-            //var contactModel = ConvertViewModelToModel(contacts);
-            return View(contacts.AsEnumerable());
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                var contacts = from c in entities.Contacts
+                               join cg in entities.ContactGroups on c.ContactGroupId equals cg.ContactGroupId
+                               join u in entities.AspNetUsers on c.UserId equals u.Id
+                               where c.Archived == 1
+                               select new GetContactArchiveListViewModel() { ContactId = c.ContactId.ToString(), FName = c.FName, LName = c.LName, Email = c.Email, UserId = u.UserName, InsDate = c.InsDate.ToString(), ContactGroupList = cg.ContactGroupName };
+                return View(contacts.ToList());
+            }
         }
 
         //View Specific Contact
