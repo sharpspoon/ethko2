@@ -509,7 +509,9 @@ namespace ethko.Controllers
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 var offices = from o in entities.Offices
-                              select new GetOfficesViewModel() { OfficeId = o.OfficeId.ToString(), OfficeName = o.OfficeName, InsDate = o.InsDate.ToString(), FstUser = o.FstUser };
+                                    join u in entities.AspNetUsers on o.FstUser equals u.Id
+                                    //where c.Archived == 1
+                                    select new GetFirmSettingsViewModel() { OfficeId = o.OfficeId.ToString(), OfficeName = o.OfficeName, FstUser = u.UserName, InsDate = o.InsDate.ToString() };
                 return View(offices.ToList());
             }
         }

@@ -106,7 +106,7 @@ namespace ethko.Models
         public string InsDate { get; set; }
     }
 
-    public class GetOfficesViewModel
+    public class GetFirmSettingsViewModel
     {
         [Display(Name = "Office Name")]
         public string OfficeName { get; set; }
