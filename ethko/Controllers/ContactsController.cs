@@ -319,10 +319,14 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult ContactGroups()
         {
-            ethko_dbEntities entities = new ethko_dbEntities();
-            IEnumerable<ContactGroup> contactGroups = entities.ContactGroups.ToList();
-            //var contactModel = ConvertViewModelToModel(contacts);
-            return View(contactGroups.AsEnumerable());
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                var contactGroups = from cg in entities.ContactGroups
+                               join u in entities.AspNetUsers on cg.FstUser equals u.Id
+                               //where c.Archived == 1
+                               select new GetContactGroupListViewModel() { ContactGroupId = cg.ContactGroupId.ToString(), ContactGroupName = cg.ContactGroupName, FstUser = u.UserName, InsDate = cg.InsDate.ToString() };
+                return View(contactGroups.ToList());
+            }
         }
     }
 }

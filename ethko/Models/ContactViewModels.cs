@@ -170,6 +170,20 @@ namespace ethko.Models
         public string FstUser { get; set; }
     }
 
+    [Table("ContactGroups")]
+    public class GetContactGroupListViewModel
+    {
+        [Required]
+        [Display(Name = "ContactGroupId")]
+        public string ContactGroupId { get; set; }
+        [Display(Name = "ContactGroupName")]
+        public string ContactGroupName { get; set; }
+        [Display(Name = "InsDate")]
+        public string InsDate { get; set; }
+        [Display(Name = "UserId")]
+        public string FstUser { get; set; }
+    }
+
     public class GetIndividualContactViewModel
     {
         [Display(Name = "ContactId")]
