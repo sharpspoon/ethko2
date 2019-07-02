@@ -542,7 +542,8 @@ namespace ethko.Controllers
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 var billingMethods = from bm in entities.BillingMethods
-                              select new GetClientBillingViewModel() { BillingMethodId = bm.BillingMethodId.ToString(), BillingMethodName = bm.BillingMethodName, InsDate = bm.InsDate.ToString(), FstUser = bm.FstUser };
+                                     join u in entities.AspNetUsers on bm.FstUser equals u.Id
+                                     select new GetClientBillingViewModel() { BillingMethodId = bm.BillingMethodId.ToString(), BillingMethodName = bm.BillingMethodName, InsDate = bm.InsDate.ToString(), FstUser = u.UserName };
                 return View(billingMethods.ToList());
             }
         }
