@@ -84,12 +84,9 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.InsDate)
                                     by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.UserId)</a>
-
-
                                 </td>
                                 <td>
                                     <a class="btn btn-primary" href='@Url.Action("EditContact", "Contacts", new { ContactId = item.ContactId })' rel="modal:open" style="float: right">Edit Contact</a>
-
                                 </td>
                             </tr>
                         }
