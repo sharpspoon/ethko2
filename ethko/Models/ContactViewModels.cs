@@ -156,6 +156,20 @@ namespace ethko.Models
         public ContactGroup ContactGroup { get; set; }
     }
 
+    [Table("Companies")]
+    public class GetCompanyListViewModel
+    {
+        [Required]
+        [Display(Name = "ContactId")]
+        public string CompanyId { get; set; }
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+        [Display(Name = "InsDate")]
+        public string InsDate { get; set; }
+        [Display(Name = "UserId")]
+        public string FstUser { get; set; }
+    }
+
     public class GetIndividualContactViewModel
     {
         [Display(Name = "ContactId")]

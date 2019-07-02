@@ -262,10 +262,14 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult Companies()
         {
-            ethko_dbEntities entities = new ethko_dbEntities();
-            IEnumerable<Company> companies = entities.Companies.ToList();
-            //var contactModel = ConvertViewModelToModel(contacts);
-            return View(companies.AsEnumerable());
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                var companies = from c in entities.Companies
+                               join u in entities.AspNetUsers on c.FstUser equals u.Id
+                               where c.Archived == 0
+                               select new GetCompanyListViewModel() { CompanyId = c.CompanyId.ToString(),  Email = c.Email, FstUser = u.UserName, InsDate = c.InsDate.ToString() };
+                return View(companies.ToList());
+            }
         }
 
         //View Archive List

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ethko.Company>
+﻿@model IEnumerable<ethko.Models.GetCompanyListViewModel>
 @{
     ViewBag.Title = "Active Companies";
 }
@@ -54,7 +54,7 @@
                         {
                             <tr>
                                 <td>
-                                    <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.Name})'>@Html.DisplayFor(modelItem => item.Name)</a>
+                                    <a href='@Url.Action("ViewContact", "Contacts", new { CompanyId = item.CompanyId})'>@Html.DisplayFor(modelItem => item.CompanyId)</a>
                                 </td>
                                 <td>
                                     5
@@ -81,9 +81,9 @@
                     }
                     @if (Model == null)
                     {
-                            <tr>
-                                <td></td>
-                            </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
                     }
 
                 </tbody>
