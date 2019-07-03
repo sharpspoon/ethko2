@@ -25,7 +25,8 @@ namespace ethko.Controllers
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 var practiceAreas = from p in entities.PracticeAreas
-                                    select new GetPracticeAreasViewModel() { PracticeAreaId = p.PracticeAreaId.ToString(), PracticeAreaName = p.PracticeAreaName, InsDate = p.InsDate.ToString(), UserId = p.FstUser };
+                                    join u in entities.AspNetUsers on p.FstUser equals u.Id
+                                    select new GetPracticeAreasViewModel() { PracticeAreaId = p.PracticeAreaId.ToString(), PracticeAreaName = p.PracticeAreaName, InsDate = p.InsDate.ToString(), UserId = u.UserName };
                 return View(practiceAreas.ToList());
             }
         }

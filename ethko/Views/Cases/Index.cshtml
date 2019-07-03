@@ -63,78 +63,60 @@
                     {
                         foreach (var item in Model)
                         {
-                    <tr>
-                        <td>
-                            <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.ContactId})'>@Html.DisplayFor(modelItem => item.FName)</a>
-                        </td>
-                        <td>
-                            <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.ContactId})'>@Html.DisplayFor(modelItem => item.LName)</a>
+                            <tr>
+                                <td>
+                                    <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.ContactId})'>@Html.DisplayFor(modelItem => item.FName)</a>
+                                </td>
+                                <td>
+                                    <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.ContactId})'>@Html.DisplayFor(modelItem => item.LName)</a>
 
-                        </td>
-                        <td>
-                            <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.ContactGroupList)</a>
+                                </td>
+                                <td>
+                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.ContactGroupList)</a>
 
-                        </td>
-                        <td>
-                            <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
+                                </td>
+                                <td>
+                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
 
-                        </td>
-                        <td>
-                            <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
+                                </td>
+                                <td>
+                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
 
-                        </td>
-                        <td>
-                            <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
+                                </td>
+                                <td>
+                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
 
-                        </td>
-                        <td>
-                            <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
+                                </td>
+                                <td>
+                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
 
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.InsDate)
-                            by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.UserId)</a>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.InsDate)
+                                    by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.UserId)</a>
 
 
-                        </td>
-                        <td>
-                            <a class="btn btn-primary" href='@Url.Action("EditContact", "Contacts", new { ContactId = item.ContactId })' rel="modal:open" style="float: right">Edit Contact</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary" href='@Url.Action("EditContact", "Contacts", new { ContactId = item.ContactId })' rel="modal:open" style="float: right">Edit Contact</a>
 
-                        </td>
-                    </tr>
+                                </td>
+                            </tr>
                         }
                     }
                     @if (Model == null)
                     {
-                    <tr>
-                        <td>
-                            NULL
-                        </td>
-                        <td>
-                            NULL
-                        </td>
-                        <td>
-                            NULL
-                        </td>
-                        <td>
-                            NULL
-                        </td>
-                        <td>
-                            NULL
-                        </td>
-                        <td>
-                            NULL
-                        </td>
-                        <td>
-                            NULL
-                        </td>
-                        <td>
-                            NULL
-                        </td>
-                        <td>
-                            NULL
-                        </td>
-                    </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
                     }
 
                 </tbody>
@@ -149,7 +131,6 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/knockout")
-    @Scripts.Render("~/bundles/app")
     <script>
         $(document).ready(function () {
             $('#myTable').dataTable();
