@@ -497,6 +497,7 @@
     <Content Include="Views\Manage\DeleteOffice.cshtml" />
     <Content Include="Views\Manage\DeleteBillingMethod.cshtml" />
     <Content Include="Views\Manage\_DeleteBillingMethod.cshtml" />
+    <Content Include="Views\Manage\FirmUsersArchive.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

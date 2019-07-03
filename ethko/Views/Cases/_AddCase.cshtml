@@ -151,7 +151,7 @@
                         Billing Contact
                     </div>
                     <div class="col-md-10" align="left">
-                        @Html.TextBoxFor(m => m.CaseContact, new { @class = "form-control", @id = "txtCustomer", @name = "CustomerName", placeholder = "Search for an existing contact or company" })<input type="button" class="btn btn-sm btn-default add-row" value="Add to Case" />
+                        @Html.TextBoxFor(m => m.CaseContact, new { @class = "form-control", @id = "txtCustomer2", @name = "CustomerName", placeholder = "Search for an existing contact or company" })<input type="button" class="btn btn-sm btn-default add-row" value="Add to Case" />
                         Choosing a billing contact allows you to batch bill this case.
                     </div>
                 </div>
@@ -170,6 +170,18 @@
                     <div class="col-md-offset-2 col-md-10">
                         <a class="btn btn-default" href='@Url.Action("Index", "Cases")'>Cancel</a>
                         <input type="submit" class="btn btn-success" value="Save Case" />
+                    </div>
+                </div>
+
+                <h3>Staff</h3>
+
+                <div class="form-group">
+                    <div class="col-md-2" align="left">
+                        Lead Attorney
+                    </div>
+                    <div class="col-md-10" align="left">
+                        @Html.TextBoxFor(m => m.CaseContact, new { @class = "form-control", @id = "txtCustomer2", @name = "CustomerName", placeholder = "Select a lead attorney for this case" })<input type="button" class="btn btn-sm btn-default add-row" value="Add to Case" />
+                        Choosing a billing contact allows you to batch bill this case.
                     </div>
                 </div>
             }
