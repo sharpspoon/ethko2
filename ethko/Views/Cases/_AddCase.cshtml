@@ -151,7 +151,7 @@
                         Billing Contact
                     </div>
                     <div class="col-md-10" align="left">
-                        @Html.TextBoxFor(m => m.Statute, new { @class = "form-control", placeholder = "AL" })
+                        @Html.DropDownList("BillingMethods", (IEnumerable<SelectListItem>)ViewData["myTable"], new { @class = "form-control" })
                         Choosing a billing contact allows you to batch bill this case.
                     </div>
                 </div>
@@ -161,7 +161,7 @@
                         Billing Method
                     </div>
                     <div class="col-md-10" align="left">
-                        @Html.DropDownList("Offices", (IEnumerable<SelectListItem>)ViewData["DBOffice"], new { @class = "form-control" })
+                        @Html.DropDownList("BillingMethods", (IEnumerable<SelectListItem>)ViewData["DBBillingMethods"], new { @class = "form-control" })
                         @Html.ActionLink("Manage billing methods in Settings", "ClientBilling", "Manage")
                     </div>
                 </div>

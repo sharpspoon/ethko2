@@ -48,6 +48,8 @@ namespace ethko.Controllers
             ViewData["DBContactGroupsCaseStage"] = caseStages;
             var offices = new SelectList(entities.Offices.ToList(), "OfficeName", "OfficeName");
             ViewData["DBOffice"] = offices;
+            var billingMethods = new SelectList(entities.BillingMethods.ToList(), "BillingMethodName", "BillingMethodName");
+            ViewData["DBBillingMethods"] = billingMethods;
             return View();
         }
 
