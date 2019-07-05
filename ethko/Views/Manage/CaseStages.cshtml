@@ -1,106 +1,104 @@
 ﻿@model IEnumerable<ethko.Models.GetCaseStagesViewModel>
-@{
-    ViewBag.Title = "Case Stages";
-}
-<h2>@ViewBag.Title.</h2>
+
+<h2>Settings & Preferences</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
-    <h4>Change your account settings</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            <a class="btn btn-default" href='@Url.Action("Index", "Manage")'>Settings Dashboard</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("MyProfile", "Manage")'>My Profile</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("MySettings", "Manage")'>My Settings</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("MyNotifications", "Manage")'>My Notifications</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("FirmUsers", "Manage")'>Firm Users</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("FirmSettings", "Manage")'>Firm Settings</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("ClientBilling", "Manage")'>Client Billing</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("ImportExport", "Manage")'>Import/Export</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("CustomFields", "Manage")'>Custom Fields</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("IntakeForms", "Manage")'>Intake Forms</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("Workflows", "Manage")'>Workflows</a>
-            <br />
-            <br />
-            <a class="btn btn-primary" href='@Url.Action("CaseStages", "Manage")'>Case Stages</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("Leads", "Manage")'>Leads</a>
-        </dt>
-        <dd>
-            <div class="col-md-12" align="left">
-                <h2>
-                    @ViewBag.Title
-                    <a class="btn btn-success" href='@Url.Action("NewCaseStage", "Manage")' style="float: right">+ Add Case Stage</a>
-                </h2>
-                <table id="myTable" class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Case Stages</th>
-                            <th>Added</th>
-                            <th>Edit / Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @if (Model != null)
-                        {
-                            foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>
-                                        <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.CaseStageId})'>@Html.DisplayFor(modelItem => item.CaseStageName)</a>
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.InsDate)
-                                        by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.UserId)</a>
-                                    </td>
-                                    <td>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href='@Url.Action("EditPracticeArea", "Cases", new { CaseStageId = item.CaseStageId })'>Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                        &nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href='@Url.Action("DeleteCaseStage", "Manage", new { CaseStageId = item.CaseStageId })'>Delete</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                    </td>
-                                </tr>
-                            }
-                        }
-                        @if (Model == null)
+<h4>Select a sub category from the menu on the left</h4>
+<hr />
+<dl class="dl-horizontal">
+    <dt>
+        <a class="btn btn-default" href='@Url.Action("Index", "Manage")'>Settings Dashboard</a>
+        <br />
+        <br />
+        <a class="btn btn-default" href='@Url.Action("MyProfile", "Manage")'>My Profile</a>
+        <br />
+        <br />
+        <a class="btn btn-default" href='@Url.Action("MySettings", "Manage")'>My Settings</a>
+        <br />
+        <br />
+        <a class="btn btn-default" href='@Url.Action("MyNotifications", "Manage")'>My Notifications</a>
+        <br />
+        <br />
+        <a class="btn btn-default" href='@Url.Action("FirmUsers", "Manage")'>Firm Users</a>
+        <br />
+        <br />
+        <a class="btn btn-default" href='@Url.Action("FirmSettings", "Manage")'>Firm Settings</a>
+        <br />
+        <br />
+        <a class="btn btn-default" href='@Url.Action("ClientBilling", "Manage")'>Client Billing</a>
+        <br />
+        <br />
+        <a class="btn btn-default" href='@Url.Action("ImportExport", "Manage")'>Import/Export</a>
+        <br />
+        <br />
+        <a class="btn btn-default" href='@Url.Action("CustomFields", "Manage")'>Custom Fields</a>
+        <br />
+        <br />
+        <a class="btn btn-default" href='@Url.Action("IntakeForms", "Manage")'>Intake Forms</a>
+        <br />
+        <br />
+        <a class="btn btn-default" href='@Url.Action("Workflows", "Manage")'>Workflows</a>
+        <br />
+        <br />
+        <a class="btn btn-primary" href='@Url.Action("CaseStages", "Manage")'>Case Stages</a>
+        <br />
+        <br />
+        <a class="btn btn-default" href='@Url.Action("Leads", "Manage")'>Leads</a>
+    </dt>
+    <dd>
+        <div class="col-md-12" align="left">
+            <h2>
+                @ViewBag.Title
+                <a class="btn btn-success" href='@Url.Action("NewCaseStage", "Manage")' style="float: right">+ Add Case Stage</a>
+            </h2>
+            <table id="myTable" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Case Stages</th>
+                        <th>Added</th>
+                        <th>Edit / Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
                         {
                             <tr>
                                 <td>
-                                    NULL
+                                    <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.CaseStageId})'>@Html.DisplayFor(modelItem => item.CaseStageName)</a>
                                 </td>
                                 <td>
-                                    NULL
+                                    @Html.DisplayFor(modelItem => item.InsDate)
+                                    by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.UserId)</a>
                                 </td>
                                 <td>
-                                    NULL
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href='@Url.Action("EditPracticeArea", "Cases", new { CaseStageId = item.CaseStageId })'>Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href='@Url.Action("DeleteCaseStage", "Manage", new { CaseStageId = item.CaseStageId })'>Delete</a>&nbsp;&nbsp;&nbsp;&nbsp;
                                 </td>
                             </tr>
                         }
+                    }
+                    @if (Model == null)
+                    {
+                        <tr>
+                            <td>
+                                NULL
+                            </td>
+                            <td>
+                                NULL
+                            </td>
+                            <td>
+                                NULL
+                            </td>
+                        </tr>
+                    }
 
-                    </tbody>
-                </table>
-            </div>
-</dd>
-    </dl>
+                </tbody>
+            </table>
+        </div>
+    </dd>
+</dl>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 @section Scripts {

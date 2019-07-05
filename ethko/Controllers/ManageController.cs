@@ -536,7 +536,12 @@ namespace ethko.Controllers
             return View();
         }
 
-        [HttpGet]
+        public ActionResult FirmUsersArchive()
+        {
+            return View();
+        }
+
+       [HttpGet]
         public ActionResult ClientBilling()
         {
             using (ethko_dbEntities entities = new ethko_dbEntities())
