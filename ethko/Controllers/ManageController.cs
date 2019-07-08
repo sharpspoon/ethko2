@@ -371,7 +371,8 @@ namespace ethko.Controllers
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 var caseStages = from c in entities.CaseStages
-                                    select new GetCaseStagesViewModel() { CaseStageId = c.CaseStageId.ToString(), CaseStageName = c.CaseStageName, InsDate = c.InsDate.ToString(), UserId = c.FstUser };
+                                 join u in entities.AspNetUsers on c.FstUser equals u.Id
+                                 select new GetCaseStagesViewModel() { CaseStageId = c.CaseStageId.ToString(), CaseStageName = c.CaseStageName, InsDate = c.InsDate.ToString(), UserId = u.UserName };
                 return View(caseStages.ToList());
             }
         }
