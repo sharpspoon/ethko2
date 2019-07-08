@@ -11,6 +11,10 @@ namespace ethko.Models
     {
         public string Hometown { get; set; }
 
+        public string FName { get; set; }
+
+        public string LName { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

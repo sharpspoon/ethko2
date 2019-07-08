@@ -87,6 +87,13 @@ namespace ethko.Models
 
         [Display(Name = "Hometown")]
         public string Hometown { get; set; }
+
+        [Display(Name = "First Name")]
+        public string FName { get; set; }
+
+        [Display(Name = "Last Name")]
+        public string LName { get; set; }
+
     }
 
     public class ResetPasswordViewModel

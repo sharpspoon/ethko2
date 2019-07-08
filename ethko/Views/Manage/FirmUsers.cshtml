@@ -73,27 +73,26 @@
                             {
                                 <tr>
                                     <td>
-                                        <a href='@Url.Action("ViewContact", "Contacts", new { OfficeId = item.OfficeId})'>@Html.DisplayFor(modelItem => item.OfficeName)</a>
+                                        <a href='@Url.Action("ViewContact", "Contacts", new { UserName = item.UserName})'>@Html.DisplayFor(modelItem => item.UserName)</a>
                                     </td>
                                     <td>
-                                        <a href='@Url.Action("ViewContact", "Contacts", new { OfficeId = item.OfficeId})'>@Html.DisplayFor(modelItem => item.OfficeName)</a>
+                                        <a href='@Url.Action("ViewContact", "Contacts", new { UserName = item.UserName})'>@Html.DisplayFor(modelItem => item.UserName)</a>
                                     </td>
                                     <td>
-                                        <a href='@Url.Action("ViewContact", "Contacts", new { OfficeId = item.OfficeId})'>@Html.DisplayFor(modelItem => item.OfficeName)</a>
+                                        <a href='@Url.Action("ViewContact", "Contacts", new { UserName = item.UserName})'>@Html.DisplayFor(modelItem => item.UserName)</a>
                                     </td>
                                     <td>
-                                        <a href='@Url.Action("ViewContact", "Contacts", new { OfficeId = item.OfficeId})'>@Html.DisplayFor(modelItem => item.OfficeName)</a>
+                                        <a href='@Url.Action("ViewContact", "Contacts", new { UserName = item.UserName})'>@Html.DisplayFor(modelItem => item.UserName)</a>
                                     </td>
                                     <td>
-                                        <a href='@Url.Action("ViewContact", "Contacts", new { OfficeId = item.OfficeId})'>@Html.DisplayFor(modelItem => item.OfficeName)</a>
+                                        <a href='@Url.Action("ViewContact", "Contacts", new { UserName = item.UserName})'>@Html.DisplayFor(modelItem => item.UserName)</a>
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.InsDate)
-                                        by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.FstUser)</a>
+asdf
                                     </td>
                                     <td>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href='@Url.Action("EditPracticeArea", "Cases", new { OfficeId = item.OfficeId })'>Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                        &nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href='@Url.Action("DeleteOffice", "Manage", new { OfficeId = item.OfficeId })'>Delete</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href='@Url.Action("EditPracticeArea", "Cases", new { UserName = item.UserName })'>Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href='@Url.Action("DeleteOffice", "Manage", new { UserName = item.UserName })'>Delete</a>&nbsp;&nbsp;&nbsp;&nbsp;
                                     </td>
                                 </tr>
                             }

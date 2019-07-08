@@ -39,6 +39,28 @@ namespace ethko
         public bool LockoutEnabled { get; set; }
         public int AccessFailedCount { get; set; }
         public string UserName { get; set; }
+        public string FName { get; set; }
+        public string LName { get; set; }
+        public string MName { get; set; }
+        public string Title { get; set; }
+        public short Archived { get; set; }
+        public string CellPhone { get; set; }
+        public string WorkPhone { get; set; }
+        public string HomePhone { get; set; }
+        public string Fax { get; set; }
+        public string SSN { get; set; }
+        public string JobTitle { get; set; }
+        public string Address { get; set; }
+        public string Address2 { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Zip { get; set; }
+        public string Country { get; set; }
+        public string License { get; set; }
+        public string Website { get; set; }
+        public string Notes { get; set; }
+        public Nullable<System.DateTime> Birthday { get; set; }
+        public byte[] RowVersion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }

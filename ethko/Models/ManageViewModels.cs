@@ -161,16 +161,7 @@ namespace ethko.Models
 
     public class GetFirmUsersViewModel
     {
-        [Display(Name = "Office Name")]
-        public string OfficeName { get; set; }
-
-        [Display(Name = "Office Id")]
-        public string OfficeId { get; set; }
-
-        [Display(Name = "FstUser")]
-        public string FstUser { get; set; }
-
-        [Display(Name = "InsDate")]
-        public string InsDate { get; set; }
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
     }
 }

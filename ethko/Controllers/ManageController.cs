@@ -510,9 +510,9 @@ namespace ethko.Controllers
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 var offices = from o in entities.Offices
-                                    join u in entities.AspNetUsers on o.FstUser equals u.Id
-                                    //where c.Archived == 1
-                                    select new GetFirmSettingsViewModel() { OfficeId = o.OfficeId.ToString(), OfficeName = o.OfficeName, FstUser = u.UserName, InsDate = o.InsDate.ToString() };
+                                    join u in entities.AspNetUsers on o.FstUser equals u.Id into gj
+                                    from x in gj.DefaultIfEmpty()
+                                    select new GetFirmSettingsViewModel() { OfficeId = o.OfficeId.ToString(), OfficeName = o.OfficeName, FstUser = x.UserName, InsDate = o.InsDate.ToString() };
                 return View(offices.ToList());
             }
         }
@@ -532,11 +532,18 @@ namespace ethko.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult FirmUsers()
         {
-            return View();
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                var firmUsers = from fu in entities.AspNetUsers
+                                     select new GetFirmUsersViewModel() { UserName = fu.UserName };
+                return View(firmUsers.ToList());
+            }
         }
 
+        [HttpGet]
         public ActionResult FirmUsersArchive()
         {
             return View();
