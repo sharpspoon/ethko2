@@ -1,0 +1,29 @@
+﻿@model ethko.Models.AddOfficeViewModel
+
+<br />
+<a class="btn btn-primary" href='@Url.Action("NewOffice", "Manage")'>Add Office</a>&nbsp;
+
+
+<br />
+<h1>Add Office</h1>
+    <p>
+        <div class="col-md-12">
+            @using (Html.BeginForm("NewOffice", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    <div class="col-md-4" align="left">
+                        @Html.TextBoxFor(m => m.OfficeName, new { @class = "form-control", placeholder = "Office Name" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <a class="btn btn-default" href='@Url.Action("Offices", "Manage")'>Cancel</a>
+                        <input type="submit" class="btn btn-success" value="Save Office" />
+                    </div>
+                </div>
+            }
+        </div>
+    </p>

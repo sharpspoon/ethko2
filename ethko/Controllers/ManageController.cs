@@ -538,7 +538,7 @@ namespace ethko.Controllers
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 var firmUsers = from fu in entities.AspNetUsers
-                                     select new GetFirmUsersViewModel() { UserName = fu.UserName };
+                                     select new GetFirmUsersViewModel() { Name = fu.FName + " " + fu.LName };
                 return View(firmUsers.ToList());
             }
         }
@@ -635,6 +635,33 @@ namespace ethko.Controllers
             ethko_dbEntities entities = new ethko_dbEntities();
             BillingMethod billingMethods = entities.BillingMethods.Where(m => m.BillingMethodId == BillingMethodId).Single();
             return View(billingMethods);
+        }
+
+        public ActionResult UserTypes()
+        {
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                var offices = from o in entities.Offices
+                              join u in entities.AspNetUsers on o.FstUser equals u.Id into gj
+                              from x in gj.DefaultIfEmpty()
+                              select new GetFirmSettingsViewModel() { OfficeId = o.OfficeId.ToString(), OfficeName = o.OfficeName, FstUser = x.UserName, InsDate = o.InsDate.ToString() };
+                return View(offices.ToList());
+            }
+        }
+
+        [HttpPost]
+        public ActionResult NewUserType(AddOfficeViewModel model)
+        {
+            var user = User.Identity.GetUserName().ToString();
+            var userTypeModel = ConvertViewModelToModel(model);
+
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                entities.Offices.Add(userTypeModel);
+                userTypeModel.InsDate = DateTime.Now;
+                entities.SaveChanges();
+            }
+            return RedirectToAction("UserTypes");
         }
 
         #endregion

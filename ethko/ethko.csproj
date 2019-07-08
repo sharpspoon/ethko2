@@ -298,6 +298,9 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="UserType.cs">
+      <DependentUpon>ethko.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -393,6 +396,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\sammy-0.7.5.js" />
     <Content Include="Scripts\sammy-0.7.5.min.js" />
+    <Content Include="Scripts\SQL_Scripts\Insert_UserTypes.sql" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -498,6 +502,9 @@
     <Content Include="Views\Manage\DeleteBillingMethod.cshtml" />
     <Content Include="Views\Manage\_DeleteBillingMethod.cshtml" />
     <Content Include="Views\Manage\FirmUsersArchive.cshtml" />
+    <Content Include="Views\Manage\UserTypes.cshtml" />
+    <Content Include="Views\Manage\_AddUserType.cshtml" />
+    <Content Include="Views\Manage\NewUserType.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

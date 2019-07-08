@@ -39,5 +39,6 @@ namespace ethko
         public virtual DbSet<Office> Offices { get; set; }
         public virtual DbSet<PracticeArea> PracticeAreas { get; set; }
         public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
+        public virtual DbSet<UserType> UserTypes { get; set; }
     }
 }

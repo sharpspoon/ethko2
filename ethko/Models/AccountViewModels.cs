@@ -94,6 +94,9 @@ namespace ethko.Models
         [Display(Name = "Last Name")]
         public string LName { get; set; }
 
+        [Display(Name = "User Type")]
+        public int UserTypeId { get; set; }
+
     }
 
     public class ResetPasswordViewModel

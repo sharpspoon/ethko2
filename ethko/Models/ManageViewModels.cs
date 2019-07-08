@@ -161,7 +161,17 @@ namespace ethko.Models
 
     public class GetFirmUsersViewModel
     {
+        [Display(Name = "Name")]
+        public string Name { get; set; }
+
         [Display(Name = "UserName")]
         public string UserName { get; set; }
+    }
+
+    public class AddUserTypeViewModel
+    {
+        [Required]
+        [Display(Name = "User Type")]
+        public string UserType { get; set; }
     }
 }

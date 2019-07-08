@@ -61,6 +61,7 @@ namespace ethko
         public string Notes { get; set; }
         public Nullable<System.DateTime> Birthday { get; set; }
         public byte[] RowVersion { get; set; }
+        public int UserTypeId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
@@ -76,5 +77,6 @@ namespace ethko
         public virtual ICollection<Contact> Contacts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
+        public virtual UserType UserType { get; set; }
     }
 }

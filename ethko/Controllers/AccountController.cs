@@ -15,6 +15,7 @@ namespace ethko.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        ethko_dbEntities entities = new ethko_dbEntities();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -151,6 +152,8 @@ namespace ethko.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            var userTypes = new SelectList(entities.UserTypes.ToList(), "UserTypeName", "UserTypeName");
+            ViewData["DBUserTypes"] = userTypes;
             return View();
         }
 
@@ -163,7 +166,7 @@ namespace ethko.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Hometown = model.Hometown, FName = model.FName, LName = model.LName  };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Hometown = model.Hometown, FName = model.FName, LName = model.LName, UserTypeId = 11  };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
