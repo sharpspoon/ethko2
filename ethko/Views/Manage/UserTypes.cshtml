@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ethko.Models.GetFirmSettingsViewModel>
+﻿@model IEnumerable<ethko.Models.GetUSerTypesViewModel>
 
 
 <h2>Settings & Preferences</h2>
@@ -70,15 +70,15 @@
                             {
                                 <tr>
                                     <td>
-                                        <a href='@Url.Action("ViewContact", "Contacts", new { OfficeId = item.OfficeId})'>@Html.DisplayFor(modelItem => item.OfficeName)</a>
+                                        <a href='@Url.Action("ViewContact", "Contacts", new { UserTypeId = item.UserTypeId})'>@Html.DisplayFor(modelItem => item.UserTypeName)</a>
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.InsDate)
                                         by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.FstUser)</a>
                                     </td>
                                     <td>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href='@Url.Action("EditPracticeArea", "Cases", new { OfficeId = item.OfficeId })'>Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                        &nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href='@Url.Action("DeleteOffice", "Manage", new { OfficeId = item.OfficeId })'>Delete</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href='@Url.Action("EditPracticeArea", "Cases", new { UserTypeId = item.UserTypeId })'>Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href='@Url.Action("DeleteOffice", "Manage", new { UserTypeId = item.UserTypeId })'>Delete</a>&nbsp;&nbsp;&nbsp;&nbsp;
                                     </td>
                                 </tr>
                             }

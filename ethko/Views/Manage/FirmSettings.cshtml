@@ -68,6 +68,7 @@
                         {
                             foreach (var item in Model)
                             {
+
                                 <tr>
                                     <td>
                                         <a href='@Url.Action("ViewContact", "Contacts", new { OfficeId = item.OfficeId})'>@Html.DisplayFor(modelItem => item.OfficeName)</a>

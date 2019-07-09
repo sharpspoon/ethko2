@@ -114,6 +114,27 @@ namespace ethko.Models
         [Display(Name = "Office Id")]
         public string OfficeId { get; set; }
 
+        [Display(Name = "User Type")]
+        public string UserTypeName { get; set; }
+
+        [Display(Name = "User Type Id")]
+        public string UserTypeId { get; set; }
+
+        [Display(Name = "FstUser")]
+        public string FstUser { get; set; }
+
+        [Display(Name = "InsDate")]
+        public string InsDate { get; set; }
+    }
+
+    public class GetUSerTypesViewModel
+    {
+        [Display(Name = "User Type Name")]
+        public string UserTypeName { get; set; }
+
+        [Display(Name = "User Type Id")]
+        public string UserTypeId { get; set; }
+
         [Display(Name = "FstUser")]
         public string FstUser { get; set; }
 
@@ -176,5 +197,23 @@ namespace ethko.Models
         [Required]
         [Display(Name = "User Type")]
         public string UserType { get; set; }
+    }
+
+    public class AddFirmUserViewModel
+    {
+        [Display(Name = "First Name")]
+        public string FName { get; set; }
+
+        [Display(Name = "Middle Name")]
+        public string MName { get; set; }
+
+        [Display(Name = "Last Name")]
+        public string LName { get; set; }
+
+        [Display(Name = "Email")]
+        public string UserType { get; set; }
+
+        [Display(Name = "Password")]
+        public string Password { get; set; }
     }
 }

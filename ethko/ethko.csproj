@@ -505,6 +505,8 @@
     <Content Include="Views\Manage\UserTypes.cshtml" />
     <Content Include="Views\Manage\_AddUserType.cshtml" />
     <Content Include="Views\Manage\NewUserType.cshtml" />
+    <Content Include="Views\Manage\NewFirmUser.cshtml" />
+    <Content Include="Views\Manage\_AddFirmUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

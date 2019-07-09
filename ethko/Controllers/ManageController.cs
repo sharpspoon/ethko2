@@ -642,11 +642,9 @@ namespace ethko.Controllers
         {
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
-                var offices = from o in entities.Offices
-                              join u in entities.AspNetUsers on o.FstUser equals u.Id into gj
-                              from x in gj.DefaultIfEmpty()
-                              select new GetFirmSettingsViewModel() { OfficeId = o.OfficeId.ToString(), OfficeName = o.OfficeName, FstUser = x.UserName, InsDate = o.InsDate.ToString() };
-                return View(offices.ToList());
+                var userTypes = from ut in entities.UserTypes
+                              select new GetUSerTypesViewModel() { UserTypeId = ut.UserTypeId.ToString(), UserTypeName = ut.UserTypeName };
+                return View(userTypes.ToList());
             }
         }
 
@@ -663,6 +661,35 @@ namespace ethko.Controllers
                 entities.SaveChanges();
             }
             return RedirectToAction("UserTypes");
+        }
+
+        public ActionResult NewFirmUser()
+        {
+            return View();
+        }
+
+        public AspNetUser ConvertViewModelToModel(AddFirmUserViewModel vm)
+        {
+            return new AspNetUser()
+            {
+                FName = vm.FName
+            };
+        }
+
+        [HttpPost]
+        public ActionResult NewFirmUser(AddFirmUserViewModel model)
+        {
+            var user = User.Identity.GetUserName().ToString();
+            var firmUserModel = ConvertViewModelToModel(model);
+
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                entities.AspNetUsers.Add(firmUserModel);
+                //firmUserModel.InsDate = DateTime.Now;
+                //officeModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+                entities.SaveChanges();
+            }
+            return RedirectToAction("FirmUsers");
         }
 
         #endregion
