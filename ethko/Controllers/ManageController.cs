@@ -638,12 +638,25 @@ namespace ethko.Controllers
             return View(billingMethods);
         }
 
+        public ActionResult NewUserType()
+        {
+            return View();
+        }
+
+        public UserType ConvertViewModelToModel(AddUserTypeViewModel vm)
+        {
+            return new UserType()
+            {
+                UserTypeName = vm.UserTypeName
+            };
+        }
+
         public ActionResult UserTypes()
         {
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 var userTypes = from ut in entities.UserTypes
-                              select new GetUSerTypesViewModel() { UserTypeId = ut.UserTypeId.ToString(), UserTypeName = ut.UserTypeName };
+                              select new GetUserTypesViewModel() { UserTypeId = ut.UserTypeId.ToString(), UserTypeName = ut.UserTypeName };
                 return View(userTypes.ToList());
             }
         }

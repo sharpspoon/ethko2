@@ -127,7 +127,7 @@ namespace ethko.Models
         public string InsDate { get; set; }
     }
 
-    public class GetUSerTypesViewModel
+    public class GetUserTypesViewModel
     {
         [Display(Name = "User Type Name")]
         public string UserTypeName { get; set; }
@@ -196,7 +196,7 @@ namespace ethko.Models
     {
         [Required]
         [Display(Name = "User Type")]
-        public string UserType { get; set; }
+        public string UserTypeName { get; set; }
     }
 
     public class AddFirmUserViewModel
