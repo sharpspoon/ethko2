@@ -166,6 +166,9 @@ namespace ethko.Models
 
         [Display(Name = "UserName")]
         public string UserName { get; set; }
+
+        [Display(Name = "USerTypes")]
+        public string UserType { get; set; }
     }
 
     public class AddUserTypeViewModel

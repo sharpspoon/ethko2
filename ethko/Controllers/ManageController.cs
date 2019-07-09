@@ -538,7 +538,8 @@ namespace ethko.Controllers
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 var firmUsers = from fu in entities.AspNetUsers
-                                     select new GetFirmUsersViewModel() { Name = fu.FName + " " + fu.LName };
+                                join ut in entities.UserTypes on fu.UserTypeId equals ut.UserTypeId
+                                     select new GetFirmUsersViewModel() { Name = fu.FName + " " + fu.LName, UserType = ut.UserTypeName };
                 return View(firmUsers.ToList());
             }
         }
