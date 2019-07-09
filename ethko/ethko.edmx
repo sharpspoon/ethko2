@@ -76,8 +76,10 @@
           <Property Name="Country" Type="varchar(max)" />
           <Property Name="License" Type="varchar(max)" />
           <Property Name="Website" Type="varchar(max)" />
+          <Property Name="CalendarColor" Type="varchar(max)" />
           <Property Name="Notes" Type="varchar(max)" />
           <Property Name="Birthday" Type="date" />
+          <Property Name="DefaultHourlyRate" Type="int" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
           <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
           <Property Name="PasswordHash" Type="nvarchar(max)" />
@@ -86,6 +88,7 @@
           <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
           <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
           <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LastLogin" Type="datetime" />
           <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
@@ -621,6 +624,9 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="UserTypeId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="UserType" Relationship="ethko_dbModel.FK_AspNetUsers_ToUserTypes" FromRole="AspNetUser" ToRole="UserType" />
+          <Property Name="CalendarColor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DefaultHourlyRate" Type="Int32" />
+          <Property Name="LastLogin" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="BillingMethod">
           <Key>
@@ -1087,6 +1093,9 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySetMapping Name="AspNetUsers">
             <EntityTypeMapping TypeName="ethko_dbModel.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="DefaultHourlyRate" ColumnName="DefaultHourlyRate" />
+                <ScalarProperty Name="CalendarColor" ColumnName="CalendarColor" />
                 <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
                 <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
