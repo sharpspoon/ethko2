@@ -1,0 +1,14 @@
+﻿drop table Cases
+drop table BillingMethods
+drop table Offices
+drop table CaseStages
+drop table PracticeAreas
+drop table Contacts
+drop table ContactGroups
+drop table Companies
+drop table AspNetUserLogins
+drop table AspNetUserClaims
+drop table AspNetUserRoles
+drop table AspNetRoles
+drop table AspNetUsers
+drop table UserTypes
