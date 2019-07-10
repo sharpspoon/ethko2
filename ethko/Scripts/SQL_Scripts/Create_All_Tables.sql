@@ -39,7 +39,7 @@ CREATE TABLE [dbo].[AspNetUsers] (
     [MName]                VARCHAR (MAX)  NULL,
     [UserTypeId]           INT           NOT NULL,
     [Title]                VARCHAR (50)   NULL,
-    [Archived]             SMALLINT       NOT NULL,
+    [Archived]             SMALLINT    DEFAULT (0)   NOT NULL,
     [Hometown]             NVARCHAR (MAX) NULL,
     [Email]                NVARCHAR (256) NULL,
     [CellPhone]            VARCHAR (50)   NULL,

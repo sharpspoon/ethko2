@@ -4,3 +4,4 @@ delete from AspNetUsers
 delete from UserTypes
 delete from BillingMethods
 delete from CaseStages
+delete from Offices
