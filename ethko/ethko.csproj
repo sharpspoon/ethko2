@@ -335,6 +335,7 @@
     <Content Include="Content\img\283598_Tax_Payer_Dollar_R_purple.png" />
     <Content Include="Content\img\jumbotron.jpg" />
     <Content Include="Content\img\login_banner.jpg" />
+    <Content Include="Content\img\question_mark.svg" />
     <Content Include="Content\img\register_banner.jpg" />
     <Content Include="Content\img\SAP_R_grad.png" />
     <Content Include="Content\Site.css" />
