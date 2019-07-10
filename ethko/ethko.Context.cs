@@ -25,6 +25,7 @@ namespace ethko
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
@@ -38,7 +39,6 @@ namespace ethko
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Office> Offices { get; set; }
         public virtual DbSet<PracticeArea> PracticeAreas { get; set; }
-        public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
     }
 }
