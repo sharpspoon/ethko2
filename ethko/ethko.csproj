@@ -396,14 +396,15 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\sammy-0.7.5.js" />
     <Content Include="Scripts\sammy-0.7.5.min.js" />
-    <Content Include="Scripts\SQL_Scripts\Create_All_Tables2.sql" />
+    <Content Include="Scripts\SQL_Scripts\Drop_Create_All_Tables_And_Seed_Data.sql" />
+    <Content Include="Scripts\SQL_Scripts\Create_All_Tables.sql" />
     <Content Include="Scripts\SQL_Scripts\Create_AspNetUserLogins.sql" />
     <Content Include="Scripts\SQL_Scripts\Create_AspNetRoles.sql" />
     <Content Include="Scripts\SQL_Scripts\Create_AspNetUserClaims.sql" />
     <Content Include="Scripts\SQL_Scripts\Create_AspNetUserRoles.sql" />
     <Content Include="Scripts\SQL_Scripts\Create_Contacts.sql" />
     <Content Include="Scripts\SQL_Scripts\Create_PracticeAreas.sql" />
-    <Content Include="Scripts\SQL_Scripts\Create_All_Tables.sql" />
+    <Content Include="Scripts\SQL_Scripts\Create_All_Tables-OLD.sql" />
     <Content Include="Scripts\SQL_Scripts\Drop_All_Tables.sql" />
     <Content Include="Scripts\SQL_Scripts\Delete_All_Data.sql" />
     <Content Include="Scripts\SQL_Scripts\Create_Cases.sql" />

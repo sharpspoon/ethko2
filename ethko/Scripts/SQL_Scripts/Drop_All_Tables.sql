@@ -1,14 +1,14 @@
-﻿drop table Cases
-drop table BillingMethods
-drop table Offices
-drop table CaseStages
-drop table PracticeAreas
-drop table Contacts
-drop table ContactGroups
-drop table Companies
-drop table AspNetUserLogins
-drop table AspNetUserClaims
-drop table AspNetUserRoles
-drop table AspNetRoles
-drop table AspNetUsers
-drop table UserTypes
+﻿drop table IF EXISTS  Cases
+drop table IF EXISTS BillingMethods
+drop table IF EXISTS Offices
+drop table IF EXISTS CaseStages
+drop table IF EXISTS PracticeAreas
+drop table IF EXISTS Contacts
+drop table IF EXISTS ContactGroups
+drop table IF EXISTS Companies
+drop table IF EXISTS AspNetUserLogins
+drop table IF EXISTS AspNetUserClaims
+drop table IF EXISTS AspNetUserRoles
+drop table IF EXISTS AspNetRoles
+drop table IF EXISTS AspNetUsers
+drop table IF EXISTS UserTypes

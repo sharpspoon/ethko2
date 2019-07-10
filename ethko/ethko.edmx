@@ -100,7 +100,7 @@
           <Property Name="BillingMethodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BillingMethodName" Type="varchar(max)" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="InsDate" Type="datetime" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="Cases">
@@ -118,7 +118,7 @@
           <Property Name="DateOpened" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Description" Type="varchar(max)" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="InsDate" Type="datetime" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="CaseStages">
@@ -128,7 +128,7 @@
           <Property Name="CaseStageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CaseStageName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="InsDate" Type="datetime" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="Companies">
@@ -158,7 +158,7 @@
           </Key>
           <Property Name="ContactGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ContactGroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="InsDate" Type="datetime" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="Contacts">
@@ -167,7 +167,7 @@
           </Key>
           <Property Name="ContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="InsDate" Type="datetime" Nullable="false" />
           <Property Name="FName" Type="varchar(max)" Nullable="false" />
           <Property Name="LName" Type="varchar(max)" Nullable="false" />
           <Property Name="MName" Type="varchar(max)" />
@@ -202,7 +202,7 @@
           <Property Name="OfficeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OfficeName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="InsDate" Type="datetime" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="PracticeAreas">
@@ -212,7 +212,7 @@
           <Property Name="PracticeAreaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PracticeAreaName" Type="varchar(max)" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="InsDate" Type="datetime" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="UserTypes">
@@ -361,33 +361,82 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ethko_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="database_firewall_rules">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="start_ip_address" />
+            <PropertyRef Name="end_ip_address" />
+            <PropertyRef Name="create_date" />
+            <PropertyRef Name="modify_date" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="ethko_dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
+          <EntitySet Name="C__MigrationHistory" EntityType="ethko_dbModel.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="ethko_dbModel.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="ethko_dbModel.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="ethko_dbModel.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="ethko_dbModel.AspNetUser" />
+          <EntitySet Name="BillingMethods" EntityType="ethko_dbModel.BillingMethod" />
+          <EntitySet Name="Cases" EntityType="ethko_dbModel.Case" />
+          <EntitySet Name="CaseStages" EntityType="ethko_dbModel.CaseStage" />
+          <EntitySet Name="Companies" EntityType="ethko_dbModel.Company" />
+          <EntitySet Name="ContactGroups" EntityType="ethko_dbModel.ContactGroup" />
+          <EntitySet Name="Contacts" EntityType="ethko_dbModel.Contact" />
+          <EntitySet Name="Offices" EntityType="ethko_dbModel.Office" />
+          <EntitySet Name="PracticeAreas" EntityType="ethko_dbModel.PracticeArea" />
+          <EntitySet Name="UserTypes" EntityType="ethko_dbModel.UserType" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="ethko_dbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="ethko_dbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUsers_ToUserTypes" Association="ethko_dbModel.FK_AspNetUsers_ToUserTypes">
+            <End Role="UserType" EntitySet="UserTypes" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="ethko_dbModel.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
             <PropertyRef Name="ContextKey" />
           </Key>
-          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="AspNetRole">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="ethko_dbModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="AspNetUserClaim">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUser" Relationship="ethko_dbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="AspNetUserLogin">
           <Key>
@@ -395,40 +444,24 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             <PropertyRef Name="ProviderKey" />
             <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="ethko_dbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="AspNetUser">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Hometown" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
-          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
-          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
-          <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_ToAspNetUsers" FromRole="AspNetUsers" ToRole="Cases" />
-          <NavigationProperty Name="Companies" Relationship="Self.FK_Companies_AspNetUsers" FromRole="AspNetUsers" ToRole="Companies" />
-          <NavigationProperty Name="ContactGroups" Relationship="Self.FK_ContactGroups_AspNetUsers" FromRole="AspNetUsers" ToRole="ContactGroups" />
-          <NavigationProperty Name="Contacts" Relationship="Self.FK_Contacts_ToAspNetUsers" FromRole="AspNetUsers" ToRole="Contacts" />
-          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="FName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="LName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="MName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Archived" Type="Int16" Nullable="false" />
+          <Property Name="Hometown" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="CellPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="WorkPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="HomePhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -443,25 +476,36 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="License" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Website" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CalendarColor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Birthday" Type="DateTime" Precision="0" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="UserType" Relationship="ethko_dbModel.FK_AspNetUsers_ToUserTypes" FromRole="AspNetUser" ToRole="UserType" />
-          <Property Name="CalendarColor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DefaultHourlyRate" Type="Int32" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
           <Property Name="LastLogin" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="ethko_dbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="ethko_dbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="UserType" Relationship="ethko_dbModel.FK_AspNetUsers_ToUserTypes" FromRole="AspNetUser" ToRole="UserType" />
+          <NavigationProperty Name="AspNetRoles" Relationship="ethko_dbModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
         </EntityType>
         <EntityType Name="BillingMethod">
           <Key>
             <PropertyRef Name="BillingMethodId" />
           </Key>
           <Property Name="BillingMethodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BillingMethodName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_ToBillingMethods" FromRole="BillingMethods" ToRole="Cases" />
+          <Property Name="BillingMethodName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Case">
           <Key>
@@ -469,45 +513,38 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           </Key>
           <Property Name="CaseId" Type="Int32" Nullable="false" />
           <Property Name="ContactId" Type="Int32" Nullable="false" />
-          <Property Name="CaseName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CaseNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CaseName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CaseNumber" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PracticeAreaId" Type="Int32" Nullable="false" />
           <Property Name="BillingMethodId" Type="Int32" Nullable="false" />
           <Property Name="OfficeId" Type="Int32" Nullable="false" />
           <Property Name="CaseStageId" Type="Int32" Nullable="false" />
           <Property Name="DateOpened" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Cases_ToAspNetUsers" FromRole="Cases" ToRole="AspNetUsers" />
-          <NavigationProperty Name="BillingMethod" Relationship="Self.FK_Cases_ToBillingMethods" FromRole="Cases" ToRole="BillingMethods" />
-          <NavigationProperty Name="CaseStage" Relationship="Self.FK_Cases_ToCaseStages" FromRole="Cases" ToRole="CaseStages" />
-          <NavigationProperty Name="Contact" Relationship="Self.FK_Cases_ToContacts" FromRole="Cases" ToRole="Contacts" />
-          <NavigationProperty Name="Office" Relationship="Self.FK_Cases_ToOffices" FromRole="Cases" ToRole="Offices" />
-          <NavigationProperty Name="PracticeArea" Relationship="Self.FK_Cases_ToPracticeAreas" FromRole="Cases" ToRole="PracticeAreas" />
+          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="CaseStage">
           <Key>
             <PropertyRef Name="CaseStageId" />
           </Key>
           <Property Name="CaseStageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CaseStageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_ToCaseStages" FromRole="CaseStages" ToRole="Cases" />
+          <Property Name="CaseStageName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Company">
           <Key>
             <PropertyRef Name="CompanyId" />
           </Key>
           <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Archived" Type="Int16" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MainPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FaxNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -517,34 +554,30 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Zip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Companies_AspNetUsers" FromRole="Companies" ToRole="AspNetUsers" />
-          <NavigationProperty Name="Contacts" Relationship="Self.FK_Contacts_ToCompanies" FromRole="Companies" ToRole="Contacts" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="ContactGroup">
           <Key>
             <PropertyRef Name="ContactGroupId" />
           </Key>
           <Property Name="ContactGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ContactGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_ContactGroups_AspNetUsers" FromRole="ContactGroups" ToRole="AspNetUsers" />
-          <NavigationProperty Name="Contacts" Relationship="Self.FK_Contacts_ToContactGroups" FromRole="ContactGroups" ToRole="Contacts" />
+          <Property Name="ContactGroupName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
             <PropertyRef Name="ContactId" />
           </Key>
           <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="FName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="MName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Archived" Type="Int16" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ContactGroupId" Type="Int32" />
           <Property Name="CompanyId" Type="Int32" />
           <Property Name="EnableClientPortal" Type="Int16" Nullable="false" />
@@ -564,291 +597,28 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="Website" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Birthday" Type="DateTime" Precision="0" />
-          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Contacts_ToAspNetUsers" FromRole="Contacts" ToRole="AspNetUsers" />
-          <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_ToContacts" FromRole="Contacts" ToRole="Cases" />
-          <NavigationProperty Name="Company" Relationship="Self.FK_Contacts_ToCompanies" FromRole="Contacts" ToRole="Companies" />
-          <NavigationProperty Name="ContactGroup" Relationship="Self.FK_Contacts_ToContactGroups" FromRole="Contacts" ToRole="ContactGroups" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Office">
           <Key>
             <PropertyRef Name="OfficeId" />
           </Key>
           <Property Name="OfficeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OfficeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_ToOffices" FromRole="Offices" ToRole="Cases" />
+          <Property Name="OfficeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="PracticeArea">
           <Key>
             <PropertyRef Name="PracticeAreaId" />
           </Key>
           <Property Name="PracticeAreaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PracticeAreaName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_ToPracticeAreas" FromRole="PracticeAreas" ToRole="Cases" />
+          <Property Name="PracticeAreaName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
-        <EntityType Name="database_firewall_rules">
-          <Key>
-            <PropertyRef Name="id" />
-            <PropertyRef Name="name" />
-            <PropertyRef Name="start_ip_address" />
-            <PropertyRef Name="end_ip_address" />
-            <PropertyRef Name="create_date" />
-            <PropertyRef Name="modify_date" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserClaims">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserLogins">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cases_ToAspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
-          <End Role="Cases" Type="Self.Case" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Cases">
-              <PropertyRef Name="FstUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Companies_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
-          <End Role="Companies" Type="Self.Company" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Companies">
-              <PropertyRef Name="FstUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ContactGroups_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
-          <End Role="ContactGroups" Type="Self.ContactGroup" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ContactGroups">
-              <PropertyRef Name="FstUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Contacts_ToAspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
-          <End Role="Contacts" Type="Self.Contact" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Contacts">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cases_ToBillingMethods">
-          <End Role="BillingMethods" Type="Self.BillingMethod" Multiplicity="1" />
-          <End Role="Cases" Type="Self.Case" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BillingMethods">
-              <PropertyRef Name="BillingMethodId" />
-            </Principal>
-            <Dependent Role="Cases">
-              <PropertyRef Name="BillingMethodId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cases_ToCaseStages">
-          <End Role="CaseStages" Type="Self.CaseStage" Multiplicity="1" />
-          <End Role="Cases" Type="Self.Case" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CaseStages">
-              <PropertyRef Name="CaseStageId" />
-            </Principal>
-            <Dependent Role="Cases">
-              <PropertyRef Name="CaseStageId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cases_ToContacts">
-          <End Role="Contacts" Type="Self.Contact" Multiplicity="1" />
-          <End Role="Cases" Type="Self.Case" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Contacts">
-              <PropertyRef Name="ContactId" />
-            </Principal>
-            <Dependent Role="Cases">
-              <PropertyRef Name="ContactId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cases_ToOffices">
-          <End Role="Offices" Type="Self.Office" Multiplicity="1" />
-          <End Role="Cases" Type="Self.Case" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Offices">
-              <PropertyRef Name="OfficeId" />
-            </Principal>
-            <Dependent Role="Cases">
-              <PropertyRef Name="OfficeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cases_ToPracticeAreas">
-          <End Role="PracticeAreas" Type="Self.PracticeArea" Multiplicity="1" />
-          <End Role="Cases" Type="Self.Case" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PracticeAreas">
-              <PropertyRef Name="PracticeAreaId" />
-            </Principal>
-            <Dependent Role="Cases">
-              <PropertyRef Name="PracticeAreaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Contacts_ToCompanies">
-          <End Role="Companies" Type="Self.Company" Multiplicity="0..1" />
-          <End Role="Contacts" Type="Self.Contact" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Companies">
-              <PropertyRef Name="CompanyId" />
-            </Principal>
-            <Dependent Role="Contacts">
-              <PropertyRef Name="CompanyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Contacts_ToContactGroups">
-          <End Role="ContactGroups" Type="Self.ContactGroup" Multiplicity="0..1" />
-          <End Role="Contacts" Type="Self.Contact" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ContactGroups">
-              <PropertyRef Name="ContactGroupId" />
-            </Principal>
-            <Dependent Role="Contacts">
-              <PropertyRef Name="ContactGroupId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="AspNetUserRoles">
-          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
-        </Association>
-        <EntityContainer Name="ethko_dbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
-          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
-          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
-          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
-          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
-          <EntitySet Name="BillingMethods" EntityType="Self.BillingMethod" />
-          <EntitySet Name="Cases" EntityType="Self.Case" />
-          <EntitySet Name="CaseStages" EntityType="Self.CaseStage" />
-          <EntitySet Name="Companies" EntityType="Self.Company" />
-          <EntitySet Name="ContactGroups" EntityType="Self.ContactGroup" />
-          <EntitySet Name="Contacts" EntityType="Self.Contact" />
-          <EntitySet Name="Offices" EntityType="Self.Office" />
-          <EntitySet Name="PracticeAreas" EntityType="Self.PracticeArea" />
-          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
-          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cases_ToAspNetUsers" Association="Self.FK_Cases_ToAspNetUsers">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Cases" EntitySet="Cases" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Companies_AspNetUsers" Association="Self.FK_Companies_AspNetUsers">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Companies" EntitySet="Companies" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ContactGroups_AspNetUsers" Association="Self.FK_ContactGroups_AspNetUsers">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="ContactGroups" EntitySet="ContactGroups" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Contacts_ToAspNetUsers" Association="Self.FK_Contacts_ToAspNetUsers">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Contacts" EntitySet="Contacts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cases_ToBillingMethods" Association="Self.FK_Cases_ToBillingMethods">
-            <End Role="BillingMethods" EntitySet="BillingMethods" />
-            <End Role="Cases" EntitySet="Cases" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cases_ToCaseStages" Association="Self.FK_Cases_ToCaseStages">
-            <End Role="CaseStages" EntitySet="CaseStages" />
-            <End Role="Cases" EntitySet="Cases" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cases_ToContacts" Association="Self.FK_Cases_ToContacts">
-            <End Role="Contacts" EntitySet="Contacts" />
-            <End Role="Cases" EntitySet="Cases" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cases_ToOffices" Association="Self.FK_Cases_ToOffices">
-            <End Role="Offices" EntitySet="Offices" />
-            <End Role="Cases" EntitySet="Cases" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cases_ToPracticeAreas" Association="Self.FK_Cases_ToPracticeAreas">
-            <End Role="PracticeAreas" EntitySet="PracticeAreas" />
-            <End Role="Cases" EntitySet="Cases" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Contacts_ToCompanies" Association="Self.FK_Contacts_ToCompanies">
-            <End Role="Companies" EntitySet="Companies" />
-            <End Role="Contacts" EntitySet="Contacts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Contacts_ToContactGroups" Association="Self.FK_Contacts_ToContactGroups">
-            <End Role="ContactGroups" EntitySet="ContactGroups" />
-            <End Role="Contacts" EntitySet="Contacts" />
-          </AssociationSet>
-          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
-            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-          </AssociationSet>
-          <EntitySet Name="UserTypes" EntityType="ethko_dbModel.UserType" />
-          <AssociationSet Name="FK_AspNetUsers_ToUserTypes" Association="ethko_dbModel.FK_AspNetUsers_ToUserTypes">
-            <End Role="UserType" EntitySet="UserTypes" />
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-          </AssociationSet>
-        </EntityContainer>
         <EntityType Name="UserType">
           <Key>
             <PropertyRef Name="UserTypeId" />
@@ -859,6 +629,34 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="AspNetUsers" Relationship="ethko_dbModel.FK_AspNetUsers_ToUserTypes" FromRole="UserType" ToRole="AspNetUser" />
         </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="ethko_dbModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ethko_dbModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="ethko_dbModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ethko_dbModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_AspNetUsers_ToUserTypes">
           <End Type="ethko_dbModel.UserType" Role="UserType" Multiplicity="1" />
           <End Type="ethko_dbModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
@@ -871,224 +669,16 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="ethko_dbModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="ethko_dbModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ethko_dbModelStoreContainer" CdmEntityContainer="ethko_dbEntities">
-          <EntitySetMapping Name="C__MigrationHistory">
-            <EntityTypeMapping TypeName="ethko_dbModel.C__MigrationHistory">
-              <MappingFragment StoreEntitySet="__MigrationHistory">
-                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="ethko_dbModel.AspNetRole">
-              <MappingFragment StoreEntitySet="AspNetRoles">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserClaims">
-            <EntityTypeMapping TypeName="ethko_dbModel.AspNetUserClaim">
-              <MappingFragment StoreEntitySet="AspNetUserClaims">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
-                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserLogins">
-            <EntityTypeMapping TypeName="ethko_dbModel.AspNetUserLogin">
-              <MappingFragment StoreEntitySet="AspNetUserLogins">
-                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
-                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="ethko_dbModel.AspNetUser">
-              <MappingFragment StoreEntitySet="AspNetUsers">
-                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
-                <ScalarProperty Name="DefaultHourlyRate" ColumnName="DefaultHourlyRate" />
-                <ScalarProperty Name="CalendarColor" ColumnName="CalendarColor" />
-                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="Website" ColumnName="Website" />
-                <ScalarProperty Name="License" ColumnName="License" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="Zip" ColumnName="Zip" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Address2" ColumnName="Address2" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
-                <ScalarProperty Name="SSN" ColumnName="SSN" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
-                <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
-                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
-                <ScalarProperty Name="Archived" ColumnName="Archived" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="MName" ColumnName="MName" />
-                <ScalarProperty Name="LName" ColumnName="LName" />
-                <ScalarProperty Name="FName" ColumnName="FName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Hometown" ColumnName="Hometown" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BillingMethods">
-            <EntityTypeMapping TypeName="ethko_dbModel.BillingMethod">
-              <MappingFragment StoreEntitySet="BillingMethods">
-                <ScalarProperty Name="BillingMethodId" ColumnName="BillingMethodId" />
-                <ScalarProperty Name="BillingMethodName" ColumnName="BillingMethodName" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Cases">
-            <EntityTypeMapping TypeName="ethko_dbModel.Case">
-              <MappingFragment StoreEntitySet="Cases">
-                <ScalarProperty Name="CaseId" ColumnName="CaseId" />
-                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
-                <ScalarProperty Name="CaseName" ColumnName="CaseName" />
-                <ScalarProperty Name="CaseNumber" ColumnName="CaseNumber" />
-                <ScalarProperty Name="PracticeAreaId" ColumnName="PracticeAreaId" />
-                <ScalarProperty Name="BillingMethodId" ColumnName="BillingMethodId" />
-                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
-                <ScalarProperty Name="CaseStageId" ColumnName="CaseStageId" />
-                <ScalarProperty Name="DateOpened" ColumnName="DateOpened" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CaseStages">
-            <EntityTypeMapping TypeName="ethko_dbModel.CaseStage">
-              <MappingFragment StoreEntitySet="CaseStages">
-                <ScalarProperty Name="CaseStageId" ColumnName="CaseStageId" />
-                <ScalarProperty Name="CaseStageName" ColumnName="CaseStageName" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Companies">
-            <EntityTypeMapping TypeName="ethko_dbModel.Company">
-              <MappingFragment StoreEntitySet="Companies">
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Archived" ColumnName="Archived" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Website" ColumnName="Website" />
-                <ScalarProperty Name="MainPhone" ColumnName="MainPhone" />
-                <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Address2" ColumnName="Address2" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Zip" ColumnName="Zip" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ContactGroups">
-            <EntityTypeMapping TypeName="ethko_dbModel.ContactGroup">
-              <MappingFragment StoreEntitySet="ContactGroups">
-                <ScalarProperty Name="ContactGroupId" ColumnName="ContactGroupId" />
-                <ScalarProperty Name="ContactGroupName" ColumnName="ContactGroupName" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Contacts">
-            <EntityTypeMapping TypeName="ethko_dbModel.Contact">
-              <MappingFragment StoreEntitySet="Contacts">
-                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="FName" ColumnName="FName" />
-                <ScalarProperty Name="LName" ColumnName="LName" />
-                <ScalarProperty Name="MName" ColumnName="MName" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Archived" ColumnName="Archived" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="ContactGroupId" ColumnName="ContactGroupId" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="EnableClientPortal" ColumnName="EnableClientPortal" />
-                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
-                <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
-                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="SSN" ColumnName="SSN" />
-                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Address2" ColumnName="Address2" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Zip" ColumnName="Zip" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="License" ColumnName="License" />
-                <ScalarProperty Name="Website" ColumnName="Website" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Offices">
-            <EntityTypeMapping TypeName="ethko_dbModel.Office">
-              <MappingFragment StoreEntitySet="Offices">
-                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
-                <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PracticeAreas">
-            <EntityTypeMapping TypeName="ethko_dbModel.PracticeArea">
-              <MappingFragment StoreEntitySet="PracticeAreas">
-                <ScalarProperty Name="PracticeAreaId" ColumnName="PracticeAreaId" />
-                <ScalarProperty Name="PracticeAreaName" ColumnName="PracticeAreaName" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="database_firewall_rules">
             <EntityTypeMapping TypeName="ethko_dbModel.database_firewall_rules">
               <MappingFragment StoreEntitySet="database_firewall_rules">
@@ -1101,14 +691,218 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="AspNetUserRoles" TypeName="ethko_dbModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-            <EndProperty Name="AspNetRoles">
-              <ScalarProperty Name="Id" ColumnName="RoleId" />
-            </EndProperty>
-            <EndProperty Name="AspNetUsers">
-              <ScalarProperty Name="Id" ColumnName="UserId" />
-            </EndProperty>
-          </AssociationSetMapping>
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="ethko_dbModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="ethko_dbModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="ethko_dbModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="ethko_dbModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="ethko_dbModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="DefaultHourlyRate" ColumnName="DefaultHourlyRate" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="CalendarColor" ColumnName="CalendarColor" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="License" ColumnName="License" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="SSN" ColumnName="SSN" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
+                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Hometown" ColumnName="Hometown" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="MName" ColumnName="MName" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillingMethods">
+            <EntityTypeMapping TypeName="ethko_dbModel.BillingMethod">
+              <MappingFragment StoreEntitySet="BillingMethods">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="BillingMethodName" ColumnName="BillingMethodName" />
+                <ScalarProperty Name="BillingMethodId" ColumnName="BillingMethodId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cases">
+            <EntityTypeMapping TypeName="ethko_dbModel.Case">
+              <MappingFragment StoreEntitySet="Cases">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateOpened" ColumnName="DateOpened" />
+                <ScalarProperty Name="CaseStageId" ColumnName="CaseStageId" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+                <ScalarProperty Name="BillingMethodId" ColumnName="BillingMethodId" />
+                <ScalarProperty Name="PracticeAreaId" ColumnName="PracticeAreaId" />
+                <ScalarProperty Name="CaseNumber" ColumnName="CaseNumber" />
+                <ScalarProperty Name="CaseName" ColumnName="CaseName" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="CaseId" ColumnName="CaseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CaseStages">
+            <EntityTypeMapping TypeName="ethko_dbModel.CaseStage">
+              <MappingFragment StoreEntitySet="CaseStages">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="CaseStageName" ColumnName="CaseStageName" />
+                <ScalarProperty Name="CaseStageId" ColumnName="CaseStageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="ethko_dbModel.Company">
+              <MappingFragment StoreEntitySet="Companies">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+                <ScalarProperty Name="MainPhone" ColumnName="MainPhone" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactGroups">
+            <EntityTypeMapping TypeName="ethko_dbModel.ContactGroup">
+              <MappingFragment StoreEntitySet="ContactGroups">
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="ContactGroupName" ColumnName="ContactGroupName" />
+                <ScalarProperty Name="ContactGroupId" ColumnName="ContactGroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="ethko_dbModel.Contact">
+              <MappingFragment StoreEntitySet="Contacts">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="License" ColumnName="License" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="SSN" ColumnName="SSN" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
+                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+                <ScalarProperty Name="EnableClientPortal" ColumnName="EnableClientPortal" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="ContactGroupId" ColumnName="ContactGroupId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="MName" ColumnName="MName" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Offices">
+            <EntityTypeMapping TypeName="ethko_dbModel.Office">
+              <MappingFragment StoreEntitySet="Offices">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PracticeAreas">
+            <EntityTypeMapping TypeName="ethko_dbModel.PracticeArea">
+              <MappingFragment StoreEntitySet="PracticeAreas">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="PracticeAreaName" ColumnName="PracticeAreaName" />
+                <ScalarProperty Name="PracticeAreaId" ColumnName="PracticeAreaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="UserTypes">
             <EntityTypeMapping TypeName="ethko_dbModel.UserType">
               <MappingFragment StoreEntitySet="UserTypes">
@@ -1119,7 +913,15 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="ethko_dbModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

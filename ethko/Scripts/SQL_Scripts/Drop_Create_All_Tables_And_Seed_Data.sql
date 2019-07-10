@@ -1,4 +1,20 @@
-﻿--UserTypes
+﻿--Drop All Tables
+drop table IF EXISTS  Cases
+drop table IF EXISTS BillingMethods
+drop table IF EXISTS Offices
+drop table IF EXISTS CaseStages
+drop table IF EXISTS PracticeAreas
+drop table IF EXISTS Contacts
+drop table IF EXISTS ContactGroups
+drop table IF EXISTS Companies
+drop table IF EXISTS AspNetUserLogins
+drop table IF EXISTS AspNetUserClaims
+drop table IF EXISTS AspNetUserRoles
+drop table IF EXISTS AspNetRoles
+drop table IF EXISTS AspNetUsers
+drop table IF EXISTS UserTypes
+
+--UserTypes
 CREATE TABLE [dbo].[UserTypes] (
     [UserTypeId]   INT           IDENTITY (1, 1) NOT NULL,
     [UserTypeName] NVARCHAR (50) NOT NULL,
@@ -141,7 +157,7 @@ CREATE TABLE [dbo].[Companies] (
 CREATE TABLE [dbo].[ContactGroups] (
     [ContactGroupId]   INT            IDENTITY (1, 1) NOT NULL,
     [ContactGroupName] NVARCHAR (50)  NOT NULL,
-    [InsDate]          DATETIME2 (7)  NOT NULL,
+    [InsDate]          DATETIME  NOT NULL,
     [FstUser]          NVARCHAR (128) NOT NULL,
     CONSTRAINT [PK_dbo.ContactGroups] PRIMARY KEY CLUSTERED ([ContactGroupId] ASC)
 );
@@ -150,7 +166,7 @@ CREATE TABLE [dbo].[ContactGroups] (
 CREATE TABLE [dbo].[Contacts] (
     [ContactId]          INT            IDENTITY (1, 1) NOT NULL,
     [UserId]             NVARCHAR (128) NOT NULL,
-    [InsDate]            DATETIME2 (7)  NOT NULL,
+    [InsDate]            DATETIME  NOT NULL,
     [FName]              VARCHAR (MAX)  NOT NULL,
     [LName]              VARCHAR (MAX)  NOT NULL,
     [MName]              VARCHAR (MAX)  NULL,
@@ -185,7 +201,7 @@ CREATE TABLE [dbo].[PracticeAreas] (
     [PracticeAreaId]   INT            IDENTITY (1, 1) NOT NULL,
     [PracticeAreaName] VARCHAR (MAX)  NOT NULL,
     [FstUser]          NVARCHAR (128) NOT NULL,
-    [InsDate]          DATETIME2 (7)  NOT NULL,
+    [InsDate]          DATETIME  NOT NULL,
     [RowVersion]       ROWVERSION     NOT NULL,
     CONSTRAINT [PK_dbo.PracticeAreas] PRIMARY KEY CLUSTERED ([PracticeAreaId] ASC)
 );
@@ -195,7 +211,7 @@ CREATE TABLE [dbo].[CaseStages] (
     [CaseStageId]   INT            IDENTITY (1, 1) NOT NULL,
     [CaseStageName] NVARCHAR (50)  NOT NULL,
     [FstUser]       NVARCHAR (128) NOT NULL,
-    [InsDate]       DATETIME2 (7)  NOT NULL,
+    [InsDate]       DATETIME  NOT NULL,
     [RowVersion]    ROWVERSION     NOT NULL,
     CONSTRAINT [PK_dbo.CaseStages] PRIMARY KEY CLUSTERED ([CaseStageId] ASC)
 );
@@ -205,7 +221,7 @@ CREATE TABLE [dbo].[Offices] (
     [OfficeId]   INT            IDENTITY (1, 1) NOT NULL,
     [OfficeName] NVARCHAR (50)  NOT NULL,
     [FstUser]    NVARCHAR (128) NOT NULL,
-    [InsDate]    DATETIME2 (7)  NOT NULL,
+    [InsDate]    DATETIME  NOT NULL,
     [RowVersion] ROWVERSION     NOT NULL,
     CONSTRAINT [PK_dbo.Offices] PRIMARY KEY CLUSTERED ([OfficeId] ASC)
 );
@@ -215,7 +231,7 @@ CREATE TABLE [dbo].[BillingMethods] (
     [BillingMethodId]   INT            IDENTITY (1, 1) NOT NULL,
     [BillingMethodName] VARCHAR (MAX)  NOT NULL,
     [FstUser]           NVARCHAR (128) NOT NULL,
-    [InsDate]           DATETIME2 (7)  NOT NULL,
+    [InsDate]           DATETIME  NOT NULL,
     [RowVersion]        ROWVERSION     NOT NULL,
     CONSTRAINT [PK_dbo.BillingMethods] PRIMARY KEY CLUSTERED ([BillingMethodId] ASC)
 );
@@ -233,8 +249,64 @@ CREATE TABLE [dbo].[Cases] (
     [DateOpened]      DATETIME2 (7)  NOT NULL,
     [Description]     VARCHAR (MAX)  NULL,
     [FstUser]         NVARCHAR (128) NOT NULL,
-    [InsDate]         DATETIME2 (7)  NOT NULL,
+    [InsDate]         DATETIME  NOT NULL,
     [RowVersion]      ROWVERSION     NOT NULL,
     CONSTRAINT [PK_dbo.Cases] PRIMARY KEY CLUSTERED ([CaseId] ASC)
 );
 
+insert into UserTypes
+(UserTypeName, insdate)
+values
+('Attorney', GETDATE()),
+('Paralegal', GETDATE()),
+('Staff', GETDATE());
+
+insert into aspnetusers
+(id, fname, lname, usertypeid, email, emailconfirmed, passwordhash, securitystamp,phonenumberconfirmed, twofactorenabled, lockoutenabled, accessfailedcount, username)
+values
+('4b6983a2-7178-472b-b7ae-f96470ea8087', 'Robin','Ward',1,'system@steelcitysites.net', 0, 'AEc78Zla/rBy6zDF+GRskTyFtZ/FtsvAMp4BK5L/swVWUfXGFkHGx5SFq10kybaD6Q==','9229c419-dd65-49d2-bb7f-ad9d667221b8',0,0,1,0,'system@steelcitysites.net')
+
+insert into ContactGroups
+(ContactGroupName, insdate, FstUser)
+values
+('Default', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net'))
+
+insert into casestages
+(CaseStageName, insdate, FstUser)
+values
+('Discovery', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('In Trial', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('On Hold', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net'))
+
+insert into BillingMethods
+(BillingMethodName, insdate, FstUser)
+values
+('Hourly', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Contingency', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Flat Fee', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Mix of Flat Fee and Hourly', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Pro Bono', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net'))
+
+insert into Offices
+(OfficeName, insdate, FstUser)
+values
+('Birmingham', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net'))
+
+insert into practiceareas
+(practiceareaname, insdate, FstUser)
+values
+('Bankruptcy', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Business', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Civil', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Criminal Defense', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Divorce/Separation', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('DUI/DWI', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Employment', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Estate Planning', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Family', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Foreclosure', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Immigration', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Landlord/Tenant', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Personal Injury', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Real Estate', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Tax', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net'))
