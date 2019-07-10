@@ -93,15 +93,9 @@
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ethko_db.dbo.BillingMethods' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="BillingMethods">
           <Key>
             <PropertyRef Name="BillingMethodId" />
-            
-            
-            
-            
           </Key>
           <Property Name="BillingMethodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BillingMethodName" Type="varchar(max)" Nullable="false" />
@@ -109,22 +103,9 @@ warning 6002: The table/view 'ethko_db.dbo.BillingMethods' does not have a prima
           <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ethko_db.dbo.Cases' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Cases">
           <Key>
             <PropertyRef Name="CaseId" />
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
           </Key>
           <Property Name="CaseId" Type="int" Nullable="false" />
           <Property Name="ContactId" Type="int" Nullable="false" />
@@ -140,15 +121,9 @@ warning 6002: The table/view 'ethko_db.dbo.Cases' does not have a primary key de
           <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ethko_db.dbo.CaseStages' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="CaseStages">
           <Key>
             <PropertyRef Name="CaseStageId" />
-            
-            
-            
-            
           </Key>
           <Property Name="CaseStageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CaseStageName" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -156,17 +131,9 @@ warning 6002: The table/view 'ethko_db.dbo.CaseStages' does not have a primary k
           <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ethko_db.dbo.Companies' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Companies">
           <Key>
             <PropertyRef Name="CompanyId" />
-            
-            
-            
-            
-            
-            
           </Key>
           <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
@@ -185,33 +152,18 @@ warning 6002: The table/view 'ethko_db.dbo.Companies' does not have a primary ke
           <Property Name="Country" Type="varchar(max)" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ethko_db.dbo.ContactGroups' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ContactGroups">
           <Key>
             <PropertyRef Name="ContactGroupId" />
-            
-            
-            
           </Key>
           <Property Name="ContactGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ContactGroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ethko_db.dbo.Contacts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Contacts">
           <Key>
             <PropertyRef Name="ContactId" />
-            
-            
-            
-            
-            
-            
-            
-            
           </Key>
           <Property Name="ContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
@@ -243,15 +195,9 @@ warning 6002: The table/view 'ethko_db.dbo.Contacts' does not have a primary key
           <Property Name="Birthday" Type="date" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ethko_db.dbo.Offices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Offices">
           <Key>
             <PropertyRef Name="OfficeId" />
-            
-            
-            
-            
           </Key>
           <Property Name="OfficeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OfficeName" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -259,15 +205,9 @@ warning 6002: The table/view 'ethko_db.dbo.Offices' does not have a primary key 
           <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ethko_db.dbo.PracticeAreas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PracticeAreas">
           <Key>
             <PropertyRef Name="PracticeAreaId" />
-            
-            
-            
-            
           </Key>
           <Property Name="PracticeAreaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PracticeAreaName" Type="varchar(max)" Nullable="false" />
@@ -377,121 +317,15 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BillingMethods" EntityType="Self.BillingMethods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cases" EntityType="Self.Cases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CaseStages" EntityType="Self.CaseStages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Companies" EntityType="Self.Companies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactGroups" EntityType="Self.ContactGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Offices" EntityType="Self.Offices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PracticeAreas" EntityType="Self.PracticeAreas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserTypes" EntityType="Self.UserTypes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="BillingMethods" EntityType="Self.BillingMethods" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [BillingMethods].[BillingMethodId] AS [BillingMethodId], 
-    [BillingMethods].[BillingMethodName] AS [BillingMethodName], 
-    [BillingMethods].[FstUser] AS [FstUser], 
-    [BillingMethods].[InsDate] AS [InsDate], 
-    [BillingMethods].[RowVersion] AS [RowVersion]
-    FROM [dbo].[BillingMethods] AS [BillingMethods]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Cases" EntityType="Self.Cases" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Cases].[CaseId] AS [CaseId], 
-    [Cases].[ContactId] AS [ContactId], 
-    [Cases].[CaseName] AS [CaseName], 
-    [Cases].[CaseNumber] AS [CaseNumber], 
-    [Cases].[PracticeAreaId] AS [PracticeAreaId], 
-    [Cases].[BillingMethodId] AS [BillingMethodId], 
-    [Cases].[OfficeId] AS [OfficeId], 
-    [Cases].[CaseStageId] AS [CaseStageId], 
-    [Cases].[DateOpened] AS [DateOpened], 
-    [Cases].[Description] AS [Description], 
-    [Cases].[FstUser] AS [FstUser], 
-    [Cases].[InsDate] AS [InsDate], 
-    [Cases].[RowVersion] AS [RowVersion]
-    FROM [dbo].[Cases] AS [Cases]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="CaseStages" EntityType="Self.CaseStages" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [CaseStages].[CaseStageId] AS [CaseStageId], 
-    [CaseStages].[CaseStageName] AS [CaseStageName], 
-    [CaseStages].[FstUser] AS [FstUser], 
-    [CaseStages].[InsDate] AS [InsDate], 
-    [CaseStages].[RowVersion] AS [RowVersion]
-    FROM [dbo].[CaseStages] AS [CaseStages]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Companies" EntityType="Self.Companies" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Companies].[CompanyId] AS [CompanyId], 
-    [Companies].[FstUser] AS [FstUser], 
-    [Companies].[InsDate] AS [InsDate], 
-    [Companies].[Name] AS [Name], 
-    [Companies].[Archived] AS [Archived], 
-    [Companies].[Email] AS [Email], 
-    [Companies].[Website] AS [Website], 
-    [Companies].[MainPhone] AS [MainPhone], 
-    [Companies].[FaxNumber] AS [FaxNumber], 
-    [Companies].[Address] AS [Address], 
-    [Companies].[Address2] AS [Address2], 
-    [Companies].[City] AS [City], 
-    [Companies].[State] AS [State], 
-    [Companies].[Zip] AS [Zip], 
-    [Companies].[Country] AS [Country], 
-    [Companies].[RowVersion] AS [RowVersion]
-    FROM [dbo].[Companies] AS [Companies]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="ContactGroups" EntityType="Self.ContactGroups" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ContactGroups].[ContactGroupId] AS [ContactGroupId], 
-    [ContactGroups].[ContactGroupName] AS [ContactGroupName], 
-    [ContactGroups].[InsDate] AS [InsDate], 
-    [ContactGroups].[FstUser] AS [FstUser]
-    FROM [dbo].[ContactGroups] AS [ContactGroups]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Contacts" EntityType="Self.Contacts" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Contacts].[ContactId] AS [ContactId], 
-    [Contacts].[UserId] AS [UserId], 
-    [Contacts].[InsDate] AS [InsDate], 
-    [Contacts].[FName] AS [FName], 
-    [Contacts].[LName] AS [LName], 
-    [Contacts].[MName] AS [MName], 
-    [Contacts].[Title] AS [Title], 
-    [Contacts].[Archived] AS [Archived], 
-    [Contacts].[Email] AS [Email], 
-    [Contacts].[ContactGroupId] AS [ContactGroupId], 
-    [Contacts].[CompanyId] AS [CompanyId], 
-    [Contacts].[EnableClientPortal] AS [EnableClientPortal], 
-    [Contacts].[CellPhone] AS [CellPhone], 
-    [Contacts].[WorkPhone] AS [WorkPhone], 
-    [Contacts].[HomePhone] AS [HomePhone], 
-    [Contacts].[Fax] AS [Fax], 
-    [Contacts].[SSN] AS [SSN], 
-    [Contacts].[JobTitle] AS [JobTitle], 
-    [Contacts].[Address] AS [Address], 
-    [Contacts].[Address2] AS [Address2], 
-    [Contacts].[City] AS [City], 
-    [Contacts].[State] AS [State], 
-    [Contacts].[Zip] AS [Zip], 
-    [Contacts].[Country] AS [Country], 
-    [Contacts].[License] AS [License], 
-    [Contacts].[Website] AS [Website], 
-    [Contacts].[Notes] AS [Notes], 
-    [Contacts].[Birthday] AS [Birthday], 
-    [Contacts].[RowVersion] AS [RowVersion]
-    FROM [dbo].[Contacts] AS [Contacts]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Offices" EntityType="Self.Offices" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Offices].[OfficeId] AS [OfficeId], 
-    [Offices].[OfficeName] AS [OfficeName], 
-    [Offices].[FstUser] AS [FstUser], 
-    [Offices].[InsDate] AS [InsDate], 
-    [Offices].[RowVersion] AS [RowVersion]
-    FROM [dbo].[Offices] AS [Offices]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="PracticeAreas" EntityType="Self.PracticeAreas" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [PracticeAreas].[PracticeAreaId] AS [PracticeAreaId], 
-    [PracticeAreas].[PracticeAreaName] AS [PracticeAreaName], 
-    [PracticeAreas].[FstUser] AS [FstUser], 
-    [PracticeAreas].[InsDate] AS [InsDate], 
-    [PracticeAreas].[RowVersion] AS [RowVersion]
-    FROM [dbo].[PracticeAreas] AS [PracticeAreas]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" store:Type="Views" store:Schema="sys">
             <DefiningQuery>SELECT 
     [database_firewall_rules].[id] AS [id], 
