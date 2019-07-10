@@ -413,6 +413,7 @@
     <Content Include="Scripts\SQL_Scripts\Create_Companies.sql" />
     <Content Include="Scripts\SQL_Scripts\Create_ContactGroups.sql" />
     <Content Include="Scripts\SQL_Scripts\Create_Offices.sql" />
+    <Content Include="Scripts\SQL_Scripts\Insert_Offices.sql" />
     <Content Include="Scripts\SQL_Scripts\Insert_BillingMethods.sql" />
     <Content Include="Scripts\SQL_Scripts\Insert_CaseStages.sql" />
     <Content Include="Scripts\SQL_Scripts\Insert_ContactGroups.sql" />
