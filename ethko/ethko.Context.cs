@@ -40,5 +40,7 @@ namespace ethko
         public virtual DbSet<Office> Offices { get; set; }
         public virtual DbSet<PracticeArea> PracticeAreas { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
+        public virtual DbSet<LeadReferralSource> LeadReferralSources { get; set; }
+        public virtual DbSet<LeadStatus> LeadStatuses { get; set; }
     }
 }

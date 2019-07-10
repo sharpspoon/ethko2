@@ -585,7 +585,22 @@ namespace ethko.Controllers
 
         public ActionResult Leads()
         {
-            return View();
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                var leadReferralSources = from lrs in entities.LeadReferralSources
+                                select new GetLeadReferralSourcesViewModel() { ReferralSourceId = lrs.ReferralSourceId.ToString(), ReferralSourceName = lrs.ReferralSourceName, InsDate = lrs.InsDate.ToString() };
+                return View(leadReferralSources.ToList());
+            }
+        }
+
+        public ActionResult LeadStatus()
+        {
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                var leadStatuses = from ls in entities.LeadStatuses
+                                select new GetLeadStatusesViewModel() { LeadStatusId = ls.LeadStatusId.ToString(), LeadStatusName = ls.LeadStatusName, InsDate = ls.InsDate.ToString() };
+                return View(leadStatuses.ToList());
+            }
         }
 
         public ActionResult NewBillingMethod()

@@ -13,6 +13,8 @@ drop table IF EXISTS AspNetUserRoles
 drop table IF EXISTS AspNetRoles
 drop table IF EXISTS AspNetUsers
 drop table IF EXISTS UserTypes
+drop table IF EXISTS LeadReferralSources
+drop table IF EXISTS LeadStatuses
 
 --UserTypes
 CREATE TABLE [dbo].[UserTypes] (
@@ -254,6 +256,30 @@ CREATE TABLE [dbo].[Cases] (
     CONSTRAINT [PK_dbo.Cases] PRIMARY KEY CLUSTERED ([CaseId] ASC)
 );
 
+--LeadReferralSources
+CREATE TABLE [dbo].[LeadReferralSources] (
+    [ReferralSourceId]   INT            IDENTITY (1, 1) NOT NULL,
+    [ReferralSourceName] VARCHAR (MAX)  NOT NULL,
+    [FstUser]          NVARCHAR (128) NOT NULL,
+    [InsDate]          DATETIME  NOT NULL,
+    [RowVersion]       ROWVERSION     NOT NULL,
+    CONSTRAINT [PK_dbo.LeadReferralSources] PRIMARY KEY CLUSTERED ([ReferralSourceId] ASC)
+);
+
+--LeadStatuses
+CREATE TABLE [dbo].[LeadStatuses] (
+    [LeadStatusId]   INT            IDENTITY (1, 1) NOT NULL,
+    [LeadStatusName] VARCHAR (MAX)  NOT NULL,
+    [FstUser]          NVARCHAR (128) NOT NULL,
+    [InsDate]          DATETIME  NOT NULL,
+    [RowVersion]       ROWVERSION     NOT NULL,
+    CONSTRAINT [PK_dbo.LeadStatuses] PRIMARY KEY CLUSTERED ([LeadStatusId] ASC)
+);
+
+
+
+
+
 insert into UserTypes
 (UserTypeName, insdate)
 values
@@ -310,3 +336,27 @@ values
 ('Personal Injury', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
 ('Real Estate', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
 ('Tax', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net'))
+
+insert into leadreferralsources
+(referralsourcename, insdate, FstUser)
+values
+('Advertisement', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Avvo', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Client Referral', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Facebook', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('LinkedIn', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Networking Event', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Professional Referral', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Search', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Twitter', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Website', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Yelp', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Other', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net'))
+
+insert into leadstatuses
+(leadstatusname, insdate, FstUser)
+values
+('New', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Contacted', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Consult Scheduled', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Pending', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net'))

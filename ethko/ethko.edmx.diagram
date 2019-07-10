@@ -23,6 +23,8 @@
         <AssociationConnector Association="ethko_dbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="ethko_dbModel.FK_AspNetUsers_ToUserTypes" />
         <AssociationConnector Association="ethko_dbModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="ethko_dbModel.LeadReferralSource" Width="1.5" PointX="3.375" PointY="11.75" />
+        <EntityTypeShape EntityType="ethko_dbModel.LeadStatus" Width="1.5" PointX="5.375" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

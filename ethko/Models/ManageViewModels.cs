@@ -216,4 +216,34 @@ namespace ethko.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
     }
+
+    public class GetLeadReferralSourcesViewModel
+    {
+        [Display(Name = "Referral Source Name")]
+        public string ReferralSourceName { get; set; }
+
+        [Display(Name = "Referral Source Id")]
+        public string ReferralSourceId { get; set; }
+
+        [Display(Name = "FstUser")]
+        public string FstUser { get; set; }
+
+        [Display(Name = "InsDate")]
+        public string InsDate { get; set; }
+    }
+
+    public class GetLeadStatusesViewModel
+    {
+        [Display(Name = "Lead Status Name")]
+        public string LeadStatusName { get; set; }
+
+        [Display(Name = "Lead Status Id")]
+        public string LeadStatusId { get; set; }
+
+        [Display(Name = "FstUser")]
+        public string FstUser { get; set; }
+
+        [Display(Name = "InsDate")]
+        public string InsDate { get; set; }
+    }
 }
