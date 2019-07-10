@@ -251,6 +251,9 @@ CREATE TABLE [dbo].[Companies] (
     [RowVersion] ROWVERSION     NOT NULL
 );
 
+ALTER TABLE [dbo].[Companies]
+    ADD CONSTRAINT [PK_dbo.Companies] PRIMARY KEY CLUSTERED ([CompanyId] ASC);
+
 
 USE [ethko_db]
 GO
@@ -268,6 +271,9 @@ CREATE TABLE [dbo].[ContactGroups] (
     [InsDate]          DATETIME2 (7)  NOT NULL,
     [FstUser]          NVARCHAR (128) NOT NULL
 );
+
+ALTER TABLE [dbo].[ContactGroups]
+    ADD CONSTRAINT [PK_dbo.ContactGroups] PRIMARY KEY CLUSTERED ([ContactGroupId] ASC);
 
 
 USE [ethko_db]
@@ -312,6 +318,9 @@ CREATE TABLE [dbo].[Contacts] (
     [RowVersion]         ROWVERSION     NOT NULL
 );
 
+ALTER TABLE [dbo].[Contacts]
+    ADD CONSTRAINT [PK_dbo.Contacts] PRIMARY KEY CLUSTERED ([ContactId] ASC);
+
 
 USE [ethko_db]
 GO
@@ -330,6 +339,9 @@ CREATE TABLE [dbo].[PracticeAreas] (
     [InsDate]          DATETIME2 (7)  NOT NULL,
     [RowVersion]       ROWVERSION     NOT NULL
 );
+
+ALTER TABLE [dbo].[PracticeAreas]
+    ADD CONSTRAINT [PK_dbo.PracticeAreas] PRIMARY KEY CLUSTERED ([PracticeAreaId] ASC);
 
 
 USE [ethko_db]
@@ -350,6 +362,9 @@ CREATE TABLE [dbo].[CaseStages] (
     [RowVersion]    ROWVERSION     NOT NULL
 );
 
+ALTER TABLE [dbo].[CaseStages]
+    ADD CONSTRAINT [PK_dbo.CaseStages] PRIMARY KEY CLUSTERED ([CaseStageId] ASC);
+
 
 USE [ethko_db]
 GO
@@ -369,6 +384,9 @@ CREATE TABLE [dbo].[Offices] (
     [RowVersion] ROWVERSION     NOT NULL
 );
 
+ALTER TABLE [dbo].[Offices]
+    ADD CONSTRAINT [PK_dbo.Offices] PRIMARY KEY CLUSTERED ([OfficeId] ASC);
+
 
 USE [ethko_db]
 GO
@@ -387,6 +405,9 @@ CREATE TABLE [dbo].[BillingMethods] (
     [InsDate]           DATETIME2 (7)  NOT NULL,
     [RowVersion]        ROWVERSION     NOT NULL
 );
+
+ALTER TABLE [dbo].[BillingMethods]
+    ADD CONSTRAINT [PK_dbo.BillingMethods] PRIMARY KEY CLUSTERED ([BillingMethodId] ASC);
 
 
 USE [ethko_db]
@@ -414,5 +435,8 @@ CREATE TABLE [dbo].[Cases] (
     [InsDate]         DATETIME2 (7)  NOT NULL,
     [RowVersion]      ROWVERSION     NOT NULL
 );
+
+ALTER TABLE [dbo].[Cases]
+    ADD CONSTRAINT [PK_dbo.Cases] PRIMARY KEY CLUSTERED ([CaseId] ASC);
 
 
