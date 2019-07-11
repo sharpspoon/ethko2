@@ -17,6 +17,13 @@
             <meta http-equiv="refresh" content="1;url=./ClientBilling" />
         </head>
     }
+
+    if (Model.UserTypeId != null)
+    {
+        <head>
+            <meta http-equiv="refresh" content="1;url=./UserTypes" />
+        </head>
+    }
 }
 
 @if (Model == null)
@@ -27,10 +34,6 @@
 }
 
 <br />
-<a class="btn btn-default" href='@Url.Action("Index", "Contacts")'>Contacts</a>&nbsp;
-<a class="btn btn-default" href='@Url.Action("Companies", "Contacts")'>Companies</a>&nbsp;
-<a class="btn btn-default" href='@Url.Action("ContactGroups", "Contacts")'>Contact Groups</a>&nbsp;
-<a class="btn btn-primary" href='@Url.Action("ViewContact", "Contacts")'>Contact Details</a>&nbsp;
 <br />
 <h1>Delete Complete</h1>
 <h2><font color="green">Delete Action Successful!</font></h2>

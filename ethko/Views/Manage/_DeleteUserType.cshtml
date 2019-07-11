@@ -1,0 +1,25 @@
+﻿@model ethko.UserType
+@{
+    ViewBag.Title = "Delete User Type";
+}
+
+<br />
+<a class="btn btn-default" href='@Url.Action("UserTypes", "Manage")'>Back</a>&nbsp;
+<br />
+<h1>Delete User Type</h1>
+
+@using (Html.BeginForm("DeleteConfirmed", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <font color="red">
+        <h3>Really DELETE this user type?  This action is irreversible!</h3>
+    </font>
+    <br />
+    <h3>User Type: @Html.DisplayFor(m => m.UserTypeName)</h3>
+    <br />
+    <br />
+    <br />
+    <br />
+    @Html.AntiForgeryToken()
+    <a class="btn btn-danger" href='@Url.Action("DeleteConfirmed", "Manage", new { UserTypeId = Model.UserTypeId })'>Delete User Type</a>
+}
+

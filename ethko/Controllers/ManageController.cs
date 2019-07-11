@@ -439,9 +439,9 @@ namespace ethko.Controllers
             return View(caseStages);
         }
 
-        public ActionResult DeleteConfirmed(int? CaseStageId, int? OfficeId, int? BillingMethodId)
+        public ActionResult DeleteConfirmed(int? CaseStageId, int? OfficeId, int? BillingMethodId, int? UserTypeId)
         {
-            if (CaseStageId == null && OfficeId == null && BillingMethodId == null)
+            if (CaseStageId == null && OfficeId == null && BillingMethodId == null && UserTypeId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -473,6 +473,15 @@ namespace ethko.Controllers
                 return View(delete);
             }
 
+            if (UserTypeId != null)
+            {
+                UserType userTypes = entities.UserTypes.Find(UserTypeId);
+                entities.UserTypes.Remove(userTypes);
+                entities.SaveChanges();
+                Models.DeleteConfirmedViewModel delete = new Models.DeleteConfirmedViewModel();
+                delete.UserTypeId = UserTypeId;
+                return View(delete);
+            }
             return View();
         }
 
@@ -652,6 +661,17 @@ namespace ethko.Controllers
             ethko_dbEntities entities = new ethko_dbEntities();
             BillingMethod billingMethods = entities.BillingMethods.Where(m => m.BillingMethodId == BillingMethodId).Single();
             return View(billingMethods);
+        }
+
+        public ActionResult DeleteUserType(int? UserTypeId)
+        {
+            if (UserTypeId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ethko_dbEntities entities = new ethko_dbEntities();
+            UserType userTypes = entities.UserTypes.Where(m => m.UserTypeId == UserTypeId).Single();
+            return View(userTypes);
         }
 
         public ActionResult UserTypes()
