@@ -741,6 +741,98 @@ namespace ethko.Controllers
             return RedirectToAction("FirmUsers");
         }
 
+        public Office ConvertViewModelToModel(EditConfirmedViewModel vm)
+        {
+            return new Office()
+            {
+                OfficeName = vm.OfficeName
+            };
+        }
+        [HttpGet]
+        public ActionResult EditOffice(int? OfficeId)
+        {
+            if (OfficeId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ethko_dbEntities entities = new ethko_dbEntities();
+            Office offices = entities.Offices.Where(m => m.OfficeId == OfficeId).Single();
+            return View(offices);
+        }
+
+        [HttpPost]
+        public ActionResult EditSave(int? OfficeId)
+        {
+            if (OfficeId != null)
+            {
+                Office offices = entities.Offices.Find(OfficeId);
+                string newOfficeName = Request.Form["NewOffice"].ToString();
+                offices.OfficeName = newOfficeName;
+                entities.SaveChanges();
+            }
+
+            return RedirectToAction("FirmSettings", "Manage");
+
+        }
+
+        public ActionResult EditConfirmed(int? CaseStageId, int? OfficeId, int? BillingMethodId, int? UserTypeId)
+        {
+            if (CaseStageId == null && OfficeId == null && BillingMethodId == null && UserTypeId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            if (CaseStageId != null)
+            {
+                CaseStage caseStages = entities.CaseStages.Find(CaseStageId);
+                entities.CaseStages.Remove(caseStages);
+                entities.SaveChanges();
+            }
+
+            if (OfficeId != null)
+            {
+                Office offices = entities.Offices.Find(OfficeId);
+                var form = System.Web.HttpContext.Current.Request.Form;
+                if(form != null && !String.IsNullOrEmpty("NewOffice") && form.AllKeys.Contains("NewOffice"))
+                {
+                    var newOfficeName = form["NewOffice"].ToString();
+                    offices.OfficeName = newOfficeName;
+                }
+                else
+                {
+                    string newOfficeName = Request.Form["NewOffice"].ToString();
+                    offices.OfficeName = newOfficeName;
+                }
+                
+                
+                entities.SaveChanges();
+                Models.EditConfirmedViewModel edit = new Models.EditConfirmedViewModel();
+                edit.OfficeId = OfficeId;
+                return View(edit);
+            }
+
+            if (BillingMethodId != null)
+            {
+                BillingMethod billingMethods = entities.BillingMethods.Find(BillingMethodId);
+                entities.BillingMethods.Remove(billingMethods);
+                entities.SaveChanges();
+                Models.DeleteConfirmedViewModel delete = new Models.DeleteConfirmedViewModel();
+                delete.BillingMethodId = BillingMethodId;
+                return View(delete);
+            }
+
+            if (UserTypeId != null)
+            {
+                UserType userTypes = entities.UserTypes.Find(UserTypeId);
+                entities.UserTypes.Remove(userTypes);
+                entities.SaveChanges();
+                Models.DeleteConfirmedViewModel delete = new Models.DeleteConfirmedViewModel();
+                delete.UserTypeId = UserTypeId;
+                return View(delete);
+            }
+            return View();
+        }
+
         #endregion
     }
 }

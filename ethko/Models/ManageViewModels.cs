@@ -249,4 +249,19 @@ namespace ethko.Models
         [Display(Name = "InsDate")]
         public string InsDate { get; set; }
     }
+
+    public class EditConfirmedViewModel
+    {
+        [Display(Name = "Billing Method Id")]
+        public int? BillingMethodId { get; set; }
+
+        [Display(Name = "Office Id")]
+        public int? OfficeId { get; set; }
+
+        [Display(Name = "User Type Id")]
+        public int? UserTypeId { get; set; }
+
+        [Display(Name = "Office")]
+        public string OfficeName { get; set; }
+    }
 }

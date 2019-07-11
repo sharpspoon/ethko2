@@ -1,0 +1,24 @@
+﻿@model ethko.Office
+@{
+    ViewBag.Title = "Edit Office";
+}
+
+<br />
+<a class="btn btn-default" href='@Url.Action("FirmSettings", "Manage")'>Back</a>&nbsp;
+<br />
+<h1>Edit Office</h1>
+
+@using (Html.BeginForm("EditSave", "Manage", new { @class = "form-horizontal", role = "form", OfficeId = Model.OfficeId }))
+{
+    <br />
+    <h3>Office: @Html.TextBoxFor(m => m.OfficeName, new { @name = "NewOffice" })</h3>
+    <input name="NewOffice" type="text" placeholder="old">
+    <br />
+    <br />
+    <br />
+    <br />
+    <input type="submit" name="SaveButton" value="Save" />
+    @Html.AntiForgeryToken()
+    <a class="btn btn-success" href='@Url.Action("EditSave", "Manage", new { OfficeId = Model.OfficeId, @type = "submit" })'>Save Office</a>
+}
+
