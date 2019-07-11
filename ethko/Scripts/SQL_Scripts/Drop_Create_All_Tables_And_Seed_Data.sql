@@ -248,7 +248,7 @@ CREATE TABLE [dbo].[Cases] (
     [BillingMethodId] INT            NOT NULL,
     [OfficeId]        INT            NOT NULL,
     [CaseStageId]     INT            NOT NULL,
-    [DateOpened]      DATETIME2 (7)  NOT NULL,
+    [DateOpened]      DATETIME  NOT NULL,
     [Description]     VARCHAR (MAX)  NULL,
     [FstUser]         NVARCHAR (128) NOT NULL,
     [InsDate]         DATETIME  NOT NULL,

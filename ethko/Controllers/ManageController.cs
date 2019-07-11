@@ -654,6 +654,16 @@ namespace ethko.Controllers
             return View(billingMethods);
         }
 
+        public ActionResult UserTypes()
+        {
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                var userTypes = from ut in entities.UserTypes
+                              select new GetUserTypesViewModel() { UserTypeId = ut.UserTypeId.ToString(), UserTypeName = ut.UserTypeName, InsDate = ut.InsDate.ToString() };
+                return View(userTypes.ToList());
+            }
+        }
+
         public ActionResult NewUserType()
         {
             return View();
@@ -667,25 +677,15 @@ namespace ethko.Controllers
             };
         }
 
-        public ActionResult UserTypes()
-        {
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                var userTypes = from ut in entities.UserTypes
-                              select new GetUserTypesViewModel() { UserTypeId = ut.UserTypeId.ToString(), UserTypeName = ut.UserTypeName, InsDate = ut.InsDate.ToString() };
-                return View(userTypes.ToList());
-            }
-        }
-
         [HttpPost]
-        public ActionResult NewUserType(AddOfficeViewModel model)
+        public ActionResult NewUserType(AddUserTypeViewModel model)
         {
             var user = User.Identity.GetUserName().ToString();
             var userTypeModel = ConvertViewModelToModel(model);
 
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
-                entities.Offices.Add(userTypeModel);
+                entities.UserTypes.Add(userTypeModel);
                 userTypeModel.InsDate = DateTime.Now;
                 entities.SaveChanges();
             }
