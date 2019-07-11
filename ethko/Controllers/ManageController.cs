@@ -335,12 +335,156 @@ namespace ethko.Controllers
 
             base.Dispose(disposing);
         }
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //////////////////////////////////////////////////////////////
+        //SETTINGS DASHBOARD//////////////////////////////////////////
+        //////////////////////////////////////////////////////////////
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //////////////////////////////////////////////////////////////
+        //MY PROFILE//////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        // GET: /Manage/MyProfile
+        public ActionResult MyProfile()
+        {
+            return View();
+        }
+
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //////////////////////////////////////////////////////////////
+        //MY SETTINGS/////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //////////////////////////////////////////////////////////////
+        //MY NOTIFICATIONS////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //////////////////////////////////////////////////////////////
+        //FIRM USERS//////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //////////////////////////////////////////////////////////////
+        //FIRM SETTINGS///////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        //#########
+        //Offices//
+        //#########
+
+        // GET: /Manage/FirmSettings
+        [HttpGet]
+        public ActionResult FirmSettings()
+        {
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                var offices = from o in entities.Offices
+                              join u in entities.AspNetUsers on o.FstUser equals u.Id into gj
+                              from x in gj.DefaultIfEmpty()
+                              select new GetFirmSettingsViewModel() { OfficeId = o.OfficeId.ToString(), OfficeName = o.OfficeName, FstUser = x.UserName, InsDate = o.InsDate.ToString() };
+                return View(offices.ToList());
+            }
+        }
+
+        // GET: /Manage/NewOffice
+        [HttpGet]
+        public ActionResult NewOffice()
+        {
+            return View();
+        }
+        [HttpGet]
+        public Office ConvertViewModelToModel(AddOfficeViewModel vm)
+        {
+            return new Office()
+            {
+                OfficeName = vm.OfficeName
+            };
+        }
+
+        // POST: /Manage/NewOffice
+        [HttpPost]
+        public ActionResult NewOffice(AddOfficeViewModel model)
+        {
+            var user = User.Identity.GetUserName().ToString();
+            var officeModel = ConvertViewModelToModel(model);
+
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                entities.Offices.Add(officeModel);
+                officeModel.InsDate = DateTime.Now;
+                officeModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+                entities.SaveChanges();
+            }
+            return RedirectToAction("FirmSettings");
+        }
+
+
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //////////////////////////////////////////////////////////////
+        //CLIENT BILLING//////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //////////////////////////////////////////////////////////////
+        //IMPORT/EXPORT///////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //////////////////////////////////////////////////////////////
+        //CUSTOM FIELDS///////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //////////////////////////////////////////////////////////////
+        //INTAKE FORMS////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //////////////////////////////////////////////////////////////
+        //WORKFLOWS///////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //////////////////////////////////////////////////////////////
+        //CASE STAGES/////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        // GET: /Manage/CaseStages
+        [HttpGet]
+        public ActionResult CaseStages()
+        {
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                var caseStages = from c in entities.CaseStages
+                                 join u in entities.AspNetUsers on c.FstUser equals u.Id
+                                 select new GetCaseStagesViewModel() { CaseStageId = c.CaseStageId.ToString(), CaseStageName = c.CaseStageName, InsDate = c.InsDate.ToString(), UserId = u.UserName };
+                return View(caseStages.ToList());
+            }
+        }
+
+        // GET: /Manage/NewCaseStage
         public ActionResult NewCaseStage()
         {
             return View();
         }
 
+        // GET: /Manage/NewCaseStage
         public CaseStage ConvertViewModelToModel(AddCaseStageViewModel vm)
         {
             return new CaseStage()
@@ -349,6 +493,7 @@ namespace ethko.Controllers
             };
         }
 
+        // POST: /Manage/NewCaseStage
         [HttpPost]
         public ActionResult NewCaseStage(AddCaseStageViewModel model)
         {
@@ -365,17 +510,66 @@ namespace ethko.Controllers
             return RedirectToAction("CaseStages");
         }
 
-        [HttpGet]
-        public ActionResult CaseStages()
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //////////////////////////////////////////////////////////////
+        //LEADS///////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //////////////////////////////////////////////////////////////
+        //GLOBAL//////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        // POST: /Manage/DeleteConfirmed
+        [HttpPost]
+        public ActionResult DeleteConfirmed(int? CaseStageId, int? OfficeId, int? BillingMethodId, int? UserTypeId)
         {
-            using (ethko_dbEntities entities = new ethko_dbEntities())
+            if (CaseStageId == null && OfficeId == null && BillingMethodId == null && UserTypeId == null)
             {
-                var caseStages = from c in entities.CaseStages
-                                 join u in entities.AspNetUsers on c.FstUser equals u.Id
-                                 select new GetCaseStagesViewModel() { CaseStageId = c.CaseStageId.ToString(), CaseStageName = c.CaseStageName, InsDate = c.InsDate.ToString(), UserId = u.UserName };
-                return View(caseStages.ToList());
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            if (CaseStageId != null)
+            {
+                CaseStage caseStages = entities.CaseStages.Find(CaseStageId);
+                entities.CaseStages.Remove(caseStages);
+                entities.SaveChanges();
+            }
+
+            if (OfficeId != null)
+            {
+                Office offices = entities.Offices.Find(OfficeId);
+                entities.Offices.Remove(offices);
+                entities.SaveChanges();
+                Models.DeleteConfirmedViewModel delete = new Models.DeleteConfirmedViewModel();
+                delete.OfficeId = OfficeId;
+                return RedirectToAction("FirmSettings", "Manage");
+            }
+
+            if (BillingMethodId != null)
+            {
+                BillingMethod billingMethods = entities.BillingMethods.Find(BillingMethodId);
+                entities.BillingMethods.Remove(billingMethods);
+                entities.SaveChanges();
+                Models.DeleteConfirmedViewModel delete = new Models.DeleteConfirmedViewModel();
+                delete.BillingMethodId = BillingMethodId;
+                return View(delete);
+            }
+
+            if (UserTypeId != null)
+            {
+                UserType userTypes = entities.UserTypes.Find(UserTypeId);
+                entities.UserTypes.Remove(userTypes);
+                entities.SaveChanges();
+                Models.DeleteConfirmedViewModel delete = new Models.DeleteConfirmedViewModel();
+                delete.UserTypeId = UserTypeId;
+                return View(delete);
+            }
+            return RedirectToAction("Index", "Manage");
         }
+
 
         #region Helpers
         // Used for XSRF protection when adding external logins
@@ -439,97 +633,14 @@ namespace ethko.Controllers
             return View(caseStages);
         }
 
-        public ActionResult DeleteConfirmed(int? CaseStageId, int? OfficeId, int? BillingMethodId, int? UserTypeId)
-        {
-            if (CaseStageId == null && OfficeId == null && BillingMethodId == null && UserTypeId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
 
-            if (CaseStageId != null)
-            {
-                CaseStage caseStages = entities.CaseStages.Find(CaseStageId);
-                entities.CaseStages.Remove(caseStages);
-                entities.SaveChanges();
-            }
 
-            if (OfficeId != null)
-            {
-                Office offices = entities.Offices.Find(OfficeId);
-                entities.Offices.Remove(offices);
-                entities.SaveChanges();
-                Models.DeleteConfirmedViewModel delete = new Models.DeleteConfirmedViewModel();
-                delete.OfficeId = OfficeId;
-                return View(delete);
-            }
 
-            if (BillingMethodId != null)
-            {
-                BillingMethod billingMethods = entities.BillingMethods.Find(BillingMethodId);
-                entities.BillingMethods.Remove(billingMethods);
-                entities.SaveChanges();
-                Models.DeleteConfirmedViewModel delete = new Models.DeleteConfirmedViewModel();
-                delete.BillingMethodId = BillingMethodId;
-                return View(delete);
-            }
 
-            if (UserTypeId != null)
-            {
-                UserType userTypes = entities.UserTypes.Find(UserTypeId);
-                entities.UserTypes.Remove(userTypes);
-                entities.SaveChanges();
-                Models.DeleteConfirmedViewModel delete = new Models.DeleteConfirmedViewModel();
-                delete.UserTypeId = UserTypeId;
-                return View(delete);
-            }
-            return View();
-        }
 
-        public ActionResult NewOffice()
-        {
-            return View();
-        }
 
-        public Office ConvertViewModelToModel(AddOfficeViewModel vm)
-        {
-            return new Office()
-            {
-                OfficeName = vm.OfficeName
-            };
-        }
 
-        [HttpPost]
-        public ActionResult NewOffice(AddOfficeViewModel model)
-        {
-            var user = User.Identity.GetUserName().ToString();
-            var officeModel = ConvertViewModelToModel(model);
 
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                entities.Offices.Add(officeModel);
-                officeModel.InsDate = DateTime.Now;
-                officeModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
-                entities.SaveChanges();
-            }
-            return RedirectToAction("FirmSettings");
-        }
-
-        public ActionResult FirmSettings()
-        {
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                var offices = from o in entities.Offices
-                                    join u in entities.AspNetUsers on o.FstUser equals u.Id into gj
-                                    from x in gj.DefaultIfEmpty()
-                                    select new GetFirmSettingsViewModel() { OfficeId = o.OfficeId.ToString(), OfficeName = o.OfficeName, FstUser = x.UserName, InsDate = o.InsDate.ToString() };
-                return View(offices.ToList());
-            }
-        }
-
-        public ActionResult MyProfile()
-        {
-            return View();
-        }
 
         public ActionResult MySettings()
         {

@@ -520,8 +520,6 @@
     <Content Include="Views\Manage\_AddCaseStage.cshtml" />
     <Content Include="Views\Manage\DeleteCaseStage.cshtml" />
     <Content Include="Views\Manage\_DeleteCaseStage.cshtml" />
-    <Content Include="Views\Manage\DeleteConfirmed.cshtml" />
-    <Content Include="Views\Manage\_DeleteConfirmed.cshtml" />
     <Content Include="Views\Manage\_AddOffice.cshtml" />
     <Content Include="Views\Manage\NewOffice.cshtml" />
     <Content Include="Views\Manage\FirmSettings.cshtml" />
