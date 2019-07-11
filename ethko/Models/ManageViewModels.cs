@@ -181,6 +181,9 @@ namespace ethko.Models
 
         [Display(Name = "User Type Id")]
         public int? UserTypeId { get; set; }
+
+        [Display(Name = "Case Stage Id")]
+        public int? CaseStageId { get; set; }
     }
 
     public class GetFirmUsersViewModel
