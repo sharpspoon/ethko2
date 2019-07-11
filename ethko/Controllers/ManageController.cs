@@ -766,7 +766,7 @@ namespace ethko.Controllers
                 entities.SaveChanges();
                 Models.DeleteConfirmedViewModel delete = new Models.DeleteConfirmedViewModel();
                 delete.UserTypeId = UserTypeId;
-                return View(delete);
+                return RedirectToAction("UserTypes", "Manage");
             }
             return RedirectToAction("Index", "Manage");
         }
