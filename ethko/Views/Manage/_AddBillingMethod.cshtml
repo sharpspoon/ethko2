@@ -1,29 +1,78 @@
 ﻿@model ethko.Models.AddBillingMethodViewModel
 
-<br />
-<a class="btn btn-primary" href='@Url.Action("NewBillingMethod", "Manage")'>Add Billing Method</a>&nbsp;
+<h2>Settings & Preferences</h2>
 
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>Select a sub category from the menu on the left</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <a class="btn btn-default" href='@Url.Action("Index", "Manage")'>Settings Dashboard</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("MyProfile", "Manage")'>My Profile</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("MySettings", "Manage")'>My Settings</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("MyNotifications", "Manage")'>My Notifications</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("FirmUsers", "Manage")'>Firm Users</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("FirmSettings", "Manage")'>Firm Settings</a>
+            <br />
+            <br />
+            <a class="btn btn-primary" href='@Url.Action("ClientBilling", "Manage")'>Client Billing</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("ImportExport", "Manage")'>Import/Export</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("CustomFields", "Manage")'>Custom Fields</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("IntakeForms", "Manage")'>Intake Forms</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("Workflows", "Manage")'>Workflows</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("CaseStages", "Manage")'>Case Stages</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("Leads", "Manage")'>Leads</a>
+        </dt>
+        <dd>
+            <div class="col-md-12" align="left">
+                <h2>
+                    Add Billing Method
+                </h2>
+                <p>
+                    <div class="col-md-12">
+                        @using (Html.BeginForm("NewBillingMethod", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary("", new { @class = "text-danger" })
 
-<br />
-<h1>Add Billing Method</h1>
-    <p>
-        <div class="col-md-12">
-            @using (Html.BeginForm("NewBillingMethod", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary("", new { @class = "text-danger" })
-
-                <div class="form-group">
-                    <div class="col-md-4" align="left">
-                        @Html.TextBoxFor(m => m.BillingMethodName, new { @class = "form-control", placeholder = "Billing Method Name" })
+                            <div class="form-group">
+                                <div class="col-md-4" align="left">
+                                    @Html.TextBoxFor(m => m.BillingMethodName, new { @class = "form-control", placeholder = "Billing Method Name" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <a class="btn btn-default" href='@Url.Action("ClientBilling", "Manage")'>Cancel</a>
+                                    <input type="submit" class="btn btn-success" value="Save Billing Method" />
+                                </div>
+                            </div>
+                        }
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <a class="btn btn-default" href='@Url.Action("ClientBilling", "Manage")'>Cancel</a>
-                        <input type="submit" class="btn btn-success" value="Save Billing Method" />
-                    </div>
-                </div>
-            }
-        </div>
-    </p>
+                </p>
+            </div>
+        </dd>
+    </dl>
+</div>
