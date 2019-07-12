@@ -70,13 +70,13 @@
                             {
                                 <tr>
                                     <td>
-                                        <a href='@Url.Action("ViewContact", "Contacts", new { UserTypeId = item.UserTypeId})'>@Html.DisplayFor(modelItem => item.UserTypeName)</a>
+                                        <a href='@Url.Action("EditUserType", "Manage", new { UserTypeId = item.UserTypeId})'>@Html.DisplayFor(modelItem => item.UserTypeName)</a>
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.InsDate)
                                     </td>
                                     <td>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href='@Url.Action("EditPracticeArea", "Cases", new { UserTypeId = item.UserTypeId })'>Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href='@Url.Action("EditUserType", "Manage", new { UserTypeId = item.UserTypeId })'>Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
                                         &nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href='@Url.Action("DeleteUserType", "Manage", new { UserTypeId = item.UserTypeId })'>Delete</a>&nbsp;&nbsp;&nbsp;&nbsp;
                                     </td>
                                 </tr>

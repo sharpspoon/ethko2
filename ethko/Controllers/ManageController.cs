@@ -492,9 +492,36 @@ namespace ethko.Controllers
             return RedirectToAction("FirmSettings");
         }
 
-        //#########
-        //Offices//
-        //#########
+        // GET: /Manage/DeleteOffice
+        [HttpGet]
+        public ActionResult DeleteOffice(int? OfficeId)
+        {
+            if (OfficeId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ethko_dbEntities entities = new ethko_dbEntities();
+            Office offices = entities.Offices.Where(m => m.OfficeId == OfficeId).Single();
+            return View(offices);
+        }
+
+        // GET: /Manage/EditOffice
+        [HttpGet]
+        public ActionResult EditOffice(int? OfficeId)
+        {
+            if (OfficeId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ethko_dbEntities entities = new ethko_dbEntities();
+            Office offices = entities.Offices.Where(m => m.OfficeId == OfficeId).Single();
+            return View(offices);
+        }
+
+        //############
+        //User Types//
+        //############
+
         // GET: /Manage/NewUserType
         [HttpGet]
         public ActionResult NewUserType()
@@ -526,6 +553,42 @@ namespace ethko.Controllers
             return RedirectToAction("UserTypes");
         }
 
+        // GET: /Manage/UserTypes
+        [HttpGet]
+        public ActionResult UserTypes()
+        {
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                var userTypes = from ut in entities.UserTypes
+                                select new GetUserTypesViewModel() { UserTypeId = ut.UserTypeId.ToString(), UserTypeName = ut.UserTypeName, InsDate = ut.InsDate.ToString() };
+                return View(userTypes.ToList());
+            }
+        }
+
+        // GET: /Manage/DeleteUserType
+        [HttpGet]
+        public ActionResult DeleteUserType(int? UserTypeId)
+        {
+            if (UserTypeId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ethko_dbEntities entities = new ethko_dbEntities();
+            UserType userTypes = entities.UserTypes.Where(m => m.UserTypeId == UserTypeId).Single();
+            return View(userTypes);
+        }
+
+        // GET: /Manage/EditUserType
+        [HttpGet]
+        public ActionResult EditUserType(int? UserTypeId)
+        {
+            if (UserTypeId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            UserType userTypes = entities.UserTypes.Where(m => m.UserTypeId == UserTypeId).Single();
+            return View(userTypes);
+        }
 
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         //////////////////////////////////////////////////////////////
@@ -578,6 +641,19 @@ namespace ethko.Controllers
                 entities.SaveChanges();
             }
             return RedirectToAction("ClientBilling");
+        }
+
+        // POST: /Manage/DeleteBillingMethod
+        [HttpPost]
+        public ActionResult DeleteBillingMethod(int? BillingMethodId)
+        {
+            if (BillingMethodId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ethko_dbEntities entities = new ethko_dbEntities();
+            BillingMethod billingMethods = entities.BillingMethods.Where(m => m.BillingMethodId == BillingMethodId).Single();
+            return View(billingMethods);
         }
 
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -684,6 +760,19 @@ namespace ethko.Controllers
             return RedirectToAction("CaseStages");
         }
 
+        // POST: /Manage/DeleteCaseStage
+        [HttpPost]
+        public ActionResult DeleteCaseStage(int? CaseStageId)
+        {
+            if (CaseStageId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ethko_dbEntities entities = new ethko_dbEntities();
+            CaseStage caseStages = entities.CaseStages.Where(m => m.CaseStageId == CaseStageId).Single();
+            return View(caseStages);
+        }
+
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         //////////////////////////////////////////////////////////////
         //LEADS///////////////////////////////////////////////////////
@@ -719,6 +808,31 @@ namespace ethko.Controllers
         //GLOBAL//////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        // POST: /Manage/EditSave
+        [HttpPost]
+        public ActionResult EditSave(int? OfficeId, int? UserTypeId)
+        {
+            if (OfficeId != null)
+            {
+                Office offices = entities.Offices.Find(OfficeId);
+                string newOfficeName = Request.Form["NewOffice"].ToString();
+                offices.OfficeName = newOfficeName;
+                entities.SaveChanges();
+                return RedirectToAction("FirmSettings", "Manage");
+            }
+
+            if (UserTypeId != null)
+            {
+                UserType userTypes = entities.UserTypes.Find(UserTypeId);
+                string newUserTypeName = Request.Form["NewUserType"].ToString();
+                userTypes.UserTypeName = newUserTypeName;
+                entities.SaveChanges();
+                return RedirectToAction("UserTypes", "Manage");
+            }
+
+            return RedirectToAction("Index", "Manage");
+        }
 
         // POST: /Manage/DeleteConfirmed
         [HttpPost]
@@ -823,63 +937,6 @@ namespace ethko.Controllers
             Error
         }
 
-        public ActionResult DeleteCaseStage(int? CaseStageId)
-        {
-            if (CaseStageId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ethko_dbEntities entities = new ethko_dbEntities();
-            CaseStage caseStages = entities.CaseStages.Where(m => m.CaseStageId == CaseStageId).Single();
-            return View(caseStages);
-        }
-        public ActionResult DeleteOffice(int? OfficeId)
-        {
-            if (OfficeId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ethko_dbEntities entities = new ethko_dbEntities();
-            Office offices = entities.Offices.Where(m => m.OfficeId == OfficeId).Single();
-            return View(offices);
-        }
-
-        public ActionResult DeleteBillingMethod(int? BillingMethodId)
-        {
-            if (BillingMethodId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ethko_dbEntities entities = new ethko_dbEntities();
-            BillingMethod billingMethods = entities.BillingMethods.Where(m => m.BillingMethodId == BillingMethodId).Single();
-            return View(billingMethods);
-        }
-
-        public ActionResult DeleteUserType(int? UserTypeId)
-        {
-            if (UserTypeId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ethko_dbEntities entities = new ethko_dbEntities();
-            UserType userTypes = entities.UserTypes.Where(m => m.UserTypeId == UserTypeId).Single();
-            return View(userTypes);
-        }
-
-        public ActionResult UserTypes()
-        {
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                var userTypes = from ut in entities.UserTypes
-                              select new GetUserTypesViewModel() { UserTypeId = ut.UserTypeId.ToString(), UserTypeName = ut.UserTypeName, InsDate = ut.InsDate.ToString() };
-                return View(userTypes.ToList());
-            }
-        }
-
-
-
-
-
         public Office ConvertViewModelToModel(EditConfirmedViewModel vm)
         {
             return new Office()
@@ -887,30 +944,8 @@ namespace ethko.Controllers
                 OfficeName = vm.OfficeName
             };
         }
-        [HttpGet]
-        public ActionResult EditOffice(int? OfficeId)
-        {
-            if (OfficeId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ethko_dbEntities entities = new ethko_dbEntities();
-            Office offices = entities.Offices.Where(m => m.OfficeId == OfficeId).Single();
-            return View(offices);
-        }
 
-        [HttpPost]
-        public ActionResult EditSave(int? OfficeId)
-        {
-            if (OfficeId != null)
-            {
-                Office offices = entities.Offices.Find(OfficeId);
-                string newOfficeName = Request.Form["NewOffice"].ToString();
-                offices.OfficeName = newOfficeName;
-                entities.SaveChanges();
-            }
-            return RedirectToAction("FirmSettings", "Manage");
-        }
+
 
         #endregion
     }

@@ -551,6 +551,8 @@
     <Content Include="Views\Manage\_EditOffice.cshtml" />
     <Content Include="Views\Manage\EditOffice.cshtml" />
     <Content Include="Views\Manage\EditConfirmed.cshtml" />
+    <Content Include="Views\Manage\EditUserType.cshtml" />
+    <Content Include="Views\Manage\_EditUserType.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

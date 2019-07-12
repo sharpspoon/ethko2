@@ -1,6 +1,6 @@
-﻿@model ethko.Office
+﻿@model ethko.UserType
 @{
-    ViewBag.Title = "Edit Office";
+    ViewBag.Title = "Edit User Type";
 }
 
 
@@ -54,17 +54,17 @@
             <div class="col-md-12" align="left">
                 <br />
                 <br />
-                <h1>Edit Office</h1>
-                @using (Html.BeginForm("EditSave", "Manage", new { @class = "form-horizontal", role = "form", OfficeId = Model.OfficeId }))
+                <h1>Edit User Type</h1>
+                @using (Html.BeginForm("EditSave", "Manage", new { @class = "form-horizontal", role = "form", UserTypeId = Model.UserTypeId }))
                 {
                     <br />
-                    <h3>Office: <input name="NewOffice" type="text" placeholder=@Html.DisplayTextFor(m => m.OfficeName)></h3>
+                    <h3>User Type: <input name="NewUserType" type="text" placeholder=@Html.DisplayTextFor(m => m.UserTypeName)></h3>
                     <br />
                     <br />
                     <br />
                     <br />
                     @Html.AntiForgeryToken()
-                    <a class="btn btn-default" href='@Url.Action("FirmSettings", "Manage")'>Cancel</a>@Html.Raw("   ")<input type="submit" name="SaveButton" value="Save" class="btn btn-success" />
+                    <a class="btn btn-default" href='@Url.Action("UserTypes", "Manage")'>Cancel</a>@Html.Raw("   ")<input type="submit" name="SaveButton" value="Save" class="btn btn-success" />
                 }
             </div>
         </dd>
@@ -75,6 +75,11 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/app")
+    <script>
+        $(document).ready(function () {
+            $('#myTable').dataTable();
+        });
+    </script>
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">

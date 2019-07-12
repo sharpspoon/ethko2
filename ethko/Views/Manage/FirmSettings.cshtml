@@ -71,7 +71,7 @@
 
                                 <tr>
                                     <td>
-                                        <a href='@Url.Action("ViewContact", "Contacts", new { OfficeId = item.OfficeId})'>@Html.DisplayFor(modelItem => item.OfficeName)</a>
+                                        <a href='@Url.Action("EditOffice", "Manage", new { OfficeId = item.OfficeId})'>@Html.DisplayFor(modelItem => item.OfficeName)</a>
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.InsDate)
