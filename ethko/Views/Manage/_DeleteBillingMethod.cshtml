@@ -3,23 +3,84 @@
     ViewBag.Title = "Delete Billing Method";
 }
 
-<br />
-<a class="btn btn-default" href='@Url.Action("ClientBilling", "Manage")'>Back</a>&nbsp;
-<br />
-<h1>Delete Billing Method</h1>
 
-@using (Html.BeginForm("DeleteConfirmed", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    <font color="red">
-        <h3>Really DELETE this billing method?  This action is irreversible!</h3>
-    </font>
-    <br />
-    <h3>Billing Method: @Html.DisplayFor(m => m.BillingMethodName)</h3>
-    <br />
-    <br />
-    <br />
-    <br />
-    @Html.AntiForgeryToken()
-    <a class="btn btn-danger" href='@Url.Action("DeleteConfirmed", "Manage", new { BillingMethodId = Model.BillingMethodId })'>Delete Billing Method</a>
+<h2>Settings & Preferences</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>Select a sub category from the menu on the left</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <a class="btn btn-default" href='@Url.Action("Index", "Manage")'>Settings Dashboard</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("MyProfile", "Manage")'>My Profile</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("MySettings", "Manage")'>My Settings</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("MyNotifications", "Manage")'>My Notifications</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("FirmUsers", "Manage")'>Firm Users</a>
+            <br />
+            <br />
+            <a class="btn btn-primary" href='@Url.Action("FirmSettings", "Manage")'>Firm Settings</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("ClientBilling", "Manage")'>Client Billing</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("ImportExport", "Manage")'>Import/Export</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("CustomFields", "Manage")'>Custom Fields</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("IntakeForms", "Manage")'>Intake Forms</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("Workflows", "Manage")'>Workflows</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("CaseStages", "Manage")'>Case Stages</a>
+            <br />
+            <br />
+            <a class="btn btn-default" href='@Url.Action("Leads", "Manage")'>Leads</a>
+        </dt>
+        <dd>
+            <div class="col-md-12" align="left">
+                <br />
+                <br />
+                <h1>Delete Billing Method</h1>
+                @using (Html.BeginForm("DeleteConfirmed", "Manage", new { @class = "form-horizontal", role = "form", BillingMethodId = Model.BillingMethodId }))
+                {
+                    <font color="red">
+                        <h3>Really DELETE this Billing Method?  This action is irreversible!</h3>
+                    </font>
+                    <br />
+                    <h3>Billing Method: @Html.DisplayFor(m => m.BillingMethodName)</h3>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    @Html.AntiForgeryToken()
+                    <a class="btn btn-default" href='@Url.Action("ClientBilling", "Manage")'>Cancel</a>@Html.Raw("   ")<input type="submit" name="DeleteButton" value="Delete" class="btn btn-danger" />
+                }
+            </div>
+        </dd>
+    </dl>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/app")
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 }
-

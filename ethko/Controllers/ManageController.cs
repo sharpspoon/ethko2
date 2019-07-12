@@ -643,8 +643,8 @@ namespace ethko.Controllers
             return RedirectToAction("ClientBilling");
         }
 
-        // POST: /Manage/DeleteBillingMethod
-        [HttpPost]
+        // GET: /Manage/DeleteBillingMethod
+        [HttpGet]
         public ActionResult DeleteBillingMethod(int? BillingMethodId)
         {
             if (BillingMethodId == null)
@@ -652,6 +652,18 @@ namespace ethko.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ethko_dbEntities entities = new ethko_dbEntities();
+            BillingMethod billingMethods = entities.BillingMethods.Where(m => m.BillingMethodId == BillingMethodId).Single();
+            return View(billingMethods);
+        }
+
+        // GET: /Manage/EditBillingMethod
+        [HttpGet]
+        public ActionResult EditBillingMethod(int? BillingMethodId)
+        {
+            if (BillingMethodId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             BillingMethod billingMethods = entities.BillingMethods.Where(m => m.BillingMethodId == BillingMethodId).Single();
             return View(billingMethods);
         }
@@ -811,7 +823,7 @@ namespace ethko.Controllers
 
         // POST: /Manage/EditSave
         [HttpPost]
-        public ActionResult EditSave(int? OfficeId, int? UserTypeId)
+        public ActionResult EditSave(int? OfficeId, int? UserTypeId, int? BillingMethodId)
         {
             if (OfficeId != null)
             {
@@ -829,6 +841,15 @@ namespace ethko.Controllers
                 userTypes.UserTypeName = newUserTypeName;
                 entities.SaveChanges();
                 return RedirectToAction("UserTypes", "Manage");
+            }
+
+            if (BillingMethodId != null)
+            {
+                BillingMethod billingMethods = entities.BillingMethods.Find(BillingMethodId);
+                string newBillingMethodName = Request.Form["NewBillingMethod"].ToString();
+                billingMethods.BillingMethodName = newBillingMethodName;
+                entities.SaveChanges();
+                return RedirectToAction("ClientBilling", "Manage");
             }
 
             return RedirectToAction("Index", "Manage");
@@ -870,7 +891,7 @@ namespace ethko.Controllers
                 entities.SaveChanges();
                 Models.DeleteConfirmedViewModel delete = new Models.DeleteConfirmedViewModel();
                 delete.BillingMethodId = BillingMethodId;
-                return View(delete);
+                return RedirectToAction("ClientBilling", "Manage");
             }
 
             if (UserTypeId != null)

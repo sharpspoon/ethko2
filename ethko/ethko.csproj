@@ -553,6 +553,8 @@
     <Content Include="Views\Manage\EditConfirmed.cshtml" />
     <Content Include="Views\Manage\EditUserType.cshtml" />
     <Content Include="Views\Manage\_EditUserType.cshtml" />
+    <Content Include="Views\Manage\_EditBillingMethod.cshtml" />
+    <Content Include="Views\Manage\EditBillingMethod.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

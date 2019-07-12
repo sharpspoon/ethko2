@@ -1,6 +1,6 @@
-﻿@model ethko.UserType
+﻿@model ethko.BillingMethod
 @{
-    ViewBag.Title = "Edit User Type";
+    ViewBag.Title = "Edit Billing Method";
 }
 
 
@@ -27,10 +27,10 @@
             <a class="btn btn-default" href='@Url.Action("FirmUsers", "Manage")'>Firm Users</a>
             <br />
             <br />
-            <a class="btn btn-primary" href='@Url.Action("FirmSettings", "Manage")'>Firm Settings</a>
+            <a class="btn btn-default" href='@Url.Action("FirmSettings", "Manage")'>Firm Settings</a>
             <br />
             <br />
-            <a class="btn btn-default" href='@Url.Action("ClientBilling", "Manage")'>Client Billing</a>
+            <a class="btn btn-primary" href='@Url.Action("ClientBilling", "Manage")'>Client Billing</a>
             <br />
             <br />
             <a class="btn btn-default" href='@Url.Action("ImportExport", "Manage")'>Import/Export</a>
@@ -54,17 +54,17 @@
             <div class="col-md-12" align="left">
                 <br />
                 <br />
-                <h1>Edit User Type</h1>
-                @using (Html.BeginForm("EditSave", "Manage", new { @class = "form-horizontal", role = "form", UserTypeId = Model.UserTypeId }))
+                <h1>Edit Billing Method</h1>
+                @using (Html.BeginForm("EditSave", "Manage", new { @class = "form-horizontal", role = "form", BillingMethodId = Model.BillingMethodId }))
                 {
                     <br />
-                    <h3>User Type: <input name="NewUserType" type="text" placeholder=@Html.DisplayTextFor(m => m.UserTypeName)></h3>
+                    <h3>Billing Method: <input name="NewBillingMethod" type="text" placeholder=@Html.DisplayTextFor(m => m.BillingMethodName)></h3>
                     <br />
                     <br />
                     <br />
                     <br />
                     @Html.AntiForgeryToken()
-                    <a class="btn btn-default" href='@Url.Action("UserTypes", "Manage")'>Cancel</a>@Html.Raw("   ")<input type="submit" name="SaveButton" value="Save" class="btn btn-success" />
+                    <a class="btn btn-default" href='@Url.Action("ClientBilling", "Manage")'>Cancel</a>@Html.Raw("   ")<input type="submit" name="SaveButton" value="Save" class="btn btn-success" />
                 }
             </div>
         </dd>
@@ -81,4 +81,3 @@
     <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 }
-
