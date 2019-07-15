@@ -561,6 +561,8 @@
     <Content Include="Views\Manage\_AddLeadReferralSource.cshtml" />
     <Content Include="Views\Manage\NewLeadStatus.cshtml" />
     <Content Include="Views\Manage\NewLeadReferralSource.cshtml" />
+    <Content Include="Views\Manage\DeleteLeadStatus.cshtml" />
+    <Content Include="Views\Manage\_DeleteLeadStatus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

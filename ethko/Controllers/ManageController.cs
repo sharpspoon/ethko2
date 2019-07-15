@@ -936,9 +936,9 @@ namespace ethko.Controllers
 
         // POST: /Manage/DeleteConfirmed
         [HttpPost]
-        public ActionResult DeleteConfirmed(int? CaseStageId, int? OfficeId, int? BillingMethodId, int? UserTypeId)
+        public ActionResult DeleteConfirmed(int? CaseStageId, int? OfficeId, int? BillingMethodId, int? UserTypeId, int? LeadStatusId)
         {
-            if (CaseStageId == null && OfficeId == null && BillingMethodId == null && UserTypeId == null)
+            if (CaseStageId == null && OfficeId == null && BillingMethodId == null && UserTypeId == null && LeadStatusId ==null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -982,6 +982,17 @@ namespace ethko.Controllers
                 delete.UserTypeId = UserTypeId;
                 return RedirectToAction("UserTypes", "Manage");
             }
+
+            if (LeadStatusId != null)
+            {
+                LeadStatus leadStatuses = entities.LeadStatuses.Find(LeadStatusId);
+                entities.LeadStatuses.Remove(leadStatuses);
+                entities.SaveChanges();
+                Models.DeleteConfirmedViewModel delete = new Models.DeleteConfirmedViewModel();
+                delete.LeadStatusId = LeadStatusId;
+                return RedirectToAction("LeadStatus", "Manage");
+            }
+
             return RedirectToAction("Index", "Manage");
         }
 
