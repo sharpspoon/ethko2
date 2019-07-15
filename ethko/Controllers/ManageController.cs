@@ -885,6 +885,64 @@ namespace ethko.Controllers
             return View(leadStatuses);
         }
 
+        // GET: /Manage/NewReferralSource
+        [HttpGet]
+        public ActionResult NewLeadReferralSource()
+        {
+            return View();
+        }
+
+        // GET: /Manage/NewReferralSource
+        public LeadReferralSource ConvertViewModelToModel(AddLeadReferralSourceViewModel vm)
+        {
+            return new LeadReferralSource()
+            {
+                ReferralSourceName = vm.ReferralSourceName
+            };
+        }
+
+        // POST: /Manage/NewReferralSource
+        [HttpPost]
+        public ActionResult NewLeadReferralSource(AddLeadReferralSourceViewModel model)
+        {
+            var user = User.Identity.GetUserName().ToString();
+            var referralSourceModel = ConvertViewModelToModel(model);
+
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                entities.LeadReferralSources.Add(referralSourceModel);
+                referralSourceModel.InsDate = DateTime.Now;
+                referralSourceModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+                entities.SaveChanges();
+            }
+            return RedirectToAction("Leads");
+        }
+
+        // GET: /Manage/DeleteReferralSource
+        [HttpGet]
+        public ActionResult DeleteReferralSource(int? ReferralSourceId)
+        {
+            if (ReferralSourceId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ethko_dbEntities entities = new ethko_dbEntities();
+            LeadReferralSource referralSources = entities.LeadReferralSources.Where(m => m.ReferralSourceId == ReferralSourceId).Single();
+            return View(referralSources);
+        }
+
+        // GET: /Manage/EditReferralSource
+        [HttpGet]
+        public ActionResult EditLeadReferralSource(int? ReferralSourceId)
+        {
+            if (ReferralSourceId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            LeadReferralSource referralSources = entities.LeadReferralSources.Where(m => m.ReferralSourceId == ReferralSourceId).Single();
+            return View(referralSources);
+        }
+
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         //////////////////////////////////////////////////////////////
         //GLOBAL//////////////////////////////////////////////////////
@@ -893,7 +951,7 @@ namespace ethko.Controllers
 
         // POST: /Manage/EditSave
         [HttpPost]
-        public ActionResult EditSave(int? OfficeId, int? UserTypeId, int? BillingMethodId, int? CaseStageId)
+        public ActionResult EditSave(int? OfficeId, int? UserTypeId, int? BillingMethodId, int? CaseStageId, int? LeadStatusId, int? ReferralSourceId)
         {
             if (OfficeId != null)
             {
@@ -929,6 +987,24 @@ namespace ethko.Controllers
                 caseStages.CaseStageName = newCastStageName;
                 entities.SaveChanges();
                 return RedirectToAction("CaseStages", "Manage");
+            }
+
+            if (LeadStatusId != null)
+            {
+                LeadStatus leadStatuses = entities.LeadStatuses.Find(LeadStatusId);
+                string newLeadStatusName = Request.Form["NewLeadStatus"].ToString();
+                leadStatuses.LeadStatusName = newLeadStatusName;
+                entities.SaveChanges();
+                return RedirectToAction("LeadStatus", "Manage");
+            }
+
+            if (ReferralSourceId != null)
+            {
+                LeadReferralSource leadReferralSources = entities.LeadReferralSources.Find(ReferralSourceId);
+                string newReferralSourceName = Request.Form["NewLeadReferralSource"].ToString();
+                leadReferralSources.ReferralSourceName = newReferralSourceName;
+                entities.SaveChanges();
+                return RedirectToAction("Leads", "Manage");
             }
 
             return RedirectToAction("Index", "Manage");
