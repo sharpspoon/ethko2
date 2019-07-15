@@ -920,7 +920,7 @@ namespace ethko.Controllers
 
         // GET: /Manage/DeleteReferralSource
         [HttpGet]
-        public ActionResult DeleteReferralSource(int? ReferralSourceId)
+        public ActionResult DeleteLeadReferralSource(int? ReferralSourceId)
         {
             if (ReferralSourceId == null)
             {
@@ -1012,9 +1012,9 @@ namespace ethko.Controllers
 
         // POST: /Manage/DeleteConfirmed
         [HttpPost]
-        public ActionResult DeleteConfirmed(int? CaseStageId, int? OfficeId, int? BillingMethodId, int? UserTypeId, int? LeadStatusId)
+        public ActionResult DeleteConfirmed(int? CaseStageId, int? OfficeId, int? BillingMethodId, int? UserTypeId, int? LeadStatusId, int? ReferralSourceId)
         {
-            if (CaseStageId == null && OfficeId == null && BillingMethodId == null && UserTypeId == null && LeadStatusId ==null)
+            if (CaseStageId == null && OfficeId == null && BillingMethodId == null && UserTypeId == null && LeadStatusId ==null && ReferralSourceId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -1069,6 +1069,15 @@ namespace ethko.Controllers
                 return RedirectToAction("LeadStatus", "Manage");
             }
 
+            if (ReferralSourceId != null)
+            {
+                LeadReferralSource leadReferralSources = entities.LeadReferralSources.Find(ReferralSourceId);
+                entities.LeadReferralSources.Remove(leadReferralSources);
+                entities.SaveChanges();
+                Models.DeleteConfirmedViewModel delete = new Models.DeleteConfirmedViewModel();
+                delete.LeadReferralSourceId = ReferralSourceId;
+                return RedirectToAction("Leads", "Manage");
+            }
             return RedirectToAction("Index", "Manage");
         }
 

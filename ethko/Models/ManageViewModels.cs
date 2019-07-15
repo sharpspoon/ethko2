@@ -201,6 +201,9 @@ namespace ethko.Models
 
         [Display(Name = "Lead Status Id")]
         public int? LeadStatusId { get; set; }
+
+        [Display(Name = "Lead Referral Source Id")]
+        public int? LeadReferralSourceId { get; set; }
     }
 
     public class GetFirmUsersViewModel

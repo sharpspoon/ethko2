@@ -1,6 +1,6 @@
-﻿@model ethko.LeadStatus
+﻿@model ethko.LeadReferralSource
 @{
-    ViewBag.Title = "Delete Lead Status";
+    ViewBag.Title = "Delete Lead Referral Source";
 }
 
 
@@ -54,20 +54,20 @@
             <div class="col-md-12" align="left">
                 <br />
                 <br />
-                <h1>Delete Lead Status</h1>
-                @using (Html.BeginForm("DeleteConfirmed", "Manage", new { @class = "form-horizontal", role = "form", LeadStatusId = Model.LeadStatusId }))
+                <h1>Delete Lead Referral Source</h1>
+                @using (Html.BeginForm("DeleteConfirmed", "Manage", new { @class = "form-horizontal", role = "form", ReferralSourceId = Model.ReferralSourceId }))
                 {
                     <font color="red">
-                        <h3>Really DELETE this Lead Status?  This action is irreversible!</h3>
+                        <h3>Really DELETE this Referral Source?  This action is irreversible!</h3>
                     </font>
                     <br />
-                    <h3>Lead Status: @Html.DisplayFor(m => m.LeadStatusName)</h3>
+                    <h3>Lead Referral Source: @Html.DisplayFor(m => m.ReferralSourceName)</h3>
                     <br />
                     <br />
                     <br />
                     <br />
                     @Html.AntiForgeryToken()
-                    <a class="btn btn-default" href='@Url.Action("LeadStatus", "Manage")'>Cancel</a>@Html.Raw("   ")<input type="submit" name="DeleteButton" value="Delete" class="btn btn-danger" />
+                    <a class="btn btn-default" href='@Url.Action("Leads", "Manage")'>Cancel</a>@Html.Raw("   ")<input type="submit" name="DeleteButton" value="Delete" class="btn btn-danger" />
                 }
             </div>
         </dd>
