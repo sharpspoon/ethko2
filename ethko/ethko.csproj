@@ -557,6 +557,10 @@
     <Content Include="Views\Manage\EditBillingMethod.cshtml" />
     <Content Include="Views\Manage\EditCaseStage.cshtml" />
     <Content Include="Views\Manage\_EditCaseStage.cshtml" />
+    <Content Include="Views\Manage\_AddLeadStatus.cshtml" />
+    <Content Include="Views\Manage\_AddLeadReferralSource.cshtml" />
+    <Content Include="Views\Manage\NewLeadStatus.cshtml" />
+    <Content Include="Views\Manage\NewLeadReferralSource.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

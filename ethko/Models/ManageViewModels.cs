@@ -156,6 +156,20 @@ namespace ethko.Models
         public string BillingMethodName { get; set; }
     }
 
+    public class AddLeadStatusViewModel
+    {
+        [Required]
+        [Display(Name = "Lead Status")]
+        public string LeadStatusName { get; set; }
+    }
+
+    public class AddLeadReferralSourceViewModel
+    {
+        [Required]
+        [Display(Name = "Referral Source")]
+        public string ReferralSourceName { get; set; }
+    }
+
     public class GetClientBillingViewModel
     {
         [Display(Name = "Billing Method Name")]

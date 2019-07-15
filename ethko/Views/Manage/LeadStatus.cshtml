@@ -53,7 +53,7 @@
                 <a class="btn btn-primary" href='@Url.Action("LeadStatus", "Manage")'>Statuses</a>
                 <h2>
                     Lead Settings
-                    <a class="btn btn-success" href='@Url.Action("NewOffice", "Manage")' style="float: right">+ Add Status</a>
+                    <a class="btn btn-success" href='@Url.Action("NewLeadStatus", "Manage")' style="float: right">+ Add Status</a>
                 </h2>
                 <table id="myTable" class="table table-hover">
                     <thead>
@@ -78,8 +78,8 @@
                                         by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.FstUser)</a>
                                     </td>
                                     <td>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href='@Url.Action("EditPracticeArea", "Cases", new { LeadStatusId = item.LeadStatusId })'>Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                        &nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href='@Url.Action("DeleteOffice", "Manage", new { LeadStatusId = item.LeadStatusId })'>Delete</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href='@Url.Action("EditLeadStatus", "Manage", new { LeadStatusId = item.LeadStatusId })'>Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href='@Url.Action("DeleteLeadStatus", "Manage", new { LeadStatusId = item.LeadStatusId })'>Delete</a>&nbsp;&nbsp;&nbsp;&nbsp;
                                     </td>
                                 </tr>
                             }
@@ -99,3 +99,44 @@
         </dd>
     </dl>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/app")
+    <script>
+        $(document).ready(function () {
+            $('#myTable').dataTable();
+        });
+    </script>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <style>
+
+        .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+            background-color: #c4c4c4;
+        }
+    </style>
+
+
+    <script>
+        function filterText() {
+            var rex = new RegExp($('#filterText').val());
+            if (rex == "/all/") { clearFilter() } else {
+                $('.content').hide();
+                $('.content').filter(function () {
+                    return rex.test($(this).text());
+                }).show();
+            }
+        }
+
+        function clearFilter() {
+            $('.filterText').val('');
+            $('.content').show();
+        }
+    </script>
+}

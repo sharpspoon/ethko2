@@ -827,6 +827,64 @@ namespace ethko.Controllers
             }
         }
 
+        // GET: /Manage/NewLeadStatus
+        [HttpGet]
+        public ActionResult NewLeadStatus()
+        {
+            return View();
+        }
+
+        // GET: /Manage/NewLeadStatus
+        public LeadStatus ConvertViewModelToModel(AddLeadStatusViewModel vm)
+        {
+            return new LeadStatus()
+            {
+                LeadStatusName = vm.LeadStatusName
+            };
+        }
+
+        // POST: /Manage/NewLeadStatus
+        [HttpPost]
+        public ActionResult NewLeadStatus(AddLeadStatusViewModel model)
+        {
+            var user = User.Identity.GetUserName().ToString();
+            var leadStatusModel = ConvertViewModelToModel(model);
+
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                entities.LeadStatuses.Add(leadStatusModel);
+                leadStatusModel.InsDate = DateTime.Now;
+                leadStatusModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+                entities.SaveChanges();
+            }
+            return RedirectToAction("LeadStatus");
+        }
+
+        // GET: /Manage/DeleteLeadStatus
+        [HttpGet]
+        public ActionResult DeleteLeadStatus(int? LeadStatusId)
+        {
+            if (LeadStatusId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ethko_dbEntities entities = new ethko_dbEntities();
+            LeadStatus leadStatuses = entities.LeadStatuses.Where(m => m.LeadStatusId == LeadStatusId).Single();
+            return View(leadStatuses);
+        }
+
+        // GET: /Manage/EditLeadStatus
+        [HttpGet]
+        public ActionResult EditLeadStatus(int? LeadStatusId)
+        {
+            if (LeadStatusId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            LeadStatus leadStatuses = entities.LeadStatuses.Where(m => m.LeadStatusId == LeadStatusId).Single();
+            return View(leadStatuses);
+        }
+
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         //////////////////////////////////////////////////////////////
         //GLOBAL//////////////////////////////////////////////////////

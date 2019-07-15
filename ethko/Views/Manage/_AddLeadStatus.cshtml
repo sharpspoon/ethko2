@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ethko.Models.GetLeadReferralSourcesViewModel>
+﻿@model ethko.Models.AddLeadStatusViewModel
 
 
 <h2>Settings & Preferences</h2>
@@ -49,52 +49,30 @@
         </dt>
         <dd>
             <div class="col-md-12" align="left">
-                <a class="btn btn-primary" href='@Url.Action("Leads", "Manage")'>Referral Sources</a>&nbsp;
-                <a class="btn btn-default" href='@Url.Action("LeadStatus", "Manage")'>Statuses</a>
                 <h2>
-                    Lead Settings
-                    <a class="btn btn-success" href='@Url.Action("NewOffice", "Manage")' style="float: right">+ Add Referral Source</a>
+                    Add Lead Status
                 </h2>
-                <table id="myTable" class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Referral Source</th>
-                            <th>Added</th>
-                            <th>Edit / Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @if (Model != null)
+                <p>
+                    <div class="col-md-12">
+                        @using (Html.BeginForm("NewLeadStatus", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                         {
-                            foreach (var item in Model)
-                            {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary("", new { @class = "text-danger" })
 
-                                <tr>
-                                    <td>
-                                        <a href='@Url.Action("ViewContact", "Contacts", new { ReferralSourceId = item.ReferralSourceId})'>@Html.DisplayFor(modelItem => item.ReferralSourceName)</a>
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.InsDate)
-                                        by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.FstUser)</a>
-                                    </td>
-                                    <td>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href='@Url.Action("EditPracticeArea", "Cases", new { ReferralSourceId = item.ReferralSourceId })'>Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                        &nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href='@Url.Action("DeleteOffice", "Manage", new { ReferralSourceId = item.ReferralSourceId })'>Delete</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                    </td>
-                                </tr>
-                            }
+                            <div class="form-group">
+                                <div class="col-md-4" align="left">
+                                    @Html.TextBoxFor(m => m.LeadStatusName, new { @class = "form-control", placeholder = "Lead Status Name" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <a class="btn btn-default" href='@Url.Action("Leads", "Manage")'>Cancel</a>
+                                    <input type="submit" class="btn btn-success" value="Save Status" />
+                                </div>
+                            </div>
                         }
-                        @if (Model == null)
-                        {
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        }
-
-                    </tbody>
-                </table>
+                    </div>
+                </p>
             </div>
         </dd>
     </dl>
