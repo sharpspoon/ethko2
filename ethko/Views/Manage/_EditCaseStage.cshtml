@@ -1,6 +1,6 @@
-﻿@model ethko.BillingMethod
+﻿@model ethko.CaseStage
 @{
-    ViewBag.Title = "Delete Billing Method";
+    ViewBag.Title = "Edit Case Stage";
 }
 
 
@@ -30,7 +30,7 @@
             <a class="btn btn-default" href='@Url.Action("FirmSettings", "Manage")'>Firm Settings</a>
             <br />
             <br />
-            <a class="btn btn-primary" href='@Url.Action("ClientBilling", "Manage")'>Client Billing</a>
+            <a class="btn btn-default" href='@Url.Action("ClientBilling", "Manage")'>Client Billing</a>
             <br />
             <br />
             <a class="btn btn-default" href='@Url.Action("ImportExport", "Manage")'>Import/Export</a>
@@ -45,7 +45,7 @@
             <a class="btn btn-default" href='@Url.Action("Workflows", "Manage")'>Workflows</a>
             <br />
             <br />
-            <a class="btn btn-default" href='@Url.Action("CaseStages", "Manage")'>Case Stages</a>
+            <a class="btn btn-primary" href='@Url.Action("CaseStages", "Manage")'>Case Stages</a>
             <br />
             <br />
             <a class="btn btn-default" href='@Url.Action("Leads", "Manage")'>Leads</a>
@@ -54,20 +54,17 @@
             <div class="col-md-12" align="left">
                 <br />
                 <br />
-                <h1>Delete Billing Method</h1>
-                @using (Html.BeginForm("DeleteConfirmed", "Manage", new { @class = "form-horizontal", role = "form", BillingMethodId = Model.BillingMethodId }))
+                <h1>Edit Case Stage</h1>
+                @using (Html.BeginForm("EditSave", "Manage", new { @class = "form-horizontal", role = "form", CaseStageId = Model.CaseStageId }))
                 {
-                    <font color="red">
-                        <h3>Really DELETE this Billing Method?  This action is irreversible!</h3>
-                    </font>
                     <br />
-                    <h3>Billing Method: @Html.DisplayFor(m => m.BillingMethodName)</h3>
+                    <h3>Case Stage: <input name="NewCaseStage" type="text" placeholder=@Html.DisplayTextFor(m => m.CaseStageName)></h3>
                     <br />
                     <br />
                     <br />
                     <br />
                     @Html.AntiForgeryToken()
-                    <a class="btn btn-default" href='@Url.Action("ClientBilling", "Manage")'>Cancel</a>@Html.Raw("   ")<input type="submit" name="DeleteButton" value="Delete" class="btn btn-danger" />
+                    <a class="btn btn-default" href='@Url.Action("CaseStages", "Manage")'>Cancel</a>@Html.Raw("   ")<input type="submit" name="SaveButton" value="Save" class="btn btn-success" />
                 }
             </div>
         </dd>
@@ -84,3 +81,4 @@
     <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 }
+

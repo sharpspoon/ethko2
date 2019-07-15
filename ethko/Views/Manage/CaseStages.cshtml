@@ -73,7 +73,7 @@
                                     by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.UserId)</a>
                                 </td>
                                 <td>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href='@Url.Action("EditPracticeArea", "Cases", new { CaseStageId = item.CaseStageId })'>Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href='@Url.Action("EditCaseStage", "Manage", new { CaseStageId = item.CaseStageId })'>Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
                                     &nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href='@Url.Action("DeleteCaseStage", "Manage", new { CaseStageId = item.CaseStageId })'>Delete</a>&nbsp;&nbsp;&nbsp;&nbsp;
                                 </td>
                             </tr>

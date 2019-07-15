@@ -772,8 +772,8 @@ namespace ethko.Controllers
             return RedirectToAction("CaseStages");
         }
 
-        // POST: /Manage/DeleteCaseStage
-        [HttpPost]
+        // GET: /Manage/DeleteCaseStage
+        [HttpGet]
         public ActionResult DeleteCaseStage(int? CaseStageId)
         {
             if (CaseStageId == null)
@@ -781,6 +781,18 @@ namespace ethko.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ethko_dbEntities entities = new ethko_dbEntities();
+            CaseStage caseStages = entities.CaseStages.Where(m => m.CaseStageId == CaseStageId).Single();
+            return View(caseStages);
+        }
+
+        // GET: /Manage/EditCaseStage
+        [HttpGet]
+        public ActionResult EditCaseStage(int? CaseStageId)
+        {
+            if (CaseStageId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             CaseStage caseStages = entities.CaseStages.Where(m => m.CaseStageId == CaseStageId).Single();
             return View(caseStages);
         }
@@ -823,7 +835,7 @@ namespace ethko.Controllers
 
         // POST: /Manage/EditSave
         [HttpPost]
-        public ActionResult EditSave(int? OfficeId, int? UserTypeId, int? BillingMethodId)
+        public ActionResult EditSave(int? OfficeId, int? UserTypeId, int? BillingMethodId, int? CaseStageId)
         {
             if (OfficeId != null)
             {
@@ -850,6 +862,15 @@ namespace ethko.Controllers
                 billingMethods.BillingMethodName = newBillingMethodName;
                 entities.SaveChanges();
                 return RedirectToAction("ClientBilling", "Manage");
+            }
+
+            if (CaseStageId != null)
+            {
+                CaseStage caseStages = entities.CaseStages.Find(CaseStageId);
+                string newCastStageName = Request.Form["NewCaseStage"].ToString();
+                caseStages.CaseStageName = newCastStageName;
+                entities.SaveChanges();
+                return RedirectToAction("CaseStages", "Manage");
             }
 
             return RedirectToAction("Index", "Manage");
