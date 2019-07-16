@@ -71,7 +71,7 @@
             </div>
             <div class="row setup-content" id="step-1">
                 <div class="col-xs-12">
-                    <div class="col-md-12 well text-center">
+                    <div class="col-md-12 well">
                         <div class="form-group">
                             <div class="col-md-7" align="left">
                                 @ViewBag.Message
@@ -93,7 +93,7 @@
                                 </table>
                             </div>
                         </div>
-                        <button id="activate-step-2" class="btn btn-primary btn-sm">Continue to Case Details</button>
+                        <button id="activate-step-2" class="btn btn-success btn-sm">Continue to Case Details</button>
                     </div>
                 </div>
             </div>
@@ -192,7 +192,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button id="activate-step-3" class="btn btn-primary btn-sm">Continue to Billing</button>
+                        <button id="activate-step-3" class="btn btn-success btn-sm">Continue to Billing</button>
                     </div>
                 </div>
             </div>
@@ -219,13 +219,8 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <a class="btn btn-default" href='@Url.Action("Index", "Cases")'>Cancel</a>
-                                <input type="submit" class="btn btn-success" value="Save Case" />
-                            </div>
-                        </div>
-                        <button id="activate-step-4" class="btn btn-primary btn-sm">Continue to Staff</button>
+
+                        <button id="activate-step-4" class="btn btn-success btn-sm">Continue to Staff</button>
                     </div>
                 </div>
             </div>
@@ -241,6 +236,7 @@
                                 Choosing a billing contact allows you to batch bill this case.
                             </div>
                         </div>
+                        <input type="submit" class="btn btn-success" value="Save Case" />
                     </div>
                 </div>
             </div>
