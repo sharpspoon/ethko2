@@ -339,6 +339,7 @@
     <Content Include="Content\img\283592_Tax_Changes_Dollar_R_purple.png" />
     <Content Include="Content\img\283598_Tax_Payer_Dollar_R_blue.png" />
     <Content Include="Content\img\283598_Tax_Payer_Dollar_R_purple.png" />
+    <Content Include="Content\img\icons\trash.svg" />
     <Content Include="Content\img\jumbotron.jpg" />
     <Content Include="Content\img\login_banner.jpg" />
     <Content Include="Content\img\question_mark.svg" />

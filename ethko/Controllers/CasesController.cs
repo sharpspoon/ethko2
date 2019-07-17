@@ -118,7 +118,13 @@ namespace ethko.Controllers
                              {
                                  label = c.FName + " " + c.LName,
                                  val = c.ContactId
-                             }).ToList();
+                             }).Concat(from co in entities.Companies
+                                       where (co.Name.Contains(prefix) || co.Address.Contains(prefix))
+                                       select new
+                                       {
+                                           label = co.Name,
+                                           val = co.CompanyId
+                                       }).ToList();
 
             return Json(contacts);
         }

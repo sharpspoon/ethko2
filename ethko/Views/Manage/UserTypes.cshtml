@@ -2,7 +2,32 @@
 
 
 <h2>Settings & Preferences</h2>
+<head>
+    <style>
 
+        .delete svg{
+            fill: black;
+            transition: 1s;
+            pointer-events: fill;
+        }
+            .delete svg:hover {
+                fill: red;
+                transform: scale(1.5);
+                pointer-events: fill;
+            }
+        .edit svg {
+            fill: black;
+            transition: 1s;
+            pointer-events: fill;
+        }
+
+            .edit svg:hover {
+                fill: blue;
+                transform: scale(1.5);
+                pointer-events: fill;
+            }
+    </style>
+</head>
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
     <h4>Select a sub category from the menu on the left</h4>
@@ -60,7 +85,8 @@
                         <tr>
                             <th>User Type</th>
                             <th>Added</th>
-                            <th>Edit / Delete</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -68,25 +94,44 @@
                         {
                             foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>
-                                        <a href='@Url.Action("EditUserType", "Manage", new { UserTypeId = item.UserTypeId})'>@Html.DisplayFor(modelItem => item.UserTypeName)</a>
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.InsDate)
-                                    </td>
-                                    <td>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href='@Url.Action("EditUserType", "Manage", new { UserTypeId = item.UserTypeId })'>Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                        &nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href='@Url.Action("DeleteUserType", "Manage", new { UserTypeId = item.UserTypeId })'>Delete</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                    </td>
-                                </tr>
+                        <tr>
+                            <td>
+                                <a href='@Url.Action("EditUserType", "Manage", new { UserTypeId = item.UserTypeId})'>@Html.DisplayFor(modelItem => item.UserTypeName)</a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.InsDate)
+                            </td>
+                            <td>
+                                <div class="edit">
+                                    <a href='@Url.Action("EditUserType", "Manage", new { UserTypeId = item.UserTypeId })'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 8 8">
+                                            <title>Edit</title>
+                                            <path d="M6 0l-1 1 2 2 1-1-2-2zm-2 2l-4 4v2h2l4-4-2-2z" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="delete">
+                                    <a href='@Url.Action("DeleteUserType", "Manage", new { UserTypeId = item.UserTypeId })'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 8 8">
+                                            <title>Delete</title>
+                                            <path d="M3 0c-.55 0-1 .45-1 1h-1c-.55 0-1 .45-1 1h7c0-.55-.45-1-1-1h-1c0-.55-.45-1-1-1h-1zm-2 3v4.81c0 .11.08.19.19.19h4.63c.11 0 .19-.08.19-.19v-4.81h-1v3.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5v-3.5h-1v3.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5v-3.5h-1z" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
                             }
                         }
                         @if (Model == null)
                         {
-                            <tr>
-                                <td></td>
-                            </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
                         }
 
                     </tbody>
