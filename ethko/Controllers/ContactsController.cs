@@ -267,7 +267,7 @@ namespace ethko.Controllers
                 var companies = from c in entities.Companies
                                join u in entities.AspNetUsers on c.FstUser equals u.Id
                                where c.Archived == 0
-                               select new GetCompanyListViewModel() { CompanyId = c.CompanyId.ToString(),  Email = c.Email, FstUser = u.UserName, InsDate = c.InsDate.ToString() };
+                               select new GetCompanyListViewModel() { CompanyId = c.CompanyId.ToString(),  Email = c.Email, FstUser = u.UserName, InsDate = c.InsDate.ToString(), Name = c.Name };
                 return View(companies.ToList());
             }
         }

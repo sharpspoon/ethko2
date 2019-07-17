@@ -168,6 +168,8 @@ namespace ethko.Models
         public string InsDate { get; set; }
         [Display(Name = "UserId")]
         public string FstUser { get; set; }
+        [Display(Name = "Name")]
+        public string Name { get; set; }
     }
 
     [Table("ContactGroups")]
