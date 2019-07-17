@@ -345,6 +345,7 @@
     <Content Include="Content\img\question_mark.svg" />
     <Content Include="Content\img\register_banner.jpg" />
     <Content Include="Content\img\SAP_R_grad.png" />
+    <Content Include="Content\svg.css" />
     <Content Include="Content\Site.css" />
     <Content Include="ethko.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
