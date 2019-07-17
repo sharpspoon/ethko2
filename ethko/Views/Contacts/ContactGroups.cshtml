@@ -46,24 +46,40 @@
                     {
                         foreach (var item in Model)
                         {
-                            <tr>
-                                <td>
-                                    <a href='@Url.Action("ContactGroups", "Contacts", new { ContactId = item.ContactGroupId})'>@Html.DisplayFor(modelItem => item.ContactGroupName)</a>
-                                </td>
-                                <td>
-                                    2
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.InsDate)
-                                    by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.FstUser)</a>
+                    <tr>
+                        <td>
+                            <a href='@Url.Action("ContactGroups", "Contacts", new { ContactGroupId = item.ContactGroupId})'>@Html.DisplayFor(modelItem => item.ContactGroupName)</a>
+                        </td>
+                        <td>
+                            2
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InsDate)
+                            by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.FstUser)</a>
 
 
-                                </td>
-                                <td>
-                                    <a class="btn btn-primary" href="#individual" rel="modal:open" style="float: right">Edit Group</a>
-
-                                </td>
-                            </tr>
+                        </td>
+                        <td>
+                            <div class="edit">
+                                <a href='@Url.Action("EditCaseStage", "Manage", new { ContactGroupId = item.ContactGroupId })'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 8 8">
+                                        <title>Edit</title>
+                                        <path d="M6 0l-1 1 2 2 1-1-2-2zm-2 2l-4 4v2h2l4-4-2-2z" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="delete">
+                                <a href='@Url.Action("DeleteCaseStage", "Manage", new { ContactGroupId = item.ContactGroupId })'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 8 8">
+                                        <title>Delete</title>
+                                        <path d="M3 0c-.55 0-1 .45-1 1h-1c-.55 0-1 .45-1 1h7c0-.55-.45-1-1-1h-1c0-.55-.45-1-1-1h-1zm-2 3v4.81c0 .11.08.19.19.19h4.63c.11 0 .19-.08.19-.19v-4.81h-1v3.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5v-3.5h-1v3.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5v-3.5h-1z" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
                         }
                     }
                 </tbody>

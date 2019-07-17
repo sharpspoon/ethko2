@@ -5,7 +5,7 @@
 }
 
     .delete svg:hover {
-        fill: red;
+        fill: #d9534f;
         transform: scale(1.5);
         pointer-events: fill;
     }
@@ -17,7 +17,7 @@
 }
 
     .edit svg:hover {
-        fill: blue;
+        fill: #428bca;
         transform: scale(1.5);
         pointer-events: fill;
     }
