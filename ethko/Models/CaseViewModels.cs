@@ -80,4 +80,10 @@ namespace ethko.Models
         [Display(Name = "InsDate")]
         public string InsDate { get; set; }
     }
+
+    public class DeleteConfirmedCaseViewModel
+    {
+        [Display(Name = "Practice Area Id")]
+        public int? PracticeAreaId { get; set; }
+    }
 }

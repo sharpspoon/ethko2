@@ -79,7 +79,9 @@ namespace ethko.Controllers
             PracticeArea practiceAreas = entities.PracticeAreas.Find(PracticeAreaId);
             entities.PracticeAreas.Remove(practiceAreas);
             entities.SaveChanges();
-            return View();
+            DeleteConfirmedCaseViewModel delete = new DeleteConfirmedCaseViewModel();
+            delete.PracticeAreaId = PracticeAreaId;
+            return RedirectToAction("PracticeAreas", "Cases");
         }
 
         public PracticeArea ConvertViewModelToModel(AddPracticeAreaViewModel vm)
