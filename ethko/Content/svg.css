@@ -1,6 +1,6 @@
 ﻿.delete svg {
     fill: black;
-    transition: .15s;
+    transition: .1s;
     pointer-events: fill;
 }
 
@@ -12,12 +12,24 @@
 
 .edit svg {
     fill: black;
-    transition: .15s;
+    transition: .1s;
     pointer-events: fill;
 }
 
     .edit svg:hover {
         fill: #428bca;
         transform: scale(1.5);
+        pointer-events: fill;
+    }
+
+.home svg {
+    fill: black;
+    transition: .1s;
+    pointer-events: fill;
+}
+
+    .home svg:hover {
+        fill: #5cb85c;
+        transform: scale(1.15);
         pointer-events: fill;
     }
