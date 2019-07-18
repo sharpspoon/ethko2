@@ -15,7 +15,9 @@
     @ViewBag.Title
     <a class="btn btn-success" href='@Url.Action("New", "Contacts")' style="float: right">+ Add Contact</a>
 </h2>
-
+<head>
+    <link rel="stylesheet" href="~/Content/svg.css">
+</head>
 
 
 
@@ -61,53 +63,53 @@
                     {
                         foreach (var item in Model)
                         {
-                            <tr>
-                                <td>
-                                    <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.ContactId})'>@Html.DisplayFor(modelItem => item.FName)</a>
-                                </td>
-                                <td>
-                                    <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.ContactId})'>@Html.DisplayFor(modelItem => item.LName)</a>
+                    <tr>
+                        <td>
+                            <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.ContactId})'>@Html.DisplayFor(modelItem => item.FName)</a>
+                        </td>
+                        <td>
+                            <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.ContactId})'>@Html.DisplayFor(modelItem => item.LName)</a>
 
-                                </td>
-                                <td>
-                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.ContactGroupList)</a>
+                        </td>
+                        <td>
+                            <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.ContactGroupList)</a>
 
-                                </td>
-                                <td>
-                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
+                        </td>
+                        <td>
+                            <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
 
-                                </td>
-                                <td>
-                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
+                        </td>
+                        <td>
+                            <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
 
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.InsDate)
-                                    by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.UserId)</a>
-                                </td>
-                                <td>
-                                    <a class="btn btn-primary" href='@Url.Action("EditContact", "Contacts", new { ContactId = item.ContactId })' rel="modal:open" style="float: right">Edit Contact</a>
-                                </td>
-                            </tr>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InsDate)
+                            by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.UserId)</a>
+                        </td>
+                        <td>
+                            <div class="edit">
+                                <a href='@Url.Action("EditContact", "Contacts", new { ContactId = item.ContactId })'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 8 8">
+                                        <title>Edit</title>
+                                        <path d="M6 0l-1 1 2 2 1-1-2-2zm-2 2l-4 4v2h2l4-4-2-2z" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
                         }
                     }
                     @if (Model == null)
                     {
                             <tr>
-                                <td>
-                                </td>
-                                <td>
-                                </td>
-                                <td>
-                                </td>
-                                <td>
-                                </td>
-                                <td>
-                                </td>
-                                <td>
-                                </td>
-                                <td>
-                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                     }
 

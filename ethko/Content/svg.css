@@ -1,6 +1,6 @@
 ﻿.delete svg {
     fill: black;
-    transition: .25s;
+    transition: .15s;
     pointer-events: fill;
 }
 
@@ -12,7 +12,7 @@
 
 .edit svg {
     fill: black;
-    transition: .25s;
+    transition: .15s;
     pointer-events: fill;
 }
 

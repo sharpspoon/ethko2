@@ -14,7 +14,9 @@
     <a class="btn btn-success" href='@Url.Action("NewGroup", "Contacts")' rel="modal:open" style="float: right">+ Add Contact Group</a>
 </h2>
 
-
+<head>
+    <link rel="stylesheet" href="~/Content/svg.css">
+</head>
 
 
 @using (Html.BeginForm("ContactGroups", "Contacts", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
@@ -39,6 +41,7 @@
                         <th>Contacts</th>
                         <th>Added</th>
                         <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
