@@ -270,4 +270,10 @@ namespace ethko.Models
         [Display(Name = "contactGroupList")]
         public string ContactGroupList { get; set; }
     }
+
+    public class EditConfirmedContactViewModel
+    {
+        [Display(Name = "Contact Group Id")]
+        public int? ContactGroupId { get; set; }
+    }
 }

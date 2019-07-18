@@ -328,5 +328,39 @@ namespace ethko.Controllers
                 return View(contactGroups.ToList());
             }
         }
+
+        // GET: /Contacts/EditContactGroup
+        [HttpGet]
+        public ActionResult EditContactGroup(int? ContactGroupId)
+        {
+            if (ContactGroupId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ContactGroup contactGroups = entities.ContactGroups.Where(m => m.ContactGroupId == ContactGroupId).Single();
+            return View(contactGroups);
+        }
+
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //////////////////////////////////////////////////////////////
+        //GLOBAL//////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        // POST: /Contacts/EditSave
+        [HttpPost]
+        public ActionResult EditSave(int? ContactGroupId)
+        {
+            if (ContactGroupId != null)
+            {
+                ContactGroup contactGroups = entities.ContactGroups.Find(ContactGroupId);
+                string newContactGroupName = Request.Form["NewContactGroup"].ToString();
+                contactGroups.ContactGroupName = newContactGroupName;
+                entities.SaveChanges();
+                return RedirectToAction("ContactGroups", "Contacts");
+            }
+
+            return RedirectToAction("Index", "Contacts");
+        }
     }
 }
