@@ -3326,13 +3326,11 @@
     <Content Include="NotReferenced\open-iconic-master\webp\zoom-out-6x.webp" />
     <Content Include="NotReferenced\open-iconic-master\webp\zoom-out-8x.webp" />
     <Content Include="NotReferenced\open-iconic-master\webp\zoom-out.webp" />
-    <None Include="Scripts\jquery-3.4.0.intellisense.js" />
-    <Content Include="Scripts\jquery-3.4.0.js" />
-    <Content Include="Scripts\jquery-3.4.0.min.js" />
-    <Content Include="Scripts\jquery-3.4.0.slim.js" />
-    <Content Include="Scripts\jquery-3.4.0.slim.min.js" />
-    <Content Include="Scripts\knockout-3.4.2.debug.js" />
-    <Content Include="Scripts\knockout-3.4.2.js" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="Scripts\knockout.validation.js" />
     <Content Include="Scripts\knockout.validation.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
@@ -3536,8 +3534,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.4.0.slim.min.map" />
-    <Content Include="Scripts\jquery-3.4.0.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
