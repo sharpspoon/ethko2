@@ -184,6 +184,8 @@ namespace ethko.Models
         public string InsDate { get; set; }
         [Display(Name = "UserId")]
         public string FstUser { get; set; }
+        [Display(Name = "ContactCount")]
+        public int ContactCount { get; set; }
     }
 
     public class GetIndividualContactViewModel
