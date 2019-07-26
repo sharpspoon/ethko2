@@ -3504,6 +3504,8 @@
     <Content Include="Views\Manage\_DeleteLeadReferralSource.cshtml" />
     <Content Include="Views\Contacts\_EditContactGroup.cshtml" />
     <Content Include="Views\Contacts\EditContactGroup.cshtml" />
+    <Content Include="Views\Contacts\_DeleteGroup.cshtml" />
+    <Content Include="Views\Contacts\DeleteGroup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -175,18 +175,18 @@ namespace ethko.Controllers
             return View(contacts);
         }
 
-        //[HttpPost]
-        public ActionResult DeleteConfirmed(int? ContactId)
-        {
-            if (ContactId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Contact contacts = entities.Contacts.Find(ContactId);//works if hardcode in the contactid
-            entities.Contacts.Remove(contacts);
-            entities.SaveChanges();
-            return View();
-        }
+        ////[HttpPost]
+        //public ActionResult DeleteConfirmed(int? ContactId)
+        //{
+        //    if (ContactId == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Contact contacts = entities.Contacts.Find(ContactId);//works if hardcode in the contactid
+        //    entities.Contacts.Remove(contacts);
+        //    entities.SaveChanges();
+        //    return View();
+        //}
 
         //Archive Specific Contact
         [HttpGet]
@@ -275,7 +275,6 @@ namespace ethko.Controllers
         //View Archive List
         public ActionResult CompaniesArchive()
         {
-            ethko_dbEntities entities = new ethko_dbEntities();
             IEnumerable<Company> companies = entities.Companies.Where(m => m.Archived == 1).ToList();
             //var contactModel = ConvertViewModelToModel(contacts);
             return View(companies.AsEnumerable());
@@ -341,6 +340,18 @@ namespace ethko.Controllers
             return View(contactGroups);
         }
 
+        // GET: /Contacts/DeleteGroup
+        [HttpGet]
+        public ActionResult DeleteGroup(int? ContactGroupId)
+        {
+            if (ContactGroupId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ContactGroup contactGroups = entities.ContactGroups.Where(m => m.ContactGroupId == ContactGroupId).Single();
+            return View(contactGroups);
+        }
+
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         //////////////////////////////////////////////////////////////
         //GLOBAL//////////////////////////////////////////////////////
@@ -360,6 +371,27 @@ namespace ethko.Controllers
                 return RedirectToAction("ContactGroups", "Contacts");
             }
 
+            return RedirectToAction("Index", "Contacts");
+        }
+
+        // POST: /Contacts/DeleteConfirmed
+        [HttpPost]
+        public ActionResult DeleteConfirmed(int? ContactGroupId)
+        {
+            if (ContactGroupId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            if (ContactGroupId != null)
+            {
+                ContactGroup contactGroups = entities.ContactGroups.Find(ContactGroupId);
+                entities.ContactGroups.Remove(contactGroups);
+                entities.SaveChanges();
+                Models.DeleteConfirmedContactViewModel delete = new DeleteConfirmedContactViewModel();
+                delete.ContactGroupId = ContactGroupId;
+                return RedirectToAction("ContactGroups", "Contacts");
+            }
             return RedirectToAction("Index", "Contacts");
         }
     }

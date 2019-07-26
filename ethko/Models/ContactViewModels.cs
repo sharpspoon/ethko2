@@ -276,4 +276,10 @@ namespace ethko.Models
         [Display(Name = "Contact Group Id")]
         public int? ContactGroupId { get; set; }
     }
+
+    public class DeleteConfirmedContactViewModel
+    {
+        [Display(Name = "Contact Group Id")]
+        public int? ContactGroupId { get; set; }
+    }
 }

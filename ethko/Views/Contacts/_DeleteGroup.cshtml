@@ -1,0 +1,25 @@
+﻿@model ethko.ContactGroup
+@{
+    ViewBag.Title = "Delete Contact Group";
+}
+
+<br />
+<a class="btn btn-default" href='@Url.Action("Index", "Contacts")'>Contacts</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("Companies", "Contacts")'>Companies</a>&nbsp;
+<a class="btn btn-primary" href='@Url.Action("ContactGroups", "Contacts")'>Contact Groups</a>&nbsp;
+<br />
+<h1>Delete Contact Group</h1>
+@using (Html.BeginForm("DeleteConfirmed", "Contacts", new { @class = "form-horizontal", role = "form", ContactGroupId = Model.ContactGroupId }))
+{
+    <font color="red">
+        <h3>Really DELETE this Contact Group?  This action is irreversible!</h3>
+    </font>
+    <br />
+    <h3>Contact Group: @Html.DisplayFor(m => m.ContactGroupName)</h3>
+    <br />
+    <br />
+    <br />
+    <br />
+    @Html.AntiForgeryToken()
+    <a class="btn btn-default" href='@Url.Action("ContactGroups", "Contacts")'>Cancel</a>@Html.Raw("   ")<input type="submit" name="DeleteButton" value="Delete" class="btn btn-danger" />
+}
