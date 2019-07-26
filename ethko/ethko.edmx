@@ -100,7 +100,7 @@
           <Property Name="BillingMethodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BillingMethodName" Type="varchar(max)" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="InsDate" Type="datetime" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="Cases">
@@ -115,10 +115,10 @@
           <Property Name="BillingMethodId" Type="int" Nullable="false" />
           <Property Name="OfficeId" Type="int" Nullable="false" />
           <Property Name="CaseStageId" Type="int" Nullable="false" />
-          <Property Name="DateOpened" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="DateOpened" Type="datetime" Nullable="false" />
           <Property Name="Description" Type="varchar(max)" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="InsDate" Type="datetime" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="CaseStages">
@@ -128,7 +128,7 @@
           <Property Name="CaseStageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CaseStageName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="InsDate" Type="datetime" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="Companies">
@@ -158,7 +158,7 @@
           </Key>
           <Property Name="ContactGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ContactGroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="InsDate" Type="datetime" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="Contacts">
@@ -167,7 +167,7 @@
           </Key>
           <Property Name="ContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="InsDate" Type="datetime" Nullable="false" />
           <Property Name="FName" Type="varchar(max)" Nullable="false" />
           <Property Name="LName" Type="varchar(max)" Nullable="false" />
           <Property Name="MName" Type="varchar(max)" />
@@ -222,7 +222,7 @@
           <Property Name="OfficeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OfficeName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="InsDate" Type="datetime" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="PracticeAreas">
@@ -232,7 +232,7 @@
           <Property Name="PracticeAreaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PracticeAreaName" Type="varchar(max)" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="InsDate" Type="datetime" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="UserTypes">
@@ -271,6 +271,66 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             </Principal>
             <Dependent Role="AspNetUsers">
               <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToBillingMethods">
+          <End Role="BillingMethods" Type="Self.BillingMethods" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Cases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BillingMethods">
+              <PropertyRef Name="BillingMethodId" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="BillingMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToCaseStages">
+          <End Role="CaseStages" Type="Self.CaseStages" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Cases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CaseStages">
+              <PropertyRef Name="CaseStageId" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="CaseStageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToContacts">
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Cases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToOffices">
+          <End Role="Offices" Type="Self.Offices" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Cases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offices">
+              <PropertyRef Name="OfficeId" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToPracticeAreas">
+          <End Role="PracticeAreas" Type="Self.PracticeAreas" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Cases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PracticeAreas">
+              <PropertyRef Name="PracticeAreaId" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="PracticeAreaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -362,6 +422,26 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             <End Role="UserTypes" EntitySet="UserTypes" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToBillingMethods" Association="Self.FK_Cases_ToBillingMethods">
+            <End Role="BillingMethods" EntitySet="BillingMethods" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToCaseStages" Association="Self.FK_Cases_ToCaseStages">
+            <End Role="CaseStages" EntitySet="CaseStages" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToContacts" Association="Self.FK_Cases_ToContacts">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToOffices" Association="Self.FK_Cases_ToOffices">
+            <End Role="Offices" EntitySet="Offices" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToPracticeAreas" Association="Self.FK_Cases_ToPracticeAreas">
+            <End Role="PracticeAreas" EntitySet="PracticeAreas" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -433,6 +513,26 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           </AssociationSet>
           <EntitySet Name="LeadReferralSources" EntityType="ethko_dbModel.LeadReferralSource" />
           <EntitySet Name="LeadStatuses" EntityType="ethko_dbModel.LeadStatus" />
+          <AssociationSet Name="FK_Cases_ToBillingMethods" Association="ethko_dbModel.FK_Cases_ToBillingMethods">
+            <End Role="BillingMethod" EntitySet="BillingMethods" />
+            <End Role="Case" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToCaseStages" Association="ethko_dbModel.FK_Cases_ToCaseStages">
+            <End Role="CaseStage" EntitySet="CaseStages" />
+            <End Role="Case" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToContacts" Association="ethko_dbModel.FK_Cases_ToContacts">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Case" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToOffices" Association="ethko_dbModel.FK_Cases_ToOffices">
+            <End Role="Office" EntitySet="Offices" />
+            <End Role="Case" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToPracticeAreas" Association="ethko_dbModel.FK_Cases_ToPracticeAreas">
+            <End Role="PracticeArea" EntitySet="PracticeAreas" />
+            <End Role="Case" EntitySet="Cases" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
@@ -528,8 +628,9 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="BillingMethodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BillingMethodName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Cases" Relationship="ethko_dbModel.FK_Cases_ToBillingMethods" FromRole="BillingMethod" ToRole="Case" />
         </EntityType>
         <EntityType Name="Case">
           <Key>
@@ -543,11 +644,16 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="BillingMethodId" Type="Int32" Nullable="false" />
           <Property Name="OfficeId" Type="Int32" Nullable="false" />
           <Property Name="CaseStageId" Type="Int32" Nullable="false" />
-          <Property Name="DateOpened" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="DateOpened" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="BillingMethod" Relationship="ethko_dbModel.FK_Cases_ToBillingMethods" FromRole="Case" ToRole="BillingMethod" />
+          <NavigationProperty Name="CaseStage" Relationship="ethko_dbModel.FK_Cases_ToCaseStages" FromRole="Case" ToRole="CaseStage" />
+          <NavigationProperty Name="Contact" Relationship="ethko_dbModel.FK_Cases_ToContacts" FromRole="Case" ToRole="Contact" />
+          <NavigationProperty Name="Office" Relationship="ethko_dbModel.FK_Cases_ToOffices" FromRole="Case" ToRole="Office" />
+          <NavigationProperty Name="PracticeArea" Relationship="ethko_dbModel.FK_Cases_ToPracticeAreas" FromRole="Case" ToRole="PracticeArea" />
         </EntityType>
         <EntityType Name="CaseStage">
           <Key>
@@ -556,8 +662,9 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="CaseStageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CaseStageName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Cases" Relationship="ethko_dbModel.FK_Cases_ToCaseStages" FromRole="CaseStage" ToRole="Case" />
         </EntityType>
         <EntityType Name="Company">
           <Key>
@@ -586,7 +693,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           </Key>
           <Property Name="ContactGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ContactGroupName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Contact">
@@ -595,7 +702,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           </Key>
           <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="FName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="LName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="MName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -622,6 +729,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Birthday" Type="DateTime" Precision="0" />
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Cases" Relationship="ethko_dbModel.FK_Cases_ToContacts" FromRole="Contact" ToRole="Case" />
         </EntityType>
         <EntityType Name="Office">
           <Key>
@@ -630,8 +738,9 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="OfficeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OfficeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Cases" Relationship="ethko_dbModel.FK_Cases_ToOffices" FromRole="Office" ToRole="Case" />
         </EntityType>
         <EntityType Name="PracticeArea">
           <Key>
@@ -640,8 +749,9 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="PracticeAreaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PracticeAreaName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Cases" Relationship="ethko_dbModel.FK_Cases_ToPracticeAreas" FromRole="PracticeArea" ToRole="Case" />
         </EntityType>
         <EntityType Name="UserType">
           <Key>
@@ -717,6 +827,66 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
+        <Association Name="FK_Cases_ToBillingMethods">
+          <End Type="ethko_dbModel.BillingMethod" Role="BillingMethod" Multiplicity="1" />
+          <End Type="ethko_dbModel.Case" Role="Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BillingMethod">
+              <PropertyRef Name="BillingMethodId" />
+            </Principal>
+            <Dependent Role="Case">
+              <PropertyRef Name="BillingMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToCaseStages">
+          <End Type="ethko_dbModel.CaseStage" Role="CaseStage" Multiplicity="1" />
+          <End Type="ethko_dbModel.Case" Role="Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CaseStage">
+              <PropertyRef Name="CaseStageId" />
+            </Principal>
+            <Dependent Role="Case">
+              <PropertyRef Name="CaseStageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToContacts">
+          <End Type="ethko_dbModel.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="ethko_dbModel.Case" Role="Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="Case">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToOffices">
+          <End Type="ethko_dbModel.Office" Role="Office" Multiplicity="1" />
+          <End Type="ethko_dbModel.Case" Role="Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Office">
+              <PropertyRef Name="OfficeId" />
+            </Principal>
+            <Dependent Role="Case">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToPracticeAreas">
+          <End Type="ethko_dbModel.PracticeArea" Role="PracticeArea" Multiplicity="1" />
+          <End Type="ethko_dbModel.Case" Role="Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PracticeArea">
+              <PropertyRef Name="PracticeAreaId" />
+            </Principal>
+            <Dependent Role="Case">
+              <PropertyRef Name="PracticeAreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

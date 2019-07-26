@@ -1,14 +1,4 @@
-﻿USE [ethko_db]
-GO
-
-/****** Object: Table [dbo].[Cases] Script Date: 7/9/2019 5:00:40 PM ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[Cases] (
+﻿CREATE TABLE [dbo].[Cases] (
     [CaseId]          INT            NOT NULL,
     [ContactId]       INT            NOT NULL,
     [CaseName]        VARCHAR (MAX)  NOT NULL,
@@ -17,11 +7,15 @@ CREATE TABLE [dbo].[Cases] (
     [BillingMethodId] INT            NOT NULL,
     [OfficeId]        INT            NOT NULL,
     [CaseStageId]     INT            NOT NULL,
-    [DateOpened]      DATETIME2 (7)  NOT NULL,
+    [DateOpened]      DATETIME       NOT NULL,
     [Description]     VARCHAR (MAX)  NULL,
     [FstUser]         NVARCHAR (128) NOT NULL,
-    [InsDate]         DATETIME2 (7)  NOT NULL,
-    [RowVersion]      ROWVERSION     NOT NULL
+    [InsDate]         DATETIME       NOT NULL,
+    [RowVersion]      ROWVERSION     NOT NULL,
+    CONSTRAINT [PK_dbo.Cases] PRIMARY KEY CLUSTERED ([CaseId] ASC),
+		CONSTRAINT [FK_Cases_ToPracticeAreas] FOREIGN KEY ([PracticeAreaId]) REFERENCES [dbo].[PracticeAreas] ([PracticeAreaId]),
+	CONSTRAINT [FK_Cases_ToBillingMethods] FOREIGN KEY ([BillingMethodId]) REFERENCES [dbo].[BillingMethods] ([BillingMethodId]),
+	CONSTRAINT [FK_Cases_ToOffices] FOREIGN KEY ([OfficeId]) REFERENCES [dbo].[Offices] ([OfficeId]),
+	CONSTRAINT [FK_Cases_ToCaseStages] FOREIGN KEY ([CaseStageId]) REFERENCES [dbo].[CaseStages] ([CaseStageId])
 );
-
 

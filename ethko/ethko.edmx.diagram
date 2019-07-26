@@ -25,6 +25,11 @@
         <AssociationConnector Association="ethko_dbModel.AspNetUserRoles" />
         <EntityTypeShape EntityType="ethko_dbModel.LeadReferralSource" Width="1.5" PointX="3.375" PointY="11.75" />
         <EntityTypeShape EntityType="ethko_dbModel.LeadStatus" Width="1.5" PointX="5.375" PointY="11.75" />
+        <AssociationConnector Association="ethko_dbModel.FK_Cases_ToBillingMethods" />
+        <AssociationConnector Association="ethko_dbModel.FK_Cases_ToCaseStages" />
+        <AssociationConnector Association="ethko_dbModel.FK_Cases_ToContacts" />
+        <AssociationConnector Association="ethko_dbModel.FK_Cases_ToOffices" />
+        <AssociationConnector Association="ethko_dbModel.FK_Cases_ToPracticeAreas" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
