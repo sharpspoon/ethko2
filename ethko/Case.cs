@@ -27,5 +27,11 @@ namespace ethko
         public string FstUser { get; set; }
         public System.DateTime InsDate { get; set; }
         public byte[] RowVersion { get; set; }
+    
+        public virtual BillingMethod BillingMethod { get; set; }
+        public virtual CaseStage CaseStage { get; set; }
+        public virtual Contact Contact { get; set; }
+        public virtual Office Office { get; set; }
+        public virtual PracticeArea PracticeArea { get; set; }
     }
 }

@@ -388,8 +388,10 @@ namespace ethko.Controllers
                 ContactGroup contactGroups = entities.ContactGroups.Find(ContactGroupId);
                 entities.ContactGroups.Remove(contactGroups);
                 entities.SaveChanges();
-                Models.DeleteConfirmedContactViewModel delete = new DeleteConfirmedContactViewModel();
-                delete.ContactGroupId = ContactGroupId;
+                DeleteConfirmedContactViewModel delete = new DeleteConfirmedContactViewModel
+                {
+                    ContactGroupId = ContactGroupId
+                };
                 return RedirectToAction("ContactGroups", "Contacts");
             }
             return RedirectToAction("Index", "Contacts");

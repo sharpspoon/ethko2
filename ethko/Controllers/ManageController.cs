@@ -1024,8 +1024,10 @@ namespace ethko.Controllers
                 CaseStage caseStages = entities.CaseStages.Find(CaseStageId);
                 entities.CaseStages.Remove(caseStages);
                 entities.SaveChanges();
-                Models.DeleteConfirmedViewModel delete = new Models.DeleteConfirmedViewModel();
-                delete.CaseStageId = CaseStageId;
+                DeleteConfirmedViewModel delete = new DeleteConfirmedViewModel
+                {
+                    CaseStageId = CaseStageId
+                };
                 return RedirectToAction("CaseStages", "Manage");
             }
 
@@ -1034,8 +1036,10 @@ namespace ethko.Controllers
                 Office offices = entities.Offices.Find(OfficeId);
                 entities.Offices.Remove(offices);
                 entities.SaveChanges();
-                Models.DeleteConfirmedViewModel delete = new Models.DeleteConfirmedViewModel();
-                delete.OfficeId = OfficeId;
+                DeleteConfirmedViewModel delete = new DeleteConfirmedViewModel
+                {
+                    OfficeId = OfficeId
+                };
                 return RedirectToAction("FirmSettings", "Manage");
             }
 
@@ -1044,8 +1048,10 @@ namespace ethko.Controllers
                 BillingMethod billingMethods = entities.BillingMethods.Find(BillingMethodId);
                 entities.BillingMethods.Remove(billingMethods);
                 entities.SaveChanges();
-                Models.DeleteConfirmedViewModel delete = new Models.DeleteConfirmedViewModel();
-                delete.BillingMethodId = BillingMethodId;
+                DeleteConfirmedViewModel delete = new DeleteConfirmedViewModel
+                {
+                    BillingMethodId = BillingMethodId
+                };
                 return RedirectToAction("ClientBilling", "Manage");
             }
 
@@ -1054,8 +1060,10 @@ namespace ethko.Controllers
                 UserType userTypes = entities.UserTypes.Find(UserTypeId);
                 entities.UserTypes.Remove(userTypes);
                 entities.SaveChanges();
-                Models.DeleteConfirmedViewModel delete = new Models.DeleteConfirmedViewModel();
-                delete.UserTypeId = UserTypeId;
+                DeleteConfirmedViewModel delete = new DeleteConfirmedViewModel
+                {
+                    UserTypeId = UserTypeId
+                };
                 return RedirectToAction("UserTypes", "Manage");
             }
 
@@ -1064,8 +1072,10 @@ namespace ethko.Controllers
                 LeadStatus leadStatuses = entities.LeadStatuses.Find(LeadStatusId);
                 entities.LeadStatuses.Remove(leadStatuses);
                 entities.SaveChanges();
-                Models.DeleteConfirmedViewModel delete = new Models.DeleteConfirmedViewModel();
-                delete.LeadStatusId = LeadStatusId;
+                DeleteConfirmedViewModel delete = new DeleteConfirmedViewModel
+                {
+                    LeadStatusId = LeadStatusId
+                };
                 return RedirectToAction("LeadStatus", "Manage");
             }
 
@@ -1074,8 +1084,10 @@ namespace ethko.Controllers
                 LeadReferralSource leadReferralSources = entities.LeadReferralSources.Find(ReferralSourceId);
                 entities.LeadReferralSources.Remove(leadReferralSources);
                 entities.SaveChanges();
-                Models.DeleteConfirmedViewModel delete = new Models.DeleteConfirmedViewModel();
-                delete.LeadReferralSourceId = ReferralSourceId;
+                DeleteConfirmedViewModel delete = new DeleteConfirmedViewModel
+                {
+                    LeadReferralSourceId = ReferralSourceId
+                };
                 return RedirectToAction("Leads", "Manage");
             }
             return RedirectToAction("Index", "Manage");

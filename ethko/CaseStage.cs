@@ -14,10 +14,19 @@ namespace ethko
     
     public partial class CaseStage
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CaseStage()
+        {
+            this.Cases = new HashSet<Case>();
+        }
+    
         public int CaseStageId { get; set; }
         public string CaseStageName { get; set; }
         public string FstUser { get; set; }
         public System.DateTime InsDate { get; set; }
         public byte[] RowVersion { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Case> Cases { get; set; }
     }
 }
