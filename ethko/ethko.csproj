@@ -3326,6 +3326,8 @@
     <Content Include="NotReferenced\open-iconic-master\webp\zoom-out-6x.webp" />
     <Content Include="NotReferenced\open-iconic-master\webp\zoom-out-8x.webp" />
     <Content Include="NotReferenced\open-iconic-master\webp\zoom-out.webp" />
+    <Content Include="NotReferenced\_AddCase-old-has-search-feature.cshtml" />
+    <Content Include="NotReferenced\New-old-has-search-feature..cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3334,6 +3336,8 @@
     <Content Include="Scripts\knockout.validation.js" />
     <Content Include="Scripts\knockout.validation.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\multi-select\bootstrap-multiselect.css" />
+    <Content Include="Scripts\multi-select\bootstrap-multiselect.js" />
     <Content Include="Scripts\sammy-0.7.5.js" />
     <Content Include="Scripts\sammy-0.7.5.min.js" />
     <Content Include="Scripts\SQL_Scripts\Drop_Create_All_Tables_And_Seed_Data.sql" />

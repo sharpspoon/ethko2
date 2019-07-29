@@ -30,6 +30,9 @@
             });
         });
     </script>
+</head>
+<br />
+<div class="example">
     <script type="text/javascript">
         $(document).ready(function () {
             $('#contact-multiselect').multiselect({
@@ -46,9 +49,16 @@
             });
         });
     </script>
-</head>
-<br />
-
+    <select id="contact-multiselect" multiple="multiple">
+        @foreach (var item in ViewBag.contactList)
+        {
+            if (item.Text != null)
+            {
+                <option value="@item.Value">@item.Text</option>
+            }
+        }
+    </select>
+</div>
 
 <h1>Add Case</h1>
 @using (Html.BeginForm("New", "Cases", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -93,32 +103,22 @@
                         <div class="form-group">
                             <div class="col-md-7" align="left">
                                 @ViewBag.Message
-                                <div class="contact">
-                                    <select id="contact-multiselect" multiple="multiple">
-                                        @foreach (var item in ViewBag.contactList)
-                                        {
-                                            if (item.Text != null)
-                                            {
-                                                <option value="@item.Value">@item.Text</option>
-                                            }
-                                        }
-                                    </select>
-                                </div>
-                                @Html.ActionLink("Add a new contact", "New", "Contacts")
-                                <br />
-                                <br />
-                                <div class="contact">
-                                    <select id="company-multiselect" multiple="multiple">
-                                        @foreach (var item in ViewBag.companyList)
-                                        {
-                                            if (item.Text != null)
-                                            {
-                                                <option value="@item.Value">@item.Text</option>
-                                            }
-                                        }
-                                    </select>
-                                </div>
-                                @Html.ActionLink("Add a new company", "NewCompany", "Contacts")
+                                @Html.ActionLink("Add a new contact", "New", "Contacts") | @Html.ActionLink("Add a new company", "NewCompany", "Contacts")
+                                @Html.TextBoxFor(m => m.CaseContact, new { @class = "form-control", @id = "txtCustomer", @name = "CustomerName", placeholder = "Search for a contact or company" })<input type="button" class="btn btn-sm btn-default add-row" value="Add to Case" />
+                            </div>
+                            <div class="col-md-5" align="left">
+                                <input type="button" class="btn btn-sm btn-danger delete-row" value="Remove" />
+                                <table id="myTable" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Select</th>
+                                            <th>Case Contacts</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr></tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                         <button id="activate-step-2" class="btn btn-success btn-sm">Continue to Case Details</button>

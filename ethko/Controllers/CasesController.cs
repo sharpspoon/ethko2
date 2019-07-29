@@ -43,6 +43,19 @@ namespace ethko.Controllers
 
         public ActionResult New()
         {
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                var contactResult = (from contacts in entities.Contacts select contacts).ToList();
+                var companyResult = (from companies in entities.Companies select companies).ToList();
+                if (contactResult != null)
+                {
+                    ViewBag.contactList = contactResult.Select(N => new SelectListItem { Text = N.FName+" "+N.MName+" "+N.LName, Value = N.ContactId.ToString() });
+                }
+                if (companyResult != null)
+                {
+                    ViewBag.companyList = companyResult.Select(N => new SelectListItem { Text = N.Name, Value = N.CompanyId.ToString() });
+                }
+            }
             var practiceAreas = new SelectList(entities.PracticeAreas.ToList(), "PracticeAreaName", "PracticeAreaName");
             ViewData["DBContactGroupsPracticeArea"] = practiceAreas;
             var caseStages = new SelectList(entities.CaseStages.ToList(), "CaseStageName", "CaseStageName");
@@ -65,7 +78,6 @@ namespace ethko.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ethko_dbEntities entities = new ethko_dbEntities();
             PracticeArea practiceAreas = entities.PracticeAreas.Where(m => m.PracticeAreaId == PracticeAreaId).Single();
             return View(practiceAreas);
         }

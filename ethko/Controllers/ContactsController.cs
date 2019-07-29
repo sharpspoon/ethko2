@@ -33,7 +33,7 @@ namespace ethko.Controllers
             {
                 FName = vm.FName,
                 MName = vm.MName,
-                LName = vm.LName,
+                LName = vm.LName+vm,
                 CellPhone = vm.CellPhone,
                 WorkPhone = vm.WorkPhone,
                 HomePhone = vm.HomePhone,
