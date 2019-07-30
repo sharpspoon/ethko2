@@ -3507,6 +3507,7 @@
     <Content Include="Views\Contacts\EditContactGroup.cshtml" />
     <Content Include="Views\Contacts\_DeleteGroup.cshtml" />
     <Content Include="Views\Contacts\DeleteGroup.cshtml" />
+    <Content Include="Views\Cases\_EditPracticeArea.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -82,21 +82,21 @@ namespace ethko.Controllers
             return View(practiceAreas);
         }
 
-        public ActionResult DeleteConfirmed(int? PracticeAreaId)
-        {
-            if (PracticeAreaId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            PracticeArea practiceAreas = entities.PracticeAreas.Find(PracticeAreaId);
-            entities.PracticeAreas.Remove(practiceAreas);
-            entities.SaveChanges();
-            DeleteConfirmedCaseViewModel delete = new DeleteConfirmedCaseViewModel
-            {
-                PracticeAreaId = PracticeAreaId
-            };
-            return RedirectToAction("PracticeAreas", "Cases");
-        }
+        //public ActionResult DeleteConfirmed(int? PracticeAreaId)
+        //{
+        //    if (PracticeAreaId == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    PracticeArea practiceAreas = entities.PracticeAreas.Find(PracticeAreaId);
+        //    entities.PracticeAreas.Remove(practiceAreas);
+        //    entities.SaveChanges();
+        //    DeleteConfirmedCaseViewModel delete = new DeleteConfirmedCaseViewModel
+        //    {
+        //        PracticeAreaId = PracticeAreaId
+        //    };
+        //    return RedirectToAction("PracticeAreas", "Cases");
+        //}
 
         public PracticeArea ConvertViewModelToModel(AddPracticeAreaViewModel vm)
         {
@@ -122,10 +122,21 @@ namespace ethko.Controllers
             return RedirectToAction("PracticeAreas");
         }
 
+        // GET: /Cases/EditPracticeArea
+        [HttpGet]
+        public ActionResult EditPracticeArea(int? PracticeAreaId)
+        {
+            if (PracticeAreaId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PracticeArea practiceAreas = entities.PracticeAreas.Where(m => m.PracticeAreaId == PracticeAreaId).Single();
+            return View(practiceAreas);
+        }
+
         [HttpPost]
         public JsonResult AutoComplete(string prefix)
         {
-            ethko_dbEntities entities = new ethko_dbEntities();
             var contacts = (from c in entities.Contacts
                              where (c.FName.Contains(prefix) || c.LName.Contains(prefix))
                             select new
@@ -141,6 +152,51 @@ namespace ethko.Controllers
                                        }).ToList();
 
             return Json(contacts);
+        }
+
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //////////////////////////////////////////////////////////////
+        //GLOBAL//////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        // POST: /Cases/EditSave
+        [HttpPost]
+        public ActionResult EditSave(int? PracticeAreaId)
+        {
+            if (PracticeAreaId != null)
+            {
+                PracticeArea practiceAreas = entities.PracticeAreas.Find(PracticeAreaId);
+                string newPracticeAreaName = Request.Form["NewPracticeArea"].ToString();
+                practiceAreas.PracticeAreaName = newPracticeAreaName;
+                entities.SaveChanges();
+                return RedirectToAction("PracticeAreas", "Cases");
+            }
+
+            return RedirectToAction("Index", "Cases");
+        }
+
+        // POST: /Cases/DeleteConfirmed
+        [HttpPost]
+        public ActionResult DeleteConfirmed(int? PracticeAreaId)
+        {
+            if (PracticeAreaId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            if (PracticeAreaId != null)
+            {
+                PracticeArea practiceAreas = entities.PracticeAreas.Find(PracticeAreaId);
+                entities.PracticeAreas.Remove(practiceAreas);
+                entities.SaveChanges();
+                DeleteConfirmedCaseViewModel delete = new DeleteConfirmedCaseViewModel
+                {
+                    PracticeAreaId = PracticeAreaId
+                };
+                return RedirectToAction("PracticeAreas", "Cases");
+            }
+            return RedirectToAction("Index", "Contacts");
         }
     }
 }
