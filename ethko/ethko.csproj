@@ -3485,7 +3485,6 @@
     <Content Include="Views\Manage\DeleteUserType.cshtml" />
     <Content Include="Views\Manage\_EditOffice.cshtml" />
     <Content Include="Views\Manage\EditOffice.cshtml" />
-    <Content Include="Views\Manage\EditConfirmed.cshtml" />
     <Content Include="Views\Manage\EditUserType.cshtml" />
     <Content Include="Views\Manage\_EditUserType.cshtml" />
     <Content Include="Views\Manage\_EditBillingMethod.cshtml" />
