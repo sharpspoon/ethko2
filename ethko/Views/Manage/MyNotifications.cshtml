@@ -1,14 +1,9 @@
 ﻿@model ethko.Models.IndexViewModel
 
 <head>
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <script>
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        })</script>
-    <script src="~/Scripts/umd/popper.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
     <link href="~/Scripts/toggle/bootstrap-toggle.min.css" rel="stylesheet">
-    <script src="~/Scripts/toggle/bootstrap-toggle.min.js"></script>
+
 </head>
 <h2>Settings & Preferences</h2>
 
@@ -83,7 +78,7 @@
                         <tbody>
                             <tr>
                                 <th scope="row">A new case is added to the system</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                <td><input type="checkbox" checked data-toggle="toggle" id="1"></td>
                                 <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
                                 <td></td>
                             </tr>
@@ -503,3 +498,10 @@
         </dd>
     </dl>
 </div>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/toggle/bootstrap-toggle.min.js"></script>
+<script src="~/Scripts/umd/popper.min.js"></script>
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })</script>
