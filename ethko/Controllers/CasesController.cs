@@ -41,19 +41,18 @@ namespace ethko.Controllers
             return View();
         }
 
+        //New
+
         public ActionResult New()
         {
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 var contactResult = (from contacts in entities.Contacts select contacts).ToList();
                 var companyResult = (from companies in entities.Companies select companies).ToList();
+                //var totalResults = contactResult.AddRange(companyResult);
                 if (contactResult != null)
                 {
-                    ViewBag.contactList = contactResult.Select(N => new SelectListItem { Text = N.FName+" "+N.MName+" "+N.LName, Value = N.ContactId.ToString() });
-                }
-                if (companyResult != null)
-                {
-                    ViewBag.companyList = companyResult.Select(N => new SelectListItem { Text = N.Name, Value = N.CompanyId.ToString() });
+                    ViewBag.contactList = contactResult.Select(N => new SelectListItem { Text = N.FullName, Value = N.ContactId.ToString() });
                 }
             }
             var practiceAreas = new SelectList(entities.PracticeAreas.ToList(), "PracticeAreaName", "PracticeAreaName");
@@ -64,7 +63,52 @@ namespace ethko.Controllers
             ViewData["DBOffice"] = offices;
             var billingMethods = new SelectList(entities.BillingMethods.ToList(), "BillingMethodName", "BillingMethodName");
             ViewData["DBBillingMethods"] = billingMethods;
+            var contactList = new SelectList(entities.Contacts.ToList(), "FullName", "FullName");
+            ViewData["DBContacts"] = contactList;
             return View();
+        }
+
+        public Case ConvertViewModelToModel(AddCaseViewModel vm)
+        {
+            return new Case()
+            {
+                ContactId = vm.ContactId,
+                CaseName = vm.CaseName,
+                CaseNumber = vm.CaseNumber,
+                PracticeAreaId = vm.PracticeAreaId,
+                BillingMethodId = vm.BillingMethodId,
+                CaseStageId = vm.CaseStageId,
+                DateOpened = vm.DateOpened,
+                OfficeId = vm.OfficeId,
+                Description = vm.Description
+            };
+        }
+
+        [HttpPost]
+        public ActionResult New(AddCaseViewModel model)
+        {
+            var user = User.Identity.GetUserName().ToString();
+            var caseModel = ConvertViewModelToModel(model);
+
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                entities.Cases.Add(caseModel);
+                caseModel.InsDate = DateTime.Now;
+                caseModel.DateOpened = DateTime.Now;
+                string contactName = Request.Form["Contacts"].ToString();
+                string practiceArea = Request.Form["PracticeAreas"].ToString();
+                string caseStage = Request.Form["CaseStages"].ToString();
+                string office = Request.Form["Offices"].ToString();
+                string billingMethod = Request.Form["BillingMethods"].ToString();
+                caseModel.ContactId = entities.Contacts.Where(m => m.FullName == contactName).Select(m => m.ContactId).FirstOrDefault();
+                caseModel.PracticeAreaId = entities.PracticeAreas.Where(m => m.PracticeAreaName == practiceArea).Select(m => m.PracticeAreaId).FirstOrDefault();
+                caseModel.CaseStageId = entities.CaseStages.Where(m => m.CaseStageName == caseStage).Select(m => m.CaseStageId).FirstOrDefault();
+                caseModel.OfficeId = entities.Offices.Where(m => m.OfficeName == office).Select(m => m.OfficeId).FirstOrDefault();
+                caseModel.BillingMethodId = entities.BillingMethods.Where(m => m.BillingMethodName == billingMethod).Select(m => m.BillingMethodId).FirstOrDefault();
+                caseModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+                entities.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
 
         public ActionResult NewPracticeArea()

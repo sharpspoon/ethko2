@@ -93,7 +93,10 @@
                         <div class="form-group">
                             <div class="col-md-7" align="left">
                                 @ViewBag.Message
-                                <div class="contact">
+                                <div class="col-md-10" align="left">
+                                    @Html.DropDownList("Contacts", (IEnumerable<SelectListItem>)ViewData["DBContacts"], new { @class = "form-control" })
+                                </div>
+                                @*<div class="contact">
                                     <select id="contact-multiselect" multiple="multiple">
                                         @foreach (var item in ViewBag.contactList)
                                         {
@@ -102,23 +105,11 @@
                                                 <option value="@item.Value">@item.Text</option>
                                             }
                                         }
+                                        @Html.ValidationMessageFor(m => m.ContactId, "", new { @class = "text-danger" })
                                     </select>
-                                </div>
-                                @Html.ActionLink("Add a new contact", "New", "Contacts")
+                                </div>*@
+                                @Html.ActionLink("Add a new contact", "New", "Contacts") | @Html.ActionLink("Add a new company", "NewCompany", "Contacts")
                                 <br />
-                                <br />
-                                <div class="contact">
-                                    <select id="company-multiselect" multiple="multiple">
-                                        @foreach (var item in ViewBag.companyList)
-                                        {
-                                            if (item.Text != null)
-                                            {
-                                                <option value="@item.Value">@item.Text</option>
-                                            }
-                                        }
-                                    </select>
-                                </div>
-                                @Html.ActionLink("Add a new company", "NewCompany", "Contacts")
                             </div>
                         </div>
                         <button id="activate-step-2" class="btn btn-success btn-sm">Continue to Case Details</button>
@@ -142,7 +133,8 @@
                                 Case Number
                             </div>
                             <div class="col-md-10" align="left">
-                                @Html.TextBoxFor(m => m.CaseName, new { @class = "form-control", placeholder = "A Unique Identifier" })
+                                @Html.TextBoxFor(m => m.CaseNumber, new { @class = "form-control", placeholder = "A Unique Identifier" })
+                                @Html.ValidationMessageFor(m => m.CaseNumber, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
@@ -199,7 +191,7 @@
                                 Description
                             </div>
                             <div class="col-md-10" align="left">
-                                @Html.TextAreaFor(m => m.Office, new { @class = "form-control" })
+                                @Html.TextAreaFor(m => m.OfficeId, new { @class = "form-control" })
                             </div>
                         </div>
 
@@ -232,7 +224,7 @@
                                 Billing Contact
                             </div>
                             <div class="col-md-10" align="left">
-                                @Html.TextBoxFor(m => m.CaseContact, new { @class = "form-control", @id = "txtCustomer2", @name = "CustomerName", placeholder = "Search for an existing contact or company" })<input type="button" class="btn btn-sm btn-default add-row" value="Add to Case" />
+                                @Html.TextBoxFor(m => m.ContactId, new { @class = "form-control", @id = "txtCustomer2", @name = "CustomerName", placeholder = "Search for an existing contact or company" })<input type="button" class="btn btn-sm btn-default add-row" value="Add to Case" />
                                 Choosing a billing contact allows you to batch bill this case.
                             </div>
                         </div>
@@ -260,7 +252,7 @@
                                 Lead Attorney
                             </div>
                             <div class="col-md-10" align="left">
-                                @Html.TextBoxFor(m => m.CaseContact, new { @class = "form-control", @id = "txtCustomer2", @name = "CustomerName", placeholder = "Select a lead attorney for this case" })<input type="button" class="btn btn-sm btn-default add-row" value="Add to Case" />
+                                @Html.TextBoxFor(m => m.ContactId, new { @class = "form-control", @id = "txtCustomer2", @name = "CustomerName", placeholder = "Select a lead attorney for this case" })<input type="button" class="btn btn-sm btn-default add-row" value="Add to Case" />
                                 Choosing a billing contact allows you to batch bill this case.
                             </div>
                         </div>

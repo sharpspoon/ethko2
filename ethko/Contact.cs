@@ -49,6 +49,7 @@ namespace ethko
         public string Notes { get; set; }
         public Nullable<System.DateTime> Birthday { get; set; }
         public byte[] RowVersion { get; set; }
+        public string FullName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Case> Cases { get; set; }

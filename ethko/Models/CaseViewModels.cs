@@ -9,7 +9,7 @@ namespace ethko.Models
     {
         [Required]
         [Display(Name = "Contact")]
-        public string CaseContact { get; set; }
+        public int ContactId { get; set; }
 
         [Display(Name = "Case Name")]
         public string CaseName { get; set; }
@@ -21,22 +21,25 @@ namespace ethko.Models
         public string PracticeArea { get; set; }
 
         [Display(Name = "Practice Area Id")]
-        public string PracticeAreaId { get; set; }
+        public int PracticeAreaId { get; set; }
+
+        [Display(Name = "Billing MEthod Id")]
+        public int BillingMethodId { get; set; }
 
         [Display(Name = "Case Stage")]
-        public string CaseStage { get; set; }
+        public int CaseStageId { get; set; }
 
         [Display(Name = "Date Opened")]
-        public string DateOpened { get; set; }
+        public DateTime DateOpened { get; set; }
 
         [Display(Name = "Office")]
-        public string Office { get; set; }
+        public int OfficeId { get; set; }
 
         [Display(Name = "Description")]
         public string Description { get; set; }
 
         [Display(Name = "Statute of Limitations")]
-        public string Statute { get; set; }
+        public DateTime Statute { get; set; }
     }
 
     public class GetPracticeAreasViewModel

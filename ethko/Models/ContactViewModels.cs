@@ -19,6 +19,9 @@ namespace ethko.Models
         [Display(Name = "Last Name")]
         public string LName { get; set; }
 
+        [Display(Name = "Full Name")]
+        public string FullName { get; set; }
+
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

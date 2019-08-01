@@ -87,8 +87,8 @@
           <Property Name="PhoneNumber" Type="nvarchar(max)" />
           <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
           <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
-          <Property Name="LockoutEndDateUtc" Type="datetime" />
-          <Property Name="LastLogin" Type="datetime" />
+          <Property Name="LockoutEndDateUtc" Type="datetime2" Precision="7" />
+          <Property Name="LastLogin" Type="datetime2" Precision="7" />
           <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
@@ -100,14 +100,14 @@
           <Property Name="BillingMethodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BillingMethodName" Type="varchar(max)" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="InsDate" Type="datetime" Nullable="false" />
+          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="Cases">
           <Key>
             <PropertyRef Name="CaseId" />
           </Key>
-          <Property Name="CaseId" Type="int" Nullable="false" />
+          <Property Name="CaseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ContactId" Type="int" Nullable="false" />
           <Property Name="CaseName" Type="varchar(max)" Nullable="false" />
           <Property Name="CaseNumber" Type="varchar(max)" Nullable="false" />
@@ -115,10 +115,11 @@
           <Property Name="BillingMethodId" Type="int" Nullable="false" />
           <Property Name="OfficeId" Type="int" Nullable="false" />
           <Property Name="CaseStageId" Type="int" Nullable="false" />
-          <Property Name="DateOpened" Type="datetime" Nullable="false" />
+          <Property Name="DateOpened" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Statute" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Description" Type="varchar(max)" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="InsDate" Type="datetime" Nullable="false" />
+          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="CaseStages">
@@ -128,7 +129,7 @@
           <Property Name="CaseStageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CaseStageName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="InsDate" Type="datetime" Nullable="false" />
+          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="Companies">
@@ -137,7 +138,7 @@
           </Key>
           <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="InsDate" Type="datetime" Nullable="false" />
+          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Name" Type="varchar(max)" Nullable="false" />
           <Property Name="Archived" Type="smallint" Nullable="false" />
           <Property Name="Email" Type="varchar(max)" Nullable="false" />
@@ -158,7 +159,7 @@
           </Key>
           <Property Name="ContactGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ContactGroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="InsDate" Type="datetime" Nullable="false" />
+          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="Contacts">
@@ -167,10 +168,11 @@
           </Key>
           <Property Name="ContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="InsDate" Type="datetime" Nullable="false" />
+          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="FName" Type="varchar(max)" Nullable="false" />
           <Property Name="LName" Type="varchar(max)" Nullable="false" />
           <Property Name="MName" Type="varchar(max)" />
+          <Property Name="FullName" Type="varchar(max)" />
           <Property Name="Title" Type="varchar" MaxLength="50" />
           <Property Name="Archived" Type="smallint" Nullable="false" />
           <Property Name="Email" Type="varchar(max)" Nullable="false" />
@@ -202,7 +204,7 @@
           <Property Name="ReferralSourceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ReferralSourceName" Type="varchar(max)" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="InsDate" Type="datetime" Nullable="false" />
+          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="LeadStatuses">
@@ -212,7 +214,7 @@
           <Property Name="LeadStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LeadStatusName" Type="varchar(max)" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="InsDate" Type="datetime" Nullable="false" />
+          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="Offices">
@@ -222,7 +224,7 @@
           <Property Name="OfficeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OfficeName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="InsDate" Type="datetime" Nullable="false" />
+          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="PracticeAreas">
@@ -232,7 +234,7 @@
           <Property Name="PracticeAreaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PracticeAreaName" Type="varchar(max)" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="InsDate" Type="datetime" Nullable="false" />
+          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="UserTypes">
@@ -241,7 +243,7 @@
           </Key>
           <Property Name="UserTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="InsDate" Type="datetime" Nullable="false" />
+          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -611,8 +613,8 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
           <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
-          <Property Name="LastLogin" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="7" />
+          <Property Name="LastLogin" Type="DateTime" Precision="7" />
           <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
@@ -628,7 +630,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="BillingMethodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BillingMethodName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Cases" Relationship="ethko_dbModel.FK_Cases_ToBillingMethods" FromRole="BillingMethod" ToRole="Case" />
         </EntityType>
@@ -644,16 +646,17 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="BillingMethodId" Type="Int32" Nullable="false" />
           <Property Name="OfficeId" Type="Int32" Nullable="false" />
           <Property Name="CaseStageId" Type="Int32" Nullable="false" />
-          <Property Name="DateOpened" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateOpened" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="BillingMethod" Relationship="ethko_dbModel.FK_Cases_ToBillingMethods" FromRole="Case" ToRole="BillingMethod" />
           <NavigationProperty Name="CaseStage" Relationship="ethko_dbModel.FK_Cases_ToCaseStages" FromRole="Case" ToRole="CaseStage" />
           <NavigationProperty Name="Contact" Relationship="ethko_dbModel.FK_Cases_ToContacts" FromRole="Case" ToRole="Contact" />
           <NavigationProperty Name="Office" Relationship="ethko_dbModel.FK_Cases_ToOffices" FromRole="Case" ToRole="Office" />
           <NavigationProperty Name="PracticeArea" Relationship="ethko_dbModel.FK_Cases_ToPracticeAreas" FromRole="Case" ToRole="PracticeArea" />
+          <Property Name="Statute" Type="DateTime" Nullable="false" Precision="7" />
         </EntityType>
         <EntityType Name="CaseStage">
           <Key>
@@ -662,7 +665,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="CaseStageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CaseStageName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Cases" Relationship="ethko_dbModel.FK_Cases_ToCaseStages" FromRole="CaseStage" ToRole="Case" />
         </EntityType>
@@ -672,7 +675,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           </Key>
           <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Archived" Type="Int16" Nullable="false" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -693,7 +696,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           </Key>
           <Property Name="ContactGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ContactGroupName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Contact">
@@ -702,7 +705,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           </Key>
           <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="FName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="LName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="MName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -730,6 +733,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="Birthday" Type="DateTime" Precision="0" />
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Cases" Relationship="ethko_dbModel.FK_Cases_ToContacts" FromRole="Contact" ToRole="Case" />
+          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Office">
           <Key>
@@ -738,7 +742,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="OfficeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OfficeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Cases" Relationship="ethko_dbModel.FK_Cases_ToOffices" FromRole="Office" ToRole="Case" />
         </EntityType>
@@ -749,7 +753,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="PracticeAreaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PracticeAreaName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Cases" Relationship="ethko_dbModel.FK_Cases_ToPracticeAreas" FromRole="PracticeArea" ToRole="Case" />
         </EntityType>
@@ -759,7 +763,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           </Key>
           <Property Name="UserTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="AspNetUsers" Relationship="ethko_dbModel.FK_AspNetUsers_ToUserTypes" FromRole="UserType" ToRole="AspNetUser" />
         </EntityType>
@@ -814,7 +818,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="ReferralSourceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ReferralSourceName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="LeadStatus">
@@ -824,7 +828,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="LeadStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LeadStatusName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <Association Name="FK_Cases_ToBillingMethods">
@@ -1001,6 +1005,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySetMapping Name="Cases">
             <EntityTypeMapping TypeName="ethko_dbModel.Case">
               <MappingFragment StoreEntitySet="Cases">
+                <ScalarProperty Name="Statute" ColumnName="Statute" />
                 <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
                 <ScalarProperty Name="InsDate" ColumnName="InsDate" />
                 <ScalarProperty Name="FstUser" ColumnName="FstUser" />
@@ -1063,6 +1068,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySetMapping Name="Contacts">
             <EntityTypeMapping TypeName="ethko_dbModel.Contact">
               <MappingFragment StoreEntitySet="Contacts">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />

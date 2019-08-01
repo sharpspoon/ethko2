@@ -20,7 +20,7 @@ drop table IF EXISTS LeadStatuses
 CREATE TABLE [dbo].[UserTypes] (
     [UserTypeId]   INT           IDENTITY (1, 1) NOT NULL,
     [UserTypeName] NVARCHAR (50) NOT NULL,
-    [InsDate]      DATETIME      NOT NULL,
+    [InsDate]      DATETIME2      NOT NULL,
     [RowVersion]   ROWVERSION    NOT NULL,
     CONSTRAINT [PK_dbo.UserTypes] PRIMARY KEY CLUSTERED ([UserTypeId] ASC)
 );
@@ -60,8 +60,8 @@ CREATE TABLE [dbo].[AspNetUsers] (
     [PhoneNumber]          NVARCHAR (MAX) NULL,
     [PhoneNumberConfirmed] BIT            NOT NULL,
     [TwoFactorEnabled]     BIT            NOT NULL,
-    [LockoutEndDateUtc]    DATETIME       NULL,
-    [LastLogin]            DATETIME       NULL,
+    [LockoutEndDateUtc]    DATETIME2       NULL,
+    [LastLogin]            DATETIME2       NULL,
     [LockoutEnabled]       BIT            NOT NULL,
     [AccessFailedCount]    INT            NOT NULL,
     [UserName]             NVARCHAR (256) NOT NULL,
@@ -138,7 +138,7 @@ CREATE NONCLUSTERED INDEX [IX_UserId]
 CREATE TABLE [dbo].[Companies] (
     [CompanyId]  INT            IDENTITY (1, 1) NOT NULL,
     [FstUser]    NVARCHAR (128) NOT NULL,
-    [InsDate]    DATETIME       NOT NULL,
+    [InsDate]    DATETIME2       NOT NULL,
     [Name]       VARCHAR (MAX)  NOT NULL,
     [Archived]   SMALLINT       NOT NULL,
     [Email]      VARCHAR (MAX)  NOT NULL,
@@ -159,7 +159,7 @@ CREATE TABLE [dbo].[Companies] (
 CREATE TABLE [dbo].[ContactGroups] (
     [ContactGroupId]   INT            IDENTITY (1, 1) NOT NULL,
     [ContactGroupName] NVARCHAR (50)  NOT NULL,
-    [InsDate]          DATETIME  NOT NULL,
+    [InsDate]          DATETIME2  NOT NULL,
     [FstUser]          NVARCHAR (128) NOT NULL,
     CONSTRAINT [PK_dbo.ContactGroups] PRIMARY KEY CLUSTERED ([ContactGroupId] ASC)
 );
@@ -168,10 +168,11 @@ CREATE TABLE [dbo].[ContactGroups] (
 CREATE TABLE [dbo].[Contacts] (
     [ContactId]          INT            IDENTITY (1, 1) NOT NULL,
     [UserId]             NVARCHAR (128) NOT NULL,
-    [InsDate]            DATETIME  NOT NULL,
+    [InsDate]            DATETIME2  NOT NULL,
     [FName]              VARCHAR (MAX)  NOT NULL,
     [LName]              VARCHAR (MAX)  NOT NULL,
     [MName]              VARCHAR (MAX)  NULL,
+	[FullName]              VARCHAR (MAX)  NULL,
     [Title]              VARCHAR (50)   NULL,
     [Archived]           SMALLINT       NOT NULL,
     [Email]              VARCHAR (MAX)  NOT NULL,
@@ -203,7 +204,7 @@ CREATE TABLE [dbo].[PracticeAreas] (
     [PracticeAreaId]   INT            IDENTITY (1, 1) NOT NULL,
     [PracticeAreaName] VARCHAR (MAX)  NOT NULL,
     [FstUser]          NVARCHAR (128) NOT NULL,
-    [InsDate]          DATETIME  NOT NULL,
+    [InsDate]          DATETIME2  NOT NULL,
     [RowVersion]       ROWVERSION     NOT NULL,
     CONSTRAINT [PK_dbo.PracticeAreas] PRIMARY KEY CLUSTERED ([PracticeAreaId] ASC)
 );
@@ -213,7 +214,7 @@ CREATE TABLE [dbo].[CaseStages] (
     [CaseStageId]   INT            IDENTITY (1, 1) NOT NULL,
     [CaseStageName] NVARCHAR (50)  NOT NULL,
     [FstUser]       NVARCHAR (128) NOT NULL,
-    [InsDate]       DATETIME  NOT NULL,
+    [InsDate]       DATETIME2  NOT NULL,
     [RowVersion]    ROWVERSION     NOT NULL,
     CONSTRAINT [PK_dbo.CaseStages] PRIMARY KEY CLUSTERED ([CaseStageId] ASC)
 );
@@ -223,7 +224,7 @@ CREATE TABLE [dbo].[Offices] (
     [OfficeId]   INT            IDENTITY (1, 1) NOT NULL,
     [OfficeName] NVARCHAR (50)  NOT NULL,
     [FstUser]    NVARCHAR (128) NOT NULL,
-    [InsDate]    DATETIME  NOT NULL,
+    [InsDate]    DATETIME2  NOT NULL,
     [RowVersion] ROWVERSION     NOT NULL,
     CONSTRAINT [PK_dbo.Offices] PRIMARY KEY CLUSTERED ([OfficeId] ASC)
 );
@@ -233,14 +234,14 @@ CREATE TABLE [dbo].[BillingMethods] (
     [BillingMethodId]   INT            IDENTITY (1, 1) NOT NULL,
     [BillingMethodName] VARCHAR (MAX)  NOT NULL,
     [FstUser]           NVARCHAR (128) NOT NULL,
-    [InsDate]           DATETIME  NOT NULL,
+    [InsDate]           DATETIME2  NOT NULL,
     [RowVersion]        ROWVERSION     NOT NULL,
     CONSTRAINT [PK_dbo.BillingMethods] PRIMARY KEY CLUSTERED ([BillingMethodId] ASC)
 );
 
 --Cases
 CREATE TABLE [dbo].[Cases] (
-    [CaseId]          INT            NOT NULL,
+    [CaseId]          INT        IDENTITY (1, 1)    NOT NULL,
     [ContactId]       INT            NOT NULL,
     [CaseName]        VARCHAR (MAX)  NOT NULL,
     [CaseNumber]      VARCHAR (MAX)  NOT NULL,
@@ -248,10 +249,11 @@ CREATE TABLE [dbo].[Cases] (
     [BillingMethodId] INT            NOT NULL,
     [OfficeId]        INT            NOT NULL,
     [CaseStageId]     INT            NOT NULL,
-    [DateOpened]      DATETIME  NOT NULL,
+    [DateOpened]      DATETIME2  NOT NULL,
+	[Statute]      DATETIME2  NOT NULL,
     [Description]     VARCHAR (MAX)  NULL,
     [FstUser]         NVARCHAR (128) NOT NULL,
-    [InsDate]         DATETIME  NOT NULL,
+    [InsDate]         DATETIME2  NOT NULL,
     [RowVersion]      ROWVERSION     NOT NULL,
     CONSTRAINT [PK_dbo.Cases] PRIMARY KEY CLUSTERED ([CaseId] ASC),
 	CONSTRAINT [FK_Cases_ToContacts] FOREIGN KEY ([ContactId]) REFERENCES [dbo].[Contacts] ([ContactId]),
@@ -266,7 +268,7 @@ CREATE TABLE [dbo].[LeadReferralSources] (
     [ReferralSourceId]   INT            IDENTITY (1, 1) NOT NULL,
     [ReferralSourceName] VARCHAR (MAX)  NOT NULL,
     [FstUser]          NVARCHAR (128) NOT NULL,
-    [InsDate]          DATETIME  NOT NULL,
+    [InsDate]          DATETIME2  NOT NULL,
     [RowVersion]       ROWVERSION     NOT NULL,
     CONSTRAINT [PK_dbo.LeadReferralSources] PRIMARY KEY CLUSTERED ([ReferralSourceId] ASC)
 );
@@ -276,7 +278,7 @@ CREATE TABLE [dbo].[LeadStatuses] (
     [LeadStatusId]   INT            IDENTITY (1, 1) NOT NULL,
     [LeadStatusName] VARCHAR (MAX)  NOT NULL,
     [FstUser]          NVARCHAR (128) NOT NULL,
-    [InsDate]          DATETIME  NOT NULL,
+    [InsDate]          DATETIME2  NOT NULL,
     [RowVersion]       ROWVERSION     NOT NULL,
     CONSTRAINT [PK_dbo.LeadStatuses] PRIMARY KEY CLUSTERED ([LeadStatusId] ASC)
 );
@@ -365,3 +367,10 @@ values
 ('Contacted', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
 ('Consult Scheduled', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
 ('Pending', GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net'))
+
+insert into Contacts
+(FName, LName, MName, FullName, Title, Email, ContactGroupId, CellPhone, WorkPhone, HomePhone, Fax, SSN, JobTitle, Address, Address2, City, State, Zip, Country, License, Website, Notes, Birthday, InsDate, UserId, Archived, EnableClientPortal)
+values
+('Robin','Ward', 'Conn', 'Robin Conn Ward', 'Mr.', 'system@steelcitysites.net', 1, '334-332-7010', '334-332-7010', '334-332-7010', '334-332-7010', '123456789', 'Awesome Person', '123 Main Street', 'APT 1', 'Birmingham', 'AL', '36830', 'USA', 
+'License-001', 'https://steelcitysites.net', 'Insert some notes', '2000-01-31',
+ GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net'), 0, 0)
