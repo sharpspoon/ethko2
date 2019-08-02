@@ -294,6 +294,9 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MeViewModels.cs" />
+    <Compile Include="Notification.cs">
+      <DependentUpon>ethko.tt</DependentUpon>
+    </Compile>
     <Compile Include="Office.cs">
       <DependentUpon>ethko.tt</DependentUpon>
     </Compile>

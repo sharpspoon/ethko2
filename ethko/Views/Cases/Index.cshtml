@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ethko.Models.GetContactListViewModel>
+﻿@model IEnumerable<ethko.Models.GetCaseListViewModel>
 @{
     ViewBag.Title = "Open Cases";
 }
@@ -65,40 +65,40 @@
                         {
                             <tr>
                                 <td>
-                                    <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.ContactId})'>@Html.DisplayFor(modelItem => item.FName)</a>
+                                    <a href='@Url.Action("ViewContact", "Cases", new { CaseId = item.CaseId})'>@Html.DisplayFor(modelItem => item.CaseName)</a>
                                 </td>
                                 <td>
-                                    <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.ContactId})'>@Html.DisplayFor(modelItem => item.LName)</a>
+                                    <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.CaseId})'>@Html.DisplayFor(modelItem => item.CaseNumber)</a>
 
                                 </td>
                                 <td>
-                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.ContactGroupList)</a>
+                                    @Html.DisplayFor(modelItem => item.CaseStageId)
 
                                 </td>
                                 <td>
-                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
+                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.CaseStageId)</a>
 
                                 </td>
                                 <td>
-                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
+                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.CaseStageId)</a>
 
                                 </td>
                                 <td>
-                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
+                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.CaseStageId)</a>
 
                                 </td>
                                 <td>
-                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
+                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.CaseStageId)</a>
 
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.InsDate)
-                                    by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.UserId)</a>
+                                    by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.CaseStageId)</a>
 
 
                                 </td>
                                 <td>
-                                    <a class="btn btn-primary" href='@Url.Action("EditContact", "Contacts", new { ContactId = item.ContactId })' rel="modal:open" style="float: right">Edit Contact</a>
+                                    <a class="btn btn-primary" href='@Url.Action("EditContact", "Contacts", new { ContactId = item.CaseStageId })' rel="modal:open" style="float: right">Edit Contact</a>
 
                                 </td>
                             </tr>

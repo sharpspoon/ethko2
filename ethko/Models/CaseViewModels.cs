@@ -63,6 +63,32 @@ namespace ethko.Models
         public string InsDate { get; set; }
     }
 
+    [Table("Cases")]
+    public class GetCaseListViewModel
+    {
+        [Required]
+        [Display(Name = "CaseId")]
+        public int CaseId { get; set; }
+
+        [Display(Name = "CaseNumber")]
+        public string CaseNumber { get; set; }
+
+        [Display(Name = "CaseName")]
+        public string CaseName { get; set; }
+
+        [Display(Name = "CaseStageId")]
+        public int CaseStageId { get; set; }
+
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
+
+        [Display(Name = "FstUser")]
+        public string FstUser { get; set; }
+
+        [Display(Name = "InsDate")]
+        public string InsDate { get; set; }
+    }
+
     public class AddPracticeAreaViewModel
     {
         [Display(Name = "Practice Area")]

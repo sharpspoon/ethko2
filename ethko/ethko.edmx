@@ -217,6 +217,19 @@
           <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
+        <EntityType Name="Notifications">
+          <Key>
+            <PropertyRef Name="NotificationId" />
+          </Key>
+          <Property Name="NotificationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="N1" Type="int" Nullable="false" />
+          <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="LstDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="InsDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
         <EntityType Name="Offices">
           <Key>
             <PropertyRef Name="OfficeId" />
@@ -407,6 +420,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LeadReferralSources" EntityType="Self.LeadReferralSources" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LeadStatuses" EntityType="Self.LeadStatuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Offices" EntityType="Self.Offices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PracticeAreas" EntityType="Self.PracticeAreas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserTypes" EntityType="Self.UserTypes" Schema="dbo" store:Type="Tables" />
@@ -535,6 +549,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             <End Role="PracticeArea" EntitySet="PracticeAreas" />
             <End Role="Case" EntitySet="Cases" />
           </AssociationSet>
+          <EntitySet Name="Notifications" EntityType="ethko_dbModel.Notification" />
           </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
@@ -891,6 +906,19 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="NotificationId" />
+          </Key>
+          <Property Name="NotificationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="N1" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LstDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1160,6 +1188,20 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
                 <ScalarProperty Name="FstUser" ColumnName="FstUser" />
                 <ScalarProperty Name="LeadStatusName" ColumnName="LeadStatusName" />
                 <ScalarProperty Name="LeadStatusId" ColumnName="LeadStatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="ethko_dbModel.Notification">
+              <MappingFragment StoreEntitySet="Notifications">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="N1" ColumnName="N1" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

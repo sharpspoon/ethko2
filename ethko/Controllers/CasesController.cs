@@ -14,9 +14,21 @@ namespace ethko.Controllers
     public class CasesController : Controller
     {
         ethko_dbEntities entities = new ethko_dbEntities();
+
+        //View List
+        [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                var cases = from c in entities.Cases
+                               join u in entities.AspNetUsers on c.FstUser equals u.Id //into users
+                               //from cs in entities.CaseStages.DefaultIfEmpty()
+                               //join 
+                               //where c.Archived == 0
+                               select new GetCaseListViewModel() { CaseId = c.CaseId, CaseNumber = c.CaseNumber, CaseName = c.CaseName, CaseStageId = c.CaseStageId, UserName = u.UserName, InsDate = c.InsDate.ToString() };
+                return View(cases.ToList());
+            }
         }
 
         [HttpGet]

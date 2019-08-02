@@ -42,5 +42,6 @@ namespace ethko
         public virtual DbSet<UserType> UserTypes { get; set; }
         public virtual DbSet<LeadReferralSource> LeadReferralSources { get; set; }
         public virtual DbSet<LeadStatus> LeadStatuses { get; set; }
+        public virtual DbSet<Notification> Notifications { get; set; }
     }
 }

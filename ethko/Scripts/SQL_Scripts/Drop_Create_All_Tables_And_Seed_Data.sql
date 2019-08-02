@@ -283,6 +283,23 @@ CREATE TABLE [dbo].[LeadStatuses] (
     CONSTRAINT [PK_dbo.LeadStatuses] PRIMARY KEY CLUSTERED ([LeadStatusId] ASC)
 );
 
+--Notifications
+CREATE TABLE [dbo].[Notifications] (
+    [NotificationId]          INT            IDENTITY (1, 1) NOT NULL,
+	[UserId]         NVARCHAR (128) NOT NULL,
+    [N1]       INT    DEFAULT(1)        NOT NULL,
+	[LstUser]         NVARCHAR (128) NOT NULL,
+	[LstDate]         DATETIME2 (7)  NOT NULL,
+    [FstUser]         NVARCHAR (128) NOT NULL,
+    [InsDate]         DATETIME2 (7)  NOT NULL,
+    [RowVersion]      ROWVERSION     NOT NULL,
+    CONSTRAINT [PK_dbo.Notifications] PRIMARY KEY CLUSTERED ([NotificationId] ASC)
+);
+
+
+
+
+
 
 
 
@@ -374,3 +391,8 @@ values
 ('Robin','Ward', 'Conn', 'Robin Conn Ward', 'Mr.', 'system@steelcitysites.net', 1, '334-332-7010', '334-332-7010', '334-332-7010', '334-332-7010', '123456789', 'Awesome Person', '123 Main Street', 'APT 1', 'Birmingham', 'AL', '36830', 'USA', 
 'License-001', 'https://steelcitysites.net', 'Insert some notes', '2000-01-31',
  GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net'), 0, 0)
+
+insert into Notifications
+(UserId, N1, LstUser, FstUser, InsDate, LstDate)
+values
+( (select id from AspNetUsers where UserName='system@steelcitysites.net'), 1, (select id from AspNetUsers where UserName='system@steelcitysites.net'), (select id from AspNetUsers where UserName='system@steelcitysites.net'), GETDATE(), GETDATE())

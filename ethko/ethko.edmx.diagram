@@ -30,6 +30,7 @@
         <AssociationConnector Association="ethko_dbModel.FK_Cases_ToContacts" />
         <AssociationConnector Association="ethko_dbModel.FK_Cases_ToOffices" />
         <AssociationConnector Association="ethko_dbModel.FK_Cases_ToPracticeAreas" />
+        <EntityTypeShape EntityType="ethko_dbModel.Notification" Width="1.5" PointX="12.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
