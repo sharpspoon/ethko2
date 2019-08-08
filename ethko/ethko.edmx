@@ -224,6 +224,116 @@
           <Property Name="NotificationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="N1" Type="int" Nullable="false" />
+          <Property Name="N2" Type="int" Nullable="false" />
+          <Property Name="N3" Type="int" Nullable="false" />
+          <Property Name="N4" Type="int" Nullable="false" />
+          <Property Name="N5" Type="int" Nullable="false" />
+          <Property Name="N6" Type="int" Nullable="false" />
+          <Property Name="N7" Type="int" Nullable="false" />
+          <Property Name="N8" Type="int" Nullable="false" />
+          <Property Name="N9" Type="int" Nullable="false" />
+          <Property Name="N10" Type="int" Nullable="false" />
+          <Property Name="N11" Type="int" Nullable="false" />
+          <Property Name="N12" Type="int" Nullable="false" />
+          <Property Name="N13" Type="int" Nullable="false" />
+          <Property Name="N14" Type="int" Nullable="false" />
+          <Property Name="N15" Type="int" Nullable="false" />
+          <Property Name="N16" Type="int" Nullable="false" />
+          <Property Name="N17" Type="int" Nullable="false" />
+          <Property Name="N18" Type="int" Nullable="false" />
+          <Property Name="N19" Type="int" Nullable="false" />
+          <Property Name="N20" Type="int" Nullable="false" />
+          <Property Name="N21" Type="int" Nullable="false" />
+          <Property Name="N22" Type="int" Nullable="false" />
+          <Property Name="N23" Type="int" Nullable="false" />
+          <Property Name="N24" Type="int" Nullable="false" />
+          <Property Name="N25" Type="int" Nullable="false" />
+          <Property Name="N26" Type="int" Nullable="false" />
+          <Property Name="N27" Type="int" Nullable="false" />
+          <Property Name="N28" Type="int" Nullable="false" />
+          <Property Name="N29" Type="int" Nullable="false" />
+          <Property Name="N30" Type="int" Nullable="false" />
+          <Property Name="N31" Type="int" Nullable="false" />
+          <Property Name="N32" Type="int" Nullable="false" />
+          <Property Name="N33" Type="int" Nullable="false" />
+          <Property Name="N34" Type="int" Nullable="false" />
+          <Property Name="N35" Type="int" Nullable="false" />
+          <Property Name="N36" Type="int" Nullable="false" />
+          <Property Name="N37" Type="int" Nullable="false" />
+          <Property Name="N38" Type="int" Nullable="false" />
+          <Property Name="N39" Type="int" Nullable="false" />
+          <Property Name="N40" Type="int" Nullable="false" />
+          <Property Name="N41" Type="int" Nullable="false" />
+          <Property Name="N42" Type="int" Nullable="false" />
+          <Property Name="N43" Type="int" Nullable="false" />
+          <Property Name="N44" Type="int" Nullable="false" />
+          <Property Name="N45" Type="int" Nullable="false" />
+          <Property Name="N46" Type="int" Nullable="false" />
+          <Property Name="N47" Type="int" Nullable="false" />
+          <Property Name="N48" Type="int" Nullable="false" />
+          <Property Name="N49" Type="int" Nullable="false" />
+          <Property Name="N50" Type="int" Nullable="false" />
+          <Property Name="N51" Type="int" Nullable="false" />
+          <Property Name="N52" Type="int" Nullable="false" />
+          <Property Name="N53" Type="int" Nullable="false" />
+          <Property Name="N54" Type="int" Nullable="false" />
+          <Property Name="N55" Type="int" Nullable="false" />
+          <Property Name="N56" Type="int" Nullable="false" />
+          <Property Name="N57" Type="int" Nullable="false" />
+          <Property Name="N58" Type="int" Nullable="false" />
+          <Property Name="N59" Type="int" Nullable="false" />
+          <Property Name="N60" Type="int" Nullable="false" />
+          <Property Name="N61" Type="int" Nullable="false" />
+          <Property Name="N62" Type="int" Nullable="false" />
+          <Property Name="N63" Type="int" Nullable="false" />
+          <Property Name="N64" Type="int" Nullable="false" />
+          <Property Name="N65" Type="int" Nullable="false" />
+          <Property Name="N66" Type="int" Nullable="false" />
+          <Property Name="N67" Type="int" Nullable="false" />
+          <Property Name="N68" Type="int" Nullable="false" />
+          <Property Name="N69" Type="int" Nullable="false" />
+          <Property Name="N70" Type="int" Nullable="false" />
+          <Property Name="N71" Type="int" Nullable="false" />
+          <Property Name="N72" Type="int" Nullable="false" />
+          <Property Name="N73" Type="int" Nullable="false" />
+          <Property Name="N74" Type="int" Nullable="false" />
+          <Property Name="N75" Type="int" Nullable="false" />
+          <Property Name="N76" Type="int" Nullable="false" />
+          <Property Name="N77" Type="int" Nullable="false" />
+          <Property Name="N78" Type="int" Nullable="false" />
+          <Property Name="N79" Type="int" Nullable="false" />
+          <Property Name="N80" Type="int" Nullable="false" />
+          <Property Name="N81" Type="int" Nullable="false" />
+          <Property Name="N82" Type="int" Nullable="false" />
+          <Property Name="N83" Type="int" Nullable="false" />
+          <Property Name="N84" Type="int" Nullable="false" />
+          <Property Name="N85" Type="int" Nullable="false" />
+          <Property Name="N86" Type="int" Nullable="false" />
+          <Property Name="N87" Type="int" Nullable="false" />
+          <Property Name="N88" Type="int" Nullable="false" />
+          <Property Name="N89" Type="int" Nullable="false" />
+          <Property Name="N90" Type="int" Nullable="false" />
+          <Property Name="N91" Type="int" Nullable="false" />
+          <Property Name="N92" Type="int" Nullable="false" />
+          <Property Name="N93" Type="int" Nullable="false" />
+          <Property Name="N94" Type="int" Nullable="false" />
+          <Property Name="N95" Type="int" Nullable="false" />
+          <Property Name="N96" Type="int" Nullable="false" />
+          <Property Name="N97" Type="int" Nullable="false" />
+          <Property Name="N98" Type="int" Nullable="false" />
+          <Property Name="N99" Type="int" Nullable="false" />
+          <Property Name="N100" Type="int" Nullable="false" />
+          <Property Name="N101" Type="int" Nullable="false" />
+          <Property Name="N102" Type="int" Nullable="false" />
+          <Property Name="N103" Type="int" Nullable="false" />
+          <Property Name="N104" Type="int" Nullable="false" />
+          <Property Name="N105" Type="int" Nullable="false" />
+          <Property Name="N106" Type="int" Nullable="false" />
+          <Property Name="N107" Type="int" Nullable="false" />
+          <Property Name="N108" Type="int" Nullable="false" />
+          <Property Name="N109" Type="int" Nullable="false" />
+          <Property Name="N110" Type="int" Nullable="false" />
+          <Property Name="N111" Type="int" Nullable="false" />
           <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="LstDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
@@ -918,6 +1028,116 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="N2" Type="Int32" Nullable="false" />
+          <Property Name="N3" Type="Int32" Nullable="false" />
+          <Property Name="N4" Type="Int32" Nullable="false" />
+          <Property Name="N5" Type="Int32" Nullable="false" />
+          <Property Name="N6" Type="Int32" Nullable="false" />
+          <Property Name="N7" Type="Int32" Nullable="false" />
+          <Property Name="N8" Type="Int32" Nullable="false" />
+          <Property Name="N9" Type="Int32" Nullable="false" />
+          <Property Name="N10" Type="Int32" Nullable="false" />
+          <Property Name="N11" Type="Int32" Nullable="false" />
+          <Property Name="N12" Type="Int32" Nullable="false" />
+          <Property Name="N13" Type="Int32" Nullable="false" />
+          <Property Name="N14" Type="Int32" Nullable="false" />
+          <Property Name="N15" Type="Int32" Nullable="false" />
+          <Property Name="N16" Type="Int32" Nullable="false" />
+          <Property Name="N17" Type="Int32" Nullable="false" />
+          <Property Name="N18" Type="Int32" Nullable="false" />
+          <Property Name="N19" Type="Int32" Nullable="false" />
+          <Property Name="N20" Type="Int32" Nullable="false" />
+          <Property Name="N21" Type="Int32" Nullable="false" />
+          <Property Name="N22" Type="Int32" Nullable="false" />
+          <Property Name="N23" Type="Int32" Nullable="false" />
+          <Property Name="N24" Type="Int32" Nullable="false" />
+          <Property Name="N25" Type="Int32" Nullable="false" />
+          <Property Name="N26" Type="Int32" Nullable="false" />
+          <Property Name="N27" Type="Int32" Nullable="false" />
+          <Property Name="N28" Type="Int32" Nullable="false" />
+          <Property Name="N29" Type="Int32" Nullable="false" />
+          <Property Name="N30" Type="Int32" Nullable="false" />
+          <Property Name="N31" Type="Int32" Nullable="false" />
+          <Property Name="N32" Type="Int32" Nullable="false" />
+          <Property Name="N33" Type="Int32" Nullable="false" />
+          <Property Name="N34" Type="Int32" Nullable="false" />
+          <Property Name="N35" Type="Int32" Nullable="false" />
+          <Property Name="N36" Type="Int32" Nullable="false" />
+          <Property Name="N37" Type="Int32" Nullable="false" />
+          <Property Name="N38" Type="Int32" Nullable="false" />
+          <Property Name="N39" Type="Int32" Nullable="false" />
+          <Property Name="N40" Type="Int32" Nullable="false" />
+          <Property Name="N41" Type="Int32" Nullable="false" />
+          <Property Name="N42" Type="Int32" Nullable="false" />
+          <Property Name="N43" Type="Int32" Nullable="false" />
+          <Property Name="N44" Type="Int32" Nullable="false" />
+          <Property Name="N45" Type="Int32" Nullable="false" />
+          <Property Name="N46" Type="Int32" Nullable="false" />
+          <Property Name="N47" Type="Int32" Nullable="false" />
+          <Property Name="N48" Type="Int32" Nullable="false" />
+          <Property Name="N49" Type="Int32" Nullable="false" />
+          <Property Name="N50" Type="Int32" Nullable="false" />
+          <Property Name="N51" Type="Int32" Nullable="false" />
+          <Property Name="N52" Type="Int32" Nullable="false" />
+          <Property Name="N53" Type="Int32" Nullable="false" />
+          <Property Name="N54" Type="Int32" Nullable="false" />
+          <Property Name="N55" Type="Int32" Nullable="false" />
+          <Property Name="N56" Type="Int32" Nullable="false" />
+          <Property Name="N57" Type="Int32" Nullable="false" />
+          <Property Name="N58" Type="Int32" Nullable="false" />
+          <Property Name="N59" Type="Int32" Nullable="false" />
+          <Property Name="N60" Type="Int32" Nullable="false" />
+          <Property Name="N61" Type="Int32" Nullable="false" />
+          <Property Name="N62" Type="Int32" Nullable="false" />
+          <Property Name="N63" Type="Int32" Nullable="false" />
+          <Property Name="N64" Type="Int32" Nullable="false" />
+          <Property Name="N65" Type="Int32" Nullable="false" />
+          <Property Name="N66" Type="Int32" Nullable="false" />
+          <Property Name="N67" Type="Int32" Nullable="false" />
+          <Property Name="N68" Type="Int32" Nullable="false" />
+          <Property Name="N69" Type="Int32" Nullable="false" />
+          <Property Name="N70" Type="Int32" Nullable="false" />
+          <Property Name="N71" Type="Int32" Nullable="false" />
+          <Property Name="N72" Type="Int32" Nullable="false" />
+          <Property Name="N73" Type="Int32" Nullable="false" />
+          <Property Name="N74" Type="Int32" Nullable="false" />
+          <Property Name="N75" Type="Int32" Nullable="false" />
+          <Property Name="N76" Type="Int32" Nullable="false" />
+          <Property Name="N77" Type="Int32" Nullable="false" />
+          <Property Name="N78" Type="Int32" Nullable="false" />
+          <Property Name="N79" Type="Int32" Nullable="false" />
+          <Property Name="N80" Type="Int32" Nullable="false" />
+          <Property Name="N81" Type="Int32" Nullable="false" />
+          <Property Name="N82" Type="Int32" Nullable="false" />
+          <Property Name="N83" Type="Int32" Nullable="false" />
+          <Property Name="N84" Type="Int32" Nullable="false" />
+          <Property Name="N85" Type="Int32" Nullable="false" />
+          <Property Name="N86" Type="Int32" Nullable="false" />
+          <Property Name="N87" Type="Int32" Nullable="false" />
+          <Property Name="N88" Type="Int32" Nullable="false" />
+          <Property Name="N89" Type="Int32" Nullable="false" />
+          <Property Name="N90" Type="Int32" Nullable="false" />
+          <Property Name="N91" Type="Int32" Nullable="false" />
+          <Property Name="N92" Type="Int32" Nullable="false" />
+          <Property Name="N93" Type="Int32" Nullable="false" />
+          <Property Name="N94" Type="Int32" Nullable="false" />
+          <Property Name="N95" Type="Int32" Nullable="false" />
+          <Property Name="N96" Type="Int32" Nullable="false" />
+          <Property Name="N97" Type="Int32" Nullable="false" />
+          <Property Name="N98" Type="Int32" Nullable="false" />
+          <Property Name="N99" Type="Int32" Nullable="false" />
+          <Property Name="N100" Type="Int32" Nullable="false" />
+          <Property Name="N101" Type="Int32" Nullable="false" />
+          <Property Name="N102" Type="Int32" Nullable="false" />
+          <Property Name="N103" Type="Int32" Nullable="false" />
+          <Property Name="N104" Type="Int32" Nullable="false" />
+          <Property Name="N105" Type="Int32" Nullable="false" />
+          <Property Name="N106" Type="Int32" Nullable="false" />
+          <Property Name="N107" Type="Int32" Nullable="false" />
+          <Property Name="N108" Type="Int32" Nullable="false" />
+          <Property Name="N109" Type="Int32" Nullable="false" />
+          <Property Name="N110" Type="Int32" Nullable="false" />
+          <Property Name="N111" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1194,6 +1414,116 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySetMapping Name="Notifications">
             <EntityTypeMapping TypeName="ethko_dbModel.Notification">
               <MappingFragment StoreEntitySet="Notifications">
+                <ScalarProperty Name="N111" ColumnName="N111" />
+                <ScalarProperty Name="N110" ColumnName="N110" />
+                <ScalarProperty Name="N109" ColumnName="N109" />
+                <ScalarProperty Name="N108" ColumnName="N108" />
+                <ScalarProperty Name="N107" ColumnName="N107" />
+                <ScalarProperty Name="N106" ColumnName="N106" />
+                <ScalarProperty Name="N105" ColumnName="N105" />
+                <ScalarProperty Name="N104" ColumnName="N104" />
+                <ScalarProperty Name="N103" ColumnName="N103" />
+                <ScalarProperty Name="N102" ColumnName="N102" />
+                <ScalarProperty Name="N101" ColumnName="N101" />
+                <ScalarProperty Name="N100" ColumnName="N100" />
+                <ScalarProperty Name="N99" ColumnName="N99" />
+                <ScalarProperty Name="N98" ColumnName="N98" />
+                <ScalarProperty Name="N97" ColumnName="N97" />
+                <ScalarProperty Name="N96" ColumnName="N96" />
+                <ScalarProperty Name="N95" ColumnName="N95" />
+                <ScalarProperty Name="N94" ColumnName="N94" />
+                <ScalarProperty Name="N93" ColumnName="N93" />
+                <ScalarProperty Name="N92" ColumnName="N92" />
+                <ScalarProperty Name="N91" ColumnName="N91" />
+                <ScalarProperty Name="N90" ColumnName="N90" />
+                <ScalarProperty Name="N89" ColumnName="N89" />
+                <ScalarProperty Name="N88" ColumnName="N88" />
+                <ScalarProperty Name="N87" ColumnName="N87" />
+                <ScalarProperty Name="N86" ColumnName="N86" />
+                <ScalarProperty Name="N85" ColumnName="N85" />
+                <ScalarProperty Name="N84" ColumnName="N84" />
+                <ScalarProperty Name="N83" ColumnName="N83" />
+                <ScalarProperty Name="N82" ColumnName="N82" />
+                <ScalarProperty Name="N81" ColumnName="N81" />
+                <ScalarProperty Name="N80" ColumnName="N80" />
+                <ScalarProperty Name="N79" ColumnName="N79" />
+                <ScalarProperty Name="N78" ColumnName="N78" />
+                <ScalarProperty Name="N77" ColumnName="N77" />
+                <ScalarProperty Name="N76" ColumnName="N76" />
+                <ScalarProperty Name="N75" ColumnName="N75" />
+                <ScalarProperty Name="N74" ColumnName="N74" />
+                <ScalarProperty Name="N73" ColumnName="N73" />
+                <ScalarProperty Name="N72" ColumnName="N72" />
+                <ScalarProperty Name="N71" ColumnName="N71" />
+                <ScalarProperty Name="N70" ColumnName="N70" />
+                <ScalarProperty Name="N69" ColumnName="N69" />
+                <ScalarProperty Name="N68" ColumnName="N68" />
+                <ScalarProperty Name="N67" ColumnName="N67" />
+                <ScalarProperty Name="N66" ColumnName="N66" />
+                <ScalarProperty Name="N65" ColumnName="N65" />
+                <ScalarProperty Name="N64" ColumnName="N64" />
+                <ScalarProperty Name="N63" ColumnName="N63" />
+                <ScalarProperty Name="N62" ColumnName="N62" />
+                <ScalarProperty Name="N61" ColumnName="N61" />
+                <ScalarProperty Name="N60" ColumnName="N60" />
+                <ScalarProperty Name="N59" ColumnName="N59" />
+                <ScalarProperty Name="N58" ColumnName="N58" />
+                <ScalarProperty Name="N57" ColumnName="N57" />
+                <ScalarProperty Name="N56" ColumnName="N56" />
+                <ScalarProperty Name="N55" ColumnName="N55" />
+                <ScalarProperty Name="N54" ColumnName="N54" />
+                <ScalarProperty Name="N53" ColumnName="N53" />
+                <ScalarProperty Name="N52" ColumnName="N52" />
+                <ScalarProperty Name="N51" ColumnName="N51" />
+                <ScalarProperty Name="N50" ColumnName="N50" />
+                <ScalarProperty Name="N49" ColumnName="N49" />
+                <ScalarProperty Name="N48" ColumnName="N48" />
+                <ScalarProperty Name="N47" ColumnName="N47" />
+                <ScalarProperty Name="N46" ColumnName="N46" />
+                <ScalarProperty Name="N45" ColumnName="N45" />
+                <ScalarProperty Name="N44" ColumnName="N44" />
+                <ScalarProperty Name="N43" ColumnName="N43" />
+                <ScalarProperty Name="N42" ColumnName="N42" />
+                <ScalarProperty Name="N41" ColumnName="N41" />
+                <ScalarProperty Name="N40" ColumnName="N40" />
+                <ScalarProperty Name="N39" ColumnName="N39" />
+                <ScalarProperty Name="N38" ColumnName="N38" />
+                <ScalarProperty Name="N37" ColumnName="N37" />
+                <ScalarProperty Name="N36" ColumnName="N36" />
+                <ScalarProperty Name="N35" ColumnName="N35" />
+                <ScalarProperty Name="N34" ColumnName="N34" />
+                <ScalarProperty Name="N33" ColumnName="N33" />
+                <ScalarProperty Name="N32" ColumnName="N32" />
+                <ScalarProperty Name="N31" ColumnName="N31" />
+                <ScalarProperty Name="N30" ColumnName="N30" />
+                <ScalarProperty Name="N29" ColumnName="N29" />
+                <ScalarProperty Name="N28" ColumnName="N28" />
+                <ScalarProperty Name="N27" ColumnName="N27" />
+                <ScalarProperty Name="N26" ColumnName="N26" />
+                <ScalarProperty Name="N25" ColumnName="N25" />
+                <ScalarProperty Name="N24" ColumnName="N24" />
+                <ScalarProperty Name="N23" ColumnName="N23" />
+                <ScalarProperty Name="N22" ColumnName="N22" />
+                <ScalarProperty Name="N21" ColumnName="N21" />
+                <ScalarProperty Name="N20" ColumnName="N20" />
+                <ScalarProperty Name="N19" ColumnName="N19" />
+                <ScalarProperty Name="N18" ColumnName="N18" />
+                <ScalarProperty Name="N17" ColumnName="N17" />
+                <ScalarProperty Name="N16" ColumnName="N16" />
+                <ScalarProperty Name="N15" ColumnName="N15" />
+                <ScalarProperty Name="N14" ColumnName="N14" />
+                <ScalarProperty Name="N13" ColumnName="N13" />
+                <ScalarProperty Name="N12" ColumnName="N12" />
+                <ScalarProperty Name="N11" ColumnName="N11" />
+                <ScalarProperty Name="N10" ColumnName="N10" />
+                <ScalarProperty Name="N9" ColumnName="N9" />
+                <ScalarProperty Name="N8" ColumnName="N8" />
+                <ScalarProperty Name="N7" ColumnName="N7" />
+                <ScalarProperty Name="N6" ColumnName="N6" />
+                <ScalarProperty Name="N5" ColumnName="N5" />
+                <ScalarProperty Name="N4" ColumnName="N4" />
+                <ScalarProperty Name="N3" ColumnName="N3" />
+                <ScalarProperty Name="N2" ColumnName="N2" />
                 <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
                 <ScalarProperty Name="InsDate" ColumnName="InsDate" />
                 <ScalarProperty Name="FstUser" ColumnName="FstUser" />
