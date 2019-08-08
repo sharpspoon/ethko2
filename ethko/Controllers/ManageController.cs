@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ethko.Models;
 using System.Net;
+using System.Diagnostics;
 
 namespace ethko.Controllers
 {
@@ -376,143 +377,158 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult MyNotifications()
         {
+            var c1 = Request.Form["c1"];
+            Debug.WriteLine("c1="+c1);
+
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 var notifications = from n in entities.Notifications
                                         //join ut in entities.UserTypes on fu.UserTypeId equals ut.UserTypeId
                                     select new GetEditNotificationsViewModel()
-                                    {   N1 = (n.N1 == 1) ? "checked" : "",
-                                        N2 = (n.N2 == 1) ? "checked" : "",
-                                        N3 = (n.N3 == 1) ? "checked" : "",
-                                        N4 = (n.N4 == 1) ? "checked" : "",
-                                        N5 = (n.N5 == 1) ? "checked" : "",
-                                        N6 = (n.N6 == 1) ? "checked" : "",
-                                        N7 = (n.N7 == 1) ? "checked" : "",
-                                        N8 = (n.N8 == 1) ? "checked" : "",
-                                        N9 = (n.N9 == 1) ? "checked" : "",
-                                        N10 = (n.N10 == 1) ? "checked" : "",
-                                        N11 = (n.N11 == 1) ? "checked" : "",
-                                        N12 = (n.N12 == 1) ? "checked" : "",
-                                        N13 = (n.N13 == 1) ? "checked" : "",
-                                        N14 = (n.N14 == 1) ? "checked" : "",
-                                        N15 = (n.N15 == 1) ? "checked" : "",
-                                        N16 = (n.N16 == 1) ? "checked" : "",
-                                        N17 = (n.N17 == 1) ? "checked" : "",
-                                        N18 = (n.N18 == 1) ? "checked" : "",
-                                        N19 = (n.N19 == 1) ? "checked" : "",
-                                        N20 = (n.N20 == 1) ? "checked" : "",
-                                        N21 = (n.N21 == 1) ? "checked" : "",
-                                        N22 = (n.N22 == 1) ? "checked" : "",
-                                        N23 = (n.N23 == 1) ? "checked" : "",
-                                        N24 = (n.N24 == 1) ? "checked" : "",
-                                        N25 = (n.N25 == 1) ? "checked" : "",
-                                        N26 = (n.N26 == 1) ? "checked" : "",
-                                        N27 = (n.N27 == 1) ? "checked" : "",
-                                        N28 = (n.N28 == 1) ? "checked" : "",
-                                        N29 = (n.N29 == 1) ? "checked" : "",
-                                        N30 = (n.N30 == 1) ? "checked" : "",
-                                        N31 = (n.N31 == 1) ? "checked" : "",
-                                        N32 = (n.N32 == 1) ? "checked" : "",
-                                        N33 = (n.N33 == 1) ? "checked" : "",
-                                        N34 = (n.N34 == 1) ? "checked" : "",
-                                        N35 = (n.N35 == 1) ? "checked" : "",
-                                        N36 = (n.N36 == 1) ? "checked" : "",
-                                        N37 = (n.N37 == 1) ? "checked" : "",
-                                        N38 = (n.N38 == 1) ? "checked" : "",
-                                        N39 = (n.N39 == 1) ? "checked" : "",
-                                        N40 = (n.N40 == 1) ? "checked" : "",
-                                        N41 = (n.N41 == 1) ? "checked" : "",
-                                        N42 = (n.N42 == 1) ? "checked" : "",
-                                        N43 = (n.N43 == 1) ? "checked" : "",
-                                        N44 = (n.N44 == 1) ? "checked" : "",
-                                        N45 = (n.N45 == 1) ? "checked" : "",
-                                        N46 = (n.N46 == 1) ? "checked" : "",
-                                        N47 = (n.N47 == 1) ? "checked" : "",
-                                        N48 = (n.N48 == 1) ? "checked" : "",
-                                        N49 = (n.N49 == 1) ? "checked" : "",
-                                        N50 = (n.N50 == 1) ? "checked" : "",
-                                        N51 = (n.N51 == 1) ? "checked" : "",
-                                        N52 = (n.N52 == 1) ? "checked" : "",
-                                        N53 = (n.N53 == 1) ? "checked" : "",
-                                        N54 = (n.N54 == 1) ? "checked" : "",
-                                        N55 = (n.N55 == 1) ? "checked" : "",
-                                        N56 = (n.N56 == 1) ? "checked" : "",
-                                        N57 = (n.N57 == 1) ? "checked" : "",
-                                        N58 = (n.N58 == 1) ? "checked" : "",
-                                        N59 = (n.N59 == 1) ? "checked" : "",
-                                        N60 = (n.N60 == 1) ? "checked" : "",
-                                        N61 = (n.N61 == 1) ? "checked" : "",
-                                        N62 = (n.N62 == 1) ? "checked" : "",
-                                        N63 = (n.N63 == 1) ? "checked" : "",
-                                        N64 = (n.N64 == 1) ? "checked" : "",
-                                        N65 = (n.N65 == 1) ? "checked" : "",
-                                        N66 = (n.N66 == 1) ? "checked" : "",
-                                        N67 = (n.N67 == 1) ? "checked" : "",
-                                        N68 = (n.N68 == 1) ? "checked" : "",
-                                        N69 = (n.N69 == 1) ? "checked" : "",
-                                        N70 = (n.N70 == 1) ? "checked" : "",
-                                        N71 = (n.N71 == 1) ? "checked" : "",
-                                        N72 = (n.N72 == 1) ? "checked" : "",
-                                        N73 = (n.N73 == 1) ? "checked" : "",
-                                        N74 = (n.N74 == 1) ? "checked" : "",
-                                        N75 = (n.N75 == 1) ? "checked" : "",
-                                        N76 = (n.N76 == 1) ? "checked" : "",
-                                        N77 = (n.N77 == 1) ? "checked" : "",
-                                        N78 = (n.N78 == 1) ? "checked" : "",
-                                        N79 = (n.N79 == 1) ? "checked" : "",
-                                        N80 = (n.N80 == 1) ? "checked" : "",
-                                        N81 = (n.N81 == 1) ? "checked" : "",
-                                        N82 = (n.N82 == 1) ? "checked" : "",
-                                        N83 = (n.N83 == 1) ? "checked" : "",
-                                        N84 = (n.N84 == 1) ? "checked" : "",
-                                        N85 = (n.N85 == 1) ? "checked" : "",
-                                        N86 = (n.N86 == 1) ? "checked" : "",
-                                        N87 = (n.N87 == 1) ? "checked" : "",
-                                        N88 = (n.N88 == 1) ? "checked" : "",
-                                        N89 = (n.N89 == 1) ? "checked" : "",
-                                        N90 = (n.N90 == 1) ? "checked" : "",
-                                        N91 = (n.N91 == 1) ? "checked" : "",
-                                        N92 = (n.N92 == 1) ? "checked" : "",
-                                        N93 = (n.N93 == 1) ? "checked" : "",
-                                        N94 = (n.N94 == 1) ? "checked" : "",
-                                        N95 = (n.N95 == 1) ? "checked" : "",
-                                        N96 = (n.N96 == 1) ? "checked" : "",
-                                        N97 = (n.N97 == 1) ? "checked" : "",
-                                        N98 = (n.N98 == 1) ? "checked" : "",
-                                        N99 = (n.N99 == 1) ? "checked" : "",
-                                        N100 = (n.N100 == 1) ? "checked" : "",
-                                        N101 = (n.N101 == 1) ? "checked" : "",
-                                        N102 = (n.N102 == 1) ? "checked" : "",
-                                        N103 = (n.N103 == 1) ? "checked" : "",
-                                        N104 = (n.N104 == 1) ? "checked" : "",
-                                        N105 = (n.N105 == 1) ? "checked" : "",
-                                        N106 = (n.N106 == 1) ? "checked" : "",
-                                        N107 = (n.N107 == 1) ? "checked" : "",
-                                        N108 = (n.N108 == 1) ? "checked" : "",
-                                        N109 = (n.N109 == 1) ? "checked" : "",
-                                        N110 = (n.N110 == 1) ? "checked" : "",
-                                        N111 = (n.N111 == 1) ? "checked" : "",
+                                    {   N1 = (n.N1 == "on") ? "checked" : null,
+                                        N2 = (n.N2 == "on") ? "checked" : null,
+                                        N3 = (n.N3 == "on") ? "checked" : null,
+                                        N4 = (n.N4 == "on") ? "checked" : null,
+                                        N5 = (n.N5 == "on") ? "checked" : null,
+                                        N6 = (n.N6 == "on") ? "checked" : null,
+                                        N7 = (n.N7 == "on") ? "checked" : null,
+                                        N8 = (n.N8 == "on") ? "checked" : null,
+                                        N9 = (n.N9 == "on") ? "checked" : null,
+                                        N10 = (n.N10 == "on") ? "checked" : null,
+                                        N11 = (n.N11 == "on") ? "checked" : null,
+                                        N12 = (n.N12 == "on") ? "checked" : null,
+                                        N13 = (n.N13 == "on") ? "checked" : null,
+                                        N14 = (n.N14 == "on") ? "checked" : null,
+                                        N15 = (n.N15 == "on") ? "checked" : null,
+                                        N16 = (n.N16 == "on") ? "checked" : null,
+                                        N17 = (n.N17 == "on") ? "checked" : null,
+                                        N18 = (n.N18 == "on") ? "checked" : null,
+                                        N19 = (n.N19 == "on") ? "checked" : null,
+                                        N20 = (n.N20 == "on") ? "checked" : null,
+                                        N21 = (n.N21 == "on") ? "checked" : null,
+                                        N22 = (n.N22 == "on") ? "checked" : null,
+                                        N23 = (n.N23 == "on") ? "checked" : null,
+                                        N24 = (n.N24 == "on") ? "checked" : null,
+                                        N25 = (n.N25 == "on") ? "checked" : null,
+                                        N26 = (n.N26 == "on") ? "checked" : null,
+                                        N27 = (n.N27 == "on") ? "checked" : null,
+                                        N28 = (n.N28 == "on") ? "checked" : null,
+                                        N29 = (n.N29 == "on") ? "checked" : null,
+                                        N30 = (n.N30 == "on") ? "checked" : null,
+                                        N31 = (n.N31 == "on") ? "checked" : null,
+                                        N32 = (n.N32 == "on") ? "checked" : null,
+                                        N33 = (n.N33 == "on") ? "checked" : null,
+                                        N34 = (n.N34 == "on") ? "checked" : null,
+                                        N35 = (n.N35 == "on") ? "checked" : null,
+                                        N36 = (n.N36 == "on") ? "checked" : null,
+                                        N37 = (n.N37 == "on") ? "checked" : null,
+                                        N38 = (n.N38 == "on") ? "checked" : null,
+                                        N39 = (n.N39 == "on") ? "checked" : null,
+                                        N40 = (n.N40 == "on") ? "checked" : null,
+                                        N41 = (n.N41 == "on") ? "checked" : null,
+                                        N42 = (n.N42 == "on") ? "checked" : null,
+                                        N43 = (n.N43 == "on") ? "checked" : null,
+                                        N44 = (n.N44 == "on") ? "checked" : null,
+                                        N45 = (n.N45 == "on") ? "checked" : null,
+                                        N46 = (n.N46 == "on") ? "checked" : null,
+                                        N47 = (n.N47 == "on") ? "checked" : null,
+                                        N48 = (n.N48 == "on") ? "checked" : null,
+                                        N49 = (n.N49 == "on") ? "checked" : null,
+                                        N50 = (n.N50 == "on") ? "checked" : null,
+                                        N51 = (n.N51 == "on") ? "checked" : null,
+                                        N52 = (n.N52 == "on") ? "checked" : null,
+                                        N53 = (n.N53 == "on") ? "checked" : null,
+                                        N54 = (n.N54 == "on") ? "checked" : null,
+                                        N55 = (n.N55 == "on") ? "checked" : null,
+                                        N56 = (n.N56 == "on") ? "checked" : null,
+                                        N57 = (n.N57 == "on") ? "checked" : null,
+                                        N58 = (n.N58 == "on") ? "checked" : null,
+                                        N59 = (n.N59 == "on") ? "checked" : null,
+                                        N60 = (n.N60 == "on") ? "checked" : null,
+                                        N61 = (n.N61 == "on") ? "checked" : null,
+                                        N62 = (n.N62 == "on") ? "checked" : null,
+                                        N63 = (n.N63 == "on") ? "checked" : null,
+                                        N64 = (n.N64 == "on") ? "checked" : null,
+                                        N65 = (n.N65 == "on") ? "checked" : null,
+                                        N66 = (n.N66 == "on") ? "checked" : null,
+                                        N67 = (n.N67 == "on") ? "checked" : null,
+                                        N68 = (n.N68 == "on") ? "checked" : null,
+                                        N69 = (n.N69 == "on") ? "checked" : null,
+                                        N70 = (n.N70 == "on") ? "checked" : null,
+                                        N71 = (n.N71 == "on") ? "checked" : null,
+                                        N72 = (n.N72 == "on") ? "checked" : null,
+                                        N73 = (n.N73 == "on") ? "checked" : null,
+                                        N74 = (n.N74 == "on") ? "checked" : null,
+                                        N75 = (n.N75 == "on") ? "checked" : null,
+                                        N76 = (n.N76 == "on") ? "checked" : null,
+                                        N77 = (n.N77 == "on") ? "checked" : null,
+                                        N78 = (n.N78 == "on") ? "checked" : null,
+                                        N79 = (n.N79 == "on") ? "checked" : null,
+                                        N80 = (n.N80 == "on") ? "checked" : null,
+                                        N81 = (n.N81 == "on") ? "checked" : null,
+                                        N82 = (n.N82 == "on") ? "checked" : null,
+                                        N83 = (n.N83 == "on") ? "checked" : null,
+                                        N84 = (n.N84 == "on") ? "checked" : null,
+                                        N85 = (n.N85 == "on") ? "checked" : null,
+                                        N86 = (n.N86 == "on") ? "checked" : null,
+                                        N87 = (n.N87 == "on") ? "checked" : null,
+                                        N88 = (n.N88 == "on") ? "checked" : null,
+                                        N89 = (n.N89 == "on") ? "checked" : null,
+                                        N90 = (n.N90 == "on") ? "checked" : null,
+                                        N91 = (n.N91 == "on") ? "checked" : null,
+                                        N92 = (n.N92 == "on") ? "checked" : null,
+                                        N93 = (n.N93 == "on") ? "checked" : null,
+                                        N94 = (n.N94 == "on") ? "checked" : null,
+                                        N95 = (n.N95 == "on") ? "checked" : null,
+                                        N96 = (n.N96 == "on") ? "checked" : null,
+                                        N97 = (n.N97 == "on") ? "checked" : null,
+                                        N98 = (n.N98 == "on") ? "checked" : null,
+                                        N99 = (n.N99 == "on") ? "checked" : null,
+                                        N100 = (n.N100 == "on") ? "checked" : null,
+                                        N101 = (n.N101 == "on") ? "checked" : null,
+                                        N102 = (n.N102 == "on") ? "checked" : null,
+                                        N103 = (n.N103 == "on") ? "checked" : null,
+                                        N104 = (n.N104 == "on") ? "checked" : null,
+                                        N105 = (n.N105 == "on") ? "checked" : null,
+                                        N106 = (n.N106 == "on") ? "checked" : null,
+                                        N107 = (n.N107 == "on") ? "checked" : null,
+                                        N108 = (n.N108 == "on") ? "checked" : null,
+                                        N109 = (n.N109 == "on") ? "checked" : null,
+                                        N110 = (n.N110 == "on") ? "checked" : null,
+                                        N111 = (n.N111 == "on") ? "checked" : null,
                                     };
                 return View(notifications.ToList());
             }
-            return View();
+        }
+
+        [HttpGet]
+        public Notification ConvertViewModelToModel(GetEditNotificationsViewModel vm)
+        {
+            string c1 = Request.Form["c1"];
+            Debug.WriteLine("c1=" + c1);
+            return new Notification()
+            {
+                N1 = c1
+            };
         }
 
         // POST: /Manage/MyNotifications
         [HttpPost]
-        public ActionResult MyNotifications(AddFirmUserViewModel model)
+        public ActionResult MyNotifications(GetEditNotificationsViewModel model)
         {
             var user = User.Identity.GetUserName().ToString();
-            var firmUserModel = ConvertViewModelToModel(model);
+            var userid = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            var notificationId = entities.Notifications.Where(m => m.UserId == userid).Select(m => m.NotificationId).First();
 
-            using (ethko_dbEntities entities = new ethko_dbEntities())
+            if (userid != null)
             {
-                entities.AspNetUsers.Add(firmUserModel);
-                //firmUserModel.InsDate = DateTime.Now;
-                //officeModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+                Notification notifications = entities.Notifications.Find(notificationId);
+                string c1 = Request.Form["c1"];
+                
+                notifications.N1 = c1;
                 entities.SaveChanges();
             }
-            return RedirectToAction("FirmUsers");
+            return RedirectToAction("MyNotifications", "Manage");
         }
 
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

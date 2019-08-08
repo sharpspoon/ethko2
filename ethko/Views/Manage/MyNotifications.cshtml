@@ -56,7 +56,8 @@
                 <h2>
                     My Notifications
                 </h2>
-                <form>
+                @using (Html.BeginForm("MyNotifications", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
                     <h4>Email Notification Frequency <img src="~/Content/img/question_mark.svg" data-toggle="tooltip" data-placement="top" title="Tell us how often you'd like to receive activity emails. Notifications will be batched up and sent out at this frequency.<p>You won't receive an email if you have no new activity. Additionally, any changes will be reflected for all future notifications created after saving preferences."></h4>
                     <select class="form-control" id="sel1">
                         <option>Send every 5 minutes</option>
@@ -75,6 +76,7 @@
                                 <th scope="col"></th>
                             </tr>
                         </thead>
+
                         @if (Model != null)
                         {
                             foreach (var item in Model)
@@ -82,7 +84,7 @@
                                 <tbody>
                                     <tr>
                                         <th scope="row">A new case is added to the system</th>
-                                        <td><input type="checkbox" @item.N1 data-toggle="toggle" id="1"></td>
+                                        <td><input type="checkbox" @item.N1 data-toggle="toggle" id="1" name="c1"></td>
                                         <td><input type="checkbox" @item.N2 data-toggle="toggle" id="2"></td>
                                         <td></td>
                                     </tr>
@@ -497,10 +499,10 @@
                                 </tbody>
                             }
                         }
-                            </table>
 
-                    <button type="submit" class="btn btn-success">Save</button>
-                </form>
+                    </table>
+                    @Html.Raw("   ")<input type="submit" name="SaveButton" value="Save" class="btn btn-success" />
+                }
             </div>
         </dd>
     </dl>
