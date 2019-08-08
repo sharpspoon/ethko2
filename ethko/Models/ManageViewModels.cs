@@ -287,4 +287,10 @@ namespace ethko.Models
         [Display(Name = "Office")]
         public string OfficeName { get; set; }
     }
+
+    public class GetEditNotificationsViewModel
+    {
+        [Display(Name = "Notification 1")]
+        public string N1 { get; set; }
+    }
 }

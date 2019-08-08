@@ -1,4 +1,4 @@
-﻿@model ethko.Notification
+﻿@model IEnumerable<ethko.Models.GetEditNotificationsViewModel>
 
 <head>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet">
@@ -75,423 +75,430 @@
                                 <th scope="col"></th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">A new case is added to the system</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">An existing case is updated</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">An open case is closed</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">A closed case is reopened</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">A closed case is deleted</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">A new note is added, edited, or deleted on a case you're linked to</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">You are added or removed from a case</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">A contact / company is added or removed from a case you're linked to</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">A firm user is added or removed from a case you're linked to</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <thead>
-                            <tr>
-                                <th scope="col"><h5>Calendar</h5></th>
-                                <th scope="col"><h5>Send An Email</h5></th>
-                                <th scope="col"><h5>In Activity Feed</h5></th>
-                                <th scope="col"><h5>In-App Notification <img src="~/Content/img/question_mark.svg" data-toggle="tooltip" data-placement="top" title="In-App notifications are the red 'bubbles' that appear along the tabs at the top for unread items."></h5></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">A new event is added to the system</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">An existing event is updated</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">Someone deletes an event</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">Someone comments on an event</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">A contact views an event</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                            </tr>
-                        </tbody>
-                        <thead>
-                            <tr>
-                                <th scope="col"><h5>Documents</h5></th>
-                                <th scope="col"><h5>Send An Email</h5></th>
-                                <th scope="col"><h5>In Activity Feed</h5></th>
-                                <th scope="col"><h5>In-App Notification <img src="~/Content/img/question_mark.svg" data-toggle="tooltip" data-placement="top" title="In-App notifications are the red 'bubbles' that appear along the tabs at the top for unread items."></h5></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">A new document is uploaded in the system</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">An existing document is updated</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">Someone deletes a document</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">Someone comments on a document</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">A contact views a document</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                            </tr>
-                        </tbody>
-                        <thead>
-                            <tr>
-                                <th scope="col"><h5>Tasks</h5></th>
-                                <th scope="col"><h5>Send An Email</h5></th>
-                                <th scope="col"><h5>In Activity Feed</h5></th>
-                                <th scope="col"><h5>In-App Notification <img src="~/Content/img/question_mark.svg" data-toggle="tooltip" data-placement="top" title="In-App notifications are the red 'bubbles' that appear along the tabs at the top for unread items."></h5></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">A new task is added</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">An existing task is updated</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">Someone deletes a task</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">A task is completed</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">A completed task is marked incomplete</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                            </tr>
-                        </tbody>
-                        <thead>
-                            <tr>
-                                <th scope="col"><h5>Time & Billing</h5></th>
-                                <th scope="col"><h5>Send An Email</h5></th>
-                                <th scope="col"><h5>In Activity Feed</h5></th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">A new time entry / expense is added</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">An existing time entry / expense is updated</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">Someone deletes a time entry / expense</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">A new invoice is added to a case you're linked to</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">An existing invoice is updated on a case you're linked to</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">A contact views an invoice</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">Someone deletes an invoice on a case you're linked to</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">A payment is made on an invoice on a case you're linked to</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">A payment is refunded on an invoice on a case you're linked to</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">Someone shares an invoice on a case you're linked to</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">Someone sends a reminder on a case you're linked to</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <thead>
-                            <tr>
-                                <th scope="col"><h5>Contacts & Companies</h5></th>
-                                <th scope="col"><h5>Send An Email</h5></th>
-                                <th scope="col"><h5>In Activity Feed</h5></th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">A new contact/company is added to the system</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">An existing contact/company is updated</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">Someone archives a contact/company</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">Someone unarchives a contact/company</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">Someone deletes a company</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">A contact logs in to ethko</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">A new note is added, edited, or deleted on a contact</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <thead>
-                            <tr>
-                                <th scope="col"><h5>Firm Administration</h5></th>
-                                <th scope="col"><h5>Send An Email</h5></th>
-                                <th scope="col"><h5>In Activity Feed</h5></th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">A new firm user is added</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">Firm user contact information is updated</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">A firm user is deactivated or reactivated</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">Firm user permissions are changed</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">Items are imported into ethko</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <th scope="row">Firm information is updated</th>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        @if (Model != null)
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">A new case is added to the system</th>
+                                        <td><input type="checkbox" @item.N1 data-toggle="toggle" id="1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">An existing case is updated</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">An open case is closed</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">A closed case is reopened</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">A closed case is deleted</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">A new note is added, edited, or deleted on a case you're linked to</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">You are added or removed from a case</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">A contact / company is added or removed from a case you're linked to</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">A firm user is added or removed from a case you're linked to</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><h5>Calendar</h5></th>
+                                        <th scope="col"><h5>Send An Email</h5></th>
+                                        <th scope="col"><h5>In Activity Feed</h5></th>
+                                        <th scope="col"><h5>In-App Notification <img src="~/Content/img/question_mark.svg" data-toggle="tooltip" data-placement="top" title="In-App notifications are the red 'bubbles' that appear along the tabs at the top for unread items."></h5></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">A new event is added to the system</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">An existing event is updated</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Someone deletes an event</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Someone comments on an event</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">A contact views an event</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                    </tr>
+                                </tbody>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><h5>Documents</h5></th>
+                                        <th scope="col"><h5>Send An Email</h5></th>
+                                        <th scope="col"><h5>In Activity Feed</h5></th>
+                                        <th scope="col"><h5>In-App Notification <img src="~/Content/img/question_mark.svg" data-toggle="tooltip" data-placement="top" title="In-App notifications are the red 'bubbles' that appear along the tabs at the top for unread items."></h5></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">A new document is uploaded in the system</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">An existing document is updated</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Someone deletes a document</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Someone comments on a document</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">A contact views a document</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                    </tr>
+                                </tbody>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><h5>Tasks</h5></th>
+                                        <th scope="col"><h5>Send An Email</h5></th>
+                                        <th scope="col"><h5>In Activity Feed</h5></th>
+                                        <th scope="col"><h5>In-App Notification <img src="~/Content/img/question_mark.svg" data-toggle="tooltip" data-placement="top" title="In-App notifications are the red 'bubbles' that appear along the tabs at the top for unread items."></h5></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">A new task is added</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">An existing task is updated</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Someone deletes a task</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">A task is completed</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">A completed task is marked incomplete</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                    </tr>
+                                </tbody>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><h5>Time & Billing</h5></th>
+                                        <th scope="col"><h5>Send An Email</h5></th>
+                                        <th scope="col"><h5>In Activity Feed</h5></th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">A new time entry / expense is added</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">An existing time entry / expense is updated</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Someone deletes a time entry / expense</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">A new invoice is added to a case you're linked to</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">An existing invoice is updated on a case you're linked to</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">A contact views an invoice</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Someone deletes an invoice on a case you're linked to</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">A payment is made on an invoice on a case you're linked to</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">A payment is refunded on an invoice on a case you're linked to</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Someone shares an invoice on a case you're linked to</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Someone sends a reminder on a case you're linked to</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><h5>Contacts & Companies</h5></th>
+                                        <th scope="col"><h5>Send An Email</h5></th>
+                                        <th scope="col"><h5>In Activity Feed</h5></th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">A new contact/company is added to the system</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">An existing contact/company is updated</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Someone archives a contact/company</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Someone unarchives a contact/company</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Someone deletes a company</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">A contact logs in to ethko</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">A new note is added, edited, or deleted on a contact</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><h5>Firm Administration</h5></th>
+                                        <th scope="col"><h5>Send An Email</h5></th>
+                                        <th scope="col"><h5>In Activity Feed</h5></th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">A new firm user is added</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Firm user contact information is updated</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">A firm user is deactivated or reactivated</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Firm user permissions are changed</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Items are imported into ethko</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Firm information is updated</th>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td><input type="checkbox" checked data-toggle="toggle" id="exampleCheck1"></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            }
+                        }
+                            </table>
+
                     <button type="submit" class="btn btn-success">Save</button>
                 </form>
             </div>

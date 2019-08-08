@@ -372,10 +372,35 @@ namespace ethko.Controllers
         //////////////////////////////////////////////////////////////
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-        // POST: /Manage/MyNotifications
+        // GET: /Manage/MyNotifications
+        [HttpGet]
         public ActionResult MyNotifications()
         {
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                var notifications = from n in entities.Notifications
+                                        //join ut in entities.UserTypes on fu.UserTypeId equals ut.UserTypeId
+                                    select new GetEditNotificationsViewModel() { N1 = (n.N1 == 1) ? "checked" : "" };
+                return View(notifications.ToList());
+            }
             return View();
+        }
+
+        // POST: /Manage/MyNotifications
+        [HttpPost]
+        public ActionResult MyNotifications(AddFirmUserViewModel model)
+        {
+            var user = User.Identity.GetUserName().ToString();
+            var firmUserModel = ConvertViewModelToModel(model);
+
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                entities.AspNetUsers.Add(firmUserModel);
+                //firmUserModel.InsDate = DateTime.Now;
+                //officeModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+                entities.SaveChanges();
+            }
+            return RedirectToAction("FirmUsers");
         }
 
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
