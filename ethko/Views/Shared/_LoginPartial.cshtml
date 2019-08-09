@@ -54,100 +54,126 @@
             }
         </style>
     </head>
-    <ul class="nav navbar-nav">
-        <li class="dropdown">
-            <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Calendar <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-                <li>@Html.ActionLink("Day", "Index", "Calendar", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Week", "Index", "Calendar", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Month", "Index", "Calendar", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Agenda", "Index", "Calendar", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Locations", "Index", "Calendar", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Calendar Sync", "Index", "Calendar", new { area = "" }, null)</li>
-            </ul>
-        </li>
-        <li>@Html.ActionLink("Tasks", "Index", "Tasks", new { area = "" }, null)</li>
-        <li class="dropdown">
-            <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Contacts <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-                <li>@Html.ActionLink("Clients", "Index", "Contacts", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Companies", "Companies", "Contacts", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Contact Groups", "ContactGroups", "Contacts", new { area = "" }, null)</li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Cases <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-                <li>@Html.ActionLink("My Open Cases", "Index", "Cases", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("My Closed Cases", "Closed", "Cases", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Firm Open Cases", "Index", "Cases", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Firm Closed Cases", "Index", "Cases", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Practice Areas", "PracticeAreas", "Cases", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Case Insights", "CaseInsights", "Cases", new { area = "" }, null)</li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Documents <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-                <li>@Html.ActionLink("Case Documents", "Index", "Documents", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Unread Case Documents", "Index", "Documents", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Firm Documents", "Index", "Documents", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Templates", "Index", "Documents", new { area = "" }, null)</li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Billing <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-                <li>@Html.ActionLink("Time Entries", "Index", "Billing", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Expenses", "Index", "Billing", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Requested Funds", "Index", "Billing", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Invoices", "Index", "Billing", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Saved Activities", "Index", "Billing", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Account Activity", "Index", "Billing", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Trust Accounting", "Index", "Billing", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Financial Insights", "Index", "Billing", new { area = "" }, null)</li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Reporting <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-                <li>@Html.ActionLink("My Time & Expenses Today", "Index", "Reporting", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("My Time & Expenses This Week", "Index", "Reporting", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("My Time & Expenses This Month", "Index", "Reporting", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Firm Time & Expenses Today", "Index", "Reporting", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Firm Time & Expenses This Week", "Index", "Reporting", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Firm Time & Expenses This Month", "Index", "Reporting", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Aging Invoices", "Index", "Reporting", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Accounts Receivable", "Index", "Reporting", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Saved Reports", "Index", "Reporting", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("More Reports", "Index", "Reporting", new { area = "" }, null)</li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Messages <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-                <li>@Html.ActionLink("Inbox", "Index", "Messages", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Unread", "Index", "Messages", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Sent", "Index", "Messages", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Drafts", "Index", "Messages", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Archived", "Index", "Messages", new { area = "" }, null)</li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Comments <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-                <li>@Html.ActionLink("All", "Index", "Comments", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Unread", "Index", "Comments", new { area = "" }, null)</li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Leads <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-                <li>@Html.ActionLink("Dashboard", "Index", "Leads", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Leads Insights", "Index", "Leads", new { area = "" }, null)</li>
-            </ul>
-        </li>
-    </ul>
+    <div class="nav btn-group" role="group" aria-label="Button group with nested dropdown">
+        <a class="btn btn-secondary" href='@Url.Action("Index", "Home")'>Home</a>
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Calendar
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href='@Url.Action("Index", "Calendar")'>Day</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Calendar")'>Week</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Calendar")'>Month</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Calendar")'>Agenda</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Calendar")'>Locations</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Calendar")'>Calendar Sync</a>
+            </div>
+        </div>
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Tasks
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href='@Url.Action("Index", "Tasks")'>Dropdown link</a>
+            </div>
+        </div>
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Contacts
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href='@Url.Action("Index", "Contacts")'>Clients</a>
+                <a class="dropdown-item" href='@Url.Action("Companies", "Contacts")'>Companies</a>
+                <a class="dropdown-item" href='@Url.Action("ContactGroups", "Contacts")'>Contact Groups</a>
+            </div>
+        </div>
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Cases
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href='@Url.Action("Index", "Cases")'>My Open Cases</a>
+                <a class="dropdown-item" href='@Url.Action("Closed", "Cases")'>My Closed Cases</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Cases")'>Firm Open Cases</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Cases")'>Firm Closed Cases</a>
+                <a class="dropdown-item" href='@Url.Action("PracticeAreas", "Cases")'>Practice Areas</a>
+                <a class="dropdown-item" href='@Url.Action("CaseInsights", "Cases")'>Case Insights</a>
+            </div>
+        </div>
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Documents
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href='@Url.Action("Index", "Documents")'>Case Documents</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Documents")'>Unread Case Documents</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Documents")'>Firm Documents</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Documents")'>Templates</a>
+            </div>
+        </div>
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Billing
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href='@Url.Action("Index", "Contacts")'>Time Entries</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Contacts")'>Expenses</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Contacts")'>Requested Funds</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Contacts")'>Invoices</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Contacts")'>Saved Activities</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Contacts")'>Account Activity</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Contacts")'>Trust Accounting</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Contacts")'>Financial Insights</a>
+            </div>
+        </div>
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Reporting
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href='@Url.Action("Index", "Reporting")'>My Time & Expenses Today</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Reporting")'>My Time & Expenses This Week</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Reporting")'>My Time & Expenses This Month</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Reporting")'>Firm Time & Expenses Today</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Reporting")'>Firm Time & Expenses This Week</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Reporting")'>Firm Time & Expenses This Month</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Reporting")'>Aging Invoices</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Reporting")'>Accounts Receivable</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Reporting")'>Saved Reports</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Reporting")'>More Reports</a>
+            </div>
+        </div>
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Messages
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href='@Url.Action("Index", "Messages")'>Inbox</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Messages")'>Unread</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Messages")'>Sent</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Messages")'>Drafts</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Messages")'>Archived</a>
+            </div>
+        </div>
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Comments
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href='@Url.Action("Index", "Comments")'>All</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Comments")'>Unread</a>
+            </div>
+        </div>
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Leads
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href='@Url.Action("Index", "Contacts")'>Dashboard</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Contacts")'>Leads Insights</a>
+            </div>
+        </div>
+    </div>
 }
 else
 {
