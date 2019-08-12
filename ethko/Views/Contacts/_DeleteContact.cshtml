@@ -4,30 +4,34 @@
 }
 
 <br />
-<a class="btn btn-default" href='@Url.Action("Index", "Contacts")'>Contacts</a>&nbsp;
-<a class="btn btn-default" href='@Url.Action("Companies", "Contacts")'>Companies</a>&nbsp;
-<a class="btn btn-default" href='@Url.Action("ContactGroups", "Contacts")'>Contact Groups</a>&nbsp;
-<a class="btn btn-primary" href='@Url.Action("ViewContact", "Contacts")'>Contact Details</a>&nbsp;
-<br />
-<h1>Delete Contact</h1>
+<body>
+    <a class="btn btn-default" href='@Url.Action("Index", "Contacts")'>Contacts</a>&nbsp;
+    <a class="btn btn-default" href='@Url.Action("Companies", "Contacts")'>Companies</a>&nbsp;
+    <a class="btn btn-default" href='@Url.Action("ContactGroups", "Contacts")'>Contact Groups</a>&nbsp;
+    <a class="btn btn-primary" href='@Url.Action("ViewContact", "Contacts")'>Contact Details</a>&nbsp;
+    <br />
+    <h1>Delete Contact</h1>
 
-@using (Html.BeginForm("DeleteConfirmed", "Contacts", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    <font color="red">
-        <h3>Really DELETE this user?  This action is irreversible!</h3>
-    </font>
-    <br />
-    <h3>Contact: </h3>
-    @Html.DisplayFor(m => m.FName)
-    <br />
-    @Html.DisplayFor(m => m.MName)
-    <br />
-    @Html.DisplayFor(m => m.LName)
-    <br />
-    <br />
-    <br />
-    <br />
-    @Html.AntiForgeryToken()
-    <a class="btn btn-danger" href='@Url.Action("DeleteConfirmed", "Contacts", new { ContactId = Model.ContactId })'>Delete Contact</a>
-}
-
+    @using (Html.BeginForm("DeleteConfirmed", "Contacts", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <font color="red">
+            <h3>Really DELETE this user?  This action is irreversible!</h3>
+        </font>
+        <br />
+        <h3>Contact: </h3>
+        @Html.DisplayFor(m => m.FName)
+        <br />
+        @Html.DisplayFor(m => m.MName)
+        <br />
+        @Html.DisplayFor(m => m.LName)
+        <br />
+        <br />
+        <br />
+        <br />
+        @Html.AntiForgeryToken()
+        <a class="btn btn-danger" href='@Url.Action("DeleteConfirmed", "Contacts", new { ContactId = Model.ContactId })'>Delete Contact</a>
+    }
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>

@@ -5,118 +5,123 @@
 <head>
     <link rel="stylesheet" href="~/Content/svg.css">
 </head>
-<p class="text-success">@ViewBag.StatusMessage</p>
-<div>
-    <h4>Select a sub category from the menu on the left</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            <a class="btn btn-default" href='@Url.Action("Index", "Manage")'>Settings Dashboard</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("MyProfile", "Manage")'>My Profile</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("MySettings", "Manage")'>My Settings</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("MyNotifications", "Manage")'>My Notifications</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("FirmUsers", "Manage")'>Firm Users</a>
-            <br />
-            <br />
-            <a class="btn btn-primary" href='@Url.Action("FirmSettings", "Manage")'>Firm Settings</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("ClientBilling", "Manage")'>Client Billing</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("ImportExport", "Manage")'>Import/Export</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("CustomFields", "Manage")'>Custom Fields</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("IntakeForms", "Manage")'>Intake Forms</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("Workflows", "Manage")'>Workflows</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("CaseStages", "Manage")'>Case Stages</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("Leads", "Manage")'>Leads</a>
-        </dt>
-        <dd>
-            <div class="col-md-12" align="left">
-                <a class="btn btn-default" href='@Url.Action("FirmSettings", "Manage")'>Offices</a>&nbsp;
-                <a class="btn btn-primary" href='@Url.Action("UserTypes", "Manage")'>User Types</a>
-                <h2>
-                    User Types
-                    <a class="btn btn-success" href='@Url.Action("NewUserType", "Manage")' style="float: right">+ Add User Type</a>
-                </h2>
-                <table id="myTable" class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>User Type</th>
-                            <th>Added</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @if (Model != null)
-                        {
-                            foreach (var item in Model)
+<body>
+    <p class="text-success">@ViewBag.StatusMessage</p>
+    <div>
+        <h4>Select a sub category from the menu on the left</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                <a class="btn btn-default" href='@Url.Action("Index", "Manage")'>Settings Dashboard</a>
+                <br />
+                <br />
+                <a class="btn btn-default" href='@Url.Action("MyProfile", "Manage")'>My Profile</a>
+                <br />
+                <br />
+                <a class="btn btn-default" href='@Url.Action("MySettings", "Manage")'>My Settings</a>
+                <br />
+                <br />
+                <a class="btn btn-default" href='@Url.Action("MyNotifications", "Manage")'>My Notifications</a>
+                <br />
+                <br />
+                <a class="btn btn-default" href='@Url.Action("FirmUsers", "Manage")'>Firm Users</a>
+                <br />
+                <br />
+                <a class="btn btn-primary" href='@Url.Action("FirmSettings", "Manage")'>Firm Settings</a>
+                <br />
+                <br />
+                <a class="btn btn-default" href='@Url.Action("ClientBilling", "Manage")'>Client Billing</a>
+                <br />
+                <br />
+                <a class="btn btn-default" href='@Url.Action("ImportExport", "Manage")'>Import/Export</a>
+                <br />
+                <br />
+                <a class="btn btn-default" href='@Url.Action("CustomFields", "Manage")'>Custom Fields</a>
+                <br />
+                <br />
+                <a class="btn btn-default" href='@Url.Action("IntakeForms", "Manage")'>Intake Forms</a>
+                <br />
+                <br />
+                <a class="btn btn-default" href='@Url.Action("Workflows", "Manage")'>Workflows</a>
+                <br />
+                <br />
+                <a class="btn btn-default" href='@Url.Action("CaseStages", "Manage")'>Case Stages</a>
+                <br />
+                <br />
+                <a class="btn btn-default" href='@Url.Action("Leads", "Manage")'>Leads</a>
+            </dt>
+            <dd>
+                <div class="col-md-12" align="left">
+                    <a class="btn btn-default" href='@Url.Action("FirmSettings", "Manage")'>Offices</a>&nbsp;
+                    <a class="btn btn-primary" href='@Url.Action("UserTypes", "Manage")'>User Types</a>
+                    <h2>
+                        User Types
+                        <a class="btn btn-success" href='@Url.Action("NewUserType", "Manage")' style="float: right">+ Add User Type</a>
+                    </h2>
+                    <table id="myTable" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>User Type</th>
+                                <th>Added</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
                             {
-                        <tr>
-                            <td>
-                                <a href='@Url.Action("EditUserType", "Manage", new { UserTypeId = item.UserTypeId})'>@Html.DisplayFor(modelItem => item.UserTypeName)</a>
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.InsDate)
-                            </td>
-                            <td>
-                                <div class="edit">
-                                    <a href='@Url.Action("EditUserType", "Manage", new { UserTypeId = item.UserTypeId })'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 8 8">
-                                            <title>Edit</title>
-                                            <path d="M6 0l-1 1 2 2 1-1-2-2zm-2 2l-4 4v2h2l4-4-2-2z" />
-                                        </svg>
-                                    </a>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="delete">
-                                    <a href='@Url.Action("DeleteUserType", "Manage", new { UserTypeId = item.UserTypeId })'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 8 8">
-                                            <title>Delete</title>
-                                            <path d="M3 0c-.55 0-1 .45-1 1h-1c-.55 0-1 .45-1 1h7c0-.55-.45-1-1-1h-1c0-.55-.45-1-1-1h-1zm-2 3v4.81c0 .11.08.19.19.19h4.63c.11 0 .19-.08.19-.19v-4.81h-1v3.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5v-3.5h-1v3.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5v-3.5h-1z" />
-                                        </svg>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <a href='@Url.Action("EditUserType", "Manage", new { UserTypeId = item.UserTypeId})'>@Html.DisplayFor(modelItem => item.UserTypeName)</a>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.InsDate)
+                                        </td>
+                                        <td>
+                                            <div class="edit">
+                                                <a href='@Url.Action("EditUserType", "Manage", new { UserTypeId = item.UserTypeId })'>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 8 8">
+                                                        <title>Edit</title>
+                                                        <path d="M6 0l-1 1 2 2 1-1-2-2zm-2 2l-4 4v2h2l4-4-2-2z" />
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="delete">
+                                                <a href='@Url.Action("DeleteUserType", "Manage", new { UserTypeId = item.UserTypeId })'>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 8 8">
+                                                        <title>Delete</title>
+                                                        <path d="M3 0c-.55 0-1 .45-1 1h-1c-.55 0-1 .45-1 1h7c0-.55-.45-1-1-1h-1c0-.55-.45-1-1-1h-1zm-2 3v4.81c0 .11.08.19.19.19h4.63c.11 0 .19-.08.19-.19v-4.81h-1v3.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5v-3.5h-1v3.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5v-3.5h-1z" />
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
                             }
-                        }
-                        @if (Model == null)
-                        {
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        }
+                            @if (Model == null)
+                            {
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            }
 
-                    </tbody>
-                </table>
-            </div>
-        </dd>
-    </dl>
-</div>
+                        </tbody>
+                    </table>
+                </div>
+            </dd>
+        </dl>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 @section Scripts {
@@ -126,11 +131,8 @@
             $('#myTable').dataTable();
         });
     </script>
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
     <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
     <style>
 
