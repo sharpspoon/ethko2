@@ -34,6 +34,14 @@
                 <h2>
                     My Notifications
                 </h2>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary active">
+                        <input type="radio" name="options" id="option1" autocomplete="off" checked> On
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options" id="option2" autocomplete="off"> Off
+                    </label>
+                </div>
                 @using (Html.BeginForm("MyNotifications", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     <h4>Email Notification Frequency <img src="~/Content/img/question_mark.svg" data-toggle="tooltip" data-placement="top" title="Tell us how often you'd like to receive activity emails. Notifications will be batched up and sent out at this frequency.<p>You won't receive an email if you have no new activity. Additionally, any changes will be reflected for all future notifications created after saving preferences."></h4>
