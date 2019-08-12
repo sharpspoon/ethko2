@@ -8,36 +8,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .copyright {
+            float: left;
+        }
+
+        .links {
+            float: right;
+        }
+    </style>
+
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                @Html.Partial("_LoginPartial")
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    @Html.Partial("_LoginPartial")
+                </div>
             </div>
-            
         </div>
-    </div>
     <div class="container body-content">
         @RenderBody()
         @RenderSection("SPAViews", required: false)
         <hr />
+        @if (Request.IsAuthenticated)
+        {
         <footer>
-            <img src="../content/img/SAP_R_grad.png" alt="SAP" style="width:75px;height:37px;">
-            <br />
-            &copy; @DateTime.Now.Year
-            @if (Request.IsAuthenticated)
+            @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
             {
-                using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-                {
-                    @Html.AntiForgeryToken()
-
-                    <a class="btn btn-default" href='@Url.Action("Index", "Manage")'>Settings</a>
-                    <a class="btn btn-default" href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();">Logout</a>
-                }
-
+                @Html.AntiForgeryToken()
+            <div class="btn-group dropup links">
+                <a class="btn btn-secondary" href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();">Logout</a>
+                <a class="btn btn-secondary" href='@Url.Action("Index", "Manage")'>Settings</a>
+                <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Settings</span>
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+                <img class="copyright" src="../content/img/SAP_R_grad.png" alt="SAP" style="width:75px;height:37px;">
             }
         </footer>
+        }
+        else
+        {
+            <footer>
+                <img src="../content/img/SAP_R_grad.png" alt="SAP" style="width:75px;height:37px;">
+            </footer>
+        }
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
