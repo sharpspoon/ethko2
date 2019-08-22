@@ -30,14 +30,14 @@
                 </div>
             </div>
             <div class="col-10">
+                <h2>Firm Settings</h2>
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <a class="btn btn-primary" href='@Url.Action("FirmSettings", "Manage")'>Offices</a>
                     <a class="btn btn-secondary" href='@Url.Action("UserTypes", "Manage")'>User Types</a>
                 </div>
-                <h2>
-                    Offices
-                    <a class="btn btn-success" href='@Url.Action("NewOffice", "Manage")' style="float: right">+ Add Office</a>
-                </h2>
+                <a class="btn btn-success" href='@Url.Action("NewOffice", "Manage")' style="float: right">+ Add Office</a>
+                <br />
+                <br />
                 <table id="myTable" class="table table-hover">
                     <thead>
                         <tr>
