@@ -29,8 +29,10 @@
                 </div>
             </div>
             <div class="col-10">
-                <a class="btn btn-default" href='@Url.Action("FirmSettings", "Manage")'>Offices</a>&nbsp;
-                <a class="btn btn-primary" href='@Url.Action("UserTypes", "Manage")'>User Types</a>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a class="btn btn-secondary" href='@Url.Action("FirmSettings", "Manage")'>Offices</a>
+                    <a class="btn btn-primary" href='@Url.Action("UserTypes", "Manage")'>User Types</a>
+                </div>
                 <h2>
                     User Types
                     <a class="btn btn-success" href='@Url.Action("NewUserType", "Manage")' style="float: right">+ Add User Type</a>

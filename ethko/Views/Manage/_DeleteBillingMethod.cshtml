@@ -10,69 +10,52 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <p class="text-success">@ViewBag.StatusMessage</p>
-<div>
+<body>
     <h4>Select a sub category from the menu on the left</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            <a class="btn btn-default" href='@Url.Action("Index", "Manage")'>Settings Dashboard</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("MyProfile", "Manage")'>My Profile</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("MySettings", "Manage")'>My Settings</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("MyNotifications", "Manage")'>My Notifications</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("FirmUsers", "Manage")'>Firm Users</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("FirmSettings", "Manage")'>Firm Settings</a>
-            <br />
-            <br />
-            <a class="btn btn-primary" href='@Url.Action("ClientBilling", "Manage")'>Client Billing</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("ImportExport", "Manage")'>Import/Export</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("CustomFields", "Manage")'>Custom Fields</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("IntakeForms", "Manage")'>Intake Forms</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("Workflows", "Manage")'>Workflows</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("CaseStages", "Manage")'>Case Stages</a>
-            <br />
-            <br />
-            <a class="btn btn-default" href='@Url.Action("Leads", "Manage")'>Leads</a>
-        </dt>
-        <dd>
-            <div class="col-md-12" align="left">
-                <br />
-                <br />
-                <h1>Delete Billing Method</h1>
-                @using (Html.BeginForm("DeleteConfirmed", "Manage", new { @class = "form-horizontal", role = "form", BillingMethodId = Model.BillingMethodId }))
-                {
-                    <font color="red">
-                        <h3>Really DELETE this Billing Method?  This action is irreversible!</h3>
-                    </font>
-                    <br />
-                    <h3>Billing Method: @Html.DisplayFor(m => m.BillingMethodName)</h3>
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    @Html.AntiForgeryToken()
-                    <a class="btn btn-default" href='@Url.Action("ClientBilling", "Manage")'>Cancel</a>@Html.Raw("   ")<input type="submit" name="DeleteButton" value="Delete" class="btn btn-danger" />
-                }
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                    <a class="btn btn-secondary" href='@Url.Action("Index", "Manage")'>Settings Dashboard</a>
+                    <a class="btn btn-secondary" href='@Url.Action("MyProfile", "Manage")'>My Profile</a>
+                    <a class="btn btn-secondary" href='@Url.Action("MySettings", "Manage")'>My Settings</a>
+                    <a class="btn btn-secondary" href='@Url.Action("MyNotifications", "Manage")'>My Notifications</a>
+                    <a class="btn btn-secondary" href='@Url.Action("FirmUsers", "Manage")'>Firm Users</a>
+                    <a class="btn btn-secondary" href='@Url.Action("FirmSettings", "Manage")'>Firm Settings</a>
+                    <a class="btn btn-primary" href='@Url.Action("ClientBilling", "Manage")'>Client Billing</a>
+                    <a class="btn btn-secondary" href='@Url.Action("ImportExport", "Manage")'>Import/Export</a>
+                    <a class="btn btn-secondary" href='@Url.Action("CustomFields", "Manage")'>Custom Fields</a>
+                    <a class="btn btn-secondary" href='@Url.Action("IntakeForms", "Manage")'>Intake Forms</a>
+                    <a class="btn btn-secondary" href='@Url.Action("Workflows", "Manage")'>Workflows</a>
+                    <a class="btn btn-secondary" href='@Url.Action("CaseStages", "Manage")'>Case Stages</a>
+                    <a class="btn btn-secondary" href='@Url.Action("Leads", "Manage")'>Leads</a>
+                </div>
             </div>
-        </dd>
-    </dl>
-</div>
+            <div class="col-10">
+                <div class="col-md-12" align="left">
+                    <br />
+                    <br />
+                    <h1>Delete Billing Method</h1>
+                    @using (Html.BeginForm("DeleteConfirmed", "Manage", new { @class = "form-horizontal", role = "form", BillingMethodId = Model.BillingMethodId }))
+                    {
+                        <font color="red">
+                            <h3>Really DELETE this Billing Method?  This action is irreversible!</h3>
+                        </font>
+                        <br />
+                        <h3>Billing Method: @Html.DisplayFor(m => m.BillingMethodName)</h3>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        @Html.AntiForgeryToken()
+                        <a class="btn btn-default" href='@Url.Action("ClientBilling", "Manage")'>Cancel</a>@Html.Raw("   ")<input type="submit" name="DeleteButton" value="Delete" class="btn btn-danger" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
