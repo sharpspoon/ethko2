@@ -334,6 +334,45 @@
           <Property Name="N109" Type="varchar" MaxLength="2" />
           <Property Name="N110" Type="varchar" MaxLength="2" />
           <Property Name="N111" Type="varchar" MaxLength="2" />
+          <Property Name="N112" Type="varchar" MaxLength="2" />
+          <Property Name="N113" Type="varchar" MaxLength="2" />
+          <Property Name="N114" Type="varchar" MaxLength="2" />
+          <Property Name="N115" Type="varchar" MaxLength="2" />
+          <Property Name="N116" Type="varchar" MaxLength="2" />
+          <Property Name="N117" Type="varchar" MaxLength="2" />
+          <Property Name="N118" Type="varchar" MaxLength="2" />
+          <Property Name="N119" Type="varchar" MaxLength="2" />
+          <Property Name="N120" Type="varchar" MaxLength="2" />
+          <Property Name="N121" Type="varchar" MaxLength="2" />
+          <Property Name="N122" Type="varchar" MaxLength="2" />
+          <Property Name="N123" Type="varchar" MaxLength="2" />
+          <Property Name="N124" Type="varchar" MaxLength="2" />
+          <Property Name="N125" Type="varchar" MaxLength="2" />
+          <Property Name="N126" Type="varchar" MaxLength="2" />
+          <Property Name="N127" Type="varchar" MaxLength="2" />
+          <Property Name="N128" Type="varchar" MaxLength="2" />
+          <Property Name="N129" Type="varchar" MaxLength="2" />
+          <Property Name="N130" Type="varchar" MaxLength="2" />
+          <Property Name="N131" Type="varchar" MaxLength="2" />
+          <Property Name="N132" Type="varchar" MaxLength="2" />
+          <Property Name="N133" Type="varchar" MaxLength="2" />
+          <Property Name="N134" Type="varchar" MaxLength="2" />
+          <Property Name="N135" Type="varchar" MaxLength="2" />
+          <Property Name="N136" Type="varchar" MaxLength="2" />
+          <Property Name="N137" Type="varchar" MaxLength="2" />
+          <Property Name="N138" Type="varchar" MaxLength="2" />
+          <Property Name="N139" Type="varchar" MaxLength="2" />
+          <Property Name="N140" Type="varchar" MaxLength="2" />
+          <Property Name="N141" Type="varchar" MaxLength="2" />
+          <Property Name="N142" Type="varchar" MaxLength="2" />
+          <Property Name="N143" Type="varchar" MaxLength="2" />
+          <Property Name="N144" Type="varchar" MaxLength="2" />
+          <Property Name="N145" Type="varchar" MaxLength="2" />
+          <Property Name="N146" Type="varchar" MaxLength="2" />
+          <Property Name="N147" Type="varchar" MaxLength="2" />
+          <Property Name="N148" Type="varchar" MaxLength="2" />
+          <Property Name="N149" Type="varchar" MaxLength="2" />
+          <Property Name="N150" Type="varchar" MaxLength="2" />
           <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="LstDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
@@ -1133,6 +1172,45 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="N109" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="N110" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="N111" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N112" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N113" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N114" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N115" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N116" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N117" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N118" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N119" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N120" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N121" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N122" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N123" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N124" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N125" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N126" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N127" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N128" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N129" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N130" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N131" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N132" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N133" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N134" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N135" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N136" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N137" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N138" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N139" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N140" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N141" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N142" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N143" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N144" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N145" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N146" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N147" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N148" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N149" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N150" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="LstDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
@@ -1419,6 +1497,45 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
                 <ScalarProperty Name="FstUser" ColumnName="FstUser" />
                 <ScalarProperty Name="LstDate" ColumnName="LstDate" />
                 <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="N150" ColumnName="N150" />
+                <ScalarProperty Name="N149" ColumnName="N149" />
+                <ScalarProperty Name="N148" ColumnName="N148" />
+                <ScalarProperty Name="N147" ColumnName="N147" />
+                <ScalarProperty Name="N146" ColumnName="N146" />
+                <ScalarProperty Name="N145" ColumnName="N145" />
+                <ScalarProperty Name="N144" ColumnName="N144" />
+                <ScalarProperty Name="N143" ColumnName="N143" />
+                <ScalarProperty Name="N142" ColumnName="N142" />
+                <ScalarProperty Name="N141" ColumnName="N141" />
+                <ScalarProperty Name="N140" ColumnName="N140" />
+                <ScalarProperty Name="N139" ColumnName="N139" />
+                <ScalarProperty Name="N138" ColumnName="N138" />
+                <ScalarProperty Name="N137" ColumnName="N137" />
+                <ScalarProperty Name="N136" ColumnName="N136" />
+                <ScalarProperty Name="N135" ColumnName="N135" />
+                <ScalarProperty Name="N134" ColumnName="N134" />
+                <ScalarProperty Name="N133" ColumnName="N133" />
+                <ScalarProperty Name="N132" ColumnName="N132" />
+                <ScalarProperty Name="N131" ColumnName="N131" />
+                <ScalarProperty Name="N130" ColumnName="N130" />
+                <ScalarProperty Name="N129" ColumnName="N129" />
+                <ScalarProperty Name="N128" ColumnName="N128" />
+                <ScalarProperty Name="N127" ColumnName="N127" />
+                <ScalarProperty Name="N126" ColumnName="N126" />
+                <ScalarProperty Name="N125" ColumnName="N125" />
+                <ScalarProperty Name="N124" ColumnName="N124" />
+                <ScalarProperty Name="N123" ColumnName="N123" />
+                <ScalarProperty Name="N122" ColumnName="N122" />
+                <ScalarProperty Name="N121" ColumnName="N121" />
+                <ScalarProperty Name="N120" ColumnName="N120" />
+                <ScalarProperty Name="N119" ColumnName="N119" />
+                <ScalarProperty Name="N118" ColumnName="N118" />
+                <ScalarProperty Name="N117" ColumnName="N117" />
+                <ScalarProperty Name="N116" ColumnName="N116" />
+                <ScalarProperty Name="N115" ColumnName="N115" />
+                <ScalarProperty Name="N114" ColumnName="N114" />
+                <ScalarProperty Name="N113" ColumnName="N113" />
+                <ScalarProperty Name="N112" ColumnName="N112" />
                 <ScalarProperty Name="N111" ColumnName="N111" />
                 <ScalarProperty Name="N110" ColumnName="N110" />
                 <ScalarProperty Name="N109" ColumnName="N109" />

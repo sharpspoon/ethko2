@@ -401,5 +401,44 @@ namespace ethko.Models
         public string N109 { get; set; }
         public string N110 { get; set; }
         public string N111 { get; set; }
+        public string N112 { get; set; }
+        public string N113 { get; set; }
+        public string N114 { get; set; }
+        public string N115 { get; set; }
+        public string N116 { get; set; }
+        public string N117 { get; set; }
+        public string N118 { get; set; }
+        public string N119 { get; set; }
+        public string N120 { get; set; }
+        public string N121 { get; set; }
+        public string N122 { get; set; }
+        public string N123 { get; set; }
+        public string N124 { get; set; }
+        public string N125 { get; set; }
+        public string N126 { get; set; }
+        public string N127 { get; set; }
+        public string N128 { get; set; }
+        public string N129 { get; set; }
+        public string N130 { get; set; }
+        public string N131 { get; set; }
+        public string N132 { get; set; }
+        public string N133 { get; set; }
+        public string N134 { get; set; }
+        public string N135 { get; set; }
+        public string N136 { get; set; }
+        public string N137 { get; set; }
+        public string N138 { get; set; }
+        public string N139 { get; set; }
+        public string N140 { get; set; }
+        public string N141 { get; set; }
+        public string N142 { get; set; }
+        public string N143 { get; set; }
+        public string N144 { get; set; }
+        public string N145 { get; set; }
+        public string N146 { get; set; }
+        public string N147 { get; set; }
+        public string N148 { get; set; }
+        public string N149 { get; set; }
+        public string N150 { get; set; }
     }
 }

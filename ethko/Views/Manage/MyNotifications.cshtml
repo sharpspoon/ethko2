@@ -31,14 +31,6 @@
                 <h2>
                     My Notifications
                 </h2>
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-secondary active">
-                        <input type="radio" name="options" id="option1" autocomplete="off" checked> On
-                    </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="options" id="option2" autocomplete="off"> Off
-                    </label>
-                </div>
                 @using (Html.BeginForm("MyNotifications", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     <h4>Email Notification Frequency <img src="~/Content/img/question_mark.svg" data-toggle="tooltip" data-placement="top" title="Tell us how often you'd like to receive activity emails. Notifications will be batched up and sent out at this frequency.<p>You won't receive an email if you have no new activity. Additionally, any changes will be reflected for all future notifications created after saving preferences."></h4>
@@ -50,440 +42,1177 @@
                         <option>Send every 2 hours</option>
                         <option>Send once a day</option>
                     </select>
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col"><h5>Cases</h5></th>
-                                <th scope="col"><h5>Send An Email</h5></th>
-                                <th scope="col"><h5>In Activity Feed</h5></th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-
-                        @if (Model != null)
+                    if (Model != null)
+                    {
+                        foreach (var item in Model)
                         {
-                            foreach (var item in Model)
-                            {
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">A new case is added to the system</th>
-                                        <td><input type="checkbox" @item.N1 data-toggle="toggle" id="1" name="c1"></td>
-                                        <td><input type="checkbox" @item.N2 data-toggle="toggle" id="2" name="c2"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">An existing case is updated</th>
-                                        <td><input type="checkbox" @item.N3 data-toggle="toggle" id="3" name="c3"></td>
-                                        <td><input type="checkbox" @item.N4 data-toggle="toggle" id="4" name="c4"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">An open case is closed</th>
-                                        <td><input type="checkbox" @item.N5 data-toggle="toggle" id="5" name="c5"></td>
-                                        <td><input type="checkbox" @item.N6 data-toggle="toggle" id="6" name="c6"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">A closed case is reopened</th>
-                                        <td><input type="checkbox" @item.N7 data-toggle="toggle" id="7" name="c7"></td>
-                                        <td><input type="checkbox" @item.N8 data-toggle="toggle" id="8" name="c8"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">A closed case is deleted</th>
-                                        <td><input type="checkbox" @item.N9 data-toggle="toggle" id="9" name="c9"></td>
-                                        <td><input type="checkbox" @item.N10 data-toggle="toggle" id="10" name="c10"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">A new note is added, edited, or deleted on a case you're linked to</th>
-                                        <td><input type="checkbox" @item.N11 data-toggle="toggle" id="11" name="c11"></td>
-                                        <td><input type="checkbox" @item.N12 data-toggle="toggle" id="12" name="c12"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">You are added or removed from a case</th>
-                                        <td><input type="checkbox" @item.N13 data-toggle="toggle" id="13" name="c13"></td>
-                                        <td><input type="checkbox" @item.N14 data-toggle="toggle" id="14" name="c14"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">A contact / company is added or removed from a case you're linked to</th>
-                                        <td><input type="checkbox" @item.N15 data-toggle="toggle" id="15" name="c15"></td>
-                                        <td><input type="checkbox" @item.N16 data-toggle="toggle" id="16" name="c16"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">A firm user is added or removed from a case you're linked to</th>
-                                        <td><input type="checkbox" @item.N17 data-toggle="toggle" id="17" name="c17"></td>
-                                        <td><input type="checkbox" @item.N18 data-toggle="toggle" id="18" name="c18"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <thead>
-                                    <tr>
-                                        <th scope="col"><h5>Calendar</h5></th>
-                                        <th scope="col"><h5>Send An Email</h5></th>
-                                        <th scope="col"><h5>In Activity Feed</h5></th>
-                                        <th scope="col"><h5>In-App Notification <img src="~/Content/img/question_mark.svg" data-toggle="tooltip" data-placement="top" title="In-App notifications are the red 'bubbles' that appear along the tabs at the top for unread items."></h5></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">A new event is added to the system</th>
-                                        <td><input type="checkbox" @item.N19 data-toggle="toggle" id="19" name="c19"></td>
-                                        <td><input type="checkbox" @item.N20 data-toggle="toggle" id="20" name="c20"></td>
-                                        <td><input type="checkbox" @item.N21 data-toggle="toggle" id="21" name="c21"></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">An existing event is updated</th>
-                                        <td><input type="checkbox" @item.N22 data-toggle="toggle" id="22" name="c22"></td>
-                                        <td><input type="checkbox" @item.N23 data-toggle="toggle" id="23" name="c23"></td>
-                                        <td><input type="checkbox" @item.N24 data-toggle="toggle" id="24" name="c24"></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Someone deletes an event</th>
-                                        <td><input type="checkbox" @item.N25 data-toggle="toggle" id="25" name="c25"></td>
-                                        <td><input type="checkbox" @item.N26 data-toggle="toggle" id="26" name="c26"></td>
-                                        <td><input type="checkbox" @item.N27 data-toggle="toggle" id="27" name="c27"></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Someone comments on an event</th>
-                                        <td><input type="checkbox" @item.N28 data-toggle="toggle" id="28" name="c28"></td>
-                                        <td><input type="checkbox" @item.N29 data-toggle="toggle" id="29" name="c29"></td>
-                                        <td><input type="checkbox" @item.N30 data-toggle="toggle" id="30" name="c30"></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">A contact views an event</th>
-                                        <td><input type="checkbox" @item.N31 data-toggle="toggle" id="31" name="c31"></td>
-                                        <td><input type="checkbox" @item.N32 data-toggle="toggle" id="32" name="c32"></td>
-                                        <td><input type="checkbox" @item.N33 data-toggle="toggle" id="33" name="c33"></td>
-                                    </tr>
-                                </tbody>
-                                <thead>
-                                    <tr>
-                                        <th scope="col"><h5>Documents</h5></th>
-                                        <th scope="col"><h5>Send An Email</h5></th>
-                                        <th scope="col"><h5>In Activity Feed</h5></th>
-                                        <th scope="col"><h5>In-App Notification <img src="~/Content/img/question_mark.svg" data-toggle="tooltip" data-placement="top" title="In-App notifications are the red 'bubbles' that appear along the tabs at the top for unread items."></h5></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">A new document is uploaded in the system</th>
-                                        <td><input type="checkbox" @item.N34 data-toggle="toggle" id="34" name="c34"></td>
-                                        <td><input type="checkbox" @item.N35 data-toggle="toggle" id="35" name="c35"></td>
-                                        <td><input type="checkbox" @item.N36 data-toggle="toggle" id="36" name="c36"></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">An existing document is updated</th>
-                                        <td><input type="checkbox" @item.N37 data-toggle="toggle" id="37" name="c37"></td>
-                                        <td><input type="checkbox" @item.N38 data-toggle="toggle" id="38" name="c38"></td>
-                                        <td><input type="checkbox" @item.N39 data-toggle="toggle" id="39" name="c39"></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Someone deletes a document</th>
-                                        <td><input type="checkbox" @item.N40 data-toggle="toggle" id="40" name="c40"></td>
-                                        <td><input type="checkbox" @item.N41 data-toggle="toggle" id="41" name="c41"></td>
-                                        <td><input type="checkbox" @item.N42 data-toggle="toggle" id="42" name="c42"></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Someone comments on a document</th>
-                                        <td><input type="checkbox" @item.N43 data-toggle="toggle" id="43" name="c43"></td>
-                                        <td><input type="checkbox" @item.N44 data-toggle="toggle" id="44" name="c44"></td>
-                                        <td><input type="checkbox" @item.N45 data-toggle="toggle" id="45" name="c45"></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">A contact views a document</th>
-                                        <td><input type="checkbox" @item.N46 data-toggle="toggle" id="46" name="c46"></td>
-                                        <td><input type="checkbox" @item.N47 data-toggle="toggle" id="47" name="c47"></td>
-                                        <td><input type="checkbox" @item.N48 data-toggle="toggle" id="48" name="c48"></td>
-                                    </tr>
-                                </tbody>
-                                <thead>
-                                    <tr>
-                                        <th scope="col"><h5>Tasks</h5></th>
-                                        <th scope="col"><h5>Send An Email</h5></th>
-                                        <th scope="col"><h5>In Activity Feed</h5></th>
-                                        <th scope="col"><h5>In-App Notification <img src="~/Content/img/question_mark.svg" data-toggle="tooltip" data-placement="top" title="In-App notifications are the red 'bubbles' that appear along the tabs at the top for unread items."></h5></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">A new task is added</th>
-                                        <td><input type="checkbox" @item.N49 data-toggle="toggle" id="49" name="c49"></td>
-                                        <td><input type="checkbox" @item.N50 data-toggle="toggle" id="50" name="c50"></td>
-                                        <td><input type="checkbox" @item.N51 data-toggle="toggle" id="51" name="c51"></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">An existing task is updated</th>
-                                        <td><input type="checkbox" @item.N52 data-toggle="toggle" id="52" name="c52"></td>
-                                        <td><input type="checkbox" @item.N53 data-toggle="toggle" id="53" name="c53"></td>
-                                        <td><input type="checkbox" @item.N54 data-toggle="toggle" id="54" name="c54"></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Someone deletes a task</th>
-                                        <td><input type="checkbox" @item.N55 data-toggle="toggle" id="55" name="c55"></td>
-                                        <td><input type="checkbox" @item.N56 data-toggle="toggle" id="56" name="c56"></td>
-                                        <td><input type="checkbox" @item.N57 data-toggle="toggle" id="57" name="c57"></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">A task is completed</th>
-                                        <td><input type="checkbox" @item.N58 data-toggle="toggle" id="58" name="c58"></td>
-                                        <td><input type="checkbox" @item.N59 data-toggle="toggle" id="59" name="c59"></td>
-                                        <td><input type="checkbox" @item.N60 data-toggle="toggle" id="60" name="c60"></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">A completed task is marked incomplete</th>
-                                        <td><input type="checkbox" @item.N61 data-toggle="toggle" id="61" name="c61"></td>
-                                        <td><input type="checkbox" @item.N62 data-toggle="toggle" id="62" name="c62"></td>
-                                        <td><input type="checkbox" @item.N63 data-toggle="toggle" id="63" name="c63"></td>
-                                    </tr>
-                                </tbody>
-                                <thead>
-                                    <tr>
-                                        <th scope="col"><h5>Time & Billing</h5></th>
-                                        <th scope="col"><h5>Send An Email</h5></th>
-                                        <th scope="col"><h5>In Activity Feed</h5></th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">A new time entry / expense is added</th>
-                                        <td><input type="checkbox" @item.N64 data-toggle="toggle" id="64" name="c64"></td>
-                                        <td><input type="checkbox" @item.N65 data-toggle="toggle" id="65" name="c65"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">An existing time entry / expense is updated</th>
-                                        <td><input type="checkbox" @item.N66 data-toggle="toggle" id="66" name="c66"></td>
-                                        <td><input type="checkbox" @item.N67 data-toggle="toggle" id="67" name="c67"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Someone deletes a time entry / expense</th>
-                                        <td><input type="checkbox" @item.N68 data-toggle="toggle" id="68" name="c68"></td>
-                                        <td><input type="checkbox" @item.N69 data-toggle="toggle" id="69" name="c69"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">A new invoice is added to a case you're linked to</th>
-                                        <td><input type="checkbox" @item.N70 data-toggle="toggle" id="70" name="c70"></td>
-                                        <td><input type="checkbox" @item.N71 data-toggle="toggle" id="71" name="c71"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">An existing invoice is updated on a case you're linked to</th>
-                                        <td><input type="checkbox" @item.N72 data-toggle="toggle" id="72" name="c72"></td>
-                                        <td><input type="checkbox" @item.N73 data-toggle="toggle" id="73" name="c73"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">A contact views an invoice</th>
-                                        <td><input type="checkbox" @item.N74 data-toggle="toggle" id="74" name="c74"></td>
-                                        <td><input type="checkbox" @item.N75 data-toggle="toggle" id="75" name="c75"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Someone deletes an invoice on a case you're linked to</th>
-                                        <td><input type="checkbox" @item.N76 data-toggle="toggle" id="76" name="c76"></td>
-                                        <td><input type="checkbox" @item.N77 data-toggle="toggle" id="77" name="c77"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">A payment is made on an invoice on a case you're linked to</th>
-                                        <td><input type="checkbox" @item.N78 data-toggle="toggle" id="78" name="c78"></td>
-                                        <td><input type="checkbox" @item.N79 data-toggle="toggle" id="79" name="c79"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">A payment is refunded on an invoice on a case you're linked to</th>
-                                        <td><input type="checkbox" @item.N80 data-toggle="toggle" id="80" name="c80"></td>
-                                        <td><input type="checkbox" @item.N81 data-toggle="toggle" id="81" name="c81"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Someone shares an invoice on a case you're linked to</th>
-                                        <td><input type="checkbox" @item.N82 data-toggle="toggle" id="82" name="c82"></td>
-                                        <td><input type="checkbox" @item.N83 data-toggle="toggle" id="83" name="c83"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Someone sends a reminder on a case you're linked to</th>
-                                        <td><input type="checkbox" @item.N84 data-toggle="toggle" id="84" name="c84"></td>
-                                        <td><input type="checkbox" @item.N85 data-toggle="toggle" id="85" name="c85"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <thead>
-                                    <tr>
-                                        <th scope="col"><h5>Contacts & Companies</h5></th>
-                                        <th scope="col"><h5>Send An Email</h5></th>
-                                        <th scope="col"><h5>In Activity Feed</h5></th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">A new contact/company is added to the system</th>
-                                        <td><input type="checkbox" @item.N86 data-toggle="toggle" id="86" name="c86"></td>
-                                        <td><input type="checkbox" @item.N87 data-toggle="toggle" id="87" name="c87"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">An existing contact/company is updated</th>
-                                        <td><input type="checkbox" @item.N88 data-toggle="toggle" id="88" name="c88"></td>
-                                        <td><input type="checkbox" @item.N89 data-toggle="toggle" id="89" name="c89"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Someone archives a contact/company</th>
-                                        <td><input type="checkbox" @item.N90 data-toggle="toggle" id="90" name="c90"></td>
-                                        <td><input type="checkbox" @item.N91 data-toggle="toggle" id="91" name="c91"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Someone unarchives a contact/company</th>
-                                        <td><input type="checkbox" @item.N92 data-toggle="toggle" id="92" name="c92"></td>
-                                        <td><input type="checkbox" @item.N93 data-toggle="toggle" id="93" name="c93"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Someone deletes a company</th>
-                                        <td><input type="checkbox" @item.N94 data-toggle="toggle" id="94" name="c94"></td>
-                                        <td><input type="checkbox" @item.N95 data-toggle="toggle" id="95" name="c95"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">A contact logs in to ethko</th>
-                                        <td><input type="checkbox" @item.N96 data-toggle="toggle" id="96" name="c96"></td>
-                                        <td><input type="checkbox" @item.N97 data-toggle="toggle" id="97" name="c97"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">A new note is added, edited, or deleted on a contact</th>
-                                        <td><input type="checkbox" @item.N98 data-toggle="toggle" id="98" name="c98"></td>
-                                        <td><input type="checkbox" @item.N99 data-toggle="toggle" id="99" name="c99"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <thead>
-                                    <tr>
-                                        <th scope="col"><h5>Firm Administration</h5></th>
-                                        <th scope="col"><h5>Send An Email</h5></th>
-                                        <th scope="col"><h5>In Activity Feed</h5></th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">A new firm user is added</th>
-                                        <td><input type="checkbox" @item.N100 data-toggle="toggle" id="100" name="c100"></td>
-                                        <td><input type="checkbox" @item.N101 data-toggle="toggle" id="101" name="c101"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Firm user contact information is updated</th>
-                                        <td><input type="checkbox" @item.N102 data-toggle="toggle" id="102" name="c102"></td>
-                                        <td><input type="checkbox" @item.N103 data-toggle="toggle" id="103" name="c103"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">A firm user is deactivated or reactivated</th>
-                                        <td><input type="checkbox" @item.N104 data-toggle="toggle" id="104" name="c104"></td>
-                                        <td><input type="checkbox" @item.N105 data-toggle="toggle" id="105" name="c105"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Firm user permissions are changed</th>
-                                        <td><input type="checkbox" @item.N106 data-toggle="toggle" id="106" name="c106"></td>
-                                        <td><input type="checkbox" @item.N107 data-toggle="toggle" id="107" name="c107"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Items are imported into ethko</th>
-                                        <td><input type="checkbox" @item.N108 data-toggle="toggle" id="108" name="c108"></td>
-                                        <td><input type="checkbox" @item.N109 data-toggle="toggle" id="109" name="c109"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Firm information is updated</th>
-                                        <td><input type="checkbox" @item.N110 data-toggle="toggle" id="110" name="c110"></td>
-                                        <td><input type="checkbox" @item.N111 data-toggle="toggle" id="111" name="c111"></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            }
+                            <div class="row">
+                                <div class="col-7">
+                                    <h5>Calendar</h5>
+                                </div>
+                                <div class="col-1">
+                                    Email
+                                </div>
+                                <div class="col-1">
+                                    Feed
+                                </div>
+                                <div class="col-1">
+                                    In<img src="~/Content/img/question_mark.svg" data-toggle="tooltip" data-placement="top" title="In-App notifications are the red 'bubbles' that appear along the tabs at the top for unread items.">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    A new case is added to the system
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N1 class="custom-control-input" id="1" name="c1">
+                                        <label class="custom-control-label" for="1"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N2 class="custom-control-input" id="2" name="c2">
+                                        <label class="custom-control-label" for="2"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N3 class="custom-control-input" id="3" name="c3">
+                                        <label class="custom-control-label" for="3"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    An existing case is updated
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N4 class="custom-control-input" id="4" name="c4">
+                                        <label class="custom-control-label" for="4"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N5 class="custom-control-input" id="5" name="c5">
+                                        <label class="custom-control-label" for="5"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N6 class="custom-control-input" id="6" name="c6">
+                                        <label class="custom-control-label" for="6"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    An open case is closed
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N7 class="custom-control-input" id="7" name="c7">
+                                        <label class="custom-control-label" for="7"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N8 class="custom-control-input" id="8" name="c8">
+                                        <label class="custom-control-label" for="8"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N9 class="custom-control-input" id="9" name="c9">
+                                        <label class="custom-control-label" for="9"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    A closed case is reopened
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N10 class="custom-control-input" id="10" name="c10">
+                                        <label class="custom-control-label" for="10"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N11 class="custom-control-input" id="11" name="c11">
+                                        <label class="custom-control-label" for="11"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N12 class="custom-control-input" id="12" name="c12">
+                                        <label class="custom-control-label" for="12"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    A closed case is deleted
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N13 class="custom-control-input" id="13" name="c13">
+                                        <label class="custom-control-label" for="13"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N14 class="custom-control-input" id="14" name="c14">
+                                        <label class="custom-control-label" for="14"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N15 class="custom-control-input" id="15" name="c15">
+                                        <label class="custom-control-label" for="15"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    A new note is added, edited, or deleted on a case you're linked to
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N16 class="custom-control-input" id="16" name="c16">
+                                        <label class="custom-control-label" for="16"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N17 class="custom-control-input" id="17" name="c17">
+                                        <label class="custom-control-label" for="17"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N18 class="custom-control-input" id="18" name="c18">
+                                        <label class="custom-control-label" for="18"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    You are added or removed from a case
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N19 class="custom-control-input" id="19" name="c19">
+                                        <label class="custom-control-label" for="19"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N20 class="custom-control-input" id="20" name="c20">
+                                        <label class="custom-control-label" for="20"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N21 class="custom-control-input" id="21" name="c21">
+                                        <label class="custom-control-label" for="21"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    A contact / company is added or removed from a case you're linked to
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N22 class="custom-control-input" id="22" name="c22">
+                                        <label class="custom-control-label" for="22"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N23 class="custom-control-input" id="23" name="c23">
+                                        <label class="custom-control-label" for="23"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N24 class="custom-control-input" id="24" name="c24">
+                                        <label class="custom-control-label" for="24"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    A firm user is added or removed from a case you're linked to
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N25 class="custom-control-input" id="25" name="c25">
+                                        <label class="custom-control-label" for="25"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N26 class="custom-control-input" id="26" name="c26">
+                                        <label class="custom-control-label" for="26"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N27 class="custom-control-input" id="27" name="c27">
+                                        <label class="custom-control-label" for="27"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    A new event is added to the system
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N28 class="custom-control-input" id="28" name="c28">
+                                        <label class="custom-control-label" for="28"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N29 class="custom-control-input" id="29" name="c29">
+                                        <label class="custom-control-label" for="29"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N30 class="custom-control-input" id="30" name="c30">
+                                        <label class="custom-control-label" for="30"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    An existing event is updated
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N31 class="custom-control-input" id="31" name="c31">
+                                        <label class="custom-control-label" for="31"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N32 class="custom-control-input" id="32" name="c32">
+                                        <label class="custom-control-label" for="32"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N33 class="custom-control-input" id="33" name="c33">
+                                        <label class="custom-control-label" for="33"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    Someone deletes an event
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N34 class="custom-control-input" id="34" name="c34">
+                                        <label class="custom-control-label" for="34"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N35 class="custom-control-input" id="35" name="c35">
+                                        <label class="custom-control-label" for="35"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N36 class="custom-control-input" id="36" name="c36">
+                                        <label class="custom-control-label" for="36"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    Someone comments on an event
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N37 class="custom-control-input" id="37" name="c37">
+                                        <label class="custom-control-label" for="37"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N38 class="custom-control-input" id="38" name="c38">
+                                        <label class="custom-control-label" for="38"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N39 class="custom-control-input" id="39" name="c39">
+                                        <label class="custom-control-label" for="39"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    A contact views an event
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N40 class="custom-control-input" id="40" name="c40">
+                                        <label class="custom-control-label" for="40"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N41 class="custom-control-input" id="41" name="c41">
+                                        <label class="custom-control-label" for="41"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N42 class="custom-control-input" id="42" name="c42">
+                                        <label class="custom-control-label" for="42"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    <h5>Documents</h5>
+                                </div>
+                                <div class="col-1">
+                                    Email
+                                </div>
+                                <div class="col-1">
+                                    Feed
+                                </div>
+                                <div class="col-1">
+                                    In<img src="~/Content/img/question_mark.svg" data-toggle="tooltip" data-placement="top" title="In-App notifications are the red 'bubbles' that appear along the tabs at the top for unread items.">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    A new document is uploaded in the system
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N43 class="custom-control-input" id="43" name="c43">
+                                        <label class="custom-control-label" for="43"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N44 class="custom-control-input" id="44" name="c44">
+                                        <label class="custom-control-label" for="44"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N45 class="custom-control-input" id="45" name="c45">
+                                        <label class="custom-control-label" for="45"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    An existing document is updated
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N46 class="custom-control-input" id="46" name="c46">
+                                        <label class="custom-control-label" for="46"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N47 class="custom-control-input" id="47" name="c47">
+                                        <label class="custom-control-label" for="47"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N48 class="custom-control-input" id="48" name="c48">
+                                        <label class="custom-control-label" for="48"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    Someone deletes a document
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N49 class="custom-control-input" id="49" name="c49">
+                                        <label class="custom-control-label" for="49"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N50 class="custom-control-input" id="50" name="c50">
+                                        <label class="custom-control-label" for="50"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N51 class="custom-control-input" id="51" name="c51">
+                                        <label class="custom-control-label" for="51"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    Someone comments on a document
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N52 class="custom-control-input" id="52" name="c52">
+                                        <label class="custom-control-label" for="52"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N53 class="custom-control-input" id="53" name="c53">
+                                        <label class="custom-control-label" for="53"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N54 class="custom-control-input" id="54" name="c54">
+                                        <label class="custom-control-label" for="54"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    A contact views a document
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N55 class="custom-control-input" id="55" name="c55">
+                                        <label class="custom-control-label" for="55"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N56 class="custom-control-input" id="56" name="c56">
+                                        <label class="custom-control-label" for="56"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N57 class="custom-control-input" id="57" name="c57">
+                                        <label class="custom-control-label" for="57"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    <h5>Tasks</h5>
+                                </div>
+                                <div class="col-1">
+                                    Email
+                                </div>
+                                <div class="col-1">
+                                    Feed
+                                </div>
+                                <div class="col-1">
+                                    In<img src="~/Content/img/question_mark.svg" data-toggle="tooltip" data-placement="top" title="In-App notifications are the red 'bubbles' that appear along the tabs at the top for unread items.">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    A new task is added
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N58 class="custom-control-input" id="58" name="c58">
+                                        <label class="custom-control-label" for="58"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N59 class="custom-control-input" id="59" name="c59">
+                                        <label class="custom-control-label" for="59"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N60 class="custom-control-input" id="60" name="c60">
+                                        <label class="custom-control-label" for="60"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    An existing task is updated
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N61 class="custom-control-input" id="61" name="c61">
+                                        <label class="custom-control-label" for="61"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N62 class="custom-control-input" id="62" name="c62">
+                                        <label class="custom-control-label" for="62"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N63 class="custom-control-input" id="63" name="c63">
+                                        <label class="custom-control-label" for="63"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    Someone deletes a task
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N64 class="custom-control-input" id="64" name="c64">
+                                        <label class="custom-control-label" for="64"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N65 class="custom-control-input" id="65" name="c65">
+                                        <label class="custom-control-label" for="65"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N66 class="custom-control-input" id="66" name="c66">
+                                        <label class="custom-control-label" for="66"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    A task is completed
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N67 class="custom-control-input" id="67" name="c67">
+                                        <label class="custom-control-label" for="67"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N68 class="custom-control-input" id="68" name="c68">
+                                        <label class="custom-control-label" for="68"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N69 class="custom-control-input" id="69" name="c69">
+                                        <label class="custom-control-label" for="69"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    A completed task is marked incomplete
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N70 class="custom-control-input" id="70" name="c70">
+                                        <label class="custom-control-label" for="70"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N71 class="custom-control-input" id="71" name="c71">
+                                        <label class="custom-control-label" for="71"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N72 class="custom-control-input" id="72" name="c72">
+                                        <label class="custom-control-label" for="72"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    <h5>Time & Billing</h5>
+                                </div>
+                                <div class="col-1">
+                                    Email
+                                </div>
+                                <div class="col-1">
+                                    Feed
+                                </div>
+                                <div class="col-1">
+                                    In<img src="~/Content/img/question_mark.svg" data-toggle="tooltip" data-placement="top" title="In-App notifications are the red 'bubbles' that appear along the tabs at the top for unread items.">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    A new time entry / expense is added
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N73 class="custom-control-input" id="73" name="c73">
+                                        <label class="custom-control-label" for="73"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N74 class="custom-control-input" id="74" name="c74">
+                                        <label class="custom-control-label" for="74"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N75 class="custom-control-input" id="75" name="c75">
+                                        <label class="custom-control-label" for="75"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    An existing time entry / expense is updated
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N76 class="custom-control-input" id="76" name="c76">
+                                        <label class="custom-control-label" for="76"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N77 class="custom-control-input" id="77" name="c77">
+                                        <label class="custom-control-label" for="77"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N78 class="custom-control-input" id="78" name="c78">
+                                        <label class="custom-control-label" for="78"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    Someone deletes a time entry / expense
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N79 class="custom-control-input" id="79" name="c79">
+                                        <label class="custom-control-label" for="79"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N80 class="custom-control-input" id="80" name="c80">
+                                        <label class="custom-control-label" for="80"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N81 class="custom-control-input" id="81" name="c81">
+                                        <label class="custom-control-label" for="81"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    A new invoice is added to a case you're linked to
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N82 class="custom-control-input" id="82" name="c82">
+                                        <label class="custom-control-label" for="82"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N83 class="custom-control-input" id="83" name="c83">
+                                        <label class="custom-control-label" for="83"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N84 class="custom-control-input" id="84" name="c84">
+                                        <label class="custom-control-label" for="84"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    An existing invoice is updated on a case you're linked to
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N85 class="custom-control-input" id="85" name="c85">
+                                        <label class="custom-control-label" for="85"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N86 class="custom-control-input" id="86" name="c86">
+                                        <label class="custom-control-label" for="86"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N87 class="custom-control-input" id="87" name="c87">
+                                        <label class="custom-control-label" for="87"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    A contact views an invoice
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N88 class="custom-control-input" id="88" name="c88">
+                                        <label class="custom-control-label" for="88"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N89 class="custom-control-input" id="89" name="c89">
+                                        <label class="custom-control-label" for="89"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N90 class="custom-control-input" id="90" name="c90">
+                                        <label class="custom-control-label" for="90"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    Someone deletes an invoice on a case you're linked to
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N91 class="custom-control-input" id="91" name="c91">
+                                        <label class="custom-control-label" for="91"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N92 class="custom-control-input" id="92" name="c92">
+                                        <label class="custom-control-label" for="92"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N93 class="custom-control-input" id="93" name="c93">
+                                        <label class="custom-control-label" for="93"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    A payment is made on an invoice on a case you're linked to
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N94 class="custom-control-input" id="94" name="c94">
+                                        <label class="custom-control-label" for="94"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N95 class="custom-control-input" id="95" name="c95">
+                                        <label class="custom-control-label" for="95"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N96 class="custom-control-input" id="96" name="c96">
+                                        <label class="custom-control-label" for="96"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    A payment is refunded on an invoice on a case you're linked to
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N97 class="custom-control-input" id="97" name="c97">
+                                        <label class="custom-control-label" for="97"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N98 class="custom-control-input" id="98" name="c98">
+                                        <label class="custom-control-label" for="98"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N99 class="custom-control-input" id="99" name="c99">
+                                        <label class="custom-control-label" for="99"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    Someone shares an invoice on a case you're linked to
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N100 class="custom-control-input" id="100" name="c100">
+                                        <label class="custom-control-label" for="100"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N101 class="custom-control-input" id="101" name="c101">
+                                        <label class="custom-control-label" for="101"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N102 class="custom-control-input" id="102" name="c102">
+                                        <label class="custom-control-label" for="102"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    Someone sends a reminder on a case you're linked to
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N103 class="custom-control-input" id="103" name="c103">
+                                        <label class="custom-control-label" for="103"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N104 class="custom-control-input" id="104" name="c104">
+                                        <label class="custom-control-label" for="104"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N105 class="custom-control-input" id="105" name="c105">
+                                        <label class="custom-control-label" for="105"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    <h5>Contacts & Companies</h5>
+                                </div>
+                                <div class="col-1">
+                                    Email
+                                </div>
+                                <div class="col-1">
+                                    Feed
+                                </div>
+                                <div class="col-1">
+                                    In<img src="~/Content/img/question_mark.svg" data-toggle="tooltip" data-placement="top" title="In-App notifications are the red 'bubbles' that appear along the tabs at the top for unread items.">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    A new contact/company is added to the system
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N106 class="custom-control-input" id="106" name="c106">
+                                        <label class="custom-control-label" for="106"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N107 class="custom-control-input" id="107" name="c107">
+                                        <label class="custom-control-label" for="107"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N108 class="custom-control-input" id="108" name="c108">
+                                        <label class="custom-control-label" for="108"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    An existing contact/company is updated
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N109 class="custom-control-input" id="109" name="c109">
+                                        <label class="custom-control-label" for="109"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N110 class="custom-control-input" id="110" name="c110">
+                                        <label class="custom-control-label" for="110"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N111 class="custom-control-input" id="111" name="c111">
+                                        <label class="custom-control-label" for="111"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    Someone archives a contact/company
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N112 class="custom-control-input" id="112" name="c112">
+                                        <label class="custom-control-label" for="112"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N113 class="custom-control-input" id="113" name="c113">
+                                        <label class="custom-control-label" for="113"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N114 class="custom-control-input" id="114" name="c114">
+                                        <label class="custom-control-label" for="114"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    Someone unarchives a contact/company
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N115 class="custom-control-input" id="115" name="c115">
+                                        <label class="custom-control-label" for="115"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N116 class="custom-control-input" id="116" name="c116">
+                                        <label class="custom-control-label" for="116"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N117 class="custom-control-input" id="117" name="c117">
+                                        <label class="custom-control-label" for="117"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    Someone deletes a company
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N118 class="custom-control-input" id="118" name="c118">
+                                        <label class="custom-control-label" for="118"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N119 class="custom-control-input" id="119" name="c119">
+                                        <label class="custom-control-label" for="119"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N120 class="custom-control-input" id="120" name="c120">
+                                        <label class="custom-control-label" for="120"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    A contact logs in to Ethko
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N121 class="custom-control-input" id="121" name="c121">
+                                        <label class="custom-control-label" for="121"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N122 class="custom-control-input" id="122" name="c122">
+                                        <label class="custom-control-label" for="122"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N123 class="custom-control-input" id="123" name="c123">
+                                        <label class="custom-control-label" for="123"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    A new note is added, edited, or deleted on a contact
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N124 class="custom-control-input" id="124" name="c124">
+                                        <label class="custom-control-label" for="124"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N125 class="custom-control-input" id="125" name="c125">
+                                        <label class="custom-control-label" for="125"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N126 class="custom-control-input" id="126" name="c126">
+                                        <label class="custom-control-label" for="126"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    <h5>Firm Administration</h5>
+                                </div>
+                                <div class="col-1">
+                                    Email
+                                </div>
+                                <div class="col-1">
+                                    Feed
+                                </div>
+                                <div class="col-1">
+                                    In<img src="~/Content/img/question_mark.svg" data-toggle="tooltip" data-placement="top" title="In-App notifications are the red 'bubbles' that appear along the tabs at the top for unread items.">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    A new firm user is added
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N127 class="custom-control-input" id="127" name="c127">
+                                        <label class="custom-control-label" for="127"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N128 class="custom-control-input" id="128" name="c128">
+                                        <label class="custom-control-label" for="128"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N129 class="custom-control-input" id="129" name="c129">
+                                        <label class="custom-control-label" for="129"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    Firm user contact information is updated
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N130 class="custom-control-input" id="130" name="c130">
+                                        <label class="custom-control-label" for="130"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N131 class="custom-control-input" id="131" name="c131">
+                                        <label class="custom-control-label" for="131"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N132 class="custom-control-input" id="132" name="c132">
+                                        <label class="custom-control-label" for="132"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    A firm user is deactivated or reactivated
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N133 class="custom-control-input" id="133" name="c133">
+                                        <label class="custom-control-label" for="133"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N134 class="custom-control-input" id="134" name="c134">
+                                        <label class="custom-control-label" for="134"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N135 class="custom-control-input" id="135" name="c135">
+                                        <label class="custom-control-label" for="135"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    Items are imported into Ethko
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N136 class="custom-control-input" id="136" name="c136">
+                                        <label class="custom-control-label" for="136"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N137 class="custom-control-input" id="137" name="c137">
+                                        <label class="custom-control-label" for="137"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N138 class="custom-control-input" id="138" name="c138">
+                                        <label class="custom-control-label" for="138"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">
+                                    Firm information is updated
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N139 class="custom-control-input" id="139" name="c139">
+                                        <label class="custom-control-label" for="139"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N140 class="custom-control-input" id="140" name="c140">
+                                        <label class="custom-control-label" for="140"></label>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" @item.N141 class="custom-control-input" id="141" name="c141">
+                                        <label class="custom-control-label" for="141"></label>
+                                    </div>
+                                </div>
+                            </div>
                         }
-
-                    </table>
+                    }
                     @Html.Raw("   ")<input type="submit" name="SaveButton" value="Save" class="btn btn-success" />
                 }
             </div>

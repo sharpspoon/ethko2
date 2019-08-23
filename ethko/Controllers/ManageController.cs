@@ -496,6 +496,45 @@ namespace ethko.Controllers
                                         N109 = (n.N109 == "on") ? "checked" : null,
                                         N110 = (n.N110 == "on") ? "checked" : null,
                                         N111 = (n.N111 == "on") ? "checked" : null,
+                                        N112 = (n.N112 == "on") ? "checked" : null,
+                                        N113 = (n.N113 == "on") ? "checked" : null,
+                                        N114 = (n.N114 == "on") ? "checked" : null,
+                                        N115 = (n.N115 == "on") ? "checked" : null,
+                                        N116 = (n.N116 == "on") ? "checked" : null,
+                                        N117 = (n.N117 == "on") ? "checked" : null,
+                                        N118 = (n.N118 == "on") ? "checked" : null,
+                                        N119 = (n.N119 == "on") ? "checked" : null,
+                                        N120 = (n.N120 == "on") ? "checked" : null,
+                                        N121 = (n.N121 == "on") ? "checked" : null,
+                                        N122 = (n.N122 == "on") ? "checked" : null,
+                                        N123 = (n.N123 == "on") ? "checked" : null,
+                                        N124 = (n.N124 == "on") ? "checked" : null,
+                                        N125 = (n.N125 == "on") ? "checked" : null,
+                                        N126 = (n.N126 == "on") ? "checked" : null,
+                                        N127 = (n.N127 == "on") ? "checked" : null,
+                                        N128 = (n.N128 == "on") ? "checked" : null,
+                                        N129 = (n.N129 == "on") ? "checked" : null,
+                                        N130 = (n.N130 == "on") ? "checked" : null,
+                                        N131 = (n.N131 == "on") ? "checked" : null,
+                                        N132 = (n.N132 == "on") ? "checked" : null,
+                                        N133 = (n.N133 == "on") ? "checked" : null,
+                                        N134 = (n.N134 == "on") ? "checked" : null,
+                                        N135 = (n.N135 == "on") ? "checked" : null,
+                                        N136 = (n.N136 == "on") ? "checked" : null,
+                                        N137 = (n.N137 == "on") ? "checked" : null,
+                                        N138 = (n.N138 == "on") ? "checked" : null,
+                                        N139 = (n.N139 == "on") ? "checked" : null,
+                                        N140 = (n.N140 == "on") ? "checked" : null,
+                                        N141 = (n.N141 == "on") ? "checked" : null,
+                                        N142 = (n.N142 == "on") ? "checked" : null,
+                                        N143 = (n.N143 == "on") ? "checked" : null,
+                                        N144 = (n.N144 == "on") ? "checked" : null,
+                                        N145 = (n.N145 == "on") ? "checked" : null,
+                                        N146 = (n.N146 == "on") ? "checked" : null,
+                                        N147 = (n.N147 == "on") ? "checked" : null,
+                                        N148 = (n.N148 == "on") ? "checked" : null,
+                                        N149 = (n.N149 == "on") ? "checked" : null,
+                                        N150 = (n.N150 == "on") ? "checked" : null
                                     };
                 return View(notifications.ToList());
             }
@@ -634,6 +673,46 @@ namespace ethko.Controllers
                 string c109 = Request.Form["c109"];
                 string c110 = Request.Form["c110"];
                 string c111 = Request.Form["c111"];
+                string c112 = Request.Form["c112"];
+                string c113 = Request.Form["c113"];
+                string c114 = Request.Form["c114"];
+                string c115 = Request.Form["c115"];
+                string c116 = Request.Form["c116"];
+                string c117 = Request.Form["c117"];
+                string c118 = Request.Form["c118"];
+                string c119 = Request.Form["c119"];
+                string c120 = Request.Form["c120"];
+                string c121 = Request.Form["c121"];
+                string c122 = Request.Form["c122"];
+                string c123 = Request.Form["c123"];
+                string c124 = Request.Form["c124"];
+                string c125 = Request.Form["c125"];
+                string c126 = Request.Form["c126"];
+                string c127 = Request.Form["c127"];
+                string c128 = Request.Form["c128"];
+                string c129 = Request.Form["c129"];
+                string c130 = Request.Form["c130"];
+                string c131 = Request.Form["c131"];
+                string c132 = Request.Form["c132"];
+                string c133 = Request.Form["c133"];
+                string c134 = Request.Form["c134"];
+                string c135 = Request.Form["c135"];
+                string c136 = Request.Form["c136"];
+                string c137 = Request.Form["c137"];
+                string c138 = Request.Form["c138"];
+                string c139 = Request.Form["c139"];
+                string c140 = Request.Form["c140"];
+                string c141 = Request.Form["c141"];
+                string c142 = Request.Form["c142"];
+                string c143 = Request.Form["c143"];
+                string c144 = Request.Form["c144"];
+                string c145 = Request.Form["c145"];
+                string c146 = Request.Form["c146"];
+                string c147 = Request.Form["c147"];
+                string c148 = Request.Form["c148"];
+                string c149 = Request.Form["c149"];
+                string c150 = Request.Form["c150"];
+
 
                 notifications.N1 = c1;
                 notifications.N2 = c2;
@@ -746,6 +825,45 @@ namespace ethko.Controllers
                 notifications.N109 = c109;
                 notifications.N110 = c110;
                 notifications.N111 = c111;
+                notifications.N112 = c112;
+                notifications.N113 = c113;
+                notifications.N114 = c114;
+                notifications.N115 = c115;
+                notifications.N116 = c116;
+                notifications.N117 = c117;
+                notifications.N118 = c118;
+                notifications.N119 = c119;
+                notifications.N120 = c120;
+                notifications.N121 = c121;
+                notifications.N122 = c122;
+                notifications.N123 = c123;
+                notifications.N124 = c124;
+                notifications.N125 = c125;
+                notifications.N126 = c126;
+                notifications.N127 = c127;
+                notifications.N128 = c128;
+                notifications.N129 = c129;
+                notifications.N130 = c130;
+                notifications.N131 = c131;
+                notifications.N132 = c132;
+                notifications.N133 = c133;
+                notifications.N134 = c134;
+                notifications.N135 = c135;
+                notifications.N136 = c136;
+                notifications.N137 = c137;
+                notifications.N138 = c138;
+                notifications.N139 = c139;
+                notifications.N140 = c140;
+                notifications.N141 = c141;
+                notifications.N142 = c142;
+                notifications.N143 = c143;
+                notifications.N144 = c144;
+                notifications.N145 = c145;
+                notifications.N146 = c146;
+                notifications.N147 = c147;
+                notifications.N148 = c148;
+                notifications.N149 = c149;
+                notifications.N150 = c150;
                 entities.SaveChanges();
             }
             return RedirectToAction("MyNotifications", "Manage");
