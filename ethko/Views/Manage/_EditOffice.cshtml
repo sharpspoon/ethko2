@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="~/Content/svg.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<p class="text-success">@ViewBag.StatusMessage</p>
 <body>
     <h4>Select a sub category from the menu on the left</h4>
     <hr />
@@ -22,8 +21,8 @@
                     <a class="btn btn-secondary" href='@Url.Action("MySettings", "Manage")'>My Settings</a>
                     <a class="btn btn-secondary" href='@Url.Action("MyNotifications", "Manage")'>My Notifications</a>
                     <a class="btn btn-secondary" href='@Url.Action("FirmUsers", "Manage")'>Firm Users</a>
-                    <a class="btn btn-secondary" href='@Url.Action("FirmSettings", "Manage")'>Firm Settings</a>
-                    <a class="btn btn-primary" href='@Url.Action("ClientBilling", "Manage")'>Client Billing</a>
+                    <a class="btn btn-primary" href='@Url.Action("FirmSettings", "Manage")'>Firm Settings</a>
+                    <a class="btn btn-secondary" href='@Url.Action("ClientBilling", "Manage")'>Client Billing</a>
                     <a class="btn btn-secondary" href='@Url.Action("ImportExport", "Manage")'>Import/Export</a>
                     <a class="btn btn-secondary" href='@Url.Action("CustomFields", "Manage")'>Custom Fields</a>
                     <a class="btn btn-secondary" href='@Url.Action("IntakeForms", "Manage")'>Intake Forms</a>
