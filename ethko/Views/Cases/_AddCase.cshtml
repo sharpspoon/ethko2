@@ -6,265 +6,228 @@
 <a class="btn btn-primary" href='@Url.Action("New", "Cases")'>Add Case</a>&nbsp;
 
 <head>
-    <script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="~/Content/svg.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    @*<link rel="stylesheet" href="~/Content/bootstrap-datetimepicker.css" />*@
+    @*<script type="text/javascript" src="~/Scripts/moment.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(".add-row").click(function () {
+                    var name = $("#txtCustomer").val();
+                    var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + name + "</td><td>" + "</td></tr>";
+                    $("table tbody").append(markup);
+                    document.getElementById('txtCustomer').value = "";
+                });
 
-    <script type="text/javascript" src="~/Scripts/moment.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $(".add-row").click(function () {
-                var name = $("#txtCustomer").val();
-                var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + name + "</td><td>" + "</td></tr>";
-                $("table tbody").append(markup);
-                document.getElementById('txtCustomer').value = "";
-            });
-
-            // Find and remove selected table rows
-            $(".delete-row").click(function () {
-                $("table tbody").find('input[name="record"]').each(function () {
-                    if ($(this).is(":checked")) {
-                        $(this).parents("tr").remove();
-                    }
+                // Find and remove selected table rows
+                $(".delete-row").click(function () {
+                    $("table tbody").find('input[name="record"]').each(function () {
+                        if ($(this).is(":checked")) {
+                            $(this).parents("tr").remove();
+                        }
+                    });
                 });
             });
-        });
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#contact-multiselect').multiselect({
-                nonSelectedText: 'Select Contacts',
-                buttonWidth: 250,
-                enableFiltering: true
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#contact-multiselect').multiselect({
+                    nonSelectedText: 'Select Contacts',
+                    buttonWidth: 250,
+                    enableFiltering: true
+                });
             });
-        });
-        $(document).ready(function () {
-            $('#company-multiselect').multiselect({
-                nonSelectedText: 'Select Companies',
-                buttonWidth: 250,
-                enableFiltering: true
+            $(document).ready(function () {
+                $('#company-multiselect').multiselect({
+                    nonSelectedText: 'Select Companies',
+                    buttonWidth: 250,
+                    enableFiltering: true
+                });
             });
-        });
-    </script>
+        </script>*@
 </head>
 <br />
-
-
-<h1>Add Case</h1>
-@using (Html.BeginForm("New", "Cases", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="col-md-12">
-        <div class="container">
-            <div class="row form-group">
-                <div class="col-xs-12">
-                    <ul class="nav nav-pills nav-justified thumbnail setup-panel">
-                        <li class="active">
-                            <a href="#step-1">
-                                <h4 class="list-group-item-heading">1</h4>
-                                <p class="list-group-item-text">Clients & Contacts</p>
-                            </a>
-                        </li>
-                        <li class="disabled">
-                            <a href="#step-2">
-                                <h4 class="list-group-item-heading">2</h4>
-                                <p class="list-group-item-text">Case Details</p>
-                            </a>
-                        </li>
-                        <li class="disabled">
-                            <a href="#step-3">
-                                <h4 class="list-group-item-heading">3</h4>
-                                <p class="list-group-item-text">Billing</p>
-                            </a>
-                        </li>
-                        <li class="disabled">
-                            <a href="#step-4">
-                                <h4 class="list-group-item-heading">4</h4>
-                                <p class="list-group-item-text">Staff</p>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row setup-content" id="step-1">
-                <div class="col-xs-12">
-                    <div class="col-md-12 well">
-                        <div class="form-group">
-                            <div class="col-md-7" align="left">
-                                @ViewBag.Message
-                                <div class="col-md-10" align="left">
-                                    @Html.DropDownList("Contacts", (IEnumerable<SelectListItem>)ViewData["DBContacts"], new { @class = "form-control" })
-                                </div>
-                                @*<div class="contact">
-                                    <select id="contact-multiselect" multiple="multiple">
-                                        @foreach (var item in ViewBag.contactList)
-                                        {
-                                            if (item.Text != null)
-                                            {
-                                                <option value="@item.Value">@item.Text</option>
-                                            }
-                                        }
-                                        @Html.ValidationMessageFor(m => m.ContactId, "", new { @class = "text-danger" })
-                                    </select>
-                                </div>*@
-                                @Html.ActionLink("Add a new contact", "New", "Contacts") | @Html.ActionLink("Add a new company", "NewCompany", "Contacts")
-                                <br />
-                            </div>
+<body>
+    <h1>Add Case</h1>
+    @using (Html.BeginForm("New", "Cases", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="col-md-12">
+            <div class="container">
+                
+                <div class="row">
+                    <div class="col-2">
+                        <div class="list-group" id="list-tab" role="tablist">
+                            <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Clients & Contacts</a>
+                            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Case Details</a>
+                            <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Billing</a>
+                            <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Staff</a>
                         </div>
-                        <button id="activate-step-2" class="btn btn-success btn-sm">Continue to Case Details</button>
                     </div>
-                </div>
-            </div>
-            <div class="row setup-content" id="step-2">
-                <div class="col-xs-12">
-                    <div class="col-md-12 well">
-                        <div class="form-group">
-                            <div class="col-md-2" align="left">
-                                Case Name
-                            </div>
-                            <div class="col-md-10" align="left">
-                                @Html.TextBoxFor(m => m.CaseName, new { @class = "form-control", placeholder = "e.g. John Doe - Divorce" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-2" align="left">
-                                Case Number
-                            </div>
-                            <div class="col-md-10" align="left">
-                                @Html.TextBoxFor(m => m.CaseNumber, new { @class = "form-control", placeholder = "A Unique Identifier" })
-                                @Html.ValidationMessageFor(m => m.CaseNumber, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-2" align="left">
-                                Practice Area
-                            </div>
-                            <div class="col-md-10" align="left">
-                                @Html.DropDownList("PracticeAreas", (IEnumerable<SelectListItem>)ViewData["DBContactGroupsPracticeArea"], new { @class = "form-control" })
-                                @Html.ActionLink("Add new practice area", "NewPracticeArea")
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-2" align="left">
-                                Case Stage
-                            </div>
-                            <div class="col-md-10" align="left">
-                                @Html.DropDownList("CaseStages", (IEnumerable<SelectListItem>)ViewData["DBContactGroupsCaseStage"], new { @class = "form-control" })
-                                @Html.ActionLink("Manage case stages in Settings", "CaseStages", "Manage")
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-2" align="left">
-                                Date Opened
-                            </div>
-                            <div class="col-md-10" align="left">
+                    <div class="col-10">
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                                <h3>Clients & Contacts</h3>
                                 <div class="row">
-                                    <div class='col-sm-6'>
-                                        <input type='text' class="form-control" id='datetimepicker4' />
+                                    <br />
+                                    <div class="col">
+                                        <div class="input-group mb-lg-auto">
+                                            <div class="input-group-prepend">
+                                                <button class="btn btn-outline-primary" href='@Url.Action("Leads", "Manage")' type="button">Add</button>
+                                            </div>
+                                            @Html.DropDownList("Contacts", (IEnumerable<SelectListItem>)ViewData["DBContacts"], new { @class = "custom-select", id = "contact" })
+                                            <div class="input-group-append">
+                                                <a class="btn btn-outline-secondary" href='@Url.Action("New", "Contacts")' type="button">New Contact</a>
+                                                <a class="btn btn-outline-secondary" href='@Url.Action("NewCompany", "Contacts")' type="button">New Company</a>
+                                            </div>
+                                        </div>
+                                        <label>Select a contact or company</label>
                                     </div>
-                                    <script type="text/javascript">
-                                        $(function () {
-                                            $('#datetimepicker4').datetimepicker();
-                                        });
-                                    </script>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-2" align="left">
-                                Office
-                            </div>
-                            <div class="col-md-10" align="left">
-                                @Html.DropDownList("Offices", (IEnumerable<SelectListItem>)ViewData["DBOffice"], new { @class = "form-control" })
-                                @Html.ActionLink("Manage office locations in Settings", "FirmSettings", "Manage")
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-2" align="left">
-                                Description
-                            </div>
-                            <div class="col-md-10" align="left">
-                                @Html.TextAreaFor(m => m.OfficeId, new { @class = "form-control" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-2" align="left">
-                                Statute of Limitations
-                            </div>
-                            <div class="col-md-10" align="left">
+                            <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                                <h3>Case Details</h3>
                                 <div class="row">
-                                    <div class='col-sm-6'>
-                                        <input type='text' class="form-control" id='datetimepicker5' />
+                                    <br />
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <div class="col-md-2" align="left">
+                                                Case Name
+                                            </div>
+                                            <div class="col-md-10" align="left">
+                                                @Html.TextBoxFor(m => m.CaseName, new { @class = "form-control", placeholder = "e.g. John Doe - Divorce" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-2" align="left">
+                                                Case Number
+                                            </div>
+                                            <div class="col-md-10" align="left">
+                                                @Html.TextBoxFor(m => m.CaseNumber, new { @class = "form-control", placeholder = "A Unique Identifier" })
+                                                @Html.ValidationMessageFor(m => m.CaseNumber, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-2" align="left">
+                                                Practice Area
+                                            </div>
+                                            <div class="col-md-10" align="left">
+                                                @Html.DropDownList("PracticeAreas", (IEnumerable<SelectListItem>)ViewData["DBContactGroupsPracticeArea"], new { @class = "form-control" })
+                                                @Html.ActionLink("Add new practice area", "NewPracticeArea")
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-2" align="left">
+                                                Case Stage
+                                            </div>
+                                            <div class="col-md-10" align="left">
+                                                @Html.DropDownList("CaseStages", (IEnumerable<SelectListItem>)ViewData["DBContactGroupsCaseStage"], new { @class = "form-control" })
+                                                @Html.ActionLink("Manage case stages in Settings", "CaseStages", "Manage")
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-2" align="left">
+                                                Date Opened
+                                            </div>
+                                            <div class="col-md-10" align="left">
+                                                <div class="row">
+                                                    <div class='col-sm-6'>
+                                                        <input type='text' class="form-control" id='datetimepicker4' />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-md-2" align="left">
+                                                Office
+                                            </div>
+                                            <div class="col-md-10" align="left">
+                                                @Html.DropDownList("Offices", (IEnumerable<SelectListItem>)ViewData["DBOffice"], new { @class = "form-control" })
+                                                @Html.ActionLink("Manage office locations in Settings", "FirmSettings", "Manage")
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-2" align="left">
+                                                Description
+                                            </div>
+                                            <div class="col-md-10" align="left">
+                                                @Html.TextAreaFor(m => m.OfficeId, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-2" align="left">
+                                                Statute of Limitations
+                                            </div>
+                                            <div class="col-md-10" align="left">
+                                                <div class="row">
+                                                    <div class='col-sm-6'>
+                                                        <input type='text' class="form-control" id='datetimepicker5' />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <script type="text/javascript">
-                                        $(function () {
-                                            $('#datetimepicker5').datetimepicker();
-                                        });
-                                    </script>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+                                <h3>Billing</h3>
+                                <div class="row">
+                                    <br />
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <div class="col-md-2" align="left">
+                                                Billing Contact
+                                            </div>
+                                            <div class="col-md-10" align="left">
+                                                @Html.TextBoxFor(m => m.ContactId, new { @class = "form-control", @id = "txtCustomer2", @name = "CustomerName", placeholder = "Search for an existing contact or company" })<input type="button" class="btn btn-sm btn-default add-row" value="Add to Case" />
+                                                Choosing a billing contact allows you to batch bill this case.
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-md-2" align="left">
+                                                Billing Method
+                                            </div>
+                                            <div class="col-md-10" align="left">
+                                                @Html.DropDownList("BillingMethods", (IEnumerable<SelectListItem>)ViewData["DBBillingMethods"], new { @class = "form-control" })
+                                                @Html.ActionLink("Manage billing methods in Settings", "ClientBilling", "Manage")
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+                                <h3>Staff</h3>
+                                <div class="row">
+                                    <br />
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <div class="col-md-2" align="left">
+                                                Lead Attorney
+                                            </div>
+                                            <div class="col-md-10" align="left">
+                                                @Html.TextBoxFor(m => m.ContactId, new { @class = "form-control", @id = "txtCustomer2", @name = "CustomerName", placeholder = "Select a lead attorney for this case" })<input type="button" class="btn btn-sm btn-default add-row" value="Add to Case" />
+                                                Choosing a billing contact allows you to batch bill this case.
+                                            </div>
+                                        </div>
+                                        <input type="submit" class="btn btn-success" value="Save Case" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <button id="activate-step-3" class="btn btn-success btn-sm">Continue to Billing</button>
-                    </div>
-                </div>
-            </div>
-            <div class="row setup-content" id="step-3">
-                <div class="col-xs-12">
-                    <div class="col-md-12 well">
-                        <div class="form-group">
-                            <div class="col-md-2" align="left">
-                                Billing Contact
-                            </div>
-                            <div class="col-md-10" align="left">
-                                @Html.TextBoxFor(m => m.ContactId, new { @class = "form-control", @id = "txtCustomer2", @name = "CustomerName", placeholder = "Search for an existing contact or company" })<input type="button" class="btn btn-sm btn-default add-row" value="Add to Case" />
-                                Choosing a billing contact allows you to batch bill this case.
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-2" align="left">
-                                Billing Method
-                            </div>
-                            <div class="col-md-10" align="left">
-                                @Html.DropDownList("BillingMethods", (IEnumerable<SelectListItem>)ViewData["DBBillingMethods"], new { @class = "form-control" })
-                                @Html.ActionLink("Manage billing methods in Settings", "ClientBilling", "Manage")
-                            </div>
-                        </div>
-
-
-                        <button id="activate-step-4" class="btn btn-success btn-sm">Continue to Staff</button>
-                    </div>
-                </div>
-            </div>
-            <div class="row setup-content" id="step-4">
-                <div class="col-xs-12">
-                    <div class="col-md-12 well">
-                        <div class="form-group">
-                            <div class="col-md-2" align="left">
-                                Lead Attorney
-                            </div>
-                            <div class="col-md-10" align="left">
-                                @Html.TextBoxFor(m => m.ContactId, new { @class = "form-control", @id = "txtCustomer2", @name = "CustomerName", placeholder = "Select a lead attorney for this case" })<input type="button" class="btn btn-sm btn-default add-row" value="Add to Case" />
-                                Choosing a billing contact allows you to batch bill this case.
-                            </div>
-                        </div>
-                        <input type="submit" class="btn btn-success" value="Save Case" />
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-}
-
-<script>
+    }
+    @*<script type="text/javascript" src="~/Scripts/bootstrap-datetimepicker.js"></script>*@
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+@*<script>
     $(document).ready(function () {
 
         var navListItems = $('ul.setup-panel li a'),
@@ -306,4 +269,4 @@
         })
     });
 
-</script>
+</script>*@
