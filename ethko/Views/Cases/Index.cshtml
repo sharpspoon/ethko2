@@ -75,10 +75,10 @@
                         {
                             <tr>
                                 <td>
-                                    <a href='@Url.Action("ViewContact", "Cases", new { CaseId = item.CaseId})'>@Html.DisplayFor(modelItem => item.CaseName)</a>
+                                    <a href='@Url.Action("ViewCase", "Cases", new { CaseId = item.CaseId})'>@Html.DisplayFor(modelItem => item.CaseName)</a>
                                 </td>
                                 <td>
-                                    <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.CaseId})'>@Html.DisplayFor(modelItem => item.CaseNumber)</a>
+                                    <a href='@Url.Action("ViewCase", "Contacts", new { CaseId = item.CaseId})'>@Html.DisplayFor(modelItem => item.CaseNumber)</a>
 
                                 </td>
                                 <td>

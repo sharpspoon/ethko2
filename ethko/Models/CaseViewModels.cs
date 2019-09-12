@@ -115,4 +115,22 @@ namespace ethko.Models
         [Display(Name = "Practice Area Id")]
         public int? PracticeAreaId { get; set; }
     }
+
+    public class GetIndividualCaseViewModel
+    {
+        [Display(Name = "CaseId")]
+        public int CaseId { get; set; }
+
+        [Display(Name = "CaseNumber")]
+        public string CaseNumber { get; set; }
+
+        [Display(Name = "CaseName")]
+        public string CaseName { get; set; }
+
+        [Display(Name = "Practice Area")]
+        public string PracticeAreaName { get; set; }
+
+        [Display(Name = "Case Stage")]
+        public string CaseStageName { get; set; }
+    }
 }

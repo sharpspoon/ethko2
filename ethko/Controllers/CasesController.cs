@@ -254,5 +254,33 @@ namespace ethko.Controllers
             }
             return RedirectToAction("Index", "Contacts");
         }
+
+        //View Specific Case
+        [HttpGet]
+        public ActionResult ViewCase(int? CaseId)
+        {
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                var contacts = (from c in entities.Cases
+                                //join cg in entities.ContactGroups on c.ContactGroupId equals cg.ContactGroupId
+                                //join u in entities.AspNetUsers on c.UserId equals u.Id
+                                join pa in entities.PracticeAreas on c.PracticeAreaId equals pa.PracticeAreaId
+                                join cs in entities.CaseStages on c.CaseStageId equals cs.CaseStageId
+                                where c.CaseId == CaseId
+                                select new GetIndividualCaseViewModel()
+                                {
+                                    CaseId = c.CaseId,
+                                    CaseName = c.CaseName,
+                                    CaseNumber = c.CaseNumber,
+                                    PracticeAreaName = pa.PracticeAreaName,
+                                    CaseStageName = cs.CaseStageName
+                                }).FirstOrDefault();
+
+
+                //IEnumerable<Contact> contacts = entities.Contacts.Where(m => m.Archived == 0).ToList();
+                //var contactModel = ConvertViewModelToModel(contacts);
+                return View(contacts);
+            }
+        }
     }
 }
