@@ -77,6 +77,8 @@ namespace ethko.Controllers
             ViewData["DBBillingMethods"] = billingMethods;
             var contactList = new SelectList(entities.Contacts.ToList(), "FullName", "FullName");
             ViewData["DBContacts"] = contactList;
+            var AspNetUserList = new SelectList(entities.AspNetUsers.ToList(), "FName", "FName");
+            ViewData["DBAspNetUsers"] = AspNetUserList;
             return View();
         }
 
@@ -92,7 +94,9 @@ namespace ethko.Controllers
                 CaseStageId = vm.CaseStageId,
                 DateOpened = vm.DateOpened,
                 OfficeId = vm.OfficeId,
-                Description = vm.Description
+                Description = vm.Description,
+                BillingContactId = vm.BillingContactId,
+                LeadAttorneyId = vm.LeadAttorneyId
             };
         }
 
@@ -112,12 +116,16 @@ namespace ethko.Controllers
                 string caseStage = Request.Form["CaseStages"].ToString();
                 string office = Request.Form["Offices"].ToString();
                 string billingMethod = Request.Form["BillingMethods"].ToString();
+                string billingContact = Request.Form["BillingContacts"].ToString();
+                string leadAttorney = Request.Form["LeadAttorney"].ToString();
                 caseModel.ContactId = entities.Contacts.Where(m => m.FullName == contactName).Select(m => m.ContactId).FirstOrDefault();
                 caseModel.PracticeAreaId = entities.PracticeAreas.Where(m => m.PracticeAreaName == practiceArea).Select(m => m.PracticeAreaId).FirstOrDefault();
                 caseModel.CaseStageId = entities.CaseStages.Where(m => m.CaseStageName == caseStage).Select(m => m.CaseStageId).FirstOrDefault();
                 caseModel.OfficeId = entities.Offices.Where(m => m.OfficeName == office).Select(m => m.OfficeId).FirstOrDefault();
                 caseModel.BillingMethodId = entities.BillingMethods.Where(m => m.BillingMethodName == billingMethod).Select(m => m.BillingMethodId).FirstOrDefault();
                 caseModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+                caseModel.BillingContactId = entities.Contacts.Where(m => m.FullName == billingContact).Select(m => m.ContactId).FirstOrDefault();
+                caseModel.LeadAttorneyId = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();//need to fix this
                 entities.SaveChanges();
             }
             return RedirectToAction("Index");

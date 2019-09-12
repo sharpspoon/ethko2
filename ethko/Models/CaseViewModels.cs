@@ -23,8 +23,11 @@ namespace ethko.Models
         [Display(Name = "Practice Area Id")]
         public int PracticeAreaId { get; set; }
 
-        [Display(Name = "Billing MEthod Id")]
+        [Display(Name = "Billing Method Id")]
         public int BillingMethodId { get; set; }
+
+        [Display(Name = "Billing Contact Id")]
+        public int BillingContactId { get; set; }
 
         [Display(Name = "Case Stage")]
         public int CaseStageId { get; set; }
@@ -40,6 +43,9 @@ namespace ethko.Models
 
         [Display(Name = "Statute of Limitations")]
         public DateTime Statute { get; set; }
+
+        [Display(Name = "Lead Attorney Id")]
+        public string LeadAttorneyId { get; set; }
     }
 
     public class GetPracticeAreasViewModel

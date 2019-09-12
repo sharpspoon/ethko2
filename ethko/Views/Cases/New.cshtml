@@ -279,7 +279,12 @@
                                                 Billing Contact
                                             </div>
                                             <div class="col-md-10" align="left">
-                                                @Html.TextBoxFor(m => m.ContactId, new { @class = "form-control", @id = "txtCustomer2", @name = "CustomerName", placeholder = "Search for an existing contact or company" })<input type="button" class="btn btn-sm btn-default add-row" value="Add to Case" />
+                                                <div class="input-group mb-lg-auto">
+                                                    @Html.DropDownList("BillingContacts", (IEnumerable<SelectListItem>)ViewData["DBContacts"], new { @class = "custom-select", @id = "contact", @name = "contact" })
+                                                    <div class="input-group-append">
+                                                        <a class="btn btn-outline-secondary" href='@Url.Action("New", "Contacts")' type="button">New Contact</a>
+                                                    </div>
+                                                </div>
                                                 Choosing a billing contact allows you to batch bill this case.
                                             </div>
                                         </div>
@@ -306,8 +311,10 @@
                                                 Lead Attorney
                                             </div>
                                             <div class="col-md-10" align="left">
-                                                @Html.TextBoxFor(m => m.ContactId, new { @class = "form-control", @id = "txtCustomer2", @name = "CustomerName", placeholder = "Select a lead attorney for this case" })<input type="button" class="btn btn-sm btn-default add-row" value="Add to Case" />
-                                                Choosing a billing contact allows you to batch bill this case.
+                                                <div class="input-group mb-lg-auto">
+                                                    @Html.DropDownList("LeadAttorney", (IEnumerable<SelectListItem>)ViewData["DBAspNetUsers"], new { @class = "custom-select", @id = "contact", @name = "contact" })
+                                                </div>
+                                                Choosing a lead attorney.
                                             </div>
                                         </div>
                                         <input type="submit" class="btn btn-success" value="Save Case" />

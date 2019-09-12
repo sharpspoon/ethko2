@@ -109,6 +109,8 @@
           </Key>
           <Property Name="CaseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ContactId" Type="int" Nullable="false" />
+          <Property Name="BillingContactId" Type="int" Nullable="false" />
+          <Property Name="LeadAttorneyId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="CaseName" Type="varchar(max)" Nullable="false" />
           <Property Name="CaseNumber" Type="varchar(max)" Nullable="false" />
           <Property Name="PracticeAreaId" Type="int" Nullable="false" />
@@ -438,6 +440,18 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Cases_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Cases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="LeadAttorneyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Cases_ToBillingMethods">
           <End Role="BillingMethods" Type="Self.BillingMethods" Multiplicity="1" />
           <End Role="Cases" Type="Self.Cases" Multiplicity="*" />
@@ -471,6 +485,18 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             </Principal>
             <Dependent Role="Cases">
               <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToContacts2">
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Cases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="BillingContactId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -587,6 +613,10 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             <End Role="UserTypes" EntitySet="UserTypes" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <AssociationSet Name="FK_Cases_dbo_AspNetUsers_UserId" Association="Self.FK_Cases_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
           <AssociationSet Name="FK_Cases_ToBillingMethods" Association="Self.FK_Cases_ToBillingMethods">
             <End Role="BillingMethods" EntitySet="BillingMethods" />
             <End Role="Cases" EntitySet="Cases" />
@@ -596,6 +626,10 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             <End Role="Cases" EntitySet="Cases" />
           </AssociationSet>
           <AssociationSet Name="FK_Cases_ToContacts" Association="Self.FK_Cases_ToContacts">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToContacts2" Association="Self.FK_Cases_ToContacts2">
             <End Role="Contacts" EntitySet="Contacts" />
             <End Role="Cases" EntitySet="Cases" />
           </AssociationSet>
@@ -699,6 +733,14 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             <End Role="Case" EntitySet="Cases" />
           </AssociationSet>
           <EntitySet Name="Notifications" EntityType="ethko_dbModel.Notification" />
+          <AssociationSet Name="FK_Cases_dbo_AspNetUsers_UserId" Association="ethko_dbModel.FK_Cases_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="Case" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToContacts2" Association="ethko_dbModel.FK_Cases_ToContacts2">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Case" EntitySet="Cases" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
@@ -786,6 +828,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <NavigationProperty Name="AspNetUserLogins" Relationship="ethko_dbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
           <NavigationProperty Name="UserType" Relationship="ethko_dbModel.FK_AspNetUsers_ToUserTypes" FromRole="AspNetUser" ToRole="UserType" />
           <NavigationProperty Name="AspNetRoles" Relationship="ethko_dbModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+          <NavigationProperty Name="Cases" Relationship="ethko_dbModel.FK_Cases_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="Case" />
         </EntityType>
         <EntityType Name="BillingMethod">
           <Key>
@@ -821,6 +864,10 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <NavigationProperty Name="Office" Relationship="ethko_dbModel.FK_Cases_ToOffices" FromRole="Case" ToRole="Office" />
           <NavigationProperty Name="PracticeArea" Relationship="ethko_dbModel.FK_Cases_ToPracticeAreas" FromRole="Case" ToRole="PracticeArea" />
           <Property Name="Statute" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="BillingContactId" Type="Int32" Nullable="false" />
+          <Property Name="LeadAttorneyId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="ethko_dbModel.FK_Cases_dbo_AspNetUsers_UserId" FromRole="Case" ToRole="AspNetUser" />
+          <NavigationProperty Name="Contact1" Relationship="ethko_dbModel.FK_Cases_ToContacts2" FromRole="Case" ToRole="Contact" />
         </EntityType>
         <EntityType Name="CaseStage">
           <Key>
@@ -898,6 +945,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Cases" Relationship="ethko_dbModel.FK_Cases_ToContacts" FromRole="Contact" ToRole="Case" />
           <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cases1" Relationship="ethko_dbModel.FK_Cases_ToContacts2" FromRole="Contact" ToRole="Case" />
         </EntityType>
         <EntityType Name="Office">
           <Key>
@@ -1217,6 +1265,30 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="InsDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
+        <Association Name="FK_Cases_dbo_AspNetUsers_UserId">
+          <End Type="ethko_dbModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="ethko_dbModel.Case" Role="Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Case">
+              <PropertyRef Name="LeadAttorneyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToContacts2">
+          <End Type="ethko_dbModel.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="ethko_dbModel.Case" Role="Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="Case">
+              <PropertyRef Name="BillingContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1331,6 +1403,8 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySetMapping Name="Cases">
             <EntityTypeMapping TypeName="ethko_dbModel.Case">
               <MappingFragment StoreEntitySet="Cases">
+                <ScalarProperty Name="LeadAttorneyId" ColumnName="LeadAttorneyId" />
+                <ScalarProperty Name="BillingContactId" ColumnName="BillingContactId" />
                 <ScalarProperty Name="Statute" ColumnName="Statute" />
                 <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
                 <ScalarProperty Name="InsDate" ColumnName="InsDate" />

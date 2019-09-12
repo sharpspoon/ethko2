@@ -4,10 +4,10 @@
 }
 
 <br />
-<a class="btn btn-default" href='@Url.Action("Index", "Contacts")'>Contacts</a>&nbsp;
-<a class="btn btn-default" href='@Url.Action("Companies", "Contacts")'>Companies</a>&nbsp;
-<a class="btn btn-default" href='@Url.Action("ContactGroups", "Contacts")'>Contact Groups</a>&nbsp;
-<a class="btn btn-primary" href='@Url.Action("ViewContact", "Contacts")'>Contact Details</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("Index", "Cases")'>Cases</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("PracticeAreas", "Cases")'>Practice Areas</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("CaseInsights", "Cases")'>Case Insights</a>&nbsp;
+<a class="btn btn-primary" href=#>View Case</a>&nbsp;
 <br />
 <br />
 <h2>
@@ -27,7 +27,7 @@
         <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
     </head>
     <body style="margin:20px auto">
-        
+
         <div class="container">
             <h2>@Html.DisplayFor(m => m.CaseName)</h2>
             <h5>@Html.DisplayFor(m => m.CaseNumber) | Statute of Limitations:</h5>
@@ -35,7 +35,7 @@
                 <div class="col-md-3">
                     <div class="card border-dark mb-3" style="max-width: 18rem;">
                         <div class="card-header">
-                        Client Info:
+                            Client Info:
                         </div>
                         <div class="card-body text-dark">
                             <h5 class="card-title">Opened</h5>

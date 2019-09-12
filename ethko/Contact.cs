@@ -18,6 +18,7 @@ namespace ethko
         public Contact()
         {
             this.Cases = new HashSet<Case>();
+            this.Cases1 = new HashSet<Case>();
         }
     
         public int ContactId { get; set; }
@@ -53,5 +54,7 @@ namespace ethko
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Case> Cases { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Case> Cases1 { get; set; }
     }
 }

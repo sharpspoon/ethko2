@@ -244,6 +244,8 @@ CREATE TABLE [dbo].[BillingMethods] (
 CREATE TABLE [dbo].[Cases] (
     [CaseId]          INT        IDENTITY (1, 1)    NOT NULL,
     [ContactId]       INT            NOT NULL,
+	[BillingContactId]       INT            NOT NULL,
+	[LeadAttorneyId]    NVARCHAR (128) NOT NULL,
     [CaseName]        VARCHAR (MAX)  NOT NULL,
     [CaseNumber]      VARCHAR (MAX)  NOT NULL,
     [PracticeAreaId]  INT            NOT NULL,
@@ -258,9 +260,11 @@ CREATE TABLE [dbo].[Cases] (
     [RowVersion]      ROWVERSION     NOT NULL,
     CONSTRAINT [PK_dbo.Cases] PRIMARY KEY CLUSTERED ([CaseId] ASC),
 	CONSTRAINT [FK_Cases_ToContacts] FOREIGN KEY ([ContactId]) REFERENCES [dbo].[Contacts] ([ContactId]),
+	CONSTRAINT [FK_Cases_ToContacts2] FOREIGN KEY ([BillingContactId]) REFERENCES [dbo].[Contacts] ([ContactId]),
 	CONSTRAINT [FK_Cases_ToPracticeAreas] FOREIGN KEY ([PracticeAreaId]) REFERENCES [dbo].[PracticeAreas] ([PracticeAreaId]),
 	CONSTRAINT [FK_Cases_ToBillingMethods] FOREIGN KEY ([BillingMethodId]) REFERENCES [dbo].[BillingMethods] ([BillingMethodId]),
 	CONSTRAINT [FK_Cases_ToOffices] FOREIGN KEY ([OfficeId]) REFERENCES [dbo].[Offices] ([OfficeId]),
+	CONSTRAINT [FK_Cases_dbo.AspNetUsers_UserId] FOREIGN KEY ([LeadAttorneyId]) REFERENCES [dbo].[AspNetUsers] ([Id]),
 	CONSTRAINT [FK_Cases_ToCaseStages] FOREIGN KEY ([CaseStageId]) REFERENCES [dbo].[CaseStages] ([CaseStageId])
 );
 
@@ -539,6 +543,9 @@ insert into Contacts
 (FName, LName, MName, FullName, Title, Email, ContactGroupId, CellPhone, WorkPhone, HomePhone, Fax, SSN, JobTitle, Address, Address2, City, State, Zip, Country, License, Website, Notes, Birthday, InsDate, UserId, Archived, EnableClientPortal)
 values
 ('Robin','Ward', 'Conn', 'Robin Conn Ward', 'Mr.', 'system@steelcitysites.net', 1, '334-332-7010', '334-332-7010', '334-332-7010', '334-332-7010', '123456789', 'Awesome Person', '123 Main Street', 'APT 1', 'Birmingham', 'AL', '36830', 'USA', 
+'License-001', 'https://steelcitysites.net', 'Insert some notes', '2000-01-31',
+ GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net'), 0, 0),
+ ('Billing','Ward', 'Conn', 'Billing Conn Ward', 'Mr.', 'system@steelcitysites.net', 1, '334-332-7010', '334-332-7010', '334-332-7010', '334-332-7010', '123456789', 'Awesome Person', '123 Main Street', 'APT 1', 'Birmingham', 'AL', '36830', 'USA', 
 'License-001', 'https://steelcitysites.net', 'Insert some notes', '2000-01-31',
  GETDATE(), (select id from AspNetUsers where UserName='system@steelcitysites.net'), 0, 0)
 
