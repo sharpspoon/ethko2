@@ -144,5 +144,8 @@ namespace ethko.Models
 
         [Display(Name = "Case Stage")]
         public string CaseStageName { get; set; }
+
+        [Display(Name = "Statute")]
+        public int Statute { get; set; }
     }
 }
