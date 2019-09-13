@@ -119,6 +119,7 @@ namespace ethko.Controllers
                 string billingMethod = Request.Form["BillingMethods"].ToString();
                 string billingContact = Request.Form["BillingContacts"].ToString();
                 string leadAttorney = Request.Form["LeadAttorney"].ToString();
+                string statuteMonth = Request.Form["statutemonth"].ToString();
                 caseModel.ContactId = entities.Contacts.Where(m => m.FullName == contactName).Select(m => m.ContactId).FirstOrDefault();
                 caseModel.PracticeAreaId = entities.PracticeAreas.Where(m => m.PracticeAreaName == practiceArea).Select(m => m.PracticeAreaId).FirstOrDefault();
                 caseModel.CaseStageId = entities.CaseStages.Where(m => m.CaseStageName == caseStage).Select(m => m.CaseStageId).FirstOrDefault();
@@ -127,6 +128,7 @@ namespace ethko.Controllers
                 caseModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 caseModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 caseModel.BillingContactId = entities.Contacts.Where(m => m.FullName == billingContact).Select(m => m.ContactId).FirstOrDefault();
+                caseModel.Description = statuteMonth;
                 caseModel.LeadAttorneyId = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();//need to fix this
                 entities.SaveChanges();
             }
