@@ -62,6 +62,7 @@ namespace ethko.Controllers
             {
                 var contactResult = (from contacts in entities.Contacts select contacts).ToList();
                 var companyResult = (from companies in entities.Companies select companies).ToList();
+                var months = (from dimdates in entities.DimDates select new SelectListItem { Text=dimdates.MonthName }).Distinct().ToList();
                 //var totalResults = contactResult.AddRange(companyResult);
                 if (contactResult != null)
                 {
@@ -80,6 +81,7 @@ namespace ethko.Controllers
             ViewData["DBContacts"] = contactList;
             var AspNetUserList = new SelectList(entities.AspNetUsers.ToList(), "FName", "FName");
             ViewData["DBAspNetUsers"] = AspNetUserList;
+            
             return View();
         }
 
@@ -114,7 +116,6 @@ namespace ethko.Controllers
                 entities.Cases.Add(caseModel);
                 caseModel.InsDate = intDate;
                 caseModel.LstDate = intDate;
-                caseModel.DateOpened = intDate;
                 string contactName = Request.Form["Contacts"].ToString();
                 string practiceArea = Request.Form["PracticeAreas"].ToString();
                 string caseStage = Request.Form["CaseStages"].ToString();
@@ -122,7 +123,16 @@ namespace ethko.Controllers
                 string billingMethod = Request.Form["BillingMethods"].ToString();
                 string billingContact = Request.Form["BillingContacts"].ToString();
                 string leadAttorney = Request.Form["LeadAttorney"].ToString();
-                //string statuteMonth = Request.Form["statutemonth"].ToString();
+                string statuteMonth = Request.Form["StatuteMonth"].ToString();
+                string statuteDay = Request.Form["StatuteDay"].ToString();
+                string statuteYear = Request.Form["StatuteYear"].ToString();
+                string statuteDate = statuteYear + statuteMonth + statuteDay;
+                int statuteDateInt = Int32.Parse(statuteDate);
+                string openedMonth = Request.Form["OpenedMonth"].ToString();
+                string openedDay = Request.Form["OpenedDay"].ToString();
+                string openedYear = Request.Form["OpenedYear"].ToString();
+                string openedDate = openedYear + openedMonth + openedDay;
+                int openedDateInt = Int32.Parse(openedDate);
                 caseModel.ContactId = entities.Contacts.Where(m => m.FullName == contactName).Select(m => m.ContactId).FirstOrDefault();
                 caseModel.PracticeAreaId = entities.PracticeAreas.Where(m => m.PracticeAreaName == practiceArea).Select(m => m.PracticeAreaId).FirstOrDefault();
                 caseModel.CaseStageId = entities.CaseStages.Where(m => m.CaseStageName == caseStage).Select(m => m.CaseStageId).FirstOrDefault();
@@ -131,7 +141,9 @@ namespace ethko.Controllers
                 caseModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 caseModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 caseModel.BillingContactId = entities.Contacts.Where(m => m.FullName == billingContact).Select(m => m.ContactId).FirstOrDefault();
-                //caseModel.Description = statuteMonth;
+                //caseModel.Description = statuteMonth;//used for testing
+                caseModel.Statute = statuteDateInt;
+                caseModel.DateOpened = openedDateInt;
                 caseModel.LeadAttorneyId = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();//need to fix this
                 entities.SaveChanges();
             }
