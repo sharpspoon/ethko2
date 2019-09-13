@@ -167,9 +167,9 @@ namespace ethko
         public string N149 { get; set; }
         public string N150 { get; set; }
         public string LstUser { get; set; }
-        public System.DateTime LstDate { get; set; }
+        public int LstDate { get; set; }
         public string FstUser { get; set; }
-        public System.DateTime InsDate { get; set; }
+        public int InsDate { get; set; }
         public byte[] RowVersion { get; set; }
     }
 }

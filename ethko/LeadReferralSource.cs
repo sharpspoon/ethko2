@@ -17,9 +17,9 @@ namespace ethko
         public int ReferralSourceId { get; set; }
         public string ReferralSourceName { get; set; }
         public string FstUser { get; set; }
-        public System.DateTime InsDate { get; set; }
-        public byte[] RowVersion { get; set; }
-        public System.DateTime LstDate { get; set; }
+        public int InsDate { get; set; }
+        public int LstDate { get; set; }
         public string LstUser { get; set; }
+        public byte[] RowVersion { get; set; }
     }
 }

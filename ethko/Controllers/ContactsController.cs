@@ -53,10 +53,13 @@ namespace ethko.Controllers
         {
             var contactModel = ConvertViewModelToModel(model);
             var user = User.Identity.GetUserName().ToString();
+            DateTime date = DateTime.Now;
+            int intDate = int.Parse(date.ToString("yyyyMMdd"));
+
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 entities.Contacts.Add(contactModel);
-                contactModel.InsDate = DateTime.Now;
+                contactModel.InsDate = intDate;
                 string contactGroupName = Request.Form["ContactGroups"].ToString();
                 contactModel.ContactGroupId = entities.ContactGroups.Where(m => m.ContactGroupName == contactGroupName).Select(m => m.ContactGroupId).FirstOrDefault();
                 contactModel.UserId = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
@@ -247,12 +250,14 @@ namespace ethko.Controllers
         {
             var user = User.Identity.GetUserName().ToString();
             var companyModel = ConvertViewModelToModel(model);
+            DateTime date = DateTime.Now;
+            int intDate = int.Parse(date.ToString("yyyyMMdd"));
 
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 entities.Companies.Add(companyModel);
                 //var user = User.Identity.GetUserName().ToString();
-                companyModel.InsDate = DateTime.Now;
+                companyModel.InsDate = intDate;
                 companyModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 entities.SaveChanges();
             }
@@ -304,11 +309,13 @@ namespace ethko.Controllers
         {
             var user = User.Identity.GetUserName().ToString();
             var contactGroupModel = ConvertViewModelToModel(model);
+            DateTime date = DateTime.Now;
+            int intDate = int.Parse(date.ToString("yyyyMMdd"));
 
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 entities.ContactGroups.Add(contactGroupModel);
-                contactGroupModel.InsDate = DateTime.Now;
+                contactGroupModel.InsDate = intDate;
                 contactGroupModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 entities.SaveChanges();
             }

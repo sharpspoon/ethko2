@@ -37,11 +37,12 @@ namespace ethko
         public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<ContactGroup> ContactGroups { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
-        public virtual DbSet<Office> Offices { get; set; }
-        public virtual DbSet<PracticeArea> PracticeAreas { get; set; }
-        public virtual DbSet<UserType> UserTypes { get; set; }
+        public virtual DbSet<DimDate> DimDates { get; set; }
         public virtual DbSet<LeadReferralSource> LeadReferralSources { get; set; }
         public virtual DbSet<LeadStatus> LeadStatuses { get; set; }
         public virtual DbSet<Notification> Notifications { get; set; }
+        public virtual DbSet<Office> Offices { get; set; }
+        public virtual DbSet<PracticeArea> PracticeAreas { get; set; }
+        public virtual DbSet<UserType> UserTypes { get; set; }
     }
 }

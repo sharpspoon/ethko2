@@ -33,7 +33,7 @@ namespace ethko.Models
         public int CaseStageId { get; set; }
 
         [Display(Name = "Date Opened")]
-        public DateTime DateOpened { get; set; }
+        public int DateOpened { get; set; }
 
         [Display(Name = "Office")]
         public int OfficeId { get; set; }
@@ -42,7 +42,7 @@ namespace ethko.Models
         public string Description { get; set; }
 
         [Display(Name = "Statute of Limitations")]
-        public DateTime Statute { get; set; }
+        public int Statute { get; set; }
 
         [Display(Name = "Lead Attorney Id")]
         public string LeadAttorneyId { get; set; }

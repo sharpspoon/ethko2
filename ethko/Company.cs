@@ -16,7 +16,7 @@ namespace ethko
     {
         public int CompanyId { get; set; }
         public string FstUser { get; set; }
-        public System.DateTime InsDate { get; set; }
+        public int InsDate { get; set; }
         public string Name { get; set; }
         public short Archived { get; set; }
         public string Email { get; set; }

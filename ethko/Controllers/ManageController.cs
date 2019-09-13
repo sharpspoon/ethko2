@@ -972,11 +972,13 @@ namespace ethko.Controllers
         {
             var user = User.Identity.GetUserName().ToString();
             var officeModel = ConvertViewModelToModel(model);
+            DateTime date = DateTime.Now;
+            int intDate = int.Parse(date.ToString("yyyyMMdd"));
 
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 entities.Offices.Add(officeModel);
-                officeModel.InsDate = DateTime.Now;
+                officeModel.InsDate = intDate;
                 officeModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 entities.SaveChanges();
             }
@@ -1034,11 +1036,13 @@ namespace ethko.Controllers
         {
             var user = User.Identity.GetUserName().ToString();
             var userTypeModel = ConvertViewModelToModel(model);
+            DateTime date = DateTime.Now;
+            int intDate = int.Parse(date.ToString("yyyyMMdd"));
 
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 entities.UserTypes.Add(userTypeModel);
-                userTypeModel.InsDate = DateTime.Now;
+                userTypeModel.InsDate = intDate;
                 entities.SaveChanges();
             }
             return RedirectToAction("UserTypes");
@@ -1123,11 +1127,13 @@ namespace ethko.Controllers
         {
             var user = User.Identity.GetUserName().ToString();
             var billingMthodModel = ConvertViewModelToModel(model);
+            DateTime date = DateTime.Now;
+            int intDate = int.Parse(date.ToString("yyyyMMdd"));
 
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 entities.BillingMethods.Add(billingMthodModel);
-                billingMthodModel.InsDate = DateTime.Now;
+                billingMthodModel.InsDate = intDate;
                 billingMthodModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 entities.SaveChanges();
             }
@@ -1252,11 +1258,13 @@ namespace ethko.Controllers
         {
             var user = User.Identity.GetUserName().ToString();
             var caseStageModel = ConvertViewModelToModel(model);
+            DateTime date = DateTime.Now;
+            int intDate = int.Parse(date.ToString("yyyyMMdd"));
 
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 entities.CaseStages.Add(caseStageModel);
-                caseStageModel.InsDate = DateTime.Now;
+                caseStageModel.InsDate = intDate;
                 caseStageModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 entities.SaveChanges();
             }
@@ -1340,11 +1348,13 @@ namespace ethko.Controllers
         {
             var user = User.Identity.GetUserName().ToString();
             var leadStatusModel = ConvertViewModelToModel(model);
+            DateTime date = DateTime.Now;
+            int intDate = int.Parse(date.ToString("yyyyMMdd"));
 
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 entities.LeadStatuses.Add(leadStatusModel);
-                leadStatusModel.InsDate = DateTime.Now;
+                leadStatusModel.InsDate = intDate;
                 leadStatusModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 entities.SaveChanges();
             }
@@ -1398,11 +1408,13 @@ namespace ethko.Controllers
         {
             var user = User.Identity.GetUserName().ToString();
             var referralSourceModel = ConvertViewModelToModel(model);
+            DateTime date = DateTime.Now;
+            int intDate = int.Parse(date.ToString("yyyyMMdd"));
 
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 entities.LeadReferralSources.Add(referralSourceModel);
-                referralSourceModel.InsDate = DateTime.Now;
+                referralSourceModel.InsDate = intDate;
                 referralSourceModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 entities.SaveChanges();
             }

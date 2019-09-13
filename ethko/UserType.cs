@@ -22,7 +22,7 @@ namespace ethko
     
         public int UserTypeId { get; set; }
         public string UserTypeName { get; set; }
-        public System.DateTime InsDate { get; set; }
+        public int InsDate { get; set; }
         public byte[] RowVersion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

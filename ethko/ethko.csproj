@@ -264,6 +264,9 @@
     <Compile Include="database_firewall_rules.cs">
       <DependentUpon>ethko.tt</DependentUpon>
     </Compile>
+    <Compile Include="DimDate.cs">
+      <DependentUpon>ethko.tt</DependentUpon>
+    </Compile>
     <Compile Include="ethko.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

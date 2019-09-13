@@ -15,6 +15,7 @@ namespace ethko.Controllers
     {
         ethko_dbEntities entities = new ethko_dbEntities();
 
+
         //View List
         [HttpGet]
         public ActionResult Index()
@@ -105,13 +106,15 @@ namespace ethko.Controllers
         {
             var user = User.Identity.GetUserName().ToString();
             var caseModel = ConvertViewModelToModel(model);
+            DateTime date = DateTime.Now;
+            int intDate = int.Parse(date.ToString("yyyyMMdd"));
 
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 entities.Cases.Add(caseModel);
-                caseModel.InsDate = DateTime.Now;
-                caseModel.LstDate = DateTime.Now;
-                caseModel.DateOpened = DateTime.Now;
+                caseModel.InsDate = intDate;
+                caseModel.LstDate = intDate;
+                caseModel.DateOpened = intDate;
                 string contactName = Request.Form["Contacts"].ToString();
                 string practiceArea = Request.Form["PracticeAreas"].ToString();
                 string caseStage = Request.Form["CaseStages"].ToString();
@@ -119,7 +122,7 @@ namespace ethko.Controllers
                 string billingMethod = Request.Form["BillingMethods"].ToString();
                 string billingContact = Request.Form["BillingContacts"].ToString();
                 string leadAttorney = Request.Form["LeadAttorney"].ToString();
-                string statuteMonth = Request.Form["statutemonth"].ToString();
+                //string statuteMonth = Request.Form["statutemonth"].ToString();
                 caseModel.ContactId = entities.Contacts.Where(m => m.FullName == contactName).Select(m => m.ContactId).FirstOrDefault();
                 caseModel.PracticeAreaId = entities.PracticeAreas.Where(m => m.PracticeAreaName == practiceArea).Select(m => m.PracticeAreaId).FirstOrDefault();
                 caseModel.CaseStageId = entities.CaseStages.Where(m => m.CaseStageName == caseStage).Select(m => m.CaseStageId).FirstOrDefault();
@@ -128,7 +131,7 @@ namespace ethko.Controllers
                 caseModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 caseModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 caseModel.BillingContactId = entities.Contacts.Where(m => m.FullName == billingContact).Select(m => m.ContactId).FirstOrDefault();
-                caseModel.Description = statuteMonth;
+                //caseModel.Description = statuteMonth;
                 caseModel.LeadAttorneyId = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();//need to fix this
                 entities.SaveChanges();
             }
@@ -179,11 +182,13 @@ namespace ethko.Controllers
         {
             var user = User.Identity.GetUserName().ToString();
             var practiceAreaModel = ConvertViewModelToModel(model);
+            DateTime date = DateTime.Now;
+            int intDate = int.Parse(date.ToString("yyyyMMdd"));
 
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 entities.PracticeAreas.Add(practiceAreaModel);
-                practiceAreaModel.InsDate = DateTime.Now;
+                practiceAreaModel.InsDate = intDate;
                 practiceAreaModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 entities.SaveChanges();
             }
