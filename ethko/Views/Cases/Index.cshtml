@@ -78,15 +78,15 @@
                                     <a href='@Url.Action("ViewCase", "Cases", new { CaseId = item.CaseId})'>@Html.DisplayFor(modelItem => item.CaseName)</a>
                                 </td>
                                 <td>
-                                    <a href='@Url.Action("ViewCase", "Contacts", new { CaseId = item.CaseId})'>@Html.DisplayFor(modelItem => item.CaseNumber)</a>
+                                    <a href='@Url.Action("ViewCase", "Cases", new { CaseId = item.CaseId})'>@Html.DisplayFor(modelItem => item.CaseNumber)</a>
 
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.CaseStageId)
+                                    @Html.DisplayFor(modelItem => item.CaseStageName)
 
                                 </td>
                                 <td>
-                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.CaseStageId)</a>
+                                    @Html.DisplayFor(modelItem => item.FullName)
 
                                 </td>
                                 <td>
@@ -103,7 +103,7 @@
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.InsDate)
-                                    by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.CaseStageId)</a>
+                                    by @Html.DisplayFor(modelItem => item.FullName)
                                 </td>
                                 <td>
                                     <div class="edit">

@@ -93,6 +93,12 @@ namespace ethko.Models
 
         [Display(Name = "InsDate")]
         public string InsDate { get; set; }
+
+        [Display(Name = "Case Stage")]
+        public string CaseStageName { get; set; }
+
+        [Display(Name = "Full Name")]
+        public string FullName { get; set; }
     }
 
     public class AddPracticeAreaViewModel

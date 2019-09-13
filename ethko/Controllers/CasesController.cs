@@ -24,10 +24,11 @@ namespace ethko.Controllers
             {
                 var cases = from c in entities.Cases
                                join u in entities.AspNetUsers on c.FstUser equals u.Id //into users
-                               //from cs in entities.CaseStages.DefaultIfEmpty()
+                               join cs in entities.CaseStages on c.CaseStageId equals cs.CaseStageId
+                               join d in entities.DimDates on c.InsDate equals d.DateKey
                                //join 
                                //where c.Archived == 0
-                               select new GetCaseListViewModel() { CaseId = c.CaseId, CaseNumber = c.CaseNumber, CaseName = c.CaseName, CaseStageId = c.CaseStageId, UserName = u.UserName, InsDate = c.InsDate.ToString() };
+                               select new GetCaseListViewModel() { CaseId = c.CaseId, CaseNumber = c.CaseNumber, CaseName = c.CaseName, CaseStageId = c.CaseStageId, UserName = u.UserName, InsDate = d.FullDateUSA, CaseStageName = cs.CaseStageName, FullName=u.FName+" "+u.LName };
                 return View(cases.ToList());
             }
         }
