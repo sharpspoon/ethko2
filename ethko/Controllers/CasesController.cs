@@ -110,6 +110,7 @@ namespace ethko.Controllers
             {
                 entities.Cases.Add(caseModel);
                 caseModel.InsDate = DateTime.Now;
+                caseModel.LstDate = DateTime.Now;
                 caseModel.DateOpened = DateTime.Now;
                 string contactName = Request.Form["Contacts"].ToString();
                 string practiceArea = Request.Form["PracticeAreas"].ToString();
@@ -124,6 +125,7 @@ namespace ethko.Controllers
                 caseModel.OfficeId = entities.Offices.Where(m => m.OfficeName == office).Select(m => m.OfficeId).FirstOrDefault();
                 caseModel.BillingMethodId = entities.BillingMethods.Where(m => m.BillingMethodName == billingMethod).Select(m => m.BillingMethodId).FirstOrDefault();
                 caseModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+                caseModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 caseModel.BillingContactId = entities.Contacts.Where(m => m.FullName == billingContact).Select(m => m.ContactId).FirstOrDefault();
                 caseModel.LeadAttorneyId = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();//need to fix this
                 entities.SaveChanges();

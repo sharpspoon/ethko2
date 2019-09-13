@@ -25,6 +25,8 @@ namespace ethko
         public string FstUser { get; set; }
         public System.DateTime InsDate { get; set; }
         public byte[] RowVersion { get; set; }
+        public System.DateTime LstDate { get; set; }
+        public string LstUser { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Case> Cases { get; set; }

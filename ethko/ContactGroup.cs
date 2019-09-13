@@ -18,5 +18,7 @@ namespace ethko
         public string ContactGroupName { get; set; }
         public System.DateTime InsDate { get; set; }
         public string FstUser { get; set; }
+        public System.DateTime LstDate { get; set; }
+        public string LstUser { get; set; }
     }
 }

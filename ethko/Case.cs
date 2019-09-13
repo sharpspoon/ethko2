@@ -30,6 +30,8 @@ namespace ethko
         public System.DateTime Statute { get; set; }
         public int BillingContactId { get; set; }
         public string LeadAttorneyId { get; set; }
+        public System.DateTime LstDate { get; set; }
+        public string LstUser { get; set; }
     
         public virtual BillingMethod BillingMethod { get; set; }
         public virtual CaseStage CaseStage { get; set; }
