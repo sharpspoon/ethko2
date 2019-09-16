@@ -39,103 +39,70 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
-                        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
-                        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
-                        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+                        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Incomplete</a>
+                        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Complete</a>
                     </div>
                 </div>
                 <div class="col-md-10">
                     <br />
                     <div class="tab-content" id="v-pills-tabContent">
-                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">...</div>
+                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                            <table id="myTable" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Priority</th>
+                                        <th>Due</th>
+                                        <th>Case / Lead</th>
+                                        <th>Assigned To</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null)
+                                    {
+                                        foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <a href='@Url.Action("ViewCase", "Cases", new { CaseId = item.CaseId})'>@Html.DisplayFor(modelItem => item.CaseName)</a>
+                                                </td>
+                                                <td>
+                                                    <a href='@Url.Action("ViewCase", "Cases", new { CaseId = item.CaseId})'>@Html.DisplayFor(modelItem => item.CaseNumber)</a>
+
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.CaseStageName)
+
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.FullName)
+
+                                                </td>
+                                                <td>
+                                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.CaseStageId)</a>
+
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                    @if (Model == null)
+                                    {
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
                         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
-                        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
-                        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
                     </div>
                     <br />
                     <br />
-                    <table id="myTable" class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>Case</th>
-                                <th>Number</th>
-                                <th>Case Stage</th>
-                                <th>Firm Members</th>
-                                <th>Next Event</th>
-                                <th>Next Task</th>
-                                <th>Status Update</th>
-                                <th>Added</th>
-                                <th>Edit</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (Model != null)
-                            {
-                                foreach (var item in Model)
-                                {
-                                    <tr>
-                                        <td>
-                                            <a href='@Url.Action("ViewCase", "Cases", new { CaseId = item.CaseId})'>@Html.DisplayFor(modelItem => item.CaseName)</a>
-                                        </td>
-                                        <td>
-                                            <a href='@Url.Action("ViewCase", "Cases", new { CaseId = item.CaseId})'>@Html.DisplayFor(modelItem => item.CaseNumber)</a>
-
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.CaseStageName)
-
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.FullName)
-
-                                        </td>
-                                        <td>
-                                            <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.CaseStageId)</a>
-
-                                        </td>
-                                        <td>
-                                            <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.CaseStageId)</a>
-
-                                        </td>
-                                        <td>
-                                            <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.CaseStageId)</a>
-
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.InsDate)
-                                            by @Html.DisplayFor(modelItem => item.FullName)
-                                        </td>
-                                        <td>
-                                            <div class="edit">
-                                                <a href='@Url.Action("ViewCase", "Cases", new { CaseId = item.CaseId })'>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 8 8">
-                                                        <title>Edit</title>
-                                                        <path d="M6 0l-1 1 2 2 1-1-2-2zm-2 2l-4 4v2h2l4-4-2-2z" />
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                }
-                            }
-                            @if (Model == null)
-                            {
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            }
-
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
