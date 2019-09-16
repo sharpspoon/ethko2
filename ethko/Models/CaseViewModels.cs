@@ -146,9 +146,18 @@ namespace ethko.Models
         public string CaseStageName { get; set; }
 
         [Display(Name = "Statute")]
-        public int Statute { get; set; }
+        public string Statute { get; set; }
 
         [Display(Name = "Description")]
         public string Description { get; set; }
+
+        [Display(Name = "Date Opened")]
+        public string DateOpened { get; set; }
+        
+        [Display(Name = "Date Created")]
+        public string DateCreated { get; set; }
+
+        [Display(Name = "Lead Attorney")]
+        public string LeadAttorney { get; set; }
     }
 }

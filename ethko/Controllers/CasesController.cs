@@ -293,9 +293,15 @@ namespace ethko.Controllers
             {
                 var contacts = (from c in entities.Cases
                                 //join cg in entities.ContactGroups on c.ContactGroupId equals cg.ContactGroupId
-                                //join u in entities.AspNetUsers on c.UserId equals u.Id
+                                join u in entities.AspNetUsers on c.LeadAttorneyId equals u.Id
                                 join pa in entities.PracticeAreas on c.PracticeAreaId equals pa.PracticeAreaId
                                 join cs in entities.CaseStages on c.CaseStageId equals cs.CaseStageId
+                                join dd in entities.DimDates on c.DateOpened equals dd.DateKey into dateopened
+                                from x in dateopened.DefaultIfEmpty()
+                                join dd2 in entities.DimDates on c.Statute equals dd2.DateKey into statute
+                                from y in statute.DefaultIfEmpty()
+                                join dd3 in entities.DimDates on c.InsDate equals dd3.DateKey into create
+                                from z in create.DefaultIfEmpty()
                                 where c.CaseId == CaseId
                                 select new GetIndividualCaseViewModel()
                                 {
@@ -304,7 +310,11 @@ namespace ethko.Controllers
                                     CaseNumber = c.CaseNumber,
                                     PracticeAreaName = pa.PracticeAreaName,
                                     CaseStageName = cs.CaseStageName,
-                                    Description = c.Description
+                                    Description = c.Description,
+                                    DateOpened = x.FullDateUSA,
+                                    Statute = y.FullDateUSA,
+                                    DateCreated = z.FullDateUSA,
+                                    LeadAttorney = u.FName+" "+u.LName
                                 }).FirstOrDefault();
 
 
