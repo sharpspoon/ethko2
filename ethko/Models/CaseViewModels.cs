@@ -147,5 +147,8 @@ namespace ethko.Models
 
         [Display(Name = "Statute")]
         public int Statute { get; set; }
+
+        [Display(Name = "Description")]
+        public string Description { get; set; }
     }
 }

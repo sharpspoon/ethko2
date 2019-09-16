@@ -303,7 +303,8 @@ namespace ethko.Controllers
                                     CaseName = c.CaseName,
                                     CaseNumber = c.CaseNumber,
                                     PracticeAreaName = pa.PracticeAreaName,
-                                    CaseStageName = cs.CaseStageName
+                                    CaseStageName = cs.CaseStageName,
+                                    Description = c.Description
                                 }).FirstOrDefault();
 
 

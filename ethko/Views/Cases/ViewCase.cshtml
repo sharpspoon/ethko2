@@ -49,7 +49,7 @@
                             <h5 class="card-title">Staff</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <h5 class="card-title">Description</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">@Html.DisplayFor(m => m.Description)</p>
                             <h5 class="card-title">Created</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         </div>
@@ -121,7 +121,7 @@
                                                             <li class="list-group-item">Case Number: </li>
                                                             <li class="list-group-item">Practice Area: @Html.DisplayFor(m => m.PracticeAreaName)</li>
                                                             <li class="list-group-item">Case Stage: @Html.DisplayFor(m => m.CaseStageName)</li>
-                                                            <li class="list-group-item">Description: </li>
+                                                            <li class="list-group-item">Description: @Html.DisplayFor(m => m.Description)</li>
                                                         </ul>
                                                     </div>
                                                 </div>
