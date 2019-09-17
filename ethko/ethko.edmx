@@ -458,25 +458,25 @@
           <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
-        <EntityType Name="Tasks">
+        <EntityType Name="Priorities">
           <Key>
-            <PropertyRef Name="TaskId" />
+            <PropertyRef Name="PriorityId" />
           </Key>
-          <Property Name="TaskId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TaskName" Type="varchar(max)" Nullable="false" />
-          <Property Name="TaskPriorityId" Type="int" Nullable="false" />
+          <Property Name="PriorityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PriorityName" Type="varchar(max)" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="InsDate" Type="int" Nullable="false" />
           <Property Name="LstDate" Type="int" Nullable="false" />
           <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
-        <EntityType Name="TasksPriorities">
+        <EntityType Name="ToDos">
           <Key>
-            <PropertyRef Name="TaskPriorityId" />
+            <PropertyRef Name="ToDoId" />
           </Key>
-          <Property Name="TaskPriorityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TaskPriorityName" Type="varchar(max)" Nullable="false" />
+          <Property Name="ToDoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ToDoName" Type="varchar(max)" Nullable="false" />
+          <Property Name="ToDoPriorityId" Type="int" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="InsDate" Type="int" Nullable="false" />
           <Property Name="LstDate" Type="int" Nullable="false" />
@@ -663,14 +663,14 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Tasks_ToTasksPriorities">
-          <End Role="TasksPriorities" Type="Self.TasksPriorities" Multiplicity="1" />
-          <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
+          <End Role="Priorities" Type="Self.Priorities" Multiplicity="1" />
+          <End Role="ToDos" Type="Self.ToDos" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TasksPriorities">
-              <PropertyRef Name="TaskPriorityId" />
+            <Principal Role="Priorities">
+              <PropertyRef Name="PriorityId" />
             </Principal>
-            <Dependent Role="Tasks">
-              <PropertyRef Name="TaskPriorityId" />
+            <Dependent Role="ToDos">
+              <PropertyRef Name="ToDoPriorityId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -693,8 +693,8 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Offices" EntityType="Self.Offices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PracticeAreas" EntityType="Self.PracticeAreas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tasks" EntityType="Self.Tasks" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TasksPriorities" EntityType="Self.TasksPriorities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Priorities" EntityType="Self.Priorities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ToDos" EntityType="Self.ToDos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserTypes" EntityType="Self.UserTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" store:Type="Views" store:Schema="sys">
             <DefiningQuery>SELECT 
@@ -755,8 +755,8 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
           <AssociationSet Name="FK_Tasks_ToTasksPriorities" Association="Self.FK_Tasks_ToTasksPriorities">
-            <End Role="TasksPriorities" EntitySet="TasksPriorities" />
-            <End Role="Tasks" EntitySet="Tasks" />
+            <End Role="Priorities" EntitySet="Priorities" />
+            <End Role="ToDos" EntitySet="ToDos" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -843,11 +843,11 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <EntitySet Name="Tasks" EntityType="ethko_dbModel.Task" />
-          <EntitySet Name="TasksPriorities" EntityType="ethko_dbModel.TasksPriority" />
+          <EntitySet Name="Priorities" EntityType="ethko_dbModel.Priority" />
+          <EntitySet Name="ToDos" EntityType="ethko_dbModel.ToDo" />
           <AssociationSet Name="FK_Tasks_ToTasksPriorities" Association="ethko_dbModel.FK_Tasks_ToTasksPriorities">
-            <End Role="TasksPriority" EntitySet="TasksPriorities" />
-            <End Role="Task" EntitySet="Tasks" />
+            <End Role="Priority" EntitySet="Priorities" />
+            <End Role="ToDo" EntitySet="ToDos" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="C__MigrationHistory">
@@ -1454,42 +1454,42 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <End Type="ethko_dbModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
           <End Type="ethko_dbModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
         </Association>
-        <EntityType Name="Task">
+        <EntityType Name="Priority">
           <Key>
-            <PropertyRef Name="TaskId" />
+            <PropertyRef Name="PriorityId" />
           </Key>
-          <Property Name="TaskId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TaskName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="TaskPriorityId" Type="Int32" Nullable="false" />
+          <Property Name="PriorityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PriorityName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="InsDate" Type="Int32" Nullable="false" />
           <Property Name="LstDate" Type="Int32" Nullable="false" />
           <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="TasksPriority" Relationship="ethko_dbModel.FK_Tasks_ToTasksPriorities" FromRole="Task" ToRole="TasksPriority" />
+          <NavigationProperty Name="ToDos" Relationship="ethko_dbModel.FK_Tasks_ToTasksPriorities" FromRole="Priority" ToRole="ToDo" />
         </EntityType>
-        <EntityType Name="TasksPriority">
+        <EntityType Name="ToDo">
           <Key>
-            <PropertyRef Name="TaskPriorityId" />
+            <PropertyRef Name="ToDoId" />
           </Key>
-          <Property Name="TaskPriorityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TaskPriorityName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ToDoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ToDoName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ToDoPriorityId" Type="Int32" Nullable="false" />
           <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="InsDate" Type="Int32" Nullable="false" />
           <Property Name="LstDate" Type="Int32" Nullable="false" />
           <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Tasks" Relationship="ethko_dbModel.FK_Tasks_ToTasksPriorities" FromRole="TasksPriority" ToRole="Task" />
+          <NavigationProperty Name="Priority" Relationship="ethko_dbModel.FK_Tasks_ToTasksPriorities" FromRole="ToDo" ToRole="Priority" />
         </EntityType>
         <Association Name="FK_Tasks_ToTasksPriorities">
-          <End Type="ethko_dbModel.TasksPriority" Role="TasksPriority" Multiplicity="1" />
-          <End Type="ethko_dbModel.Task" Role="Task" Multiplicity="*" />
+          <End Type="ethko_dbModel.Priority" Role="Priority" Multiplicity="1" />
+          <End Type="ethko_dbModel.ToDo" Role="ToDo" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TasksPriority">
-              <PropertyRef Name="TaskPriorityId" />
+            <Principal Role="Priority">
+              <PropertyRef Name="PriorityId" />
             </Principal>
-            <Dependent Role="Task">
-              <PropertyRef Name="TaskPriorityId" />
+            <Dependent Role="ToDo">
+              <PropertyRef Name="ToDoPriorityId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1988,30 +1988,30 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Tasks">
-            <EntityTypeMapping TypeName="ethko_dbModel.Task">
-              <MappingFragment StoreEntitySet="Tasks">
+          <EntitySetMapping Name="Priorities">
+            <EntityTypeMapping TypeName="ethko_dbModel.Priority">
+              <MappingFragment StoreEntitySet="Priorities">
                 <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
                 <ScalarProperty Name="LstUser" ColumnName="LstUser" />
                 <ScalarProperty Name="LstDate" ColumnName="LstDate" />
                 <ScalarProperty Name="InsDate" ColumnName="InsDate" />
                 <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="TaskPriorityId" ColumnName="TaskPriorityId" />
-                <ScalarProperty Name="TaskName" ColumnName="TaskName" />
-                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="PriorityName" ColumnName="PriorityName" />
+                <ScalarProperty Name="PriorityId" ColumnName="PriorityId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TasksPriorities">
-            <EntityTypeMapping TypeName="ethko_dbModel.TasksPriority">
-              <MappingFragment StoreEntitySet="TasksPriorities">
+          <EntitySetMapping Name="ToDos">
+            <EntityTypeMapping TypeName="ethko_dbModel.ToDo">
+              <MappingFragment StoreEntitySet="ToDos">
                 <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
                 <ScalarProperty Name="LstUser" ColumnName="LstUser" />
                 <ScalarProperty Name="LstDate" ColumnName="LstDate" />
                 <ScalarProperty Name="InsDate" ColumnName="InsDate" />
                 <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="TaskPriorityName" ColumnName="TaskPriorityName" />
-                <ScalarProperty Name="TaskPriorityId" ColumnName="TaskPriorityId" />
+                <ScalarProperty Name="ToDoPriorityId" ColumnName="ToDoPriorityId" />
+                <ScalarProperty Name="ToDoName" ColumnName="ToDoName" />
+                <ScalarProperty Name="ToDoId" ColumnName="ToDoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

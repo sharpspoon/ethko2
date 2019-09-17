@@ -34,8 +34,8 @@
         <AssociationConnector Association="ethko_dbModel.FK_Cases_ToOffices" />
         <AssociationConnector Association="ethko_dbModel.FK_Cases_ToPracticeAreas" />
         <AssociationConnector Association="ethko_dbModel.AspNetUserRoles" />
-        <EntityTypeShape EntityType="ethko_dbModel.Task" Width="1.5" PointX="14.625" PointY="1" />
-        <EntityTypeShape EntityType="ethko_dbModel.TasksPriority" Width="1.5" PointX="12.375" PointY="1" />
+        <EntityTypeShape EntityType="ethko_dbModel.Priority" Width="1.5" PointX="12.375" PointY="1" />
+        <EntityTypeShape EntityType="ethko_dbModel.ToDo" Width="1.5" PointX="14.625" PointY="1" />
         <AssociationConnector Association="ethko_dbModel.FK_Tasks_ToTasksPriorities" />
       </Diagram>
     </edmx:Diagrams>

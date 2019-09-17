@@ -307,10 +307,16 @@
     <Compile Include="PracticeArea.cs">
       <DependentUpon>ethko.tt</DependentUpon>
     </Compile>
+    <Compile Include="Priority.cs">
+      <DependentUpon>ethko.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ToDo.cs">
+      <DependentUpon>ethko.tt</DependentUpon>
+    </Compile>
     <Compile Include="UserType.cs">
       <DependentUpon>ethko.tt</DependentUpon>
     </Compile>
@@ -3515,6 +3521,7 @@
     <Content Include="Views\Contacts\DeleteGroup.cshtml" />
     <Content Include="Views\Cases\_EditPracticeArea.cshtml" />
     <Content Include="Views\Cases\ViewCase.cshtml" />
+    <Content Include="Views\Contacts\_AddContactModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -125,8 +125,6 @@ namespace ethko.Models
         public string FName { get; set; }
         [Display(Name = "Last Name")]
         public string LName { get; set; }
-        [Display(Name = "Email")]
-        public string Email { get; set; }
         [Display(Name = "InsDate")]
         public string InsDate { get; set; }
         [Display(Name = "UserId")]
@@ -135,6 +133,47 @@ namespace ethko.Models
         public string ContactGroupList { get; set; }
         public Contact Contact { get; set; }
         public ContactGroup ContactGroup { get; set; }
+        [Display(Name = "Middle Name")]
+        public string MName { get; set; }
+
+        [Display(Name = "Full Name")]
+        public string FullName { get; set; }
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Display(Name = "Client Portal")]
+        public string EnableClientPortal { get; set; }
+
+        [Display(Name = "Contact Group")]
+        public string ContactGroupId { get; set; }
+
+        [Display(Name = "Cell Phone")]
+        public string CellPhone { get; set; }
+
+        [Display(Name = "Work Phone")]
+        public string WorkPhone { get; set; }
+
+        [Display(Name = "Home Phone")]
+        public string HomePhone { get; set; }
+
+        [Display(Name = "Address")]
+        public string Address { get; set; }
+
+        [Display(Name = "Address2")]
+        public string Address2 { get; set; }
+
+        [Display(Name = "City")]
+        public string City { get; set; }
+
+        [Display(Name = "State")]
+        public string State { get; set; }
+
+        [Display(Name = "Zip")]
+        public string Zip { get; set; }
+
+        [Display(Name = "Country")]
+        public string Country { get; set; }
     }
 
     [Table("Contacts")]
