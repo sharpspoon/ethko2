@@ -16,6 +16,8 @@ drop table IF EXISTS UserTypes
 drop table IF EXISTS LeadReferralSources
 drop table IF EXISTS LeadStatuses
 drop table IF EXISTS Notifications
+drop table IF EXISTS TasksPriorities
+drop table IF EXISTS Tasks
 
 
 
@@ -469,13 +471,39 @@ CREATE TABLE [dbo].[Notifications] (
     CONSTRAINT [PK_dbo.Notifications] PRIMARY KEY CLUSTERED ([NotificationId] ASC)
 );
 
+--TasksPriorities
+CREATE TABLE [dbo].[TasksPriorities] (
+    [TaskPriorityId]   INT            IDENTITY (1, 1) NOT NULL,
+    [TaskPriorityName] VARCHAR (MAX)  NOT NULL,
+    [FstUser]          NVARCHAR (128) NOT NULL,
+    [InsDate]          INT  NOT NULL,
+	[LstDate]         INT  NOT NULL,
+	[LstUser]         NVARCHAR (128) NOT NULL,
+    [RowVersion]       ROWVERSION     NOT NULL,
+	CONSTRAINT [PK_dbo.TasksPriorities] PRIMARY KEY CLUSTERED ([TaskPriorityId] ASC)
+);
+
+--Tasks
+CREATE TABLE [dbo].[Tasks] (
+    [TaskId]   INT            IDENTITY (1, 1) NOT NULL,
+    [TaskName] VARCHAR (MAX)  NOT NULL,
+	[TaskPriorityId]       INT            NOT NULL,
+    [FstUser]          NVARCHAR (128) NOT NULL,
+    [InsDate]          INT  NOT NULL,
+	[LstDate]         INT  NOT NULL,
+	[LstUser]         NVARCHAR (128) NOT NULL,
+    [RowVersion]       ROWVERSION     NOT NULL,
+	CONSTRAINT [PK_dbo.Tasks] PRIMARY KEY CLUSTERED ([TaskId] ASC),
+	CONSTRAINT [FK_Tasks_ToTasksPriorities] FOREIGN KEY ([TaskPriorityId]) REFERENCES [dbo].[TasksPriorities] ([TaskPriorityId])
+);
+
 DECLARE @CurrentDate AS DATETIME = GETDATE()
 DECLARE @CurrentDateChar char(8) = CONVERT (char(8),@CurrentDate,112)
 
 
 
 insert into UserTypes
-(UserTypeName, insdate)
+(UserTypeName, InsDate)
 values
 ('Attorney', CONVERT (INT,@CurrentDateChar)),
 ('Paralegal', CONVERT (INT,@CurrentDateChar)),
@@ -487,19 +515,19 @@ values
 ('4b6983a2-7178-472b-b7ae-f96470ea8087', 'Robin','Ward',1,'system@steelcitysites.net', 0, 'AEc78Zla/rBy6zDF+GRskTyFtZ/FtsvAMp4BK5L/swVWUfXGFkHGx5SFq10kybaD6Q==','9229c419-dd65-49d2-bb7f-ad9d667221b8',0,0,1,0,'system@steelcitysites.net')
 
 insert into ContactGroups
-(ContactGroupName, insdate, FstUser, LstDate, LstUser)
+(ContactGroupName, InsDate, FstUser, LstDate, LstUser)
 values
 ('Default', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'))
 
 insert into casestages
-(CaseStageName, insdate, FstUser, LstDate, LstUser)
+(CaseStageName, InsDate, FstUser, LstDate, LstUser)
 values
 ('Discovery', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
 ('In Trial', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
 ('On Hold', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'))
 
 insert into BillingMethods
-(BillingMethodName, insdate, FstUser, LstDate, LstUser)
+(BillingMethodName, InsDate, FstUser, LstDate, LstUser)
 values
 ('Hourly', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
 ('Contingency', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
@@ -508,7 +536,7 @@ values
 ('Pro Bono', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'))
 
 insert into Offices
-(OfficeName, insdate, FstUser, LstDate, LstUser)
+(OfficeName, InsDate, FstUser, LstDate, LstUser)
 values
 ('Birmingham', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
 ('Auburn', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
@@ -516,7 +544,7 @@ values
 ('Tulsa', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'))
 
 insert into practiceareas
-(practiceareaname, insdate, FstUser, LstDate, LstUser)
+(practiceareaname, InsDate, FstUser, LstDate, LstUser)
 values
 ('Bankruptcy', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
 ('Business', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
@@ -535,7 +563,7 @@ values
 ('Tax', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'))
 
 insert into leadreferralsources
-(referralsourcename, insdate, FstUser, LstDate, LstUser)
+(referralsourcename, InsDate, FstUser, LstDate, LstUser)
 values
 ('Advertisement', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
 ('Avvo', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
@@ -551,7 +579,7 @@ values
 ('Other', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'))
 
 insert into leadstatuses
-(leadstatusname, insdate, FstUser, LstDate, LstUser)
+(leadstatusname, InsDate, FstUser, LstDate, LstUser)
 values
 ('New', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
 ('Contacted', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
@@ -572,3 +600,11 @@ insert into Notifications
 (UserId, LstUser, FstUser, InsDate, LstDate)
 values
 ( (select id from AspNetUsers where UserName='system@steelcitysites.net'), (select id from AspNetUsers where UserName='system@steelcitysites.net'), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), CONVERT (INT,@CurrentDateChar))
+
+insert into TasksPriorities
+(TaskPriorityName, InsDate, FstUser, LstDate, LstUser)
+values
+('Low', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Medium', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('High', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Critical', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'))
