@@ -3521,7 +3521,7 @@
     <Content Include="Views\Contacts\DeleteGroup.cshtml" />
     <Content Include="Views\Cases\_EditPracticeArea.cshtml" />
     <Content Include="Views\Cases\ViewCase.cshtml" />
-    <Content Include="Views\Contacts\_AddContactModal.cshtml" />
+    <Content Include="Views\Contacts\_AddContactModal-NOTUSING.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

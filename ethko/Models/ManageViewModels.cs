@@ -104,6 +104,9 @@ namespace ethko.Models
 
         [Display(Name = "InsDate")]
         public string InsDate { get; set; }
+
+        [Display(Name = "Full Name")]
+        public string FullName { get; set; }
     }
 
     public class GetFirmSettingsViewModel
@@ -125,6 +128,9 @@ namespace ethko.Models
 
         [Display(Name = "InsDate")]
         public string InsDate { get; set; }
+
+        [Display(Name = "Full Name")]
+        public string FullName { get; set; }
     }
 
     public class GetUserTypesViewModel
@@ -140,6 +146,9 @@ namespace ethko.Models
 
         [Display(Name = "InsDate")]
         public string InsDate { get; set; }
+
+        [Display(Name = "Full Name")]
+        public string FullName { get; set; }
     }
 
     public class AddOfficeViewModel
@@ -183,6 +192,9 @@ namespace ethko.Models
 
         [Display(Name = "InsDate")]
         public string InsDate { get; set; }
+
+        [Display(Name = "Full Name")]
+        public string FullName { get; set; }
     }
 
     public class DeleteConfirmedViewModel
@@ -256,6 +268,9 @@ namespace ethko.Models
 
         [Display(Name = "InsDate")]
         public string InsDate { get; set; }
+
+        [Display(Name = "Full Name")]
+        public string FullName { get; set; }
     }
 
     public class GetLeadStatusesViewModel
@@ -271,6 +286,9 @@ namespace ethko.Models
 
         [Display(Name = "InsDate")]
         public string InsDate { get; set; }
+
+        [Display(Name = "Full Name")]
+        public string FullName { get; set; }
     }
 
     public class EditConfirmedViewModel

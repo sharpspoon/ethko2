@@ -40,7 +40,8 @@ namespace ethko.Controllers
             {
                 var practiceAreas = from p in entities.PracticeAreas
                                     join u in entities.AspNetUsers on p.FstUser equals u.Id
-                                    select new GetPracticeAreasViewModel() { PracticeAreaId = p.PracticeAreaId.ToString(), PracticeAreaName = p.PracticeAreaName, InsDate = p.InsDate.ToString(), UserId = u.UserName };
+                                    join d in entities.DimDates on p.InsDate equals d.DateKey
+                                    select new GetPracticeAreasViewModel() { PracticeAreaId = p.PracticeAreaId.ToString(), PracticeAreaName = p.PracticeAreaName, InsDate = d.FullDateUSA.ToString(), UserId = u.UserName, FullName = u.FName + " " + u.LName };
                 return View(practiceAreas.ToList());
             }
         }
