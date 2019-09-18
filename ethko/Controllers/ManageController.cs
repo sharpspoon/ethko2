@@ -945,8 +945,9 @@ namespace ethko.Controllers
             {
                 var offices = from o in entities.Offices
                               join u in entities.AspNetUsers on o.FstUser equals u.Id into gj
+                              join d in entities.DimDates on o.InsDate equals d.DateKey
                               from x in gj.DefaultIfEmpty()
-                              select new GetFirmSettingsViewModel() { OfficeId = o.OfficeId.ToString(), OfficeName = o.OfficeName, FstUser = x.UserName, InsDate = o.InsDate.ToString() };
+                              select new GetFirmSettingsViewModel() { OfficeId = o.OfficeId.ToString(), OfficeName = o.OfficeName, FstUser = x.UserName, InsDate = d.FullDateUSA.ToString() };
                 return View(offices.ToList());
             }
         }
@@ -1055,7 +1056,8 @@ namespace ethko.Controllers
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 var userTypes = from ut in entities.UserTypes
-                                select new GetUserTypesViewModel() { UserTypeId = ut.UserTypeId.ToString(), UserTypeName = ut.UserTypeName, InsDate = ut.InsDate.ToString() };
+                                join d in entities.DimDates on ut.InsDate equals d.DateKey
+                                select new GetUserTypesViewModel() { UserTypeId = ut.UserTypeId.ToString(), UserTypeName = ut.UserTypeName, InsDate = d.FullDateUSA.ToString() };
                 return View(userTypes.ToList());
             }
         }
@@ -1099,8 +1101,9 @@ namespace ethko.Controllers
             {
                 var billingMethods = from bm in entities.BillingMethods
                                      join u in entities.AspNetUsers on bm.FstUser equals u.Id into gj
+                                     join d in entities.DimDates on bm.InsDate equals d.DateKey
                                      from x in gj.DefaultIfEmpty()
-                                     select new GetClientBillingViewModel() { BillingMethodId = bm.BillingMethodId.ToString(), BillingMethodName = bm.BillingMethodName, InsDate = bm.InsDate.ToString(), FstUser = x.UserName };
+                                     select new GetClientBillingViewModel() { BillingMethodId = bm.BillingMethodId.ToString(), BillingMethodName = bm.BillingMethodName, InsDate = d.FullDateUSA.ToString(), FstUser = x.UserName };
                 return View(billingMethods.ToList());
             }
         }
@@ -1231,7 +1234,8 @@ namespace ethko.Controllers
             {
                 var caseStages = from c in entities.CaseStages
                                  join u in entities.AspNetUsers on c.FstUser equals u.Id
-                                 select new GetCaseStagesViewModel() { CaseStageId = c.CaseStageId.ToString(), CaseStageName = c.CaseStageName, InsDate = c.InsDate.ToString(), UserId = u.UserName };
+                                 join d in entities.DimDates on c.InsDate equals d.DateKey
+                                 select new GetCaseStagesViewModel() { CaseStageId = c.CaseStageId.ToString(), CaseStageName = c.CaseStageName, InsDate = d.FullDateUSA.ToString(), UserId = u.UserName };
                 return View(caseStages.ToList());
             }
         }
@@ -1309,7 +1313,8 @@ namespace ethko.Controllers
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 var leadReferralSources = from lrs in entities.LeadReferralSources
-                                          select new GetLeadReferralSourcesViewModel() { ReferralSourceId = lrs.ReferralSourceId.ToString(), ReferralSourceName = lrs.ReferralSourceName, InsDate = lrs.InsDate.ToString() };
+                                          join d in entities.DimDates on lrs.InsDate equals d.DateKey
+                                          select new GetLeadReferralSourcesViewModel() { ReferralSourceId = lrs.ReferralSourceId.ToString(), ReferralSourceName = lrs.ReferralSourceName, InsDate = d.FullDateUSA.ToString() };
                 return View(leadReferralSources.ToList());
             }
         }
@@ -1321,7 +1326,8 @@ namespace ethko.Controllers
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 var leadStatuses = from ls in entities.LeadStatuses
-                                   select new GetLeadStatusesViewModel() { LeadStatusId = ls.LeadStatusId.ToString(), LeadStatusName = ls.LeadStatusName, InsDate = ls.InsDate.ToString() };
+                                   join d in entities.DimDates on ls.InsDate equals d.DateKey
+                                   select new GetLeadStatusesViewModel() { LeadStatusId = ls.LeadStatusId.ToString(), LeadStatusName = ls.LeadStatusName, InsDate = d.FullDateUSA.ToString() };
                 return View(leadStatuses.ToList());
             }
         }
