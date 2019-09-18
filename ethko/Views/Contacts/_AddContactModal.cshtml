@@ -16,7 +16,7 @@
 <h1>Add Contact</h1>
     <p>
         <div class="col-md-12">
-            @using (Html.BeginForm("New", "Contacts", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            @using (Html.BeginForm("AddContactModal", "Contacts", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary("", new { @class = "text-danger" })

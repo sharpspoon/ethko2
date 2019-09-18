@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="utf-8" />
     <title>Ethko</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -53,6 +52,7 @@
             height: 2px;
         }
     </style>
+    <script src="https://kit.fontawesome.com/47b5526f1c.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -71,20 +71,20 @@
         <div id="top">
             <div class="btn-group dropleft">
                 <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    + Add Item
+                    <i class="fas fa-plus"></i> Add Item
                 </button>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fa fa-home"></i> Add Event</a>
-                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>Add Document</a>
-                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>Add Task</a>
-                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>Add Lead</a>
-                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>Add Contact</a>
-                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>Add Case</a>
-                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>New Message</a>
-                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>Add Time Entry</a>
-                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>Add Expense</a>
-                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>Add Invoice</a>
-                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>Add Note</a>
+                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-calendar-plus"></i> Add Event</a>
+                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-file"></i> Add Document</a>
+                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-check"></i> Add Task</a>
+                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-child"></i> Add Lead</a>
+                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-id-card"></i> Add Contact</a>
+                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-briefcase"></i> Add Case</a>
+                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-envelope"></i> New Message</a>
+                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-clock"></i> Add Time Entry</a>
+                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-money-bill-wave"></i> Add Expense</a>
+                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-money-check-alt"></i> Add Invoice</a>
+                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-pencil-alt"></i> Add Note</a>
                 </div>
             </div>
         </div>
