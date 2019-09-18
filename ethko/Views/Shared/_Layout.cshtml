@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="utf-8" />
     <title>Ethko</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -20,6 +21,12 @@
         #footer {
             position: fixed;
             bottom: 0;
+            right: 0;
+        }
+
+        #top {
+            position: fixed;
+            top: 0;
             right: 0;
         }
     </style>
@@ -45,7 +52,6 @@
             width: 100%;
             height: 2px;
         }
-
     </style>
 </head>
 <body>
@@ -62,39 +68,59 @@
         <hr />
         @if (Request.IsAuthenticated)
         {
-        
-        <footer>
-            @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-            {
-                @Html.AntiForgeryToken()
-            <div id="footer">
-                <div class="btn-group dropup links">
-                    <a class="btn btn-secondary" href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();">Logout</a>
-                    <a class="btn btn-secondary" href='@Url.Action("Index", "Manage")'>Settings</a>
-                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="sr-only">Settings</span>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>Settings Dashboard</a>
-                        <a class="dropdown-item" href='@Url.Action("MyProfile", "Manage")'>My Profile</a>
-                        <a class="dropdown-item" href='@Url.Action("MySettings", "Manage")'>My Settings</a>
-                        <a class="dropdown-item" href='@Url.Action("MyNotifications", "Manage")'>My Notifications</a>
-                        <a class="dropdown-item" href='@Url.Action("FirmUsers", "Manage")'>Firm Users</a>
-                        <a class="dropdown-item" href='@Url.Action("FirmSettings", "Manage")'>Firm Settings</a>
-                        <a class="dropdown-item" href='@Url.Action("ClientBilling", "Manage")'>Client Billing</a>
-                        <a class="dropdown-item" href='@Url.Action("ImportExport", "Manage")'>Import/Export</a>
-                        <a class="dropdown-item" href='@Url.Action("CustomFields", "Manage")'>Custom Fields</a>
-                        <a class="dropdown-item" href='@Url.Action("IntakeForms", "Manage")'>Intake Forms</a>
-                        <a class="dropdown-item" href='@Url.Action("Workflows", "Manage")'>Workflows</a>
-                        <a class="dropdown-item" href='@Url.Action("CaseStages", "Manage")'>Case Stages</a>
-                        <a class="dropdown-item" href='@Url.Action("Leads", "Manage")'>Leads</a>
-                    </div>
+        <div id="top">
+            <div class="btn-group dropleft">
+                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    + Add Item
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fa fa-home"></i> Add Event</a>
+                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>Add Document</a>
+                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>Add Task</a>
+                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>Add Lead</a>
+                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>Add Contact</a>
+                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>Add Case</a>
+                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>New Message</a>
+                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>Add Time Entry</a>
+                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>Add Expense</a>
+                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>Add Invoice</a>
+                    <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>Add Note</a>
                 </div>
             </div>
+        </div>
+
+            <footer>
+                @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div id="footer">
+                        <div class="btn-group dropup links">
+                            <a class="btn btn-secondary" href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();">Logout</a>
+                            <a class="btn btn-secondary" href='@Url.Action("Index", "Manage")'>Settings</a>
+                            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="sr-only">Settings</span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>Settings Dashboard</a>
+                                <a class="dropdown-item" href='@Url.Action("MyProfile", "Manage")'>My Profile</a>
+                                <a class="dropdown-item" href='@Url.Action("MySettings", "Manage")'>My Settings</a>
+                                <a class="dropdown-item" href='@Url.Action("MyNotifications", "Manage")'>My Notifications</a>
+                                <a class="dropdown-item" href='@Url.Action("FirmUsers", "Manage")'>Firm Users</a>
+                                <a class="dropdown-item" href='@Url.Action("FirmSettings", "Manage")'>Firm Settings</a>
+                                <a class="dropdown-item" href='@Url.Action("ClientBilling", "Manage")'>Client Billing</a>
+                                <a class="dropdown-item" href='@Url.Action("ImportExport", "Manage")'>Import/Export</a>
+                                <a class="dropdown-item" href='@Url.Action("CustomFields", "Manage")'>Custom Fields</a>
+                                <a class="dropdown-item" href='@Url.Action("IntakeForms", "Manage")'>Intake Forms</a>
+                                <a class="dropdown-item" href='@Url.Action("Workflows", "Manage")'>Workflows</a>
+                                <a class="dropdown-item" href='@Url.Action("CaseStages", "Manage")'>Case Stages</a>
+                                <a class="dropdown-item" href='@Url.Action("Leads", "Manage")'>Leads</a>
+                            </div>
+                        </div>
+                    </div>
                     <img class="copyright" src="../content/img/SAP_R_grad.png" alt="SAP" style="width:75px;height:37px;">
-                    }
+                }
             </footer>
-        
+
         }
         else
         {
