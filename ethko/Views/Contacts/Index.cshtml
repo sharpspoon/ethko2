@@ -92,7 +92,7 @@
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.InsDate)
-                                    by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.UserId)</a>
+                                    by @Html.DisplayFor(modelItem => item.FullName)
                                 </td>
                                 <td>
                                     <div class="edit">

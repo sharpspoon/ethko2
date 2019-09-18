@@ -947,7 +947,7 @@ namespace ethko.Controllers
                               join u in entities.AspNetUsers on o.FstUser equals u.Id into gj
                               join d in entities.DimDates on o.InsDate equals d.DateKey
                               from x in gj.DefaultIfEmpty()
-                              select new GetFirmSettingsViewModel() { OfficeId = o.OfficeId.ToString(), OfficeName = o.OfficeName, FstUser = x.UserName, InsDate = d.FullDateUSA.ToString() };
+                              select new GetFirmSettingsViewModel() { OfficeId = o.OfficeId.ToString(), OfficeName = o.OfficeName, InsDate = d.FullDateUSA.ToString(), FullName = x.FName + " " + x.LName };
                 return View(offices.ToList());
             }
         }
@@ -1103,7 +1103,7 @@ namespace ethko.Controllers
                                      join u in entities.AspNetUsers on bm.FstUser equals u.Id into gj
                                      join d in entities.DimDates on bm.InsDate equals d.DateKey
                                      from x in gj.DefaultIfEmpty()
-                                     select new GetClientBillingViewModel() { BillingMethodId = bm.BillingMethodId.ToString(), BillingMethodName = bm.BillingMethodName, InsDate = d.FullDateUSA.ToString(), FstUser = x.UserName };
+                                     select new GetClientBillingViewModel() { BillingMethodId = bm.BillingMethodId.ToString(), BillingMethodName = bm.BillingMethodName, InsDate = d.FullDateUSA.ToString(), FullName = x.FName + " " + x.LName };
                 return View(billingMethods.ToList());
             }
         }
@@ -1233,9 +1233,10 @@ namespace ethko.Controllers
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 var caseStages = from c in entities.CaseStages
-                                 join u in entities.AspNetUsers on c.FstUser equals u.Id
+                                 join u in entities.AspNetUsers on c.FstUser equals u.Id into lj
+                                 from x in lj.DefaultIfEmpty()
                                  join d in entities.DimDates on c.InsDate equals d.DateKey
-                                 select new GetCaseStagesViewModel() { CaseStageId = c.CaseStageId.ToString(), CaseStageName = c.CaseStageName, InsDate = d.FullDateUSA.ToString(), UserId = u.UserName };
+                                 select new GetCaseStagesViewModel() { CaseStageId = c.CaseStageId.ToString(), CaseStageName = c.CaseStageName, InsDate = d.FullDateUSA.ToString(), FullName = x.FName + " " + x.LName };
                 return View(caseStages.ToList());
             }
         }
@@ -1313,8 +1314,10 @@ namespace ethko.Controllers
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 var leadReferralSources = from lrs in entities.LeadReferralSources
+                                          join u in entities.AspNetUsers on lrs.FstUser equals u.Id into lj
+                                          from x in lj.DefaultIfEmpty()
                                           join d in entities.DimDates on lrs.InsDate equals d.DateKey
-                                          select new GetLeadReferralSourcesViewModel() { ReferralSourceId = lrs.ReferralSourceId.ToString(), ReferralSourceName = lrs.ReferralSourceName, InsDate = d.FullDateUSA.ToString() };
+                                          select new GetLeadReferralSourcesViewModel() { ReferralSourceId = lrs.ReferralSourceId.ToString(), ReferralSourceName = lrs.ReferralSourceName, InsDate = d.FullDateUSA.ToString(), FullName = x.FName + " " + x.LName };
                 return View(leadReferralSources.ToList());
             }
         }
@@ -1326,8 +1329,10 @@ namespace ethko.Controllers
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 var leadStatuses = from ls in entities.LeadStatuses
+                                   join u in entities.AspNetUsers on ls.FstUser equals u.Id into lj
+                                   from x in lj.DefaultIfEmpty()
                                    join d in entities.DimDates on ls.InsDate equals d.DateKey
-                                   select new GetLeadStatusesViewModel() { LeadStatusId = ls.LeadStatusId.ToString(), LeadStatusName = ls.LeadStatusName, InsDate = d.FullDateUSA.ToString() };
+                                   select new GetLeadStatusesViewModel() { LeadStatusId = ls.LeadStatusId.ToString(), LeadStatusName = ls.LeadStatusName, InsDate = d.FullDateUSA.ToString(), FullName = x.FName + " " + x.LName };
                 return View(leadStatuses.ToList());
             }
         }

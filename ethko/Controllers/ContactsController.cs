@@ -76,9 +76,11 @@ namespace ethko.Controllers
             {
                 var contacts = from c in entities.Contacts
                                join cg in entities.ContactGroups on c.ContactGroupId equals cg.ContactGroupId
-                               join u in entities.AspNetUsers on c.UserId equals u.Id
+                               join d in entities.DimDates on c.InsDate equals d.DateKey
+                               join u in entities.AspNetUsers on c.UserId equals u.Id into lj
+                               from x in lj.DefaultIfEmpty()
                                where c.Archived == 0
-                               select new GetContactListViewModel() { ContactId = c.ContactId.ToString(), FName = c.FName, LName = c.LName, Email = c.Email, UserId = u.UserName, InsDate = c.InsDate.ToString(), ContactGroupList = cg.ContactGroupName};
+                               select new GetContactListViewModel() { ContactId = c.ContactId.ToString(), FName = c.FName, LName = c.LName, Email = c.Email, FullName = x.FName + " " + x.LName, InsDate = d.FullDateUSA.ToString(), ContactGroupList = cg.ContactGroupName};
                 return View(contacts.ToList());
             }
         }
