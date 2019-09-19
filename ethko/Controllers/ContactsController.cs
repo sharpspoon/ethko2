@@ -331,9 +331,10 @@ namespace ethko.Controllers
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 var contactGroups = from cg in entities.ContactGroups
-                               join u in entities.AspNetUsers on cg.FstUser equals u.Id
-                               //where c.Archived == 1
-                               select new GetContactGroupListViewModel() { ContactGroupId = cg.ContactGroupId.ToString(), ContactGroupName = cg.ContactGroupName, FstUser = u.UserName, InsDate = cg.InsDate.ToString() };
+                                    join u in entities.AspNetUsers on cg.FstUser equals u.Id into lj
+                                    from x in lj.DefaultIfEmpty()
+                                    join d in entities.DimDates on cg.InsDate equals d.DateKey
+                                    select new GetContactGroupListViewModel() { ContactGroupId = cg.ContactGroupId.ToString(), ContactGroupName = cg.ContactGroupName, FstUser = x.FName+" "+x.LName, InsDate = d.FullDateUSA.ToString() };
                 return View(contactGroups.ToList());
             }
         }

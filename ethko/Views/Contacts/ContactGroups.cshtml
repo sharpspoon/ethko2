@@ -62,11 +62,11 @@
                                     <a href='@Url.Action("ContactGroups", "Contacts", new { ContactGroupId = item.ContactGroupId})'>@Html.DisplayFor(modelItem => item.ContactGroupName)</a>
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.InsDate)
+                                    5
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.InsDate)
-                                    by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.FstUser)</a>
+                                    by @Html.DisplayFor(modelItem => item.FstUser)
                                 </td>
                                 <td>
                                     <div class="edit">
