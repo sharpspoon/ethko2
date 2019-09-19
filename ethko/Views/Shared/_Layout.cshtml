@@ -68,57 +68,42 @@
         <hr />
         @if (Request.IsAuthenticated)
         {
-        <div id="top">
-            <div class="btn-group dropleft">
-                <div class="btn-group" role="group">
-                    <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-plus"></i> Start Timer
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <form class="px-4 py-3">
-                            <div class="form-group">
-                                <label for="exampleDropdownFormEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleDropdownFormPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
-                            </div>
-                            <div class="form-group">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="dropdownCheck">
-                                    <label class="form-check-label" for="dropdownCheck">
-                                        Remember me
-                                    </label>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Sign in</button>
-                        </form>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">New around here? Sign up</a>
-                        <a class="dropdown-item" href="#">Forgot password?</a>
+            <div id="top">
+                <div class="btn-group dropleft">
+                    <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-hourglass"></i> Start Timer
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            <form class="px-4 py-3">
+                                <div class="clock" style="margin:2em;"></div>
+                                <div class="message"></div>
+                                <button type="submit" class="btn btn-primary">Sign in</button>
+                            </form>
+                            <div id="t" class="badge">00:00</div>
+                            <button id="btn">Start</button>
+                        </div>
                     </div>
-                </div>
-                <div class="btn-group" role="group">
-                    <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-plus"></i> Add Item
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-calendar-plus"></i> Add Event</a>
-                        <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-file"></i> Add Document</a>
-                        <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-check"></i> Add Task</a>
-                        <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-child"></i> Add Lead</a>
-                        <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-id-card"></i> Add Contact</a>
-                        <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-briefcase"></i> Add Case</a>
-                        <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-envelope"></i> New Message</a>
-                        <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-clock"></i> Add Time Entry</a>
-                        <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-money-bill-wave"></i> Add Expense</a>
-                        <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-money-check-alt"></i> Add Invoice</a>
-                        <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-pencil-alt"></i> Add Note</a>
+                    <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-plus"></i> Add Item
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-calendar-plus"></i> Add Event</a>
+                            <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-file"></i> Add Document</a>
+                            <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-check"></i> Add Task</a>
+                            <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-child"></i> Add Lead</a>
+                            <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-id-card"></i> Add Contact</a>
+                            <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-briefcase"></i> Add Case</a>
+                            <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-envelope"></i> New Message</a>
+                            <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-clock"></i> Add Time Entry</a>
+                            <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-money-bill-wave"></i> Add Expense</a>
+                            <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-money-check-alt"></i> Add Invoice</a>
+                            <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-pencil-alt"></i> Add Note</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
             <footer>
                 @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -163,10 +148,49 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.js"></script>
+    @section Scripts {
+
+    }
+
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/knockout")
     @RenderSection("Scripts", required: false)
+    <script src="~/Scripts/timer/timer.jquery.js"></script>
+    <script>
+        (function () {
+
+            $("#btn").click(function () {
+                switch ($(this).html().toLowerCase()) {
+
+                    case "start":
+                        $("#t").timer({
+                            action: 'start',
+                            seconds: 0
+                        });
+                        $(this).html("Pause");
+                        $("input[name='s']").attr("disabled", "disabled");
+                        $("#t").addClass("badge-important");
+                        break;
+
+                    case "resume":
+                        $("#t").timer('resume');
+                        $(this).html("Pause")
+                        $("#t").addClass("badge-important");
+                        break;
+
+                    case "pause":
+                        //you can specify action via object
+                        $("#t").timer({ action: 'pause' });
+                        $(this).html("Resume")
+                        $("#t").removeClass("badge-important");
+                        break;
+
+                }
+            });
+
+        })();
+    </script>
 </body>
 </html>
