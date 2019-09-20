@@ -129,6 +129,12 @@ namespace ethko.Models
         [Display(Name = "InsDate")]
         public string InsDate { get; set; }
 
+        [Display(Name = "LstUser")]
+        public string LstUser { get; set; }
+
+        [Display(Name = "LnsDate")]
+        public string LnsDate { get; set; }
+
         [Display(Name = "Full Name")]
         public string FullName { get; set; }
     }
@@ -286,6 +292,30 @@ namespace ethko.Models
 
         [Display(Name = "InsDate")]
         public string InsDate { get; set; }
+
+        [Display(Name = "Full Name")]
+        public string FullName { get; set; }
+    }
+
+    public class EditOFficeModel
+    {
+        [Display(Name = "Office Name")]
+        public string OfficeName { get; set; }
+
+        [Display(Name = "Office Id")]
+        public string OfficeId { get; set; }
+
+        [Display(Name = "FstUser")]
+        public string FstUser { get; set; }
+
+        [Display(Name = "InsDate")]
+        public string InsDate { get; set; }
+
+        [Display(Name = "LstUser")]
+        public string LstUser { get; set; }
+
+        [Display(Name = "LstDate")]
+        public string LstDate { get; set; }
 
         [Display(Name = "Full Name")]
         public string FullName { get; set; }

@@ -945,9 +945,11 @@ namespace ethko.Controllers
             {
                 var offices = from o in entities.Offices
                               join u in entities.AspNetUsers on o.FstUser equals u.Id into gj
-                              join d in entities.DimDates on o.InsDate equals d.DateKey
                               from x in gj.DefaultIfEmpty()
-                              select new GetFirmSettingsViewModel() { OfficeId = o.OfficeId.ToString(), OfficeName = o.OfficeName, InsDate = d.FullDateUSA.ToString(), FullName = x.FName + " " + x.LName };
+                              join d in entities.DimDates on o.InsDate equals d.DateKey
+                              join u in entities.AspNetUsers on o.LstUser equals u.Id into lst
+                              from y in lst.DefaultIfEmpty()
+                              select new GetFirmSettingsViewModel() { OfficeId = o.OfficeId.ToString(), OfficeName = o.OfficeName, InsDate = d.FullDateUSA.ToString(), FullName = x.FName + " " + x.LName, LstUser=y.FName+" "+y.LName };
                 return View(offices.ToList());
             }
         }
@@ -980,7 +982,9 @@ namespace ethko.Controllers
             {
                 entities.Offices.Add(officeModel);
                 officeModel.InsDate = intDate;
+                officeModel.LstDate = intDate;
                 officeModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+                officeModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 entities.SaveChanges();
             }
             return RedirectToAction("FirmSettings");
