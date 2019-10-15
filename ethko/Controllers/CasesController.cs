@@ -329,7 +329,7 @@ namespace ethko.Controllers
         }
 
         [HttpPost]
-        public ActionResult ViewCase(int? CaseId, HttpPostedFileBase file)
+        public ActionResult UploadDocument(int? CaseId, HttpPostedFileBase file)
         {
             // Verify that the user selected a file
             if (file != null && file.ContentLength > 0)
