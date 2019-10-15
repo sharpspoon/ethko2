@@ -291,7 +291,7 @@ namespace ethko.Controllers
 
         //View Specific Case
         [HttpGet]
-        public ActionResult ViewCase(int? CaseId)
+        public ActionResult ViewCase(int CaseId)
         {
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
@@ -324,12 +324,13 @@ namespace ethko.Controllers
 
                 //IEnumerable<Contact> contacts = entities.Contacts.Where(m => m.Archived == 0).ToList();
                 //var contactModel = ConvertViewModelToModel(contacts);
+                
                 return View(contacts);
             }
         }
 
         [HttpPost]
-        public ActionResult UploadDocument(int? CaseId, HttpPostedFileBase file)
+        public ActionResult UploadDocument(HttpPostedFileBase file, int? CaseId)
         {
             // Verify that the user selected a file
             if (file != null && file.ContentLength > 0)
@@ -337,7 +338,7 @@ namespace ethko.Controllers
                 // extract only the filename
                 var fileName = Path.GetFileName(file.FileName);
                 // store the file inside ~/App_Data/uploads folder
-                var path = Path.Combine(Server.MapPath("~/Images"), fileName);
+                var path = Path.Combine(Server.MapPath("~/Images"), DateTime.Now.ToString("MMddyyyyhhmmmsstt") +"_"+ fileName+CaseId.ToString());
                 file.SaveAs(path);
             }
             // redirect back to the index action to show the form once again

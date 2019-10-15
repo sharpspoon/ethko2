@@ -165,11 +165,6 @@ namespace ethko.Models
 
         [Display(Name = "Lead Attorney")]
         public string LeadAttorney { get; set; }
-
-        //To change label title value  
-        [DisplayName("Upload File")]
-        public string ImagePath { get; set; }
-
-        public HttpPostedFileBase ImageFile { get; set; }
+        public string Files { get; set; }
     }
 }
