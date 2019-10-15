@@ -1012,7 +1012,14 @@ namespace ethko.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ethko_dbEntities entities = new ethko_dbEntities();
-            Office offices = entities.Offices.Where(m => m.OfficeId == OfficeId).Single();
+            //Office offices = entities.Offices.GroupJoin(entities.DimDates.DefaultIfEmpty(), oid => oid.OfficeId ).Where(m => m.OfficeId == OfficeId).Single();
+            var offices = from o in entities.Offices
+                          join u in entities.AspNetUsers on o.FstUser equals u.Id into gj
+                          from x in gj.DefaultIfEmpty()
+                          join d in entities.DimDates on o.InsDate equals d.DateKey
+                          join u in entities.AspNetUsers on o.LstUser equals u.Id into lst
+                          from y in lst.DefaultIfEmpty()
+                          select new EditOfficeModel() { OfficeName = o.OfficeName, InsDate = d.FullDateUSA.ToString(), FullName = x.FName + " " + x.LName, LstUser = y.FName + " " + y.LName };
             return View(offices);
         }
 

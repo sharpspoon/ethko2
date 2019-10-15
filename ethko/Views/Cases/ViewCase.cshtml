@@ -14,7 +14,11 @@
     @ViewBag.Title
 </h2>
 
-
+@using (Html.BeginForm("ViewCase", "Cases", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="file" />
+    <input type="submit" value="OK" />
+}
 
 @using (Html.BeginForm("ViewCase", "Cases", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
@@ -171,13 +175,40 @@
                                         <li class="list-group-item">afsdgasggg </li>
                                     </ul>
                                 </div>
-                                    <div class="tab-pane fade" id="pills-calendar" role="tabpanel" aria-labelledby="pills-calendar-tab">..c.</div>
-                                    <div class="tab-pane fade" id="pills-documents" role="tabpanel" aria-labelledby="pills-documents-tab">..c.</div>
-                                    <div class="tab-pane fade" id="pills-tasks" role="tabpanel" aria-labelledby="pills-tasks-tab">..c.</div>
-                                    <div class="tab-pane fade" id="pills-messages" role="tabpanel" aria-labelledby="pills-messages-tab">..c.</div>
-                                    <div class="tab-pane fade" id="pills-notes" role="tabpanel" aria-labelledby="pills-notes-tab">..c.</div>
-                                    <div class="tab-pane fade" id="pills-intakeforms" role="tabpanel" aria-labelledby="pills-intakeforms-tab">..c.</div>
+                                <div class="tab-pane fade" id="pills-calendar" role="tabpanel" aria-labelledby="pills-calendar-tab">..c.</div>
+                                <div class="tab-pane fade" id="pills-documents" role="tabpanel" aria-labelledby="pills-documents-tab">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Actions
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">Move</a>
+                                            <a class="dropdown-item" href="#">Share</a>
+                                            <a class="dropdown-item" href="#">Mark as Read</a>
+                                            <a class="dropdown-item" href="#">Download</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Download All Case Documents</a>
+                                        </div>
+                                    </div>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Add
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">Document</a>
+                                            <a class="dropdown-item" href="#">Document from Template</a>
+                                            <a class="dropdown-item" href="#">Folder</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Apply Default Folders</a>
+                                        </div>
+                                    </div>
+
                                 </div>
+                                <div class="tab-pane fade" id="pills-tasks" role="tabpanel" aria-labelledby="pills-tasks-tab">..c.</div>
+                                <div class="tab-pane fade" id="pills-messages" role="tabpanel" aria-labelledby="pills-messages-tab">..c.</div>
+                                <div class="tab-pane fade" id="pills-notes" role="tabpanel" aria-labelledby="pills-notes-tab">..c.</div>
+                                <div class="tab-pane fade" id="pills-intakeforms" role="tabpanel" aria-labelledby="pills-intakeforms-tab">..c.</div>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="nav-contactsstaff" role="tabpanel" aria-labelledby="nav-contactsstaff-tab">
                             <br />

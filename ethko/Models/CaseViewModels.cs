@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Web;
 
 namespace ethko.Models
 {
@@ -162,5 +165,11 @@ namespace ethko.Models
 
         [Display(Name = "Lead Attorney")]
         public string LeadAttorney { get; set; }
+
+        //To change label title value  
+        [DisplayName("Upload File")]
+        public string ImagePath { get; set; }
+
+        public HttpPostedFileBase ImageFile { get; set; }
     }
 }

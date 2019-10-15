@@ -7,6 +7,9 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Web;
+using System.IO;
+using System.Configuration;
 
 namespace ethko.Controllers
 {
@@ -323,6 +326,22 @@ namespace ethko.Controllers
                 //var contactModel = ConvertViewModelToModel(contacts);
                 return View(contacts);
             }
+        }
+
+        [HttpPost]
+        public ActionResult ViewCase(int? CaseId, HttpPostedFileBase file)
+        {
+            // Verify that the user selected a file
+            if (file != null && file.ContentLength > 0)
+            {
+                // extract only the filename
+                var fileName = Path.GetFileName(file.FileName);
+                // store the file inside ~/App_Data/uploads folder
+                var path = Path.Combine(Server.MapPath("~/Images"), fileName);
+                file.SaveAs(path);
+            }
+            // redirect back to the index action to show the form once again
+            return RedirectToAction("Index");
         }
     }
 }
