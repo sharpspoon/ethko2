@@ -195,7 +195,7 @@
                                             <a class="dropdown-item" href="#">Apply Default Folders</a>
                                         </div>
                                     </div>
-                                    @using (Html.BeginForm("UploadDocument", "Cases", FormMethod.Post, new { enctype = "multipart/form-data", CaseId = Model.CaseId }))
+                                    @using (Html.BeginForm("UploadDocument", "Cases", FormMethod.Post, new { CaseId = Model.CaseId }))
                                     {
                                         <input type="file" name="file" />
                                         <input type="submit" value="OK" />

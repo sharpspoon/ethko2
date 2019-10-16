@@ -10,6 +10,8 @@ using System.Data.Entity;
 using System.Web;
 using System.IO;
 using System.Configuration;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace ethko.Controllers
 {
@@ -17,6 +19,9 @@ namespace ethko.Controllers
     public class CasesController : Controller
     {
         ethko_dbEntities entities = new ethko_dbEntities();
+
+        string storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=ethko;AccountKey=Onwb/R0jWlYKaiPT6Nypnea6++vkZMVRKUp1eq97Rvpn25QKvtJrUMEPJPQyQcg/kOwpYCMaqaVF1rTot7VEJw==;EndpointSuffix=core.windows.net";
+
 
 
         //View List
@@ -329,16 +334,35 @@ namespace ethko.Controllers
             }
         }
 
-        [HttpPost]
-        public ActionResult UploadDocument(HttpPostedFileBase file, int? CaseId)
+        public Case ConvertViewModelToModel(GetIndividualCaseViewModel vm)
         {
+            return new Case()
+            {
+                CaseId = vm.CaseId
+            };
+        }
+
+        [HttpPost]
+        public ActionResult UploadDocument(HttpPostedFileBase file, GetIndividualCaseViewModel model)
+        {
+            Console.WriteLine("asdf"+model.CaseId.ToString());
+            CloudStorageAccount account = CloudStorageAccount.Parse(storageConnectionString);
+            CloudBlobClient serviceClient = account.CreateCloudBlobClient();
+            
+            var container = serviceClient.GetContainerReference(model.CaseId.ToString());
+            container.CreateIfNotExistsAsync().Wait();
+
+            // write a blob to the container
+            CloudBlockBlob blob = container.GetBlockBlobReference("helloworld.txt");
+            blob.UploadTextAsync("Hello, World!").Wait();
+
             // Verify that the user selected a file
             if (file != null && file.ContentLength > 0)
             {
                 // extract only the filename
                 var fileName = Path.GetFileName(file.FileName);
                 // store the file inside ~/App_Data/uploads folder
-                var path = Path.Combine(Server.MapPath("~/Images"), DateTime.Now.ToString("MMddyyyyhhmmmsstt") +"_"+ fileName+CaseId.ToString());
+                var path = Path.Combine(Server.MapPath("~/Images"), DateTime.Now.ToString("MMddyyyyhhmmmsstt") +"_"+ fileName+model.CaseId.ToString());
                 file.SaveAs(path);
             }
             // redirect back to the index action to show the form once again
