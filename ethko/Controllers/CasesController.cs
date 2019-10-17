@@ -355,7 +355,7 @@ namespace ethko.Controllers
             string path = Request.Form["file"].ToString();
             string file = Path.GetFileName(path);
             CloudBlockBlob blob = container.GetBlockBlobReference(file);
-            blob.UploadTextAsync("Hello, World!").Wait();
+            blob.UploadFromFileAsync(path);
 
             //// Verify that the user selected a file
             //if (file != null && file.ContentLength > 0)
