@@ -357,16 +357,6 @@ namespace ethko.Controllers
             CloudBlockBlob blob = container.GetBlockBlobReference(file);
             blob.UploadFromFileAsync(path);
 
-            //// Verify that the user selected a file
-            //if (file != null && file.ContentLength > 0)
-            //{
-            //    // extract only the filename
-            //    var fileName = Path.GetFileName(file.FileName);
-            //    // store the file inside ~/App_Data/uploads folder
-            //    var path = Path.Combine(Server.MapPath("~/Images"), DateTime.Now.ToString("MMddyyyyhhmmmsstt") +"_"+ fileName+CaseId.ToString());
-            //    file.SaveAs(path);
-            //}
-            //// redirect back to the index action to show the form once again
             return RedirectToAction("Index");
         }
     }
