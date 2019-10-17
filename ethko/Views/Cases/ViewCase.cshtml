@@ -199,7 +199,6 @@
                                     </div>
                                     @using (Html.BeginForm("UploadDocument", "Cases", FormMethod.Post))
                                     {
-                                        @Html.DisplayFor(m => m.CaseId, "CaseId", new { CaseId = Model.CaseId, @class = "form-control" })
                                         <input type="hidden" name="CaseId" value="@Html.DisplayFor(m => m.CaseId)" />
                                         <input type="file" name="file" />
                                         <input type="submit" value="OK" />

@@ -352,7 +352,9 @@ namespace ethko.Controllers
             container.CreateIfNotExistsAsync().Wait();
 
             // write a blob to the container
-            CloudBlockBlob blob = container.GetBlockBlobReference("helloworld.txt");
+            string path = Request.Form["file"].ToString();
+            string file = Path.GetFileName(path);
+            CloudBlockBlob blob = container.GetBlockBlobReference(file);
             blob.UploadTextAsync("Hello, World!").Wait();
 
             //// Verify that the user selected a file
