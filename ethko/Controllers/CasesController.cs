@@ -343,29 +343,28 @@ namespace ethko.Controllers
         }
 
         [HttpPost]
-        public ActionResult UploadDocument(HttpPostedFileBase file, GetIndividualCaseViewModel model)
+        public ActionResult UploadDocument(GetIndividualCaseViewModel model, int CaseId)
         {
-            Console.WriteLine("asdf"+model.CaseId.ToString());
             CloudStorageAccount account = CloudStorageAccount.Parse(storageConnectionString);
             CloudBlobClient serviceClient = account.CreateCloudBlobClient();
-            
-            var container = serviceClient.GetContainerReference(model.CaseId.ToString());
+            string cid = Request.Form["CaseId"].ToString();
+            var container = serviceClient.GetContainerReference("case"+model.CaseId.ToString());
             container.CreateIfNotExistsAsync().Wait();
 
             // write a blob to the container
             CloudBlockBlob blob = container.GetBlockBlobReference("helloworld.txt");
             blob.UploadTextAsync("Hello, World!").Wait();
 
-            // Verify that the user selected a file
-            if (file != null && file.ContentLength > 0)
-            {
-                // extract only the filename
-                var fileName = Path.GetFileName(file.FileName);
-                // store the file inside ~/App_Data/uploads folder
-                var path = Path.Combine(Server.MapPath("~/Images"), DateTime.Now.ToString("MMddyyyyhhmmmsstt") +"_"+ fileName+model.CaseId.ToString());
-                file.SaveAs(path);
-            }
-            // redirect back to the index action to show the form once again
+            //// Verify that the user selected a file
+            //if (file != null && file.ContentLength > 0)
+            //{
+            //    // extract only the filename
+            //    var fileName = Path.GetFileName(file.FileName);
+            //    // store the file inside ~/App_Data/uploads folder
+            //    var path = Path.Combine(Server.MapPath("~/Images"), DateTime.Now.ToString("MMddyyyyhhmmmsstt") +"_"+ fileName+CaseId.ToString());
+            //    file.SaveAs(path);
+            //}
+            //// redirect back to the index action to show the form once again
             return RedirectToAction("Index");
         }
     }

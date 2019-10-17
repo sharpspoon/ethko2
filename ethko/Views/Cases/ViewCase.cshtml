@@ -49,6 +49,8 @@
                             <p class="card-text">@Html.DisplayFor(m => m.Description)</p>
                             <h5 class="card-title">Created</h5>
                             <p class="card-text">@Html.DisplayFor(m => m.DateCreated)</p>
+                            <h5 class="card-title">Case Id</h5>
+                            <p class="card-text">@Html.DisplayFor(m => m.CaseId, new { @class = "form-control" , @name = "case-id", @id = "case-id"})</p>
                         </div>
                     </div>
                 </div>
@@ -195,8 +197,10 @@
                                             <a class="dropdown-item" href="#">Apply Default Folders</a>
                                         </div>
                                     </div>
-                                    @using (Html.BeginForm("UploadDocument", "Cases", FormMethod.Post, new { CaseId = Model.CaseId }))
+                                    @using (Html.BeginForm("UploadDocument", "Cases", FormMethod.Post))
                                     {
+                                        @Html.DisplayFor(m => m.CaseId, "CaseId", new { CaseId = Model.CaseId, @class = "form-control" })
+                                        <input type="hidden" name="CaseId" value="@Html.DisplayFor(m => m.CaseId)" />
                                         <input type="file" name="file" />
                                         <input type="submit" value="OK" />
                                     }
