@@ -1,29 +1,137 @@
-﻿@model ethko.Models.AddPhoneNumberViewModel
+﻿@model IEnumerable<ethko.Models.GetContactListViewModel>
 @{
-    ViewBag.Title = "Phone Number";
+    ViewBag.Title = "Case Documents";
 }
+<br />
+<a class="btn btn-primary" href='@Url.Action("Index", "Contacts")'>Case Documents</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("Companies", "Contacts")'>Firm Documents</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("ContactGroups", "Contacts")'>Templates</a>&nbsp;
+<br />
+<br />
+<a class="btn btn-default" href='@Url.Action("Index", "Contacts")'>Unread</a>&nbsp;
+<a class="btn btn-primary" href='@Url.Action("ContactsArchive", "Contacts")'>All</a>
+<h2>
+    @ViewBag.Title
+</h2>
+<head>
+    <link rel="stylesheet" href="~/Content/svg.css">
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
 
-<h2>@ViewBag.Title.</h2>
+        .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+            background-color: #c4c4c4;
+        }
+    </style>
+</head>
 
-@using (Html.BeginForm("AddPhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Index", "Documents", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Add a phone number</h4>
     <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Number, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Number, new { @class = "form-control" })
+    <!DOCTYPE html>
+    <html lang="en">
+    <body style="margin:20px auto">
+        <div class="container">
+            <br />
+            Select Group
+            <select id='filterText' style='display:inline-block' onchange='filterText()'>
+                <option disabled selected>Select</option>
+                <option value='yes'>Yes</option>
+                <option value='no'>No</option>
+                <option value='all'>All</option>
+            </select>
+            <br />
+            <br />
+            <table id="myTable" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>File Name</th>
+                        <th>Case</th>
+                        <th>Uploaded By</th>
+                        <th>Download</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.ContactId})'>@Html.DisplayFor(modelItem => item.FName)</a>
+                                </td>
+                                <td>
+                                    <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.ContactId})'>@Html.DisplayFor(modelItem => item.LName)</a>
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ContactGroupList)
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.InsDate)
+                                    by @Html.DisplayFor(modelItem => item.FullName)
+                                </td>
+                                <td>
+                                    <div class="edit">
+                                        <a href='@Url.Action("EditContact", "Contacts", new { ContactId = item.ContactId })'>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 8 8">
+                                                <title>Edit</title>
+                                                <path d="M6 0l-1 1 2 2 1-1-2-2zm-2 2l-4 4v2h2l4-4-2-2z" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    @if (Model == null)
+                    {
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Submit" />
-        </div>
-    </div>
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+            <script>
+                $(document).ready(function () {
+                    $('#myTable').dataTable();
+                });
+            </script>
+            <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+            <script>
+                function filterText() {
+                    var rex = new RegExp($('#filterText').val());
+                    if (rex == "/all/") { clearFilter() } else {
+                        $('.content').hide();
+                        $('.content').filter(function () {
+                            return rex.test($(this).text());
+                        }).show();
+                    }
+                }
+
+                function clearFilter() {
+                    $('.filterText').val('');
+                    $('.content').show();
+                }
+            </script>
+        }
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>
 }
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
+
