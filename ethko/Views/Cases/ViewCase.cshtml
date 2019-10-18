@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Case Details";
 }
+@using System.Collections.Generic;
 <br />
 <a class="btn btn-default" href='@Url.Action("Index", "Cases")'>Cases</a>&nbsp;
 <a class="btn btn-default" href='@Url.Action("PracticeAreas", "Cases")'>Practice Areas</a>&nbsp;
@@ -14,235 +15,237 @@
 </h2>
 
 
-    @Html.AntiForgeryToken()
-    <hr />
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
-    </head>
-    <body style="margin:20px auto">
+@Html.AntiForgeryToken()
+<hr />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+</head>
+<body style="margin:20px auto">
 
-        <div class="container">
-            <h2>@Html.DisplayFor(m => m.CaseName)</h2>
-            <h5>@Html.DisplayFor(m => m.CaseNumber) | Statute of Limitations: @Html.DisplayFor(m => m.Statute)</h5>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card border-dark mb-3" style="max-width: 18rem;">
-                        <div class="card-header">
-                            Client Info:
-                        </div>
-                        <div class="card-body text-dark">
-                            <h5 class="card-title">Opened</h5>
-                            <p class="card-text">@Html.DisplayFor(m => m.DateOpened)</p>
-                            <h5 class="card-title">Practice Area</h5>
-                            <p class="card-text">@Html.DisplayFor(m => m.PracticeAreaName)</p>
-                            <h5 class="card-title">Case Stage</h5>
-                            <p class="card-text">@Html.DisplayFor(m => m.CaseStageName)</p>
-                            <h5 class="card-title">Lead Attorney</h5>
-                            <p class="card-text">@Html.DisplayFor(m => m.LeadAttorney)</p>
-                            <h5 class="card-title">Staff</h5>
-                            <p class="card-text">@Html.DisplayFor(m => m.LeadAttorney)</p>
-                            <h5 class="card-title">Description</h5>
-                            <p class="card-text">@Html.DisplayFor(m => m.Description)</p>
-                            <h5 class="card-title">Created</h5>
-                            <p class="card-text">@Html.DisplayFor(m => m.DateCreated)</p>
-                            <h5 class="card-title">Case Id</h5>
-                            <p class="card-text">@Html.DisplayFor(m => m.CaseId, new { @class = "form-control" , @name = "case-id", @id = "case-id"})</p>
-                        </div>
+    <div class="container">
+        <h2>@Html.DisplayFor(m => m.CaseName)</h2>
+        <h5>@Html.DisplayFor(m => m.CaseNumber) | Statute of Limitations: @Html.DisplayFor(m => m.Statute)</h5>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card border-dark mb-3" style="max-width: 18rem;">
+                    <div class="card-header">
+                        Client Info:
                     </div>
-                </div>
-                <div class="col-md-9">
-                    <nav>
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <a class="nav-item nav-link active" id="nav-itemsinfo-tab" data-toggle="tab" href="#nav-itemsinfo" role="tab" aria-controls="nav-itemsinfo" aria-selected="true">Items & Info</a>
-                            <a class="nav-item nav-link" id="nav-contactsstaff-tab" data-toggle="tab" href="#nav-contactsstaff" role="tab" aria-controls="nav-contactsstaff" aria-selected="false">Contacts & Staff</a>
-                            <a class="nav-item nav-link" id="nav-statusupdates-tab" data-toggle="tab" href="#nav-statusupdates" role="tab" aria-controls="nav-statusupdates" aria-selected="false">Status Updates</a>
-                        </div>
-                    </nav>
-                    <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="nav-itemsinfo" role="tabpanel" aria-labelledby="nav-itemsinfo-tab">
-                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="pills-info-tab" data-toggle="pill" href="#pills-info" role="tab" aria-controls="pills-info" aria-selected="true">Info</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-recentactivity-tab" data-toggle="pill" href="#pills-recentactivity" role="tab" aria-controls="pills-recentactivity" aria-selected="false">Recent Activity</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-calendar-tab" data-toggle="pill" href="#pills-calendar" role="tab" aria-controls="pills-calendar" aria-selected="false">Calendar</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-documents-tab" data-toggle="pill" href="#pills-documents" role="tab" aria-controls="pills-documents" aria-selected="false">Documents</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-tasks-tab" data-toggle="pill" href="#pills-tasks" role="tab" aria-controls="pills-tasks" aria-selected="false">Tasks</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-messages-tab" data-toggle="pill" href="#pills-messages" role="tab" aria-controls="pills-messages" aria-selected="false">Messages</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-notes-tab" data-toggle="pill" href="#pills-notes" role="tab" aria-controls="pills-notes" aria-selected="false">Notes</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-intakeforms-tab" data-toggle="pill" href="#pills-intakeforms" role="tab" aria-controls="pills-intakeforms" aria-selected="false">Intake Forms</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content" id="pills-tabContent">
-                                <div class="tab-pane fade show active" id="pills-info" role="tabpanel" aria-labelledby="pills-info-tab">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">Case Timeline by Stage - Days Open: </h5>
-                                                        Opened: @Html.DisplayFor(m => m.DateOpened)
-                                                        <br />
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br />
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">Case Information</h5>
-                                                        <ul class="list-group list-group-flush">
-                                                            <li class="list-group-item">Name: @Html.DisplayFor(m => m.CaseName)</li>
-                                                            <li class="list-group-item">Case Number: @Html.DisplayFor(m => m.CaseNumber)</li>
-                                                            <li class="list-group-item">Practice Area: @Html.DisplayFor(m => m.PracticeAreaName)</li>
-                                                            <li class="list-group-item">Case Stage: @Html.DisplayFor(m => m.CaseStageName)</li>
-                                                            <li class="list-group-item">Description: @Html.DisplayFor(m => m.Description)</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">Status</h5>
-                                                        <ul class="list-group list-group-flush">
-                                                            <li class="list-group-item">Created: @Html.DisplayFor(m => m.DateCreated)</li>
-                                                            <li class="list-group-item">Last Status: </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br />
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">Tasks</h5>
-                                                        <ul class="list-group list-group-flush">
-                                                            <li class="list-group-item">Overdue: </li>
-                                                            <li class="list-group-item">Upcoming: </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">Events (next 30 days)</h5>
-                                                        <ul class="list-group list-group-flush">
-                                                            <li class="list-group-item">0</li>
-                                                            <li class="list-group-item">None</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="pills-recentactivity" role="tabpanel" aria-labelledby="pills-recentactivity-tab">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">activity items blah </li>
-                                        <li class="list-group-item">afsdgasggg </li>
-                                    </ul>
-                                </div>
-                                <div class="tab-pane fade" id="pills-calendar" role="tabpanel" aria-labelledby="pills-calendar-tab">..c.</div>
-                                <div class="tab-pane fade" id="pills-documents" role="tabpanel" aria-labelledby="pills-documents-tab">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Actions
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Move</a>
-                                            <a class="dropdown-item" href="#">Share</a>
-                                            <a class="dropdown-item" href="#">Mark as Read</a>
-                                            <a class="dropdown-item" href="#">Download</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Download All Case Documents</a>
-                                        </div>
-                                    </div>
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Add
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Document</a>
-                                            <a class="dropdown-item" href="#">Document from Template</a>
-                                            <a class="dropdown-item" href="#">Folder</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Apply Default Folders</a>
-                                        </div>
-                                    </div>
-                                    @using (Html.BeginForm("UploadDocument", "Cases", FormMethod.Post))
-                                    {
-                                        <input type="hidden" name="CaseId" value="@Html.DisplayFor(m => m.CaseId)" />
-                                        <input type="file" name="file" />
-                                        <input type="submit" value="OK" />
-                                    }
-                                </div>
-                                <div class="tab-pane fade" id="pills-tasks" role="tabpanel" aria-labelledby="pills-tasks-tab">..c.</div>
-                                <div class="tab-pane fade" id="pills-messages" role="tabpanel" aria-labelledby="pills-messages-tab">..c.</div>
-                                <div class="tab-pane fade" id="pills-notes" role="tabpanel" aria-labelledby="pills-notes-tab">..c.</div>
-                                <div class="tab-pane fade" id="pills-intakeforms" role="tabpanel" aria-labelledby="pills-intakeforms-tab">..c.</div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="nav-contactsstaff" role="tabpanel" aria-labelledby="nav-contactsstaff-tab">
-                            <br />
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Contacts</h5>
-                                                stuff
-                                                <br />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Staff</h5>
-                                                stuff
-                                                <br />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="nav-statusupdates" role="tabpanel" aria-labelledby="nav-statusupdates-tab">...</div>
+                    <div class="card-body text-dark">
+                        <h5 class="card-title">Opened</h5>
+                        <p class="card-text">@Html.DisplayFor(m => m.DateOpened)</p>
+                        <h5 class="card-title">Practice Area</h5>
+                        <p class="card-text">@Html.DisplayFor(m => m.PracticeAreaName)</p>
+                        <h5 class="card-title">Case Stage</h5>
+                        <p class="card-text">@Html.DisplayFor(m => m.CaseStageName)</p>
+                        <h5 class="card-title">Lead Attorney</h5>
+                        <p class="card-text">@Html.DisplayFor(m => m.LeadAttorney)</p>
+                        <h5 class="card-title">Staff</h5>
+                        <p class="card-text">@Html.DisplayFor(m => m.LeadAttorney)</p>
+                        <h5 class="card-title">Description</h5>
+                        <p class="card-text">@Html.DisplayFor(m => m.Description)</p>
+                        <h5 class="card-title">Created</h5>
+                        <p class="card-text">@Html.DisplayFor(m => m.DateCreated)</p>
+                        <h5 class="card-title">Case Id</h5>
+                        <p class="card-text">@Html.DisplayFor(m => m.CaseId, new { @class = "form-control", @name = "case-id", @id = "case-id" })</p>
                     </div>
                 </div>
             </div>
+            <div class="col-md-9">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-itemsinfo-tab" data-toggle="tab" href="#nav-itemsinfo" role="tab" aria-controls="nav-itemsinfo" aria-selected="true">Items & Info</a>
+                        <a class="nav-item nav-link" id="nav-contactsstaff-tab" data-toggle="tab" href="#nav-contactsstaff" role="tab" aria-controls="nav-contactsstaff" aria-selected="false">Contacts & Staff</a>
+                        <a class="nav-item nav-link" id="nav-statusupdates-tab" data-toggle="tab" href="#nav-statusupdates" role="tab" aria-controls="nav-statusupdates" aria-selected="false">Status Updates</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-itemsinfo" role="tabpanel" aria-labelledby="nav-itemsinfo-tab">
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="pills-info-tab" data-toggle="pill" href="#pills-info" role="tab" aria-controls="pills-info" aria-selected="true">Info</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-recentactivity-tab" data-toggle="pill" href="#pills-recentactivity" role="tab" aria-controls="pills-recentactivity" aria-selected="false">Recent Activity</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-calendar-tab" data-toggle="pill" href="#pills-calendar" role="tab" aria-controls="pills-calendar" aria-selected="false">Calendar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-documents-tab" data-toggle="pill" href="#pills-documents" role="tab" aria-controls="pills-documents" aria-selected="false">Documents</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-tasks-tab" data-toggle="pill" href="#pills-tasks" role="tab" aria-controls="pills-tasks" aria-selected="false">Tasks</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-messages-tab" data-toggle="pill" href="#pills-messages" role="tab" aria-controls="pills-messages" aria-selected="false">Messages</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-notes-tab" data-toggle="pill" href="#pills-notes" role="tab" aria-controls="pills-notes" aria-selected="false">Notes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-intakeforms-tab" data-toggle="pill" href="#pills-intakeforms" role="tab" aria-controls="pills-intakeforms" aria-selected="false">Intake Forms</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-info" role="tabpanel" aria-labelledby="pills-info-tab">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Case Timeline by Stage - Days Open: </h5>
+                                                    Opened: @Html.DisplayFor(m => m.DateOpened)
+                                                    <br />
+                                                    <div class="progress">
+                                                        <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Case Information</h5>
+                                                    <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">Name: @Html.DisplayFor(m => m.CaseName)</li>
+                                                        <li class="list-group-item">Case Number: @Html.DisplayFor(m => m.CaseNumber)</li>
+                                                        <li class="list-group-item">Practice Area: @Html.DisplayFor(m => m.PracticeAreaName)</li>
+                                                        <li class="list-group-item">Case Stage: @Html.DisplayFor(m => m.CaseStageName)</li>
+                                                        <li class="list-group-item">Description: @Html.DisplayFor(m => m.Description)</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Status</h5>
+                                                    <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">Created: @Html.DisplayFor(m => m.DateCreated)</li>
+                                                        <li class="list-group-item">Last Status: </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Tasks</h5>
+                                                    <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">Overdue: </li>
+                                                        <li class="list-group-item">Upcoming: </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Events (next 30 days)</h5>
+                                                    <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">0</li>
+                                                        <li class="list-group-item">None</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-recentactivity" role="tabpanel" aria-labelledby="pills-recentactivity-tab">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">activity items blah </li>
+                                    <li class="list-group-item">afsdgasggg </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade" id="pills-calendar" role="tabpanel" aria-labelledby="pills-calendar-tab">..c.</div>
+                            <div class="tab-pane fade" id="pills-documents" role="tabpanel" aria-labelledby="pills-documents-tab">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Move</a>
+                                        <a class="dropdown-item" href="#">Share</a>
+                                        <a class="dropdown-item" href="#">Mark as Read</a>
+                                        <a class="dropdown-item" href="#">Download</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Download All Case Documents</a>
+                                    </div>
+                                </div>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Add
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Document</a>
+                                        <a class="dropdown-item" href="#">Document from Template</a>
+                                        <a class="dropdown-item" href="#">Folder</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Apply Default Folders</a>
+                                    </div>
+                                </div>
+                                @using (Html.BeginForm("UploadDocument", "Cases", FormMethod.Post))
+                                {
+                                    <input type="hidden" name="CaseId" value="@Html.DisplayFor(m => m.CaseId)" />
+                                    <input type="file" name="file" />
+                                    <input type="submit" value="OK" />
+                                }
+                                @Html.DisplayFor(m => m.Children, "CaseDocuments")
+
+                            </div>
+                            <div class="tab-pane fade" id="pills-tasks" role="tabpanel" aria-labelledby="pills-tasks-tab">..c.</div>
+                            <div class="tab-pane fade" id="pills-messages" role="tabpanel" aria-labelledby="pills-messages-tab">..c.</div>
+                            <div class="tab-pane fade" id="pills-notes" role="tabpanel" aria-labelledby="pills-notes-tab">..c.</div>
+                            <div class="tab-pane fade" id="pills-intakeforms" role="tabpanel" aria-labelledby="pills-intakeforms-tab">..c.</div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-contactsstaff" role="tabpanel" aria-labelledby="nav-contactsstaff-tab">
+                        <br />
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Contacts</h5>
+                                            stuff
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Staff</h5>
+                                            stuff
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-statusupdates" role="tabpanel" aria-labelledby="nav-statusupdates-tab">...</div>
+                </div>
+            </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    </body>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
 
 </html>
 

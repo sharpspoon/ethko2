@@ -301,7 +301,7 @@ namespace ethko.Controllers
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 var contacts = (from c in entities.Cases
-                                //join cg in entities.ContactGroups on c.ContactGroupId equals cg.ContactGroupId
+                                    //join cg in entities.ContactGroups on c.ContactGroupId equals cg.ContactGroupId
                                 join u in entities.AspNetUsers on c.LeadAttorneyId equals u.Id
                                 join pa in entities.PracticeAreas on c.PracticeAreaId equals pa.PracticeAreaId
                                 join cs in entities.CaseStages on c.CaseStageId equals cs.CaseStageId
@@ -323,7 +323,7 @@ namespace ethko.Controllers
                                     DateOpened = x.FullDateUSA,
                                     Statute = y.FullDateUSA,
                                     DateCreated = z.FullDateUSA,
-                                    LeadAttorney = u.FName+" "+u.LName
+                                    LeadAttorney = u.FName + " " + u.LName
                                 }).FirstOrDefault();
 
 
@@ -358,6 +358,19 @@ namespace ethko.Controllers
             blob.UploadFromFileAsync(path);
 
             return RedirectToAction("Index");
+        }
+
+        //View Case Documentscase
+        [HttpGet]
+        public PartialViewResult CaseDocuments(GetCaseDocumentsViewModel model)
+        {
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                var caseDocuments = from c in entities.Cases
+                                    select new GetCaseDocumentsViewModel() { CaseName = c.CaseName.ToString() };
+                //return RedirectToAction("Cases", "Index");
+                return PartialView(caseDocuments.ToList());
+            }
         }
     }
 }

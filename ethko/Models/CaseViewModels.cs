@@ -166,5 +166,12 @@ namespace ethko.Models
         [Display(Name = "Lead Attorney")]
         public string LeadAttorney { get; set; }
         public string Files { get; set; }
+        public GetCaseDocumentsViewModel Children { get; set; }
+    }
+
+    public class GetCaseDocumentsViewModel
+    {
+        [Display(Name = "CaseName")]
+        public string CaseName { get; set; }
     }
 }
