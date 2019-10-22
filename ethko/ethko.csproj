@@ -275,6 +275,12 @@
     <Compile Include="DimDate.cs">
       <DependentUpon>ethko.tt</DependentUpon>
     </Compile>
+    <Compile Include="Document.cs">
+      <DependentUpon>ethko.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentType.cs">
+      <DependentUpon>ethko.tt</DependentUpon>
+    </Compile>
     <Compile Include="ethko.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -300,6 +306,7 @@
       <DependentUpon>ethko.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\DocumentViewModels.cs" />
     <Compile Include="Models\CaseViewModels.cs" />
     <Compile Include="Models\ContactViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />

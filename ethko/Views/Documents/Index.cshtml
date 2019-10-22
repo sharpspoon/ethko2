@@ -3,13 +3,13 @@
     ViewBag.Title = "Case Documents";
 }
 <br />
-<a class="btn btn-primary" href='@Url.Action("Index", "Contacts")'>Case Documents</a>&nbsp;
-<a class="btn btn-default" href='@Url.Action("Companies", "Contacts")'>Firm Documents</a>&nbsp;
-<a class="btn btn-default" href='@Url.Action("ContactGroups", "Contacts")'>Templates</a>&nbsp;
+<a class="btn btn-primary" href='@Url.Action("Index", "Documents")'>Case Documents</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("FirmDocuments", "Documents")'>Firm Documents</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("Templates", "Documents")'>Templates</a>&nbsp;
 <br />
 <br />
-<a class="btn btn-default" href='@Url.Action("Index", "Contacts")'>Unread</a>&nbsp;
-<a class="btn btn-primary" href='@Url.Action("ContactsArchive", "Contacts")'>All</a>
+<a class="btn btn-default" href='@Url.Action("Unread", "Documents")'>Unread</a>&nbsp;
+<a class="btn btn-primary" href='@Url.Action("Index", "Documents")'>All</a>
 <h2>
     @ViewBag.Title
 </h2>
@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
-
         .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
             background-color: #c4c4c4;
         }

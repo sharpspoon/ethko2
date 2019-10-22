@@ -299,7 +299,7 @@ namespace ethko.Models
 
     public class EditOfficeModel
     {
-        public Office officeVm { get; set; }
+        public Office OfficeVm { get; set; }
         [Display(Name = "Office Name")]
         public string OfficeName { get; set; }
 

@@ -20,7 +20,7 @@ namespace ethko.Controllers
     {
         ethko_dbEntities entities = new ethko_dbEntities();
 
-        string storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=ethko;AccountKey=Onwb/R0jWlYKaiPT6Nypnea6++vkZMVRKUp1eq97Rvpn25QKvtJrUMEPJPQyQcg/kOwpYCMaqaVF1rTot7VEJw==;EndpointSuffix=core.windows.net";
+        readonly string storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=ethko;AccountKey=Onwb/R0jWlYKaiPT6Nypnea6++vkZMVRKUp1eq97Rvpn25QKvtJrUMEPJPQyQcg/kOwpYCMaqaVF1rTot7VEJw==;EndpointSuffix=core.windows.net";
 
 
 

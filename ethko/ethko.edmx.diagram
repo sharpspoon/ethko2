@@ -5,24 +5,28 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ba4fef2103b347b78d5ba978f19e4b36" Name="Diagram1" ZoomLevel="84">
-        <EntityTypeShape EntityType="ethko_dbModel.C__MigrationHistory" Width="1.5" PointX="5.75" PointY="0.75" />
-        <EntityTypeShape EntityType="ethko_dbModel.AspNetRole" Width="1.5" PointX="1.5" PointY="27.25" />
-        <EntityTypeShape EntityType="ethko_dbModel.AspNetUserClaim" Width="1.5" PointX="3" PointY="21.75" />
-        <EntityTypeShape EntityType="ethko_dbModel.AspNetUserLogin" Width="1.5" PointX="3" PointY="19.125" />
-        <EntityTypeShape EntityType="ethko_dbModel.AspNetUser" Width="1.5" PointX="0.75" PointY="16.75" />
-        <EntityTypeShape EntityType="ethko_dbModel.BillingMethod" Width="1.5" PointX="0.75" PointY="13.375" />
-        <EntityTypeShape EntityType="ethko_dbModel.Case" Width="1.5" PointX="3" PointY="1.875" />
-        <EntityTypeShape EntityType="ethko_dbModel.CaseStage" Width="1.5" PointX="0.75" PointY="32.875" />
-        <EntityTypeShape EntityType="ethko_dbModel.Company" Width="1.5" PointX="5.75" PointY="3.75" />
-        <EntityTypeShape EntityType="ethko_dbModel.ContactGroup" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ethko_dbModel.C__MigrationHistory" Width="1.5" PointX="7.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ethko_dbModel.AspNetRole" Width="1.5" PointX="1.5" PointY="36.625" />
+        <EntityTypeShape EntityType="ethko_dbModel.AspNetUserClaim" Width="1.5" PointX="3" PointY="28.375" />
+        <EntityTypeShape EntityType="ethko_dbModel.AspNetUserLogin" Width="1.5" PointX="3" PointY="25.75" />
+        <EntityTypeShape EntityType="ethko_dbModel.AspNetUser" Width="1.5" PointX="0.75" PointY="23.25" />
+        <EntityTypeShape EntityType="ethko_dbModel.BillingMethod" Width="1.5" PointX="0.75" PointY="20" />
+        <EntityTypeShape EntityType="ethko_dbModel.Case" Width="1.5" PointX="3" PointY="1.75" />
+        <EntityTypeShape EntityType="ethko_dbModel.CaseStage" Width="1.5" PointX="0.75" PointY="16.75" />
+        <EntityTypeShape EntityType="ethko_dbModel.Company" Width="1.5" PointX="5.75" PointY="7.75" />
+        <EntityTypeShape EntityType="ethko_dbModel.ContactGroup" Width="1.5" PointX="7.75" PointY="7.75" />
         <EntityTypeShape EntityType="ethko_dbModel.Contact" Width="1.5" PointX="0.75" PointY="1.125" />
-        <EntityTypeShape EntityType="ethko_dbModel.DimDate" Width="1.5" PointX="7.75" PointY="3.75" />
-        <EntityTypeShape EntityType="ethko_dbModel.LeadReferralSource" Width="1.5" PointX="2.75" PointY="8.75" />
-        <EntityTypeShape EntityType="ethko_dbModel.LeadStatus" Width="1.5" PointX="4.75" PointY="8.75" />
-        <EntityTypeShape EntityType="ethko_dbModel.Notification" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ethko_dbModel.DimDate" Width="1.5" PointX="9.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ethko_dbModel.Document" Width="1.5" PointX="5.25" PointY="3.25" />
+        <EntityTypeShape EntityType="ethko_dbModel.DocumentType" Width="1.5" PointX="3" PointY="9.5" />
+        <EntityTypeShape EntityType="ethko_dbModel.LeadReferralSource" Width="1.5" PointX="11.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ethko_dbModel.LeadStatus" Width="1.5" PointX="11.75" PointY="8.75" />
+        <EntityTypeShape EntityType="ethko_dbModel.Notification" Width="1.5" PointX="5.75" PointY="12.75" />
         <EntityTypeShape EntityType="ethko_dbModel.Office" Width="1.5" PointX="0.75" PointY="10.125" />
-        <EntityTypeShape EntityType="ethko_dbModel.PracticeArea" Width="1.5" PointX="0.75" PointY="36.25" />
-        <EntityTypeShape EntityType="ethko_dbModel.UserType" Width="1.5" PointX="1.5" PointY="29.625" />
+        <EntityTypeShape EntityType="ethko_dbModel.PracticeArea" Width="1.5" PointX="0.75" PointY="13.375" />
+        <EntityTypeShape EntityType="ethko_dbModel.Priority" Width="1.5" PointX="7.75" PointY="1" />
+        <EntityTypeShape EntityType="ethko_dbModel.ToDo" Width="1.5" PointX="10" PointY="1" />
+        <EntityTypeShape EntityType="ethko_dbModel.UserType" Width="1.5" PointX="1.5" PointY="33.875" />
         <AssociationConnector Association="ethko_dbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="ethko_dbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="ethko_dbModel.FK_AspNetUsers_ToUserTypes" />
@@ -33,10 +37,10 @@
         <AssociationConnector Association="ethko_dbModel.FK_Cases_ToContacts2" />
         <AssociationConnector Association="ethko_dbModel.FK_Cases_ToOffices" />
         <AssociationConnector Association="ethko_dbModel.FK_Cases_ToPracticeAreas" />
+        <AssociationConnector Association="ethko_dbModel.FK_Documents_ToCases" />
+        <AssociationConnector Association="ethko_dbModel.FK_Documents_ToDocumentTypes" />
+        <AssociationConnector Association="ethko_dbModel.FK_Tasks_ToPriorities" />
         <AssociationConnector Association="ethko_dbModel.AspNetUserRoles" />
-        <EntityTypeShape EntityType="ethko_dbModel.Priority" Width="1.5" PointX="12.375" PointY="1" />
-        <EntityTypeShape EntityType="ethko_dbModel.ToDo" Width="1.5" PointX="14.625" PointY="1" />
-        <AssociationConnector Association="ethko_dbModel.FK_Tasks_ToTasksPriorities" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

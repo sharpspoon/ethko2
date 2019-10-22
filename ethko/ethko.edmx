@@ -248,6 +248,32 @@
           <Property Name="IsHolidayUK" Type="bit" />
           <Property Name="HolidayUK" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Documents">
+          <Key>
+            <PropertyRef Name="DocumentId" />
+          </Key>
+          <Property Name="DocumentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DocumentTypeId" Type="int" Nullable="false" />
+          <Property Name="CaseId" Type="int" Nullable="false" />
+          <Property Name="DocumentName" Type="varchar(max)" Nullable="false" />
+          <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="InsDate" Type="int" Nullable="false" />
+          <Property Name="LstDate" Type="int" Nullable="false" />
+          <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DocumentTypes">
+          <Key>
+            <PropertyRef Name="DocumentTypeId" />
+          </Key>
+          <Property Name="DocumentTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DocumentTypeName" Type="varchar(max)" Nullable="false" />
+          <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="InsDate" Type="int" Nullable="false" />
+          <Property Name="LstDate" Type="int" Nullable="false" />
+          <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
         <EntityType Name="LeadReferralSources">
           <Key>
             <PropertyRef Name="ReferralSourceId" />
@@ -662,7 +688,31 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Tasks_ToTasksPriorities">
+        <Association Name="FK_Documents_ToCases">
+          <End Role="Cases" Type="Self.Cases" Multiplicity="1" />
+          <End Role="Documents" Type="Self.Documents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cases">
+              <PropertyRef Name="CaseId" />
+            </Principal>
+            <Dependent Role="Documents">
+              <PropertyRef Name="CaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Documents_ToDocumentTypes">
+          <End Role="DocumentTypes" Type="Self.DocumentTypes" Multiplicity="1" />
+          <End Role="Documents" Type="Self.Documents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentTypes">
+              <PropertyRef Name="DocumentTypeId" />
+            </Principal>
+            <Dependent Role="Documents">
+              <PropertyRef Name="DocumentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tasks_ToPriorities">
           <End Role="Priorities" Type="Self.Priorities" Multiplicity="1" />
           <End Role="ToDos" Type="Self.ToDos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -688,6 +738,8 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySet Name="ContactGroups" EntityType="Self.ContactGroups" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DimDate" EntityType="Self.DimDate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Documents" EntityType="Self.Documents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocumentTypes" EntityType="Self.DocumentTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LeadReferralSources" EntityType="Self.LeadReferralSources" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LeadStatuses" EntityType="Self.LeadStatuses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
@@ -754,7 +806,15 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
-          <AssociationSet Name="FK_Tasks_ToTasksPriorities" Association="Self.FK_Tasks_ToTasksPriorities">
+          <AssociationSet Name="FK_Documents_ToCases" Association="Self.FK_Documents_ToCases">
+            <End Role="Cases" EntitySet="Cases" />
+            <End Role="Documents" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documents_ToDocumentTypes" Association="Self.FK_Documents_ToDocumentTypes">
+            <End Role="DocumentTypes" EntitySet="DocumentTypes" />
+            <End Role="Documents" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tasks_ToPriorities" Association="Self.FK_Tasks_ToPriorities">
             <End Role="Priorities" EntitySet="Priorities" />
             <End Role="ToDos" EntitySet="ToDos" />
           </AssociationSet>
@@ -793,11 +853,15 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySet Name="ContactGroups" EntityType="ethko_dbModel.ContactGroup" />
           <EntitySet Name="Contacts" EntityType="ethko_dbModel.Contact" />
           <EntitySet Name="DimDates" EntityType="ethko_dbModel.DimDate" />
+          <EntitySet Name="Documents" EntityType="ethko_dbModel.Document" />
+          <EntitySet Name="DocumentTypes" EntityType="ethko_dbModel.DocumentType" />
           <EntitySet Name="LeadReferralSources" EntityType="ethko_dbModel.LeadReferralSource" />
           <EntitySet Name="LeadStatuses" EntityType="ethko_dbModel.LeadStatus" />
           <EntitySet Name="Notifications" EntityType="ethko_dbModel.Notification" />
           <EntitySet Name="Offices" EntityType="ethko_dbModel.Office" />
           <EntitySet Name="PracticeAreas" EntityType="ethko_dbModel.PracticeArea" />
+          <EntitySet Name="Priorities" EntityType="ethko_dbModel.Priority" />
+          <EntitySet Name="ToDos" EntityType="ethko_dbModel.ToDo" />
           <EntitySet Name="UserTypes" EntityType="ethko_dbModel.UserType" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="ethko_dbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
@@ -839,15 +903,21 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             <End Role="PracticeArea" EntitySet="PracticeAreas" />
             <End Role="Case" EntitySet="Cases" />
           </AssociationSet>
+          <AssociationSet Name="FK_Documents_ToCases" Association="ethko_dbModel.FK_Documents_ToCases">
+            <End Role="Case" EntitySet="Cases" />
+            <End Role="Document" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documents_ToDocumentTypes" Association="ethko_dbModel.FK_Documents_ToDocumentTypes">
+            <End Role="DocumentType" EntitySet="DocumentTypes" />
+            <End Role="Document" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tasks_ToPriorities" Association="ethko_dbModel.FK_Tasks_ToPriorities">
+            <End Role="Priority" EntitySet="Priorities" />
+            <End Role="ToDo" EntitySet="ToDos" />
+          </AssociationSet>
           <AssociationSet Name="AspNetUserRoles" Association="ethko_dbModel.AspNetUserRoles">
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
-          </AssociationSet>
-          <EntitySet Name="Priorities" EntityType="ethko_dbModel.Priority" />
-          <EntitySet Name="ToDos" EntityType="ethko_dbModel.ToDo" />
-          <AssociationSet Name="FK_Tasks_ToTasksPriorities" Association="ethko_dbModel.FK_Tasks_ToTasksPriorities">
-            <End Role="Priority" EntitySet="Priorities" />
-            <End Role="ToDo" EntitySet="ToDos" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="C__MigrationHistory">
@@ -980,6 +1050,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <NavigationProperty Name="Contact1" Relationship="ethko_dbModel.FK_Cases_ToContacts2" FromRole="Case" ToRole="Contact" />
           <NavigationProperty Name="Office" Relationship="ethko_dbModel.FK_Cases_ToOffices" FromRole="Case" ToRole="Office" />
           <NavigationProperty Name="PracticeArea" Relationship="ethko_dbModel.FK_Cases_ToPracticeAreas" FromRole="Case" ToRole="PracticeArea" />
+          <NavigationProperty Name="Documents" Relationship="ethko_dbModel.FK_Documents_ToCases" FromRole="Case" ToRole="Document" />
         </EntityType>
         <EntityType Name="CaseStage">
           <Key>
@@ -1103,6 +1174,35 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="HolidayUSA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsHolidayUK" Type="Boolean" />
           <Property Name="HolidayUK" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="DocumentId" />
+          </Key>
+          <Property Name="DocumentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DocumentTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CaseId" Type="Int32" Nullable="false" />
+          <Property Name="DocumentName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Case" Relationship="ethko_dbModel.FK_Documents_ToCases" FromRole="Document" ToRole="Case" />
+          <NavigationProperty Name="DocumentType" Relationship="ethko_dbModel.FK_Documents_ToDocumentTypes" FromRole="Document" ToRole="DocumentType" />
+        </EntityType>
+        <EntityType Name="DocumentType">
+          <Key>
+            <PropertyRef Name="DocumentTypeId" />
+          </Key>
+          <Property Name="DocumentTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DocumentTypeName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Documents" Relationship="ethko_dbModel.FK_Documents_ToDocumentTypes" FromRole="DocumentType" ToRole="Document" />
         </EntityType>
         <EntityType Name="LeadReferralSource">
           <Key>
@@ -1316,6 +1416,33 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Cases" Relationship="ethko_dbModel.FK_Cases_ToPracticeAreas" FromRole="PracticeArea" ToRole="Case" />
         </EntityType>
+        <EntityType Name="Priority">
+          <Key>
+            <PropertyRef Name="PriorityId" />
+          </Key>
+          <Property Name="PriorityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PriorityName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="ToDos" Relationship="ethko_dbModel.FK_Tasks_ToPriorities" FromRole="Priority" ToRole="ToDo" />
+        </EntityType>
+        <EntityType Name="ToDo">
+          <Key>
+            <PropertyRef Name="ToDoId" />
+          </Key>
+          <Property Name="ToDoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ToDoName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ToDoPriorityId" Type="Int32" Nullable="false" />
+          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Priority" Relationship="ethko_dbModel.FK_Tasks_ToPriorities" FromRole="ToDo" ToRole="Priority" />
+        </EntityType>
         <EntityType Name="UserType">
           <Key>
             <PropertyRef Name="UserTypeId" />
@@ -1450,38 +1577,31 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="AspNetUserRoles">
-          <End Type="ethko_dbModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
-          <End Type="ethko_dbModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        <Association Name="FK_Documents_ToCases">
+          <End Type="ethko_dbModel.Case" Role="Case" Multiplicity="1" />
+          <End Type="ethko_dbModel.Document" Role="Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Case">
+              <PropertyRef Name="CaseId" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="CaseId" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
-        <EntityType Name="Priority">
-          <Key>
-            <PropertyRef Name="PriorityId" />
-          </Key>
-          <Property Name="PriorityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PriorityName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="InsDate" Type="Int32" Nullable="false" />
-          <Property Name="LstDate" Type="Int32" Nullable="false" />
-          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="ToDos" Relationship="ethko_dbModel.FK_Tasks_ToTasksPriorities" FromRole="Priority" ToRole="ToDo" />
-        </EntityType>
-        <EntityType Name="ToDo">
-          <Key>
-            <PropertyRef Name="ToDoId" />
-          </Key>
-          <Property Name="ToDoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ToDoName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ToDoPriorityId" Type="Int32" Nullable="false" />
-          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="InsDate" Type="Int32" Nullable="false" />
-          <Property Name="LstDate" Type="Int32" Nullable="false" />
-          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Priority" Relationship="ethko_dbModel.FK_Tasks_ToTasksPriorities" FromRole="ToDo" ToRole="Priority" />
-        </EntityType>
-        <Association Name="FK_Tasks_ToTasksPriorities">
+        <Association Name="FK_Documents_ToDocumentTypes">
+          <End Type="ethko_dbModel.DocumentType" Role="DocumentType" Multiplicity="1" />
+          <End Type="ethko_dbModel.Document" Role="Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentType">
+              <PropertyRef Name="DocumentTypeId" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="DocumentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tasks_ToPriorities">
           <End Type="ethko_dbModel.Priority" Role="Priority" Multiplicity="1" />
           <End Type="ethko_dbModel.ToDo" Role="ToDo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1493,7 +1613,11 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="AspNetUserRoles">
+          <End Type="ethko_dbModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="ethko_dbModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1755,6 +1879,34 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="ethko_dbModel.Document">
+              <MappingFragment StoreEntitySet="Documents">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+                <ScalarProperty Name="CaseId" ColumnName="CaseId" />
+                <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocumentTypes">
+            <EntityTypeMapping TypeName="ethko_dbModel.DocumentType">
+              <MappingFragment StoreEntitySet="DocumentTypes">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="DocumentTypeName" ColumnName="DocumentTypeName" />
+                <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="LeadReferralSources">
             <EntityTypeMapping TypeName="ethko_dbModel.LeadReferralSource">
               <MappingFragment StoreEntitySet="LeadReferralSources">
@@ -1970,24 +2122,6 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UserTypes">
-            <EntityTypeMapping TypeName="ethko_dbModel.UserType">
-              <MappingFragment StoreEntitySet="UserTypes">
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
-                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <AssociationSetMapping Name="AspNetUserRoles" TypeName="ethko_dbModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-            <EndProperty Name="AspNetUser">
-              <ScalarProperty Name="Id" ColumnName="UserId" />
-            </EndProperty>
-            <EndProperty Name="AspNetRole">
-              <ScalarProperty Name="Id" ColumnName="RoleId" />
-            </EndProperty>
-          </AssociationSetMapping>
           <EntitySetMapping Name="Priorities">
             <EntityTypeMapping TypeName="ethko_dbModel.Priority">
               <MappingFragment StoreEntitySet="Priorities">
@@ -2015,6 +2149,24 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="ethko_dbModel.UserType">
+              <MappingFragment StoreEntitySet="UserTypes">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="ethko_dbModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

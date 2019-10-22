@@ -1,5 +1,6 @@
 ﻿--Drop All Tables
-drop table IF EXISTS  Cases
+drop table IF EXISTS Documents
+drop table IF EXISTS Cases
 drop table IF EXISTS BillingMethods
 drop table IF EXISTS Offices
 drop table IF EXISTS CaseStages
@@ -16,8 +17,9 @@ drop table IF EXISTS UserTypes
 drop table IF EXISTS LeadReferralSources
 drop table IF EXISTS LeadStatuses
 drop table IF EXISTS Notifications
-drop table IF EXISTS TasksPriorities
-drop table IF EXISTS Tasks
+drop table IF EXISTS ToDos
+drop table IF EXISTS Priorities
+drop table IF EXISTS DocumentTypes
 
 
 
@@ -471,31 +473,61 @@ CREATE TABLE [dbo].[Notifications] (
     CONSTRAINT [PK_dbo.Notifications] PRIMARY KEY CLUSTERED ([NotificationId] ASC)
 );
 
---TasksPriorities
-CREATE TABLE [dbo].[TasksPriorities] (
-    [TaskPriorityId]   INT            IDENTITY (1, 1) NOT NULL,
-    [TaskPriorityName] VARCHAR (MAX)  NOT NULL,
+--Priorities
+CREATE TABLE [dbo].[Priorities] (
+    [PriorityId]   INT            IDENTITY (1, 1) NOT NULL,
+    [PriorityName] VARCHAR (MAX)  NOT NULL,
     [FstUser]          NVARCHAR (128) NOT NULL,
     [InsDate]          INT  NOT NULL,
 	[LstDate]         INT  NOT NULL,
 	[LstUser]         NVARCHAR (128) NOT NULL,
     [RowVersion]       ROWVERSION     NOT NULL,
-	CONSTRAINT [PK_dbo.TasksPriorities] PRIMARY KEY CLUSTERED ([TaskPriorityId] ASC)
+	CONSTRAINT [PK_dbo.Priorities] PRIMARY KEY CLUSTERED ([PriorityId] ASC)
 );
 
 --Tasks
-CREATE TABLE [dbo].[Tasks] (
-    [TaskId]   INT            IDENTITY (1, 1) NOT NULL,
-    [TaskName] VARCHAR (MAX)  NOT NULL,
-	[TaskPriorityId]       INT            NOT NULL,
+CREATE TABLE [dbo].[ToDos] (
+    [ToDoId]   INT            IDENTITY (1, 1) NOT NULL,
+    [ToDoName] VARCHAR (MAX)  NOT NULL,
+	[ToDoPriorityId]       INT            NOT NULL,
     [FstUser]          NVARCHAR (128) NOT NULL,
     [InsDate]          INT  NOT NULL,
 	[LstDate]         INT  NOT NULL,
 	[LstUser]         NVARCHAR (128) NOT NULL,
     [RowVersion]       ROWVERSION     NOT NULL,
-	CONSTRAINT [PK_dbo.Tasks] PRIMARY KEY CLUSTERED ([TaskId] ASC),
-	CONSTRAINT [FK_Tasks_ToTasksPriorities] FOREIGN KEY ([TaskPriorityId]) REFERENCES [dbo].[TasksPriorities] ([TaskPriorityId])
+	CONSTRAINT [PK_dbo.ToDos] PRIMARY KEY CLUSTERED ([ToDoId] ASC),
+	CONSTRAINT [FK_Tasks_ToPriorities] FOREIGN KEY ([ToDoPriorityId]) REFERENCES [dbo].[Priorities] ([PriorityId])
 );
+
+--DocumentTypes
+CREATE TABLE [dbo].[DocumentTypes] (
+    [DocumentTypeId]   INT            IDENTITY (1, 1) NOT NULL,
+    [DocumentTypeName] VARCHAR (MAX)  NOT NULL,
+    [FstUser]          NVARCHAR (128) NOT NULL,
+    [InsDate]          INT  NOT NULL,
+	[LstDate]         INT  NOT NULL,
+	[LstUser]         NVARCHAR (128) NOT NULL,
+    [RowVersion]       ROWVERSION     NOT NULL,
+	CONSTRAINT [PK_dbo.DocumentTypes] PRIMARY KEY CLUSTERED ([DocumentTypeId] ASC)
+);
+
+--Documents
+CREATE TABLE [dbo].[Documents] (
+    [DocumentId]   INT            IDENTITY (1, 1) NOT NULL,
+	[DocumentTypeId]       INT            NOT NULL,
+	[CaseId]       INT            NOT NULL,
+    [DocumentName] VARCHAR (MAX)  NOT NULL,
+    [FstUser]          NVARCHAR (128) NOT NULL,
+    [InsDate]          INT  NOT NULL,
+	[LstDate]         INT  NOT NULL,
+	[LstUser]         NVARCHAR (128) NOT NULL,
+    [RowVersion]       ROWVERSION     NOT NULL,
+	CONSTRAINT [PK_dbo.Documents] PRIMARY KEY CLUSTERED ([DocumentId] ASC),
+	CONSTRAINT [FK_Documents_ToDocumentTypes] FOREIGN KEY ([DocumentTypeId]) REFERENCES [dbo].[DocumentTypes] ([DocumentTypeId]),
+	CONSTRAINT [FK_Documents_ToCases] FOREIGN KEY ([CaseId]) REFERENCES [dbo].[Cases] ([CaseId])
+);
+
+
 
 DECLARE @CurrentDate AS DATETIME = GETDATE()
 DECLARE @CurrentDateChar char(8) = CONVERT (char(8),@CurrentDate,112)
@@ -601,10 +633,17 @@ insert into Notifications
 values
 ( (select id from AspNetUsers where UserName='system@steelcitysites.net'), (select id from AspNetUsers where UserName='system@steelcitysites.net'), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), CONVERT (INT,@CurrentDateChar))
 
-insert into TasksPriorities
-(TaskPriorityName, InsDate, FstUser, LstDate, LstUser)
+insert into Priorities
+(PriorityName, InsDate, FstUser, LstDate, LstUser)
 values
 ('Low', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
 ('Medium', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
 ('High', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
 ('Critical', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'))
+
+insert into DocumentTypes
+(DocumentTypeName, InsDate, FstUser, LstDate, LstUser)
+values
+('Case', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Firm', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
+('Template', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'))
