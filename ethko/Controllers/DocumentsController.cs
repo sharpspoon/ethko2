@@ -1,8 +1,11 @@
 ﻿using ethko.Models;
 using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
+using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace ethko.Controllers
@@ -10,8 +13,11 @@ namespace ethko.Controllers
     [Authorize]
     public class DocumentsController : Controller
     {
-        static readonly string subscriptionKey = Environment.GetEnvironmentVariable("07c8c872b1844e49ac5db5258dc53dc3");
-        static readonly string endpoint = Environment.GetEnvironmentVariable("https://ethko.cognitiveservices.azure.com/");
+        static string subscriptionKey = "07c8c872b1844e49ac5db5258dc53dc3";
+        static string endpoint = "https://ethko.cognitiveservices.azure.com/";
+
+        private const string EXTRACT_TEXT_URL_IMAGE = "https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg";
+
 
         public ActionResult Index()
         {
@@ -47,6 +53,44 @@ namespace ethko.Controllers
             }
         }
 
+        public static async Task ExtractTextUrl(ComputerVisionClient client, string urlImage)
+        {
+            Console.WriteLine("start of the ocr extracttexturl");
+            BatchReadFileHeaders textHeaders = await client.BatchReadFileAsync(urlImage);
+            string operationLocation = textHeaders.OperationLocation;
+            // Retrieve the URI where the recognized text will be stored from the Operation-Location header. 
+            // We only need the ID and not the full URL
+            const int numberOfCharsInOperationId = 36;
+            string operationId = operationLocation.Substring(operationLocation.Length - numberOfCharsInOperationId);
+
+            // Extract the text 
+            // Delay is between iterations and tries a maximum of 10 times.
+            int i = 0;
+            int maxRetries = 10;
+            ReadOperationResult results;
+            Console.WriteLine($"Extracting text from URL image {Path.GetFileName(urlImage)}...");
+            Console.WriteLine();
+            do
+            {
+                results = await client.GetReadOperationResultAsync(operationId);
+                Console.WriteLine("Server status: {0}, waiting {1} seconds...", results.Status, i);
+                await Task.Delay(1000);
+            }
+            while ((results.Status == TextOperationStatusCodes.Running ||
+                    results.Status == TextOperationStatusCodes.NotStarted) && i++ < maxRetries);
+            // Display the found text.
+            Console.WriteLine();
+            var recognitionResults = results.RecognitionResults;
+            foreach (TextRecognitionResult result in recognitionResults)
+            {
+                foreach (Line line in result.Lines)
+                {
+                    Console.WriteLine(line.Text);
+                }
+            }
+            Console.WriteLine();
+        }
+
         public static ComputerVisionClient Authenticate(string endpoint, string key)
         {
             ComputerVisionClient client =
@@ -58,8 +102,10 @@ namespace ethko.Controllers
         [HttpPost]
         public ActionResult OCR()
         {
+            Console.WriteLine("start of the ocr post");
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
-            return RedirectToAction("Index", "Documents"); ;
+            ExtractTextUrl(client, EXTRACT_TEXT_URL_IMAGE).Wait();
+            return RedirectToAction("Index", "Documents");
         }
     }
 }
