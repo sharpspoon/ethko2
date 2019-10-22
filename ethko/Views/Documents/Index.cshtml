@@ -49,11 +49,10 @@
                         {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.DocumentName)
-                                </td>
+                                    <a href='@Url.Action("ViewDocument", "Documents", new { DocumentId = item.DocumentId})'>@Html.DisplayFor(modelItem => item.DocumentName)</a>
+</td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.CaseName)
-
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.InsDate)

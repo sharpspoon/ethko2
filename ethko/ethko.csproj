@@ -3516,6 +3516,7 @@
     <Content Include="Views\Cases\ViewCase.cshtml" />
     <Content Include="Views\Contacts\_AddContactModal.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CaseDocuments.cshtml" />
+    <Content Include="Views\Documents\ViewDocument.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

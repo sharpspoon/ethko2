@@ -1,0 +1,84 @@
+﻿@model ethko.Models.GetIndividualDocumentViewModel
+@{
+    ViewBag.Title = "Document Details";
+}
+@using System.Collections.Generic;
+<br />
+<a class="btn btn-default" href='@Url.Action("Index", "Documents")'>Case Documents</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("FirmDocuments", "Documents")'>Firm Documents</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("Templates", "Documents")'>Templates</a>&nbsp;
+<a class="btn btn-primary" href=#>View Document</a>&nbsp;
+<br />
+<br />
+<h2>
+    @ViewBag.Title
+</h2>
+
+
+@Html.AntiForgeryToken()
+<hr />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+</head>
+<body style="margin:20px auto">
+
+    <div class="container">
+        <h2>@Html.DisplayFor(m => m.DocumentName)</h2>
+        <h5>@Html.DisplayFor(m => m.CaseName)</h5>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card border-dark mb-3" style="max-width: 18rem;">
+                    <div class="card-header">
+                        File Info:
+                    </div>
+                    <div class="card-body text-dark">
+                        <h5 class="card-title">Opened</h5>
+                        <p class="card-text">@Html.DisplayFor(m => m.CaseName)</p>
+                        <h5 class="card-title">Practice Area</h5>
+                        <p class="card-text">@Html.DisplayFor(m => m.CaseName)</p>
+                        <h5 class="card-title">Case Stage</h5>
+                        <p class="card-text">@Html.DisplayFor(m => m.CaseName)</p>
+                        <h5 class="card-title">Lead Attorney</h5>
+                        <p class="card-text">@Html.DisplayFor(m => m.CaseName)</p>
+                        <h5 class="card-title">Staff</h5>
+                        <p class="card-text">@Html.DisplayFor(m => m.CaseName)</p>
+                        <h5 class="card-title">Description</h5>
+                        <p class="card-text">@Html.DisplayFor(m => m.CaseName)</p>
+                        <h5 class="card-title">Created</h5>
+                        <p class="card-text">@Html.DisplayFor(m => m.CaseName)</p>
+                        <h5 class="card-title">Case Id</h5>
+                        <p class="card-text">@Html.DisplayFor(m => m.CaseName, new { @class = "form-control", @name = "case-id", @id = "case-id" })</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                OCR scan document
+            </div>
+
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#myTable').dataTable();
+        });
+    </script>
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+    <style>
+
+        .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+            background-color: #c4c4c4;
+        }
+    </style>
+}
