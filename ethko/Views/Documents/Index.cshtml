@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ethko.Models.GetContactListViewModel>
+﻿@model IEnumerable<ethko.Models.GetDocumentsViewModel>
 @{
     ViewBag.Title = "Case Documents";
 }
@@ -32,16 +32,6 @@
     <html lang="en">
     <body style="margin:20px auto">
         <div class="container">
-            <br />
-            Select Group
-            <select id='filterText' style='display:inline-block' onchange='filterText()'>
-                <option disabled selected>Select</option>
-                <option value='yes'>Yes</option>
-                <option value='no'>No</option>
-                <option value='all'>All</option>
-            </select>
-            <br />
-            <br />
             <table id="myTable" class="table table-hover">
                 <thead>
                     <tr>
@@ -59,29 +49,22 @@
                         {
                             <tr>
                                 <td>
-                                    <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.ContactId})'>@Html.DisplayFor(modelItem => item.FName)</a>
+                                    @Html.DisplayFor(modelItem => item.DocumentName)
                                 </td>
                                 <td>
-                                    <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.ContactId})'>@Html.DisplayFor(modelItem => item.LName)</a>
-
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ContactGroupList)
+                                    @Html.DisplayFor(modelItem => item.CaseName)
 
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.InsDate)
                                     by @Html.DisplayFor(modelItem => item.FullName)
+
                                 </td>
                                 <td>
-                                    <div class="edit">
-                                        <a href='@Url.Action("EditContact", "Contacts", new { ContactId = item.ContactId })'>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 8 8">
-                                                <title>Edit</title>
-                                                <path d="M6 0l-1 1 2 2 1-1-2-2zm-2 2l-4 4v2h2l4-4-2-2z" />
-                                            </svg>
-                                        </a>
-                                    </div>
+svg here
+                                </td>
+                                <td>
+asdf
                                 </td>
                             </tr>
                         }

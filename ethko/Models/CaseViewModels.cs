@@ -174,4 +174,13 @@ namespace ethko.Models
         [Display(Name = "CaseName")]
         public string CaseName { get; set; }
     }
+
+    public class AddCaseDocumentsViewModel
+    {
+        [Display(Name = "CaseId")]
+        public int CaseId { get; set; }
+
+        [Display(Name = "Document Name")]
+        public string DocumentName { get; set; }
+    }
 }

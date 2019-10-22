@@ -334,16 +334,16 @@ namespace ethko.Controllers
             }
         }
 
-        public Case ConvertViewModelToModel(GetIndividualCaseViewModel vm)
+        public Document ConvertViewModelToModel(AddCaseDocumentsViewModel vm)
         {
-            return new Case()
+            return new Document()
             {
                 CaseId = vm.CaseId
             };
         }
 
         [HttpPost]
-        public ActionResult UploadDocument(GetIndividualCaseViewModel model, int CaseId)
+        public ActionResult UploadDocument(AddCaseDocumentsViewModel model, int CaseId)
         {
             CloudStorageAccount account = CloudStorageAccount.Parse(storageConnectionString);
             CloudBlobClient serviceClient = account.CreateCloudBlobClient();
@@ -357,6 +357,31 @@ namespace ethko.Controllers
             CloudBlockBlob blob = container.GetBlockBlobReference(file);
             blob.UploadFromFileAsync(path);
 
+            //write db entry on new file
+            var user = User.Identity.GetUserName().ToString();
+            var documentModel = ConvertViewModelToModel(model);
+            DateTime date = DateTime.Now;
+            int intDate = int.Parse(date.ToString("yyyyMMdd"));
+
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+
+                //var documentId = (from d in entities.Documents
+                //                select new GetDocumentsViewModel()
+                //                {
+                //                    DocumentId = d.DocumentId
+                //                }).FirstOrDefault();
+
+                entities.Documents.Add(documentModel);
+                documentModel.InsDate = intDate;
+                documentModel.LstDate = intDate;
+                documentModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+                documentModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+                documentModel.DocumentName = file;
+                documentModel.DocumentTypeId = 1;
+                documentModel.CaseId = CaseId;
+                entities.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
 

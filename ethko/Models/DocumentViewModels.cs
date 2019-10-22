@@ -10,17 +10,14 @@ namespace ethko.Models
 {
     public class GetDocumentsViewModel
     {
-        [Display(Name = "Practice Area")]
-        public string PracticeAreaName { get; set; }
+        [Display(Name = "Document Id")]
+        public int DocumentId { get; set; }
 
-        [Display(Name = "Active Cases")]
-        public string ActiveCases { get; set; }
+        [Display(Name = "Document Name")]
+        public string DocumentName { get; set; }
 
-        [Display(Name = "Practice Area Id")]
-        public string PracticeAreaId { get; set; }
-
-        [Display(Name = "Case Number")]
-        public string CaseNumber { get; set; }
+        [Display(Name = "Case Name")]
+        public string CaseName { get; set; }
 
         [Display(Name = "UserId")]
         public string UserId { get; set; }
@@ -30,5 +27,11 @@ namespace ethko.Models
 
         [Display(Name = "Full Name")]
         public string FullName { get; set; }
+    }
+
+    public class AddDocumentsViewModel
+    {
+        [Display(Name = "Document Name")]
+        public string DocumentName { get; set; }
     }
 }
