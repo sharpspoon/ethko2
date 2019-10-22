@@ -55,7 +55,11 @@
                 </div>
             </div>
             <div class="col-md-9">
-                OCR scan document
+                @using (Html.BeginForm("OCR", "Documents", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" name="SaveButton" value="Run OCR" class="btn btn-success" />
+                }
             </div>
 
         </div>

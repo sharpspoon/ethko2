@@ -1,4 +1,5 @@
 ﻿using ethko.Models;
+using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,9 @@ namespace ethko.Controllers
     [Authorize]
     public class DocumentsController : Controller
     {
+        static readonly string subscriptionKey = Environment.GetEnvironmentVariable("07c8c872b1844e49ac5db5258dc53dc3");
+        static readonly string endpoint = Environment.GetEnvironmentVariable("https://ethko.cognitiveservices.azure.com/");
+
         public ActionResult Index()
         {
             using (ethko_dbEntities entities = new ethko_dbEntities())
@@ -41,6 +45,21 @@ namespace ethko.Controllers
 
                 return View(document);
             }
+        }
+
+        public static ComputerVisionClient Authenticate(string endpoint, string key)
+        {
+            ComputerVisionClient client =
+                new ComputerVisionClient(new ApiKeyServiceClientCredentials(key))
+                { Endpoint = endpoint };
+            return client;
+        }
+
+        [HttpPost]
+        public ActionResult OCR()
+        {
+            ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
+            return RedirectToAction("Index", "Documents"); ;
         }
     }
 }
