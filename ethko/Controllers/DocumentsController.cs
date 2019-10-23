@@ -91,11 +91,11 @@ namespace ethko.Controllers
             Console.WriteLine();
         }
 
-        public static ComputerVisionClient Authenticate(string endpoint, string key)
+        public static ComputerVisionClient Authenticate(string end, string key)
         {
             ComputerVisionClient client =
                 new ComputerVisionClient(new ApiKeyServiceClientCredentials(key))
-                { Endpoint = endpoint };
+                { Endpoint = end };
             return client;
         }
 
