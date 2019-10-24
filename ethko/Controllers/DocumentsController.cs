@@ -1,10 +1,13 @@
 ﻿using ethko.Models;
 using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
 using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -13,10 +16,88 @@ namespace ethko.Controllers
     [Authorize]
     public class DocumentsController : Controller
     {
+        //vision
         static string subscriptionKey = "07c8c872b1844e49ac5db5258dc53dc3";
-        static string endpoint = "https://ethko.cognitiveservices.azure.com/";
+        const string endpoint = @"https://ethko.cognitiveservices.azure.com/";
+        const string uriBase = endpoint + "vision/v2.1/ocr";
+        private const string imageFilePath = @"https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg";
 
-        private const string EXTRACT_TEXT_URL_IMAGE = "https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg";
+
+        [HttpPost]
+        public ActionResult OCR()
+        {
+            MakeOCRRequest(imageFilePath).Wait();
+
+            return RedirectToAction("Index", "Documents");
+        }
+
+        static async Task MakeOCRRequest(string imageFilePath)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+
+                // Request headers.
+                client.DefaultRequestHeaders.Add(
+                    "Ocp-Apim-Subscription-Key", subscriptionKey);
+
+                // Request parameters. 
+                // The language parameter doesn't specify a language, so the 
+                // method detects it automatically.
+                // The detectOrientation parameter is set to true, so the method detects and
+                // and corrects text orientation before detecting text.
+                string requestParameters = "language=unk&detectOrientation=true";
+
+                // Assemble the URI for the REST API method.
+                string uri = uriBase + "?" + requestParameters;
+
+                HttpResponseMessage response;
+
+                // Read the contents of the specified local image
+                // into a byte array.
+                byte[] byteData = GetImageAsByteArray(imageFilePath);
+
+                // Add the byte array as an octet stream to the request body.
+                using (ByteArrayContent content = new ByteArrayContent(byteData))
+                {
+                    // This example uses the "application/octet-stream" content type.
+                    // The other content types you can use are "application/json"
+                    // and "multipart/form-data".
+                    content.Headers.ContentType =
+                        new MediaTypeHeaderValue("application/octet-stream");
+
+                    // Asynchronously call the REST API method.
+                    response = await client.PostAsync(uri, content);
+                }
+
+                // Asynchronously get the JSON response.
+                string contentString = await response.Content.ReadAsStringAsync();
+
+                // Display the JSON response.
+                Console.WriteLine("\nResponse:\n\n{0}\n",
+                    JToken.Parse(contentString).ToString());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("\n" + e.Message);
+            }
+        }
+
+        static byte[] GetImageAsByteArray(string imageFilePath)
+        {
+            // Open a read-only file stream for the specified file.
+            using (FileStream fileStream =
+                new FileStream(imageFilePath, FileMode.Open, FileAccess.Read))
+            {
+                // Read the file's contents into a byte array.
+                BinaryReader binaryReader = new BinaryReader(fileStream);
+                return binaryReader.ReadBytes((int)fileStream.Length);
+            }
+        }
+
+        //vision
+
+
 
 
         public ActionResult Index()
@@ -53,59 +134,6 @@ namespace ethko.Controllers
             }
         }
 
-        public static async Task ExtractTextUrl(ComputerVisionClient client, string urlImage)
-        {
-            Console.WriteLine("start of the ocr extracttexturl");
-            BatchReadFileHeaders textHeaders = await client.BatchReadFileAsync(urlImage);
-            string operationLocation = textHeaders.OperationLocation;
-            // Retrieve the URI where the recognized text will be stored from the Operation-Location header. 
-            // We only need the ID and not the full URL
-            const int numberOfCharsInOperationId = 36;
-            string operationId = operationLocation.Substring(operationLocation.Length - numberOfCharsInOperationId);
 
-            // Extract the text 
-            // Delay is between iterations and tries a maximum of 10 times.
-            int i = 0;
-            int maxRetries = 10;
-            ReadOperationResult results;
-            Console.WriteLine($"Extracting text from URL image {Path.GetFileName(urlImage)}...");
-            Console.WriteLine();
-            do
-            {
-                results = await client.GetReadOperationResultAsync(operationId);
-                Console.WriteLine("Server status: {0}, waiting {1} seconds...", results.Status, i);
-                await Task.Delay(1000);
-            }
-            while ((results.Status == TextOperationStatusCodes.Running ||
-                    results.Status == TextOperationStatusCodes.NotStarted) && i++ < maxRetries);
-            // Display the found text.
-            Console.WriteLine();
-            var recognitionResults = results.RecognitionResults;
-            foreach (TextRecognitionResult result in recognitionResults)
-            {
-                foreach (Line line in result.Lines)
-                {
-                    Console.WriteLine(line.Text);
-                }
-            }
-            Console.WriteLine();
-        }
-
-        public static ComputerVisionClient Authenticate(string end, string key)
-        {
-            ComputerVisionClient client =
-                new ComputerVisionClient(new ApiKeyServiceClientCredentials(key))
-                { Endpoint = end };
-            return client;
-        }
-
-        [HttpPost]
-        public ActionResult OCR()
-        {
-            Console.WriteLine("start of the ocr post");
-            ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
-            ExtractTextUrl(client, EXTRACT_TEXT_URL_IMAGE).Wait();
-            return RedirectToAction("Index", "Documents");
-        }
     }
 }
