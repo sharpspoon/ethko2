@@ -12,5 +12,11 @@ namespace ethko.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public ActionResult New()
+        {
+            return PartialView();
+        }
     }
 }

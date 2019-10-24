@@ -3532,6 +3532,7 @@
     <Content Include="Views\Documents\Unread.cshtml" />
     <Content Include="Views\Documents\Firm.cshtml" />
     <Content Include="Views\Documents\Templates.cshtml" />
+    <Content Include="Views\Tasks\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
