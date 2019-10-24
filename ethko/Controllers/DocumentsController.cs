@@ -99,7 +99,7 @@ namespace ethko.Controllers
 
 
 
-
+        [HttpGet]
         public ActionResult Index()
         {
             using (ethko_dbEntities entities = new ethko_dbEntities())
@@ -110,6 +110,51 @@ namespace ethko.Controllers
                                     join da in entities.DimDates on d.InsDate equals da.DateKey
                                    where d.DocumentTypeId == 1
                                     select new GetDocumentsViewModel() { DocumentId = d.DocumentId, DocumentName = d.DocumentName, InsDate = da.FullDateUSA.ToString(), UserId = u.UserName, FullName = u.FName + " " + u.LName, CaseName = c.CaseName };
+                return View(documentList.ToList());
+            }
+        }
+
+        [HttpGet]
+        public ActionResult Firm()
+        {
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                var documentList = from d in entities.Documents
+                                   join c in entities.Cases on d.CaseId equals c.CaseId
+                                   join u in entities.AspNetUsers on d.FstUser equals u.Id
+                                   join da in entities.DimDates on d.InsDate equals da.DateKey
+                                   where d.DocumentTypeId == 1
+                                   select new GetDocumentsViewModel() { DocumentId = d.DocumentId, DocumentName = d.DocumentName, InsDate = da.FullDateUSA.ToString(), UserId = u.UserName, FullName = u.FName + " " + u.LName, CaseName = c.CaseName };
+                return View(documentList.ToList());
+            }
+        }
+
+        [HttpGet]
+        public ActionResult Unread()
+        {
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                var documentList = from d in entities.Documents
+                                   join c in entities.Cases on d.CaseId equals c.CaseId
+                                   join u in entities.AspNetUsers on d.FstUser equals u.Id
+                                   join da in entities.DimDates on d.InsDate equals da.DateKey
+                                   where d.DocumentTypeId == 1
+                                   select new GetDocumentsViewModel() { DocumentId = d.DocumentId, DocumentName = d.DocumentName, InsDate = da.FullDateUSA.ToString(), UserId = u.UserName, FullName = u.FName + " " + u.LName, CaseName = c.CaseName };
+                return View(documentList.ToList());
+            }
+        }
+
+        [HttpGet]
+        public ActionResult Templates()
+        {
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                var documentList = from d in entities.Documents
+                                   join c in entities.Cases on d.CaseId equals c.CaseId
+                                   join u in entities.AspNetUsers on d.FstUser equals u.Id
+                                   join da in entities.DimDates on d.InsDate equals da.DateKey
+                                   where d.DocumentTypeId == 1
+                                   select new GetDocumentsViewModel() { DocumentId = d.DocumentId, DocumentName = d.DocumentName, InsDate = da.FullDateUSA.ToString(), UserId = u.UserName, FullName = u.FName + " " + u.LName, CaseName = c.CaseName };
                 return View(documentList.ToList());
             }
         }
@@ -129,11 +174,8 @@ namespace ethko.Controllers
                                     DocumentId = d.DocumentId,
                                     DocumentName = d.DocumentName
                                 }).FirstOrDefault();
-
                 return View(document);
             }
         }
-
-
     }
 }

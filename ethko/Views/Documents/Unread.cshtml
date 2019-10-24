@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<ethko.Models.GetDocumentsViewModel>
 @{
-    ViewBag.Title = "All Case Documents";
+    ViewBag.Title = "Unread Case Documents";
 }
 <br />
 <a class="btn btn-primary" href='@Url.Action("Index", "Documents")'>Case Documents</a>&nbsp;
@@ -8,8 +8,8 @@
 <a class="btn btn-default" href='@Url.Action("Templates", "Documents")'>Templates</a>&nbsp;
 <br />
 <br />
-<a class="btn btn-default" href='@Url.Action("Unread", "Documents")'>Unread</a>&nbsp;
-<a class="btn btn-primary" href='@Url.Action("Index", "Documents")'>All</a>
+<a class="btn btn-primary" href='@Url.Action("Unread", "Documents")'>Unread</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("Index", "Documents")'>All</a>
 <h2>
     @ViewBag.Title
 </h2>
