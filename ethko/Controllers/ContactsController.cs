@@ -27,6 +27,21 @@ namespace ethko.Controllers
             return View();
         }
 
+        public ActionResult NewContactModal()
+        {
+            var contactGroups = new SelectList(entities.ContactGroups.ToList(), "ContactGroupName", "ContactGroupName");
+            ViewData["DBContactGroups"] = contactGroups;
+            return PartialView("_AddContactModal");
+        }
+
+        //[ChildActionOnly]
+        //public ActionResult NewContactModal()
+        //{
+        //    var contactGroups = new SelectList(entities.ContactGroups.ToList(), "ContactGroupName", "ContactGroupName");
+        //    ViewData["DBContactGroups"] = contactGroups;
+        //    return PartialView("_AddContactModal");
+        //}
+
         public Contact ConvertViewModelToModel(AddContactIndividualViewModel vm)
         {
             return new Contact()
