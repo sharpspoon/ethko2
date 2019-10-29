@@ -64,6 +64,26 @@ namespace ethko.Controllers
         }
 
         [HttpPost]
+        public ActionResult NewContactModal(AddContactIndividualViewModel model)
+        {
+            var contactModel = ConvertViewModelToModel(model);
+            var user = User.Identity.GetUserName().ToString();
+            DateTime date = DateTime.Now;
+            int intDate = int.Parse(date.ToString("yyyyMMdd"));
+
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                entities.Contacts.Add(contactModel);
+                contactModel.InsDate = intDate;
+                string contactGroupName = Request.Form["ContactGroups"].ToString();
+                contactModel.ContactGroupId = entities.ContactGroups.Where(m => m.ContactGroupName == contactGroupName).Select(m => m.ContactGroupId).FirstOrDefault();
+                contactModel.UserId = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+                entities.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
         public ActionResult New(AddContactIndividualViewModel model)
         {
             var contactModel = ConvertViewModelToModel(model);

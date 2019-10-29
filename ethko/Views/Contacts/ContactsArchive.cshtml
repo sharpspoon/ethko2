@@ -13,7 +13,9 @@
 <a class="btn btn-primary" href='@Url.Action("ContactsArchive", "Contacts")'>Archived</a>
 <h2>
     @ViewBag.Title
-    <a class="btn btn-success" href='@Url.Action("New", "Contacts")' style="float: right">+ Add Contact</a>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#NewContactModalCenter" style="float: right">
+        + Add Contact
+    </button>
 </h2>
 
 <head>

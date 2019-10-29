@@ -13,10 +13,9 @@
 </head>
 
 <br />
-<h1>Add Contact</h1>
     <p>
         <div class="col-md-12">
-            @using (Html.BeginForm("AddContactModal", "Contacts", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            @using (Html.BeginForm("NewContactModal", "Contacts", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary("", new { @class = "text-danger" })
@@ -148,7 +147,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <a class="btn btn-default" href='@Url.Action("Index", "Contacts")'>Cancel</a>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <input type="submit" class="btn btn-success" value="Save Contact" />
                     </div>
                 </div>
