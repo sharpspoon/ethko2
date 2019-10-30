@@ -956,9 +956,9 @@ namespace ethko.Controllers
 
         // GET: /Manage/NewOffice
         [HttpGet]
-        public ActionResult NewOffice()
+        public ActionResult NewOfficeModal()
         {
-            return View();
+            return PartialView("_AddBillingMethodModal");
         }
         [HttpGet]
         public Office ConvertViewModelToModel(AddOfficeViewModel vm)
@@ -1029,9 +1029,9 @@ namespace ethko.Controllers
 
         // GET: /Manage/NewUserType
         [HttpGet]
-        public ActionResult NewUserType()
+        public ActionResult NewUserTypeModal()
         {
-            return View();
+            return PartialView("_AddBillingMethodModal");
         }
 
         public UserType ConvertViewModelToModel(AddUserTypeViewModel vm)
@@ -1119,11 +1119,11 @@ namespace ethko.Controllers
             }
         }
 
-        // GET: /Manage/NewBillingMethod
+        // GET: /Manage/NewBillingMethodModal
         [HttpGet]
-        public ActionResult NewBillingMethod()
+        public ActionResult NewBillingMethodModal()
         {
-            return View();
+            return PartialView("_AddBillingMethodModal");
         }
         
         [HttpGet]
@@ -1149,6 +1149,8 @@ namespace ethko.Controllers
                 entities.BillingMethods.Add(billingMthodModel);
                 billingMthodModel.InsDate = intDate;
                 billingMthodModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+                billingMthodModel.LstDate = intDate;
+                billingMthodModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 entities.SaveChanges();
             }
             return RedirectToAction("ClientBilling");
@@ -1254,9 +1256,9 @@ namespace ethko.Controllers
 
         // GET: /Manage/NewCaseStage
         [HttpGet]
-        public ActionResult NewCaseStage()
+        public ActionResult NewCaseStageModal()
         {
-            return View();
+            return PartialView("_AddBillingMethodModal");
         }
 
         // GET: /Manage/NewCaseStage
@@ -1350,9 +1352,9 @@ namespace ethko.Controllers
 
         // GET: /Manage/NewLeadStatus
         [HttpGet]
-        public ActionResult NewLeadStatus()
+        public ActionResult NewLeadStatusModal()
         {
-            return View();
+            return PartialView("_AddBillingMethodModal");
         }
 
         // GET: /Manage/NewLeadStatus
@@ -1410,9 +1412,9 @@ namespace ethko.Controllers
 
         // GET: /Manage/NewReferralSource
         [HttpGet]
-        public ActionResult NewLeadReferralSource()
+        public ActionResult NewLeadReferralSourceModal()
         {
-            return View();
+            return PartialView("_AddBillingMethodModal");
         }
 
         // GET: /Manage/NewReferralSource

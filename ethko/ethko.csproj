@@ -327,7 +327,6 @@
     <Compile Include="Notification.cs">
       <DependentUpon>ethko.tt</DependentUpon>
     </Compile>
-    <Compile Include="NotReferenced\ReplacedWithModals\Contacts\ContactsController.cs" />
     <Compile Include="Office.cs">
       <DependentUpon>ethko.tt</DependentUpon>
     </Compile>
@@ -3481,8 +3480,8 @@
     <Content Include="Views\Manage\Workflows.cshtml" />
     <Content Include="Views\Manage\Leads.cshtml" />
     <Content Include="Views\Manage\IntakeForms.cshtml" />
-    <Content Include="Views\Manage\_AddBillingMethod.cshtml" />
-    <Content Include="Views\Manage\NewBillingMethod.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Manage\_AddBillingMethod.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Manage\NewBillingMethod.cshtml" />
     <Content Include="Views\Manage\_DeleteOffice.cshtml" />
     <Content Include="Views\Manage\DeleteOffice.cshtml" />
     <Content Include="Views\Manage\DeleteBillingMethod.cshtml" />
@@ -3535,6 +3534,12 @@
     <Content Include="Views\Tasks\New.cshtml" />
     <Content Include="Views\Contacts\_AddContactGroupModal.cshtml" />
     <Content Include="Views\Contacts\_AddCompanyModal.cshtml" />
+    <Content Include="Views\Manage\_AddBillingMethodModal.cshtml" />
+    <Content Include="Views\Manage\_AddCaseStage - Copy.cshtml" />
+    <Content Include="Views\Manage\_AddLeadReferralSource - Copy.cshtml" />
+    <Content Include="Views\Manage\_AddLeadStatus - Copy.cshtml" />
+    <Content Include="Views\Manage\_AddOffice - Copy.cshtml" />
+    <Content Include="Views\Manage\_AddUserType - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
