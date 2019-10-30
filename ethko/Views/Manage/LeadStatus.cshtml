@@ -35,7 +35,7 @@
                     <a class="btn btn-secondary" href='@Url.Action("Leads", "Manage")'>Referral Sources</a>
                     <a class="btn btn-primary" href='@Url.Action("LeadStatus", "Manage")'>Statuses</a>
                 </div>
-                <a class="btn btn-success" href='@Url.Action("NewLeadStatus", "Manage")' style="float: right">+ Add Status</a>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#NewLeadStatusModalCenter" style="float: right">+ Add Status</button>
                 <br />
                 <br />
                 <table id="myTable" class="table table-hover">

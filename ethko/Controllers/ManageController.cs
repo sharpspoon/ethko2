@@ -1284,6 +1284,8 @@ namespace ethko.Controllers
                 entities.CaseStages.Add(caseStageModel);
                 caseStageModel.InsDate = intDate;
                 caseStageModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+                caseStageModel.LstDate = intDate;
+                caseStageModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 entities.SaveChanges();
             }
             return RedirectToAction("CaseStages");
@@ -1380,6 +1382,8 @@ namespace ethko.Controllers
                 entities.LeadStatuses.Add(leadStatusModel);
                 leadStatusModel.InsDate = intDate;
                 leadStatusModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+                leadStatusModel.LstDate = intDate;
+                leadStatusModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 entities.SaveChanges();
             }
             return RedirectToAction("LeadStatus");
@@ -1440,6 +1444,8 @@ namespace ethko.Controllers
                 entities.LeadReferralSources.Add(referralSourceModel);
                 referralSourceModel.InsDate = intDate;
                 referralSourceModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+                referralSourceModel.LstDate = intDate;
+                referralSourceModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 entities.SaveChanges();
             }
             return RedirectToAction("Leads");
