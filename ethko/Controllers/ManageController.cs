@@ -958,7 +958,7 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult NewOfficeModal()
         {
-            return PartialView("_AddBillingMethodModal");
+            return PartialView("_AddOfficeModal");
         }
         [HttpGet]
         public Office ConvertViewModelToModel(AddOfficeViewModel vm)
@@ -1027,11 +1027,11 @@ namespace ethko.Controllers
         //User Types//
         //############
 
-        // GET: /Manage/NewUserType
+        // GET: /Manage/NewUserTypeModal
         [HttpGet]
         public ActionResult NewUserTypeModal()
         {
-            return PartialView("_AddBillingMethodModal");
+            return PartialView("_AddUserTypeModal");
         }
 
         public UserType ConvertViewModelToModel(AddUserTypeViewModel vm)
@@ -1258,7 +1258,7 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult NewCaseStageModal()
         {
-            return PartialView("_AddBillingMethodModal");
+            return PartialView("_AddCaseStageModal");
         }
 
         // GET: /Manage/NewCaseStage
@@ -1354,7 +1354,7 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult NewLeadStatusModal()
         {
-            return PartialView("_AddBillingMethodModal");
+            return PartialView("_AddLeadStatusModal");
         }
 
         // GET: /Manage/NewLeadStatus
@@ -1414,7 +1414,7 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult NewLeadReferralSourceModal()
         {
-            return PartialView("_AddBillingMethodModal");
+            return PartialView("_AddLeadReferralSourceModal");
         }
 
         // GET: /Manage/NewReferralSource

@@ -3463,12 +3463,12 @@
     <Content Include="Views\Cases\_AddPracticeArea.cshtml" />
     <Content Include="Views\Cases\_DeletePracticeArea.cshtml" />
     <Content Include="Views\Manage\CaseStages.cshtml" />
-    <Content Include="Views\Manage\NewCaseStage.cshtml" />
-    <Content Include="Views\Manage\_AddCaseStage.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Manage\NewCaseStage.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Manage\_AddCaseStage.cshtml" />
     <Content Include="Views\Manage\DeleteCaseStage.cshtml" />
     <Content Include="Views\Manage\_DeleteCaseStage.cshtml" />
-    <Content Include="Views\Manage\_AddOffice.cshtml" />
-    <Content Include="Views\Manage\NewOffice.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Manage\_AddOffice.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Manage\NewOffice.cshtml" />
     <Content Include="Views\Manage\FirmSettings.cshtml" />
     <Content Include="Views\Manage\MySettings.cshtml" />
     <Content Include="Views\Manage\FirmUsers.cshtml" />
@@ -3488,8 +3488,8 @@
     <Content Include="Views\Manage\_DeleteBillingMethod.cshtml" />
     <Content Include="Views\Manage\FirmUsersArchive.cshtml" />
     <Content Include="Views\Manage\UserTypes.cshtml" />
-    <Content Include="Views\Manage\_AddUserType.cshtml" />
-    <Content Include="Views\Manage\NewUserType.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Manage\_AddUserType.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Manage\NewUserType.cshtml" />
     <Content Include="Views\Manage\NewFirmUser.cshtml" />
     <Content Include="Views\Manage\_AddFirmUser.cshtml" />
     <Content Include="Scripts\umd\popper-utils.js.map" />
@@ -3507,10 +3507,10 @@
     <Content Include="Views\Manage\EditBillingMethod.cshtml" />
     <Content Include="Views\Manage\EditCaseStage.cshtml" />
     <Content Include="Views\Manage\_EditCaseStage.cshtml" />
-    <Content Include="Views\Manage\_AddLeadStatus.cshtml" />
-    <Content Include="Views\Manage\_AddLeadReferralSource.cshtml" />
-    <Content Include="Views\Manage\NewLeadStatus.cshtml" />
-    <Content Include="Views\Manage\NewLeadReferralSource.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Manage\_AddLeadStatus.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Manage\_AddLeadReferralSource.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Manage\NewLeadStatus.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Manage\NewLeadReferralSource.cshtml" />
     <Content Include="Views\Manage\DeleteLeadStatus.cshtml" />
     <Content Include="Views\Manage\_DeleteLeadStatus.cshtml" />
     <Content Include="Views\Manage\_EditLeadStatus.cshtml" />
@@ -3535,11 +3535,11 @@
     <Content Include="Views\Contacts\_AddContactGroupModal.cshtml" />
     <Content Include="Views\Contacts\_AddCompanyModal.cshtml" />
     <Content Include="Views\Manage\_AddBillingMethodModal.cshtml" />
-    <Content Include="Views\Manage\_AddCaseStage - Copy.cshtml" />
-    <Content Include="Views\Manage\_AddLeadReferralSource - Copy.cshtml" />
-    <Content Include="Views\Manage\_AddLeadStatus - Copy.cshtml" />
-    <Content Include="Views\Manage\_AddOffice - Copy.cshtml" />
-    <Content Include="Views\Manage\_AddUserType - Copy.cshtml" />
+    <Content Include="Views\Manage\_AddCaseStageModal.cshtml" />
+    <Content Include="Views\Manage\_AddLeadReferralSourceModal.cshtml" />
+    <Content Include="Views\Manage\_AddLeadStatusModal.cshtml" />
+    <Content Include="Views\Manage\_AddOfficeModal.cshtml" />
+    <Content Include="Views\Manage\_AddUserTypeModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
