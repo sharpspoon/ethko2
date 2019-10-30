@@ -11,14 +11,21 @@ using System.Data.Entity;
 namespace ethko.Controllers
 {
     [Authorize]
-    public class ContactsController : Controller
+    public class ContactsControllerBackup : Controller
     {
+        //private readonly Entities db = new Entities();
         ethko_dbEntities entities = new ethko_dbEntities();
 
         //////////
         //CONTACTS
         //////////
         //New
+        public ActionResult New()
+        {
+            var contactGroups = new SelectList(entities.ContactGroups.ToList(), "ContactGroupName", "ContactGroupName");
+            ViewData["DBContactGroups"] = contactGroups;
+            return View();
+        }
 
         public ActionResult NewContactModal()
         {
@@ -26,6 +33,14 @@ namespace ethko.Controllers
             ViewData["DBContactGroups"] = contactGroups;
             return PartialView("_AddContactModal");
         }
+
+        //[ChildActionOnly]
+        //public ActionResult NewContactModal()
+        //{
+        //    var contactGroups = new SelectList(entities.ContactGroups.ToList(), "ContactGroupName", "ContactGroupName");
+        //    ViewData["DBContactGroups"] = contactGroups;
+        //    return PartialView("_AddContactModal");
+        //}
 
         public Contact ConvertViewModelToModel(AddContactIndividualViewModel vm)
         {
@@ -50,6 +65,26 @@ namespace ethko.Controllers
 
         [HttpPost]
         public ActionResult NewContactModal(AddContactIndividualViewModel model)
+        {
+            var contactModel = ConvertViewModelToModel(model);
+            var user = User.Identity.GetUserName().ToString();
+            DateTime date = DateTime.Now;
+            int intDate = int.Parse(date.ToString("yyyyMMdd"));
+
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                entities.Contacts.Add(contactModel);
+                contactModel.InsDate = intDate;
+                string contactGroupName = Request.Form["ContactGroups"].ToString();
+                contactModel.ContactGroupId = entities.ContactGroups.Where(m => m.ContactGroupName == contactGroupName).Select(m => m.ContactGroupId).FirstOrDefault();
+                contactModel.UserId = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+                entities.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult New(AddContactIndividualViewModel model)
         {
             var contactModel = ConvertViewModelToModel(model);
             var user = User.Identity.GetUserName().ToString();
@@ -136,6 +171,10 @@ namespace ethko.Controllers
                                , Country = c.Country
                                , Archived = c.Archived
                                }).FirstOrDefault();
+
+
+                //IEnumerable<Contact> contacts = entities.Contacts.Where(m => m.Archived == 0).ToList();
+                //var contactModel = ConvertViewModelToModel(contacts);
                 return View(contacts);
             }
         }
@@ -157,8 +196,10 @@ namespace ethko.Controllers
             {
                 entities.Entry(contact).State = EntityState.Modified;
                 entities.SaveChanges();
+                //return RedirectToAction("Index");
             }
             
+            //Contact contacts = entities.Contacts.Where(m => m.ContactId == 1).SingleOrDefault();
             return RedirectToAction("Index");
         }
 
@@ -174,6 +215,19 @@ namespace ethko.Controllers
             Contact contacts = entities.Contacts.Where(m => m.ContactId == ContactId).Single();
             return View(contacts);
         }
+
+        ////[HttpPost]
+        //public ActionResult DeleteConfirmed(int? ContactId)
+        //{
+        //    if (ContactId == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Contact contacts = entities.Contacts.Find(ContactId);//works if hardcode in the contactid
+        //    entities.Contacts.Remove(contacts);
+        //    entities.SaveChanges();
+        //    return View();
+        //}
 
         //Archive Specific Contact
         [HttpGet]
@@ -274,10 +328,9 @@ namespace ethko.Controllers
         //GROUPS
         //////////
         //New
-        [HttpGet]
-        public ActionResult NewContactGroupModal()
+        public ActionResult NewGroup()
         {
-            return PartialView("_AddContactGroupModal");
+            return View();
         }
 
         public ContactGroup ConvertViewModelToModel(AddContactGroupViewModel vm)
@@ -301,8 +354,6 @@ namespace ethko.Controllers
                 entities.ContactGroups.Add(contactGroupModel);
                 contactGroupModel.InsDate = intDate;
                 contactGroupModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
-                contactGroupModel.LstDate = intDate;
-                contactGroupModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 entities.SaveChanges();
             }
             return RedirectToAction("ContactGroups");

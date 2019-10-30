@@ -327,6 +327,7 @@
     <Compile Include="Notification.cs">
       <DependentUpon>ethko.tt</DependentUpon>
     </Compile>
+    <Compile Include="NotReferenced\ReplacedWithModals\Contacts\ContactsController.cs" />
     <Compile Include="Office.cs">
       <DependentUpon>ethko.tt</DependentUpon>
     </Compile>
@@ -3437,11 +3438,11 @@
     <Content Include="Views\Contacts\Index.cshtml" />
     <Content Include="NotReferenced\ReplacedWithModals\Contacts\New.cshtml" />
     <Content Include="Views\Contacts\NewCompany.cshtml" />
-    <Content Include="Views\Contacts\NewGroup.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Contacts\NewGroup.cshtml" />
     <Content Include="Views\Contacts\ViewContact.cshtml" />
     <Content Include="Views\Contacts\_AddCompany.cshtml" />
     <Content Include="NotReferenced\ReplacedWithModals\Contacts\_AddContact.cshtml" />
-    <Content Include="Views\Contacts\_AddGroup.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Contacts\_AddGroup.cshtml" />
     <Content Include="Views\Contacts\_ArchiveContact.cshtml" />
     <Content Include="Views\Contacts\_DeleteContact.cshtml" />
     <Content Include="Views\Billing\Index.cshtml" />
@@ -3532,6 +3533,7 @@
     <Content Include="Views\Documents\Firm.cshtml" />
     <Content Include="Views\Documents\Templates.cshtml" />
     <Content Include="Views\Tasks\New.cshtml" />
+    <Content Include="Views\Contacts\_AddContactGroupModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
