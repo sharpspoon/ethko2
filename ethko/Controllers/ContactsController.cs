@@ -205,9 +205,10 @@ namespace ethko.Controllers
         //COMPANIES
         //////////
         //New
-        public ActionResult NewCompany()
+        [HttpGet]
+        public ActionResult NewCompanyModal()
         {
-            return View();
+            return PartialView("_AddCompanyModal");
         }
 
         public Company ConvertViewModelToModel(AddCompanyViewModel vm)
@@ -239,7 +240,6 @@ namespace ethko.Controllers
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 entities.Companies.Add(companyModel);
-                //var user = User.Identity.GetUserName().ToString();
                 companyModel.InsDate = intDate;
                 companyModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 entities.SaveChanges();
@@ -265,7 +265,6 @@ namespace ethko.Controllers
         public ActionResult CompaniesArchive()
         {
             IEnumerable<Company> companies = entities.Companies.Where(m => m.Archived == 1).ToList();
-            //var contactModel = ConvertViewModelToModel(contacts);
             return View(companies.AsEnumerable());
         }
 
@@ -308,7 +307,7 @@ namespace ethko.Controllers
             return RedirectToAction("ContactGroups");
         }
 
-        //View List
+        // GET: /Contacts/EditContactGroup
         [HttpGet]
         public ActionResult ContactGroups()
         {
