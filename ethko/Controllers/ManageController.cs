@@ -1075,15 +1075,16 @@ namespace ethko.Controllers
 
         // GET: /Manage/DeleteUserType
         [HttpGet]
-        public ActionResult DeleteUserType(int? UserTypeId)
+        public ActionResult DeleteUserTypeModal(int? UserTypeId)
         {
             if (UserTypeId == null)
             {
+                return PartialView("_AddUserTypeModal");
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ethko_dbEntities entities = new ethko_dbEntities();
             UserType userTypes = entities.UserTypes.Where(m => m.UserTypeId == UserTypeId).Single();
-            return View(userTypes);
+            return PartialView("_DeleteUserTypeModal", userTypes);
         }
 
         // GET: /Manage/EditUserType

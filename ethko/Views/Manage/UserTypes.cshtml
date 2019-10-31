@@ -49,17 +49,32 @@
                     <tbody>
                         @if (Model != null)
                         {
+                            int i = 0;
                             foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>
-                                        <a href='@Url.Action("EditUserType", "Manage", new { UserTypeId = item.UserTypeId})'>@Html.DisplayFor(modelItem => item.UserTypeName)</a>
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.InsDate)
-                                    </td>
-                                    <td>
-                                        <div class="edit">
+                                i++;
+                                string m = "m" + i.ToString();
+                                            <tr>
+
+
+                                                <td>
+
+
+                                                    <a href='@Url.Action("EditUserType", "Manage", new { UserTypeId = item.UserTypeId})'>@Html.DisplayFor(modelItem => item.UserTypeName)</a>
+
+
+                                                </td>
+
+
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.InsDate)
+                                                </td>
+
+
+                                                <td>
+
+
+                                                    <div class="edit">
                                             <a href='@Url.Action("EditUserType", "Manage", new { UserTypeId = item.UserTypeId })'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 8 8">
                                                     <title>Edit</title>
@@ -77,6 +92,25 @@
                                                 </svg>
                                             </a>
                                         </div>
+                                        <div class="modal fade" id='@m' tabindex="-1" role="dialog" aria-labelledby="DeleteUserTypeModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="NewCompanyModalCenterTitle">Delete User Type</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        @Html.Action("DeleteUserTypeModal", "Manage", new { UserTypeId = item.UserTypeId })')
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="delete">
+                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target='#@m' style="float: right">delete</button>
+                                        </div>
+                                        @i
                                     </td>
                                 </tr>
                             }

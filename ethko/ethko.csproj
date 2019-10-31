@@ -3540,6 +3540,7 @@
     <Content Include="Views\Manage\_AddLeadStatusModal.cshtml" />
     <Content Include="Views\Manage\_AddOfficeModal.cshtml" />
     <Content Include="Views\Manage\_AddUserTypeModal.cshtml" />
+    <Content Include="Views\Manage\_DeleteUserTypeModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
