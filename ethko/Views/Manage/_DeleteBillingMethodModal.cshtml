@@ -5,11 +5,9 @@
         <h3>Really DELETE this Billing Method?  This action is irreversible!</h3>
     </font>
     <br />
-    <h3>Billing Method: @Html.DisplayFor(m => m.BillingMethodName)</h3>
-    <br />
-    <br />
+    <h3><strong>@Html.DisplayFor(m => m.BillingMethodName)</strong></h3>
     <br />
     <br />
     @Html.AntiForgeryToken()
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>@Html.Raw("   ")<input type="submit" name="DeleteButton" value="Delete" class="btn btn-danger" />
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> <input type="submit" name="DeleteButton" value="Delete" class="btn btn-danger" />
 }

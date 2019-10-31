@@ -1377,7 +1377,7 @@ namespace ethko.Controllers
         {
             ethko_dbEntities entities = new ethko_dbEntities();
             LeadStatus leadStatuses = entities.LeadStatuses.Where(m => m.LeadStatusId == LeadStatusId).Single();
-            return View(leadStatuses);
+            return PartialView("_DeleteLeadStatusModal", leadStatuses);
         }
 
         // GET: /Manage/EditLeadStatus
@@ -1429,17 +1429,13 @@ namespace ethko.Controllers
             return RedirectToAction("Leads");
         }
 
-        // GET: /Manage/DeleteReferralSource
+        // GET: /Manage/DeleteReferralSourceModal
         [HttpGet]
-        public ActionResult DeleteLeadReferralSource(int? ReferralSourceId)
+        public ActionResult DeleteLeadReferralSourceModal(int ReferralSourceId)
         {
-            if (ReferralSourceId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             ethko_dbEntities entities = new ethko_dbEntities();
             LeadReferralSource referralSources = entities.LeadReferralSources.Where(m => m.ReferralSourceId == ReferralSourceId).Single();
-            return View(referralSources);
+            return PartialView("_DeleteLeadReferralSourceModal", referralSources);
         }
 
         // GET: /Manage/EditReferralSource

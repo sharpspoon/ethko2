@@ -5,11 +5,9 @@
         <h3>Really DELETE this Office?  This action is irreversible!</h3>
     </font>
     <br />
-    <h3>Office: @Html.DisplayFor(m => m.OfficeName)</h3>
-    <br />
-    <br />
+    <h3><strong>@Html.DisplayFor(m => m.OfficeName)</strong></h3>
     <br />
     <br />
     @Html.AntiForgeryToken()
-    <a class="btn btn-default" href='@Url.Action("FirmSettings", "Manage")'>Cancel</a>@Html.Raw("   ")<input type="submit" name="DeleteButton" value="Delete" class="btn btn-danger" />
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> <input type="submit" name="DeleteButton" value="Delete" class="btn btn-danger" />
 }

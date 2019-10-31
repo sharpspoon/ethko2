@@ -5,11 +5,9 @@
         <h3>Really DELETE this User Type?  This action is irreversible!</h3>
     </font>
     <br />
-    <h3>User Type: @Html.DisplayFor(m => m.UserTypeName)</h3>
-    <br />
-    <br />
+    <h3><strong>@Html.DisplayFor(m => m.UserTypeName)</strong></h3>
     <br />
     <br />
     @Html.AntiForgeryToken()
-    <a class="btn btn-default" href='@Url.Action("UserTypes", "Manage")'>Cancel</a>@Html.Raw("   ")<input type="submit" name="DeleteButton" value="Delete" class="btn btn-danger" />
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> <input type="submit" name="DeleteButton" value="Delete" class="btn btn-danger" />
 }

@@ -5,11 +5,9 @@
         <h3>Really DELETE this Lead Status?  This action is irreversible!</h3>
     </font>
     <br />
-    <h3>Lead Status: @Html.DisplayFor(m => m.LeadStatusName)</h3>
-    <br />
-    <br />
+    <h3><strong>@Html.DisplayFor(m => m.LeadStatusName)</strong></h3>
     <br />
     <br />
     @Html.AntiForgeryToken()
-    <a class="btn btn-default" href='@Url.Action("LeadStatus", "Manage")'>Cancel</a>@Html.Raw("   ")<input type="submit" name="DeleteButton" value="Delete" class="btn btn-danger" />
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> <input type="submit" name="DeleteButton" value="Delete" class="btn btn-danger" />
 }
