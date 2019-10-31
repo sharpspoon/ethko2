@@ -1,0 +1,15 @@
+﻿@model ethko.CaseStage
+@using (Html.BeginForm("DeleteConfirmed", "Manage", new { @class = "form-horizontal", role = "form", CaseStageId = Model.CaseStageId }))
+{
+    <font color="red">
+        <h3>Really DELETE this Case Stage?  This action is irreversible!</h3>
+    </font>
+    <br />
+    <h3>Case Stage: @Html.DisplayFor(m => m.CaseStageName)</h3>
+    <br />
+    <br />
+    <br />
+    <br />
+    @Html.AntiForgeryToken()
+    <a class="btn btn-default" href='@Url.Action("CaseStages", "Manage")'>Cancel</a>@Html.Raw("   ")<input type="submit" name="DeleteButton" value="Delete" class="btn btn-danger" />
+}

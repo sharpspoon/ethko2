@@ -1,0 +1,15 @@
+﻿@model ethko.LeadReferralSource
+@using (Html.BeginForm("DeleteConfirmed", "Manage", new { @class = "form-horizontal", role = "form", ReferralSourceId = Model.ReferralSourceId }))
+{
+    <font color="red">
+        <h3>Really DELETE this Referral Source?  This action is irreversible!</h3>
+    </font>
+    <br />
+    <h3>Lead Referral Source: @Html.DisplayFor(m => m.ReferralSourceName)</h3>
+    <br />
+    <br />
+    <br />
+    <br />
+    @Html.AntiForgeryToken()
+    <a class="btn btn-default" href='@Url.Action("Leads", "Manage")'>Cancel</a>@Html.Raw("   ")<input type="submit" name="DeleteButton" value="Delete" class="btn btn-danger" />
+}

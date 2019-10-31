@@ -920,8 +920,6 @@ namespace ethko.Controllers
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
                 entities.AspNetUsers.Add(firmUserModel);
-                //firmUserModel.InsDate = DateTime.Now;
-                //officeModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 entities.SaveChanges();
             }
             return RedirectToAction("FirmUsers");
@@ -992,15 +990,11 @@ namespace ethko.Controllers
 
         // GET: /Manage/DeleteOffice
         [HttpGet]
-        public ActionResult DeleteOffice(int? OfficeId)
+        public ActionResult DeleteOfficeModal(int OfficeId)
         {
-            if (OfficeId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             ethko_dbEntities entities = new ethko_dbEntities();
             Office offices = entities.Offices.Where(m => m.OfficeId == OfficeId).Single();
-            return View(offices);
+            return PartialView("_DeleteOfficeModal", offices);
         }
 
         // GET: /Manage/EditOffice
@@ -1073,15 +1067,10 @@ namespace ethko.Controllers
             }
         }
 
-        // GET: /Manage/DeleteUserType
+        // GET: /Manage/DeleteUserTypeModal
         [HttpGet]
-        public ActionResult DeleteUserTypeModal(int? UserTypeId)
+        public ActionResult DeleteUserTypeModal(int UserTypeId)
         {
-            if (UserTypeId == null)
-            {
-                return PartialView("_AddUserTypeModal");
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             ethko_dbEntities entities = new ethko_dbEntities();
             UserType userTypes = entities.UserTypes.Where(m => m.UserTypeId == UserTypeId).Single();
             return PartialView("_DeleteUserTypeModal", userTypes);
@@ -1157,17 +1146,13 @@ namespace ethko.Controllers
             return RedirectToAction("ClientBilling");
         }
 
-        // GET: /Manage/DeleteBillingMethod
+        // GET: /Manage/DeleteBillingMethodModal
         [HttpGet]
-        public ActionResult DeleteBillingMethod(int? BillingMethodId)
+        public ActionResult DeleteBillingMethodModal(int BillingMethodId)
         {
-            if (BillingMethodId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             ethko_dbEntities entities = new ethko_dbEntities();
             BillingMethod billingMethods = entities.BillingMethods.Where(m => m.BillingMethodId == BillingMethodId).Single();
-            return View(billingMethods);
+            return PartialView("_DeleteBillingMethodModal", billingMethods);
         }
 
         // GET: /Manage/EditBillingMethod
@@ -1292,17 +1277,13 @@ namespace ethko.Controllers
             return RedirectToAction("CaseStages");
         }
 
-        // GET: /Manage/DeleteCaseStage
+        // GET: /Manage/DeleteCaseStageModal
         [HttpGet]
-        public ActionResult DeleteCaseStage(int? CaseStageId)
+        public ActionResult DeleteCaseStageModal(int CaseStageId)
         {
-            if (CaseStageId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             ethko_dbEntities entities = new ethko_dbEntities();
             CaseStage caseStages = entities.CaseStages.Where(m => m.CaseStageId == CaseStageId).Single();
-            return View(caseStages);
+            return PartialView("_DeleteCaseStageModal", caseStages);
         }
 
         // GET: /Manage/EditCaseStage
@@ -1392,12 +1373,8 @@ namespace ethko.Controllers
 
         // GET: /Manage/DeleteLeadStatus
         [HttpGet]
-        public ActionResult DeleteLeadStatus(int? LeadStatusId)
+        public ActionResult DeleteLeadStatusModal(int LeadStatusId)
         {
-            if (LeadStatusId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             ethko_dbEntities entities = new ethko_dbEntities();
             LeadStatus leadStatuses = entities.LeadStatuses.Where(m => m.LeadStatusId == LeadStatusId).Single();
             return View(leadStatuses);

@@ -3465,8 +3465,8 @@
     <Content Include="Views\Manage\CaseStages.cshtml" />
     <Content Include="NotReferenced\ReplacedWithModals\Manage\NewCaseStage.cshtml" />
     <Content Include="NotReferenced\ReplacedWithModals\Manage\_AddCaseStage.cshtml" />
-    <Content Include="Views\Manage\DeleteCaseStage.cshtml" />
-    <Content Include="Views\Manage\_DeleteCaseStage.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Manage\DeleteCaseStage.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Manage\_DeleteCaseStage.cshtml" />
     <Content Include="NotReferenced\ReplacedWithModals\Manage\_AddOffice.cshtml" />
     <Content Include="NotReferenced\ReplacedWithModals\Manage\NewOffice.cshtml" />
     <Content Include="Views\Manage\FirmSettings.cshtml" />
@@ -3482,10 +3482,10 @@
     <Content Include="Views\Manage\IntakeForms.cshtml" />
     <Content Include="NotReferenced\ReplacedWithModals\Manage\_AddBillingMethod.cshtml" />
     <Content Include="NotReferenced\ReplacedWithModals\Manage\NewBillingMethod.cshtml" />
-    <Content Include="Views\Manage\_DeleteOffice.cshtml" />
-    <Content Include="Views\Manage\DeleteOffice.cshtml" />
-    <Content Include="Views\Manage\DeleteBillingMethod.cshtml" />
-    <Content Include="Views\Manage\_DeleteBillingMethod.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Manage\_DeleteOffice.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Manage\DeleteOffice.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Manage\DeleteBillingMethod.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Manage\_DeleteBillingMethod.cshtml" />
     <Content Include="Views\Manage\FirmUsersArchive.cshtml" />
     <Content Include="Views\Manage\UserTypes.cshtml" />
     <Content Include="NotReferenced\ReplacedWithModals\Manage\_AddUserType.cshtml" />
@@ -3497,8 +3497,8 @@
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Views\Manage\LeadStatus.cshtml" />
-    <Content Include="Views\Manage\_DeleteUserType.cshtml" />
-    <Content Include="Views\Manage\DeleteUserType.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Manage\_DeleteUserType.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Manage\DeleteUserType.cshtml" />
     <Content Include="Views\Manage\_EditOffice.cshtml" />
     <Content Include="Views\Manage\EditOffice.cshtml" />
     <Content Include="Views\Manage\EditUserType.cshtml" />
@@ -3511,14 +3511,14 @@
     <Content Include="NotReferenced\ReplacedWithModals\Manage\_AddLeadReferralSource.cshtml" />
     <Content Include="NotReferenced\ReplacedWithModals\Manage\NewLeadStatus.cshtml" />
     <Content Include="NotReferenced\ReplacedWithModals\Manage\NewLeadReferralSource.cshtml" />
-    <Content Include="Views\Manage\DeleteLeadStatus.cshtml" />
-    <Content Include="Views\Manage\_DeleteLeadStatus.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Manage\DeleteLeadStatus.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Manage\_DeleteLeadStatus.cshtml" />
     <Content Include="Views\Manage\_EditLeadStatus.cshtml" />
     <Content Include="Views\Manage\EditLeadStatus.cshtml" />
     <Content Include="Views\Manage\EditLeadReferralSource.cshtml" />
     <Content Include="Views\Manage\_EditLeadReferralSource.cshtml" />
-    <Content Include="Views\Manage\DeleteLeadReferralSource.cshtml" />
-    <Content Include="Views\Manage\_DeleteLeadReferralSource.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Manage\DeleteLeadReferralSource.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\Manage\_DeleteLeadReferralSource.cshtml" />
     <Content Include="Views\Contacts\_EditContactGroup.cshtml" />
     <Content Include="Views\Contacts\EditContactGroup.cshtml" />
     <Content Include="Views\Contacts\_DeleteGroup.cshtml" />
@@ -3541,6 +3541,11 @@
     <Content Include="Views\Manage\_AddOfficeModal.cshtml" />
     <Content Include="Views\Manage\_AddUserTypeModal.cshtml" />
     <Content Include="Views\Manage\_DeleteUserTypeModal.cshtml" />
+    <Content Include="Views\Manage\_DeleteBillingMethodModal.cshtml" />
+    <Content Include="Views\Manage\_DeleteCaseStageModal.cshtml" />
+    <Content Include="Views\Manage\_DeleteLeadReferralSourceModal.cshtml" />
+    <Content Include="Views\Manage\_DeleteLeadStatusModal.cshtml" />
+    <Content Include="Views\Manage\_DeleteOfficeModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,15 @@
+﻿@model ethko.BillingMethod
+@using (Html.BeginForm("DeleteConfirmed", "Manage", new { @class = "form-horizontal", role = "form", BillingMethodId = Model.BillingMethodId }))
+{
+    <font color="red">
+        <h3>Really DELETE this Billing Method?  This action is irreversible!</h3>
+    </font>
+    <br />
+    <h3>Billing Method: @Html.DisplayFor(m => m.BillingMethodName)</h3>
+    <br />
+    <br />
+    <br />
+    <br />
+    @Html.AntiForgeryToken()
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>@Html.Raw("   ")<input type="submit" name="DeleteButton" value="Delete" class="btn btn-danger" />
+}

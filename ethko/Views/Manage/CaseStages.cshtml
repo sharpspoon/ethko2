@@ -45,8 +45,11 @@
                     <tbody>
                         @if (Model != null)
                         {
+                            int i = 0;
                             foreach (var item in Model)
                             {
+                                i++;
+                                string m = "m" + i.ToString();
                                 <tr>
                                     <td>
                                         <a href='@Url.Action("EditCaseStage", "Manage", new { CaseStageId = item.CaseStageId})'>@Html.DisplayFor(modelItem => item.CaseStageName)</a>
@@ -67,12 +70,27 @@
                                     </td>
                                     <td>
                                         <div class="delete">
-                                            <a href='@Url.Action("DeleteCaseStage", "Manage", new { CaseStageId = item.CaseStageId })'>
+                                            <a href="" data-toggle="modal" data-target='#@m'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 8 8">
                                                     <title>Delete</title>
                                                     <path d="M3 0c-.55 0-1 .45-1 1h-1c-.55 0-1 .45-1 1h7c0-.55-.45-1-1-1h-1c0-.55-.45-1-1-1h-1zm-2 3v4.81c0 .11.08.19.19.19h4.63c.11 0 .19-.08.19-.19v-4.81h-1v3.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5v-3.5h-1v3.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5v-3.5h-1z" />
                                                 </svg>
                                             </a>
+                                        </div>
+                                        <div class="modal fade" id='@m' tabindex="-1" role="dialog" aria-labelledby="DeleteUserTypeModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="DeleteCaseStageModalCenterTitle">Delete Case Stage</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        @Html.Action("DeleteCaseStageModal", "Manage", new { CaseStageId = item.CaseStageId })')
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </td>
                                 </tr>
