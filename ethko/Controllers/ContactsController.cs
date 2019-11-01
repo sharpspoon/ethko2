@@ -10,7 +10,7 @@ using System.Data.Entity;
 
 namespace ethko.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ContactsController : Controller
     {
         ethko_dbEntities entities = new ethko_dbEntities();

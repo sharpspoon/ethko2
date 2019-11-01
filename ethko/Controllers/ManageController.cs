@@ -13,7 +13,7 @@ using System.Diagnostics;
 namespace ethko.Controllers
 {
     
-    [Authorize]
+    //[Authorize]
     public class ManageController : Controller
     {
         ethko_dbEntities entities = new ethko_dbEntities();
