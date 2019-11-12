@@ -12,4 +12,10 @@ namespace ethko.Models
         [Display(Name = "To-Do Name")]
         public string ToDoName { get; set; }
     }
+
+    public class GetToDosViewModel
+    {
+        [Display(Name = "To-Do Name")]
+        public string ToDoName { get; set; }
+    }
 }

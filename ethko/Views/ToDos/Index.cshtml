@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ethko.Models.GetCaseListViewModel>
+﻿@model IEnumerable<ethko.Models.GetToDosViewModel>
 @{
     ViewBag.Title = "To-Do Items";
 }
@@ -26,13 +26,6 @@
     <hr />
     <!DOCTYPE html>
     <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Final Output</title>
-        <meta name="description" content="Bootstrap.">
-
-    </head>
-
     <body style="margin:20px auto">
         <div class="container">
             <div class="row">
@@ -63,10 +56,10 @@
                                         {
                                             <tr>
                                                 <td>
-                                                    <a href='@Url.Action("ViewCase", "Cases", new { CaseId = item.CaseId})'>@Html.DisplayFor(modelItem => item.CaseName)</a>
+                                                    <a href='@Url.Action("ViewToDo", "ToDos", new { CaseId = item.CaseId})'>@Html.DisplayFor(modelItem => item.CaseName)</a>
                                                 </td>
                                                 <td>
-                                                    <a href='@Url.Action("ViewCase", "Cases", new { CaseId = item.CaseId})'>@Html.DisplayFor(modelItem => item.CaseNumber)</a>
+                                                    <a href='@Url.Action("ViewToDo", "ToDos", new { CaseId = item.CaseId})'>@Html.DisplayFor(modelItem => item.CaseNumber)</a>
 
                                                 </td>
                                                 <td>

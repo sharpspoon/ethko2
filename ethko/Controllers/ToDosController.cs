@@ -43,9 +43,11 @@ namespace ethko.Controllers
             {
                 entities.ToDos.Add(todoModel);
                 todoModel.InsDate = intDate;
-                string priorityName = Request.Form["ContactGroups"].ToString();
+                todoModel.LstDate = intDate;
+                string priorityName = Request.Form["PriorityNames"].ToString();
                 todoModel.ToDoPriorityId = entities.Priorities.Where(m => m.PriorityName == priorityName).Select(m => m.PriorityId).FirstOrDefault();
                 todoModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+                todoModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 entities.SaveChanges();
             }
             return RedirectToAction("Index");
