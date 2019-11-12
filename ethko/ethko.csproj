@@ -274,7 +274,7 @@
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\api\DocumentsController.cs" />
     <Compile Include="Controllers\DocumentsController.cs" />
-    <Compile Include="Controllers\TasksController.cs" />
+    <Compile Include="Controllers\ToDosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MeController.cs" />
@@ -318,6 +318,7 @@
       <DependentUpon>ethko.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ToDoViewModels.cs" />
     <Compile Include="Models\DocumentViewModels.cs" />
     <Compile Include="Models\CaseViewModels.cs" />
     <Compile Include="Models\ContactViewModels.cs" />
@@ -3451,7 +3452,7 @@
     <Content Include="Views\Leads\Index.cshtml" />
     <Content Include="Views\Messages\Index.cshtml" />
     <Content Include="Views\Reporting\Index.cshtml" />
-    <Content Include="Views\Tasks\Index.cshtml" />
+    <Content Include="Views\ToDos\Index.cshtml" />
     <Content Include="Views\Cases\CaseInsights.cshtml" />
     <Content Include="Views\Cases\Closed.cshtml" />
     <Content Include="Views\Cases\DeletePracticeArea.cshtml" />
@@ -3531,7 +3532,6 @@
     <Content Include="Views\Documents\Unread.cshtml" />
     <Content Include="Views\Documents\Firm.cshtml" />
     <Content Include="Views\Documents\Templates.cshtml" />
-    <Content Include="Views\Tasks\New.cshtml" />
     <Content Include="Views\Contacts\_AddContactGroupModal.cshtml" />
     <Content Include="Views\Contacts\_AddCompanyModal.cshtml" />
     <Content Include="Views\Manage\_AddBillingMethodModal.cshtml" />
@@ -3546,6 +3546,7 @@
     <Content Include="Views\Manage\_DeleteLeadReferralSourceModal.cshtml" />
     <Content Include="Views\Manage\_DeleteLeadStatusModal.cshtml" />
     <Content Include="Views\Manage\_DeleteOfficeModal.cshtml" />
+    <Content Include="Views\ToDos\_AddToDoModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
