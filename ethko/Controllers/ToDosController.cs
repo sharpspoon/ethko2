@@ -11,9 +11,20 @@ namespace ethko.Controllers
     public class ToDosController : Controller
     {
         ethko_dbEntities entities = new ethko_dbEntities();
+        [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            using (ethko_dbEntities entities = new ethko_dbEntities())
+            {
+                var todos = from t in entities.ToDos
+                               join p in entities.Priorities on t.ToDoPriorityId equals p.PriorityId
+                               join d in entities.DimDates on t.InsDate equals d.DateKey
+                               join u in entities.AspNetUsers on t.FstUser equals u.Id into lj
+                               from x in lj.DefaultIfEmpty()
+                               //where c.Archived == 0
+                               select new GetToDosViewModel() { ToDoId = t.ToDoId.ToString(), ToDoName=t.ToDoName,InsDate = d.FullDateUSA.ToString(), PriorityName = p.PriorityName };
+                return View(todos.ToList());
+            }
         }
 
         public ActionResult NewToDoModal()

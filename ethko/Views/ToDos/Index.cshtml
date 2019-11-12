@@ -56,23 +56,19 @@
                                         {
                                             <tr>
                                                 <td>
-                                                    <a href='@Url.Action("ViewToDo", "ToDos", new { CaseId = item.CaseId})'>@Html.DisplayFor(modelItem => item.CaseName)</a>
+                                                    <a href='@Url.Action("ViewToDo", "ToDos", new { ToDoId = item.ToDoId})'>@Html.DisplayFor(modelItem => item.ToDoName)</a>
                                                 </td>
                                                 <td>
-                                                    <a href='@Url.Action("ViewToDo", "ToDos", new { CaseId = item.CaseId})'>@Html.DisplayFor(modelItem => item.CaseNumber)</a>
-
+                                                    <a href='@Url.Action("ViewToDo", "ToDos", new { PriorityId = item.PriorityId})'>@Html.DisplayFor(modelItem => item.PriorityName)</a>
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.CaseStageName)
-
+                                                    1
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.FullName)
-
+                                                    1
                                                 </td>
                                                 <td>
-                                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.CaseStageId)</a>
-
+                                                    1
                                                 </td>
                                             </tr>
                                         }

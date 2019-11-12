@@ -17,5 +17,10 @@ namespace ethko.Models
     {
         [Display(Name = "To-Do Name")]
         public string ToDoName { get; set; }
+        public string ToDoId { get; set; }
+        public string PriorityName { get; set; }
+        public int PriorityId { get; set; }
+        [Display(Name = "InsDate")]
+        public string InsDate { get; set; }
     }
 }
