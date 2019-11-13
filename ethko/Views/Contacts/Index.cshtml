@@ -16,14 +16,7 @@
 </h2>
 <head>
     <link rel="stylesheet" href="~/Content/svg.css">
-    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-
-        .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-            background-color: #c4c4c4;
-        }
-    </style>
 </head>
 
 @using (Html.BeginForm("Index", "Contacts", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
@@ -123,12 +116,6 @@
         </div>
         @section Scripts {
             @Scripts.Render("~/bundles/jqueryval")
-            <script>
-                $(document).ready(function () {
-                    $('#myTable').dataTable();
-                });
-            </script>
-            <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
             <script>
                 function filterText() {
                     var rex = new RegExp($('#filterText').val());
