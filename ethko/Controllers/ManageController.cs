@@ -13,7 +13,7 @@ using System.Diagnostics;
 namespace ethko.Controllers
 {
     
-    //[Authorize]//
+    //[Authorize]
     public class ManageController : Controller
     {
         ethko_dbEntities entities = new ethko_dbEntities();
@@ -1155,16 +1155,12 @@ namespace ethko.Controllers
             return PartialView("_DeleteBillingMethodModal", billingMethods);
         }
 
-        // GET: /Manage/EditBillingMethod
+        // GET: /Manage/EditBillingMethodModal
         [HttpGet]
-        public ActionResult EditBillingMethod(int? BillingMethodId)
+        public ActionResult EditBillingMethodModal(int BillingMethodId)
         {
-            if (BillingMethodId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             BillingMethod billingMethods = entities.BillingMethods.Where(m => m.BillingMethodId == BillingMethodId).Single();
-            return View(billingMethods);
+            return PartialView("_EditBillingMethodModal", billingMethods);
         }
 
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
