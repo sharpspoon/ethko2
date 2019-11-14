@@ -16,25 +16,14 @@
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#NewCompanyModalCenter" style="float: right">+ Add Company</button>
 </h2>
 <head>
-    <link rel="stylesheet" href="~/Content/svg.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-
-
-
 @using (Html.BeginForm("Companies", "Contacts", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <hr />
     <!DOCTYPE html>
     <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Final Output</title>
-        <meta name="description" content="Bootstrap.">
-
-    </head>
-
     <body style="margin:20px auto">
         <div class="container">
             <br />

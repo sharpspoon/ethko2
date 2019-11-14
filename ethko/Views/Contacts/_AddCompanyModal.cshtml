@@ -1,15 +1,6 @@
 ﻿@model ethko.Models.AddCompanyViewModel
-
 <head>
-    <link rel="stylesheet" href="~/Content/svg.css">
-    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-
-        .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-            background-color: #c4c4c4;
-        }
-    </style>
 </head>
 <br />
     <p>
@@ -27,7 +18,6 @@
                         @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Name" })
                     </div>
                 </div>
-
                 <div class="form-group">
                     <div class="col-md-2" align="left">
                         Email
@@ -36,7 +26,6 @@
                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "example@ethko.com" })
                     </div>
                 </div>
-
                 <div class="form-group">
                     <div class="col-md-2" align="left">
                         Website
@@ -45,7 +34,6 @@
                         @Html.TextBoxFor(m => m.Website, new { @class = "form-control", placeholder = "mycompany.com" })
                     </div>
                 </div>
-
                 <div class="form-group">
                     <div class="col-md-2" align="left">
                         Main Phone
@@ -54,7 +42,6 @@
                         @Html.TextBoxFor(m => m.MainPhone, new { @class = "form-control", placeholder = "555-555-5555" })
                     </div>
                 </div>
-
                 <div class="form-group">
                     <div class="col-md-2" align="left">
                         Fax Number
@@ -63,7 +50,6 @@
                         @Html.TextBoxFor(m => m.FaxNumber, new { @class = "form-control", placeholder = "555-555-5555" })
                     </div>
                 </div>
-
                 <div class="form-group">
                     <div class="col-md-2" align="left">
                         Address
@@ -72,7 +58,6 @@
                         @Html.TextBoxFor(m => m.Address, new { @class = "form-control", placeholder = "123 Main Street" })
                     </div>
                 </div>
-
                 <div class="form-group">
                     <div class="col-md-2" align="left">
                         Address 2
@@ -81,7 +66,6 @@
                         @Html.TextBoxFor(m => m.Address2, new { @class = "form-control", placeholder = "Apt B" })
                     </div>
                 </div>
-
                 <div class="form-group">
                     <div class="col-md-2" align="left">
                         City
@@ -90,7 +74,6 @@
                         @Html.TextBoxFor(m => m.City, new { @class = "form-control", placeholder = "Birmingham" })
                     </div>
                 </div>
-
                 <div class="form-group">
                     <div class="col-md-2" align="left">
                         State
@@ -99,7 +82,6 @@
                         @Html.TextBoxFor(m => m.State, new { @class = "form-control", placeholder = "AL" })
                     </div>
                 </div>
-
                 <div class="form-group">
                     <div class="col-md-2" align="left">
                         Zip
@@ -108,7 +90,6 @@
                         @Html.TextBoxFor(m => m.Zip, new { @class = "form-control", placeholder = "55555" })
                     </div>
                 </div>
-
                 <div class="form-group">
                     <div class="col-md-2" align="left">
                         Country
