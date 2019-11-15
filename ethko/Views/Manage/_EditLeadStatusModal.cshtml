@@ -1,7 +1,7 @@
 ﻿@model ethko.LeadStatus
 @using (Html.BeginForm("EditSave", "Manage", new { @class = "form-horizontal", role = "form", LeadStatusId = Model.LeadStatusId }))
 {
-    <h3>Lead Status: <input name="NewLeadStatus" type="text" placeholder=@Html.DisplayTextFor(m => m.LeadStatusName)></h3>
+    <h3>Lead Status: <input name="NewLeadStatus" class="form-control" type="text" placeholder=@Html.DisplayTextFor(m => m.LeadStatusName)></h3>
     @Html.AntiForgeryToken()
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> <input type="submit" name="SaveButton" value="Save" class="btn btn-success" />
 }
