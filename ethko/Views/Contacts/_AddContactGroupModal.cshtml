@@ -1,24 +1,18 @@
 ﻿@model ethko.Models.AddContactGroupViewModel
+@using (Html.BeginForm("NewGroup", "Contacts", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary("", new { @class = "text-danger" })
 
-<br />
-    <p>
-        <div class="col-md-12">
-            @using (Html.BeginForm("NewGroup", "Contacts", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary("", new { @class = "text-danger" })
-
-                <div class="form-group">
-                    <div class="col-md-4" align="left">
-                        @Html.TextBoxFor(m => m.ContactGroupName, new { @class = "form-control", placeholder = "Group Name" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <input type="submit" class="btn btn-success" value="Save Group" />
-                    </div>
-                </div>
-            }
+    <div class="form-group">
+        <div class="col-md-4" align="left">
+            @Html.TextBoxFor(m => m.ContactGroupName, new { @class = "form-control", placeholder = "Group Name" })
         </div>
-    </p>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-success" value="Save Group" />
+        </div>
+    </div>
+}

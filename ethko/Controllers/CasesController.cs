@@ -162,7 +162,7 @@ namespace ethko.Controllers
 
         public ActionResult NewPracticeAreaModal()
         {
-            return PartialView("_EditPracticeAreaModal");
+            return PartialView("_AddPracticeAreaModal");
         }
 
         public ActionResult DeletePracticeArea(int PracticeAreaId)
@@ -192,6 +192,8 @@ namespace ethko.Controllers
                 entities.PracticeAreas.Add(practiceAreaModel);
                 practiceAreaModel.InsDate = intDate;
                 practiceAreaModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+                practiceAreaModel.LstDate = intDate;
+                practiceAreaModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
                 entities.SaveChanges();
             }
             return RedirectToAction("PracticeAreas");
