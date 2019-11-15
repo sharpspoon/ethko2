@@ -3433,7 +3433,6 @@
     <Content Include="Views\Contacts\CompaniesArchive.cshtml" />
     <Content Include="Views\Contacts\ContactGroups.cshtml" />
     <Content Include="Views\Contacts\ContactsArchive.cshtml" />
-    <Content Include="Views\Contacts\Delete.cshtml" />
     <Content Include="Views\Contacts\EditContact.cshtml" />
     <Content Include="Views\Contacts\Index.cshtml" />
     <Content Include="NotReferenced\ReplacedWithModals\Contacts\New.cshtml" />
@@ -3444,7 +3443,7 @@
     <Content Include="NotReferenced\ReplacedWithModals\Contacts\_AddContact.cshtml" />
     <Content Include="NotReferenced\ReplacedWithModals\Contacts\_AddGroup.cshtml" />
     <Content Include="Views\Contacts\_ArchiveContact.cshtml" />
-    <Content Include="Views\Contacts\_DeleteContact.cshtml" />
+    <Content Include="Views\Contacts\_DeleteContactModal.cshtml" />
     <Content Include="Views\Billing\Index.cshtml" />
     <Content Include="Views\Calendar\Index.cshtml" />
     <Content Include="Views\Comments\Index.cshtml" />
@@ -3455,14 +3454,11 @@
     <Content Include="Views\ToDos\Index.cshtml" />
     <Content Include="Views\Cases\CaseInsights.cshtml" />
     <Content Include="Views\Cases\Closed.cshtml" />
-    <Content Include="Views\Cases\DeletePracticeArea.cshtml" />
-    <Content Include="Views\Cases\EditPracticeArea.cshtml" />
     <Content Include="Views\Cases\Index.cshtml" />
     <Content Include="Views\Cases\New.cshtml" />
-    <Content Include="Views\Cases\NewPracticeArea.cshtml" />
     <Content Include="Views\Cases\PracticeAreas.cshtml" />
-    <Content Include="Views\Cases\_AddPracticeArea.cshtml" />
-    <Content Include="Views\Cases\_DeletePracticeArea.cshtml" />
+    <Content Include="Views\Cases\_AddPracticeAreaModal.cshtml" />
+    <Content Include="Views\Cases\_DeletePracticeAreaModal.cshtml" />
     <Content Include="Views\Manage\CaseStages.cshtml" />
     <Content Include="NotReferenced\ReplacedWithModals\Manage\NewCaseStage.cshtml" />
     <Content Include="NotReferenced\ReplacedWithModals\Manage\_AddCaseStage.cshtml" />
@@ -3514,9 +3510,8 @@
     <Content Include="Views\Manage\_EditLeadReferralSourceModal.cshtml" />
     <Content Include="NotReferenced\ReplacedWithModals\Manage\DeleteLeadReferralSource.cshtml" />
     <Content Include="NotReferenced\ReplacedWithModals\Manage\_DeleteLeadReferralSource.cshtml" />
-    <Content Include="Views\Contacts\_EditContactGroup.cshtml" />
-    <Content Include="Views\Contacts\EditContactGroup.cshtml" />
-    <Content Include="Views\Contacts\_DeleteGroup.cshtml" />
+    <Content Include="Views\Contacts\_EditContactGroupModal.cshtml" />
+    <Content Include="Views\Contacts\_DeleteGroupModal.cshtml" />
     <Content Include="Views\Contacts\DeleteGroup.cshtml" />
     <Content Include="Views\Cases\_EditPracticeArea.cshtml" />
     <Content Include="Views\Cases\ViewCase.cshtml" />

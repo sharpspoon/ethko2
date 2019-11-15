@@ -992,29 +992,16 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult DeleteOfficeModal(int OfficeId)
         {
-            ethko_dbEntities entities = new ethko_dbEntities();
             Office offices = entities.Offices.Where(m => m.OfficeId == OfficeId).Single();
             return PartialView("_DeleteOfficeModal", offices);
         }
 
-        // GET: /Manage/EditOffice
+        // GET: /Manage/EditOfficeModal
         [HttpGet]
-        public ActionResult EditOffice(int? OfficeId)
+        public ActionResult EditOfficeModal(int OfficeId)
         {
-            if (OfficeId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ethko_dbEntities entities = new ethko_dbEntities();
-            //Office offices = entities.Offices.GroupJoin(entities.DimDates.DefaultIfEmpty(), oid => oid.OfficeId ).Where(m => m.OfficeId == OfficeId).Single();
-            var offices = from o in entities.Offices
-                          join u in entities.AspNetUsers on o.FstUser equals u.Id into gj
-                          from x in gj.DefaultIfEmpty()
-                          join d in entities.DimDates on o.InsDate equals d.DateKey
-                          join u in entities.AspNetUsers on o.LstUser equals u.Id into lst
-                          from y in lst.DefaultIfEmpty()
-                          select new EditOfficeModel() { OfficeName = o.OfficeName, InsDate = d.FullDateUSA.ToString(), FullName = x.FName + " " + x.LName, LstUser = y.FName + " " + y.LName };
-            return View(offices);
+            Office offices = entities.Offices.Where(m => m.OfficeId == OfficeId).Single();
+            return PartialView("_EditOfficeModal", offices);
         }
 
         //############
@@ -1076,14 +1063,10 @@ namespace ethko.Controllers
             return PartialView("_DeleteUserTypeModal", userTypes);
         }
 
-        // GET: /Manage/EditUserType
+        // GET: /Manage/EditUserTypeModal
         [HttpGet]
-        public ActionResult EditUserType(int? UserTypeId)
+        public ActionResult EditUserTypeModal(int UserTypeId)
         {
-            if (UserTypeId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             UserType userTypes = entities.UserTypes.Where(m => m.UserTypeId == UserTypeId).Single();
             return View(userTypes);
         }
@@ -1150,7 +1133,6 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult DeleteBillingMethodModal(int BillingMethodId)
         {
-            ethko_dbEntities entities = new ethko_dbEntities();
             BillingMethod billingMethods = entities.BillingMethods.Where(m => m.BillingMethodId == BillingMethodId).Single();
             return PartialView("_DeleteBillingMethodModal", billingMethods);
         }
@@ -1282,14 +1264,10 @@ namespace ethko.Controllers
             return PartialView("_DeleteCaseStageModal", caseStages);
         }
 
-        // GET: /Manage/EditCaseStage
+        // GET: /Manage/EditCaseStageModal
         [HttpGet]
-        public ActionResult EditCaseStage(int? CaseStageId)
+        public ActionResult EditCaseStage(int CaseStageId)
         {
-            if (CaseStageId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             CaseStage caseStages = entities.CaseStages.Where(m => m.CaseStageId == CaseStageId).Single();
             return View(caseStages);
         }
@@ -1330,7 +1308,7 @@ namespace ethko.Controllers
             }
         }
 
-        // GET: /Manage/NewLeadStatus
+        // GET: /Manage/NewLeadStatusModal
         [HttpGet]
         public ActionResult NewLeadStatusModal()
         {
@@ -1367,7 +1345,7 @@ namespace ethko.Controllers
             return RedirectToAction("LeadStatus");
         }
 
-        // GET: /Manage/DeleteLeadStatus
+        // GET: /Manage/DeleteLeadStatusModal
         [HttpGet]
         public ActionResult DeleteLeadStatusModal(int LeadStatusId)
         {
@@ -1376,19 +1354,15 @@ namespace ethko.Controllers
             return PartialView("_DeleteLeadStatusModal", leadStatuses);
         }
 
-        // GET: /Manage/EditLeadStatus
+        // GET: /Manage/EditLeadStatusModal
         [HttpGet]
-        public ActionResult EditLeadStatus(int? LeadStatusId)
+        public ActionResult EditLeadStatusModal(int LeadStatusId)
         {
-            if (LeadStatusId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             LeadStatus leadStatuses = entities.LeadStatuses.Where(m => m.LeadStatusId == LeadStatusId).Single();
             return View(leadStatuses);
         }
 
-        // GET: /Manage/NewReferralSource
+        // GET: /Manage/NewReferralSourceModal
         [HttpGet]
         public ActionResult NewLeadReferralSourceModal()
         {
@@ -1434,14 +1408,10 @@ namespace ethko.Controllers
             return PartialView("_DeleteLeadReferralSourceModal", referralSources);
         }
 
-        // GET: /Manage/EditReferralSource
+        // GET: /Manage/EditReferralSourceModal
         [HttpGet]
-        public ActionResult EditLeadReferralSource(int? ReferralSourceId)
+        public ActionResult EditLeadReferralSourceModal(int ReferralSourceId)
         {
-            if (ReferralSourceId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             LeadReferralSource referralSources = entities.LeadReferralSources.Where(m => m.ReferralSourceId == ReferralSourceId).Single();
             return View(referralSources);
         }
