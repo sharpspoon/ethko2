@@ -160,36 +160,16 @@ namespace ethko.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult NewPracticeArea()
+        public ActionResult NewPracticeAreaModal()
         {
-            return View();
+            return PartialView("_EditPracticeAreaModal");
         }
 
-        public ActionResult DeletePracticeArea(int? PracticeAreaId)
+        public ActionResult DeletePracticeArea(int PracticeAreaId)
         {
-            if (PracticeAreaId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             PracticeArea practiceAreas = entities.PracticeAreas.Where(m => m.PracticeAreaId == PracticeAreaId).Single();
             return View(practiceAreas);
         }
-
-        //public ActionResult DeleteConfirmed(int? PracticeAreaId)
-        //{
-        //    if (PracticeAreaId == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    PracticeArea practiceAreas = entities.PracticeAreas.Find(PracticeAreaId);
-        //    entities.PracticeAreas.Remove(practiceAreas);
-        //    entities.SaveChanges();
-        //    DeleteConfirmedCaseViewModel delete = new DeleteConfirmedCaseViewModel
-        //    {
-        //        PracticeAreaId = PracticeAreaId
-        //    };
-        //    return RedirectToAction("PracticeAreas", "Cases");
-        //}
 
         public PracticeArea ConvertViewModelToModel(AddPracticeAreaViewModel vm)
         {
