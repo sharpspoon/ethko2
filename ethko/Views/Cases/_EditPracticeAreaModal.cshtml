@@ -1,0 +1,8 @@
+﻿@model ethko.PracticeArea
+@using (Html.BeginForm("EditSave", "Cases", new { @class = "form-horizontal", role = "form", PracticeAreaId = Model.PracticeAreaId }))
+{
+    <h3>Practice Area: <input name="NewPracticeArea" type="text" placeholder=@Html.DisplayTextFor(m => m.PracticeAreaName)></h3>
+    @Html.AntiForgeryToken()
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <input type="submit" name="SaveButton" value="Save" class="btn btn-success" />
+}

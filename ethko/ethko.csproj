@@ -3513,7 +3513,7 @@
     <Content Include="Views\Contacts\_EditContactGroupModal.cshtml" />
     <Content Include="Views\Contacts\_DeleteGroupModal.cshtml" />
     <Content Include="Views\Contacts\DeleteGroup.cshtml" />
-    <Content Include="Views\Cases\_EditPracticeArea.cshtml" />
+    <Content Include="Views\Cases\_EditPracticeAreaModal.cshtml" />
     <Content Include="Views\Cases\ViewCase.cshtml" />
     <Content Include="Views\Contacts\_AddContactModal.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CaseDocuments.cshtml" />
