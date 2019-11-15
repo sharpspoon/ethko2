@@ -1,12 +1,7 @@
 ﻿@model ethko.LeadReferralSource
 @using (Html.BeginForm("EditSave", "Manage", new { @class = "form-horizontal", role = "form", ReferralSourceId = Model.ReferralSourceId }))
 {
-    <br />
     <h3>Referral Source: <input name="NewLeadReferralSource" type="text" placeholder=@Html.DisplayTextFor(m => m.ReferralSourceName)></h3>
-    <br />
-    <br />
-    <br />
-    <br />
     @Html.AntiForgeryToken()
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> <input type="submit" name="SaveButton" value="Save" class="btn btn-success" />
 }

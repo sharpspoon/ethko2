@@ -1,12 +1,7 @@
 ﻿@model ethko.BillingMethod
 @using (Html.BeginForm("EditSave", "Manage", new { @class = "form-horizontal", role = "form", BillingMethodId = Model.BillingMethodId }))
 {
-    <br />
     <h3>Billing Method: <input name="NewBillingMethod" type="text" placeholder=@Html.DisplayTextFor(m => m.BillingMethodName)></h3>
-    <br />
-    <br />
-    <br />
-    <br />
     @Html.AntiForgeryToken()
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> <input type="submit" name="SaveButton" value="Save" class="btn btn-success" />
 }

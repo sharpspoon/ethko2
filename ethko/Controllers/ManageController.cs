@@ -1068,7 +1068,7 @@ namespace ethko.Controllers
         public ActionResult EditUserTypeModal(int UserTypeId)
         {
             UserType userTypes = entities.UserTypes.Where(m => m.UserTypeId == UserTypeId).Single();
-            return View(userTypes);
+            return PartialView("_EditUserTypeModal", userTypes);
         }
 
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1266,10 +1266,10 @@ namespace ethko.Controllers
 
         // GET: /Manage/EditCaseStageModal
         [HttpGet]
-        public ActionResult EditCaseStage(int CaseStageId)
+        public ActionResult EditCaseStageModal(int CaseStageId)
         {
             CaseStage caseStages = entities.CaseStages.Where(m => m.CaseStageId == CaseStageId).Single();
-            return View(caseStages);
+            return PartialView("_EditCaseStageModal", caseStages);
         }
 
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1359,7 +1359,7 @@ namespace ethko.Controllers
         public ActionResult EditLeadStatusModal(int LeadStatusId)
         {
             LeadStatus leadStatuses = entities.LeadStatuses.Where(m => m.LeadStatusId == LeadStatusId).Single();
-            return View(leadStatuses);
+            return PartialView("_EditLeadStatusModal", leadStatuses);
         }
 
         // GET: /Manage/NewReferralSourceModal
@@ -1413,7 +1413,7 @@ namespace ethko.Controllers
         public ActionResult EditLeadReferralSourceModal(int ReferralSourceId)
         {
             LeadReferralSource referralSources = entities.LeadReferralSources.Where(m => m.ReferralSourceId == ReferralSourceId).Single();
-            return View(referralSources);
+            return PartialView("_EditLeadReferralSourceModal", referralSources);
         }
 
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
