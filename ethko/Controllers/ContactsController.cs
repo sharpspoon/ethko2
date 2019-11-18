@@ -102,7 +102,7 @@ namespace ethko.Controllers
 
         //View Specific Contact
         [HttpGet]
-        public ActionResult ViewContact(int? ContactId)
+        public ActionResult ViewContact(int ContactId)
         {
             using (ethko_dbEntities entities = new ethko_dbEntities())
             {
@@ -142,11 +142,10 @@ namespace ethko.Controllers
 
         //Edit Specific Contact
         [HttpGet]
-        public ActionResult EditContact(int? ContactId)
+        public ActionResult EditContactModal(int ContactId)
         {
-            ethko_dbEntities entities = new ethko_dbEntities();
             Contact contacts = entities.Contacts.Where(m => m.ContactId == ContactId).SingleOrDefault();
-            return View(contacts);
+            return PartialView("_EditContactModal", contacts);
         }
 
         [HttpPost]
@@ -164,25 +163,16 @@ namespace ethko.Controllers
 
         //Delete Specific Contact
         [HttpGet]
-        public ActionResult Delete(int? ContactId)
+        public ActionResult Delete(int ContactId)
         {
-            if (ContactId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ethko_dbEntities entities = new ethko_dbEntities();
             Contact contacts = entities.Contacts.Where(m => m.ContactId == ContactId).Single();
             return View(contacts);
         }
 
         //Archive Specific Contact
         [HttpGet]
-        public ActionResult Archive(int? ContactId)
+        public ActionResult Archive(int ContactId)
         {
-            if (ContactId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             var result = entities.Contacts.SingleOrDefault(m => m.ContactId == ContactId);
             if (result != null)
             {
@@ -307,7 +297,7 @@ namespace ethko.Controllers
             return RedirectToAction("ContactGroups");
         }
 
-        // GET: /Contacts/EditContactGroup
+        // GET: /Contacts/ContactGroups
         [HttpGet]
         public ActionResult ContactGroups()
         {
@@ -322,28 +312,20 @@ namespace ethko.Controllers
             }
         }
 
-        // GET: /Contacts/EditContactGroup
+        // GET: /Contacts/EditContactGroupModal
         [HttpGet]
-        public ActionResult EditContactGroup(int? ContactGroupId)
+        public ActionResult EditContactGroupModal(int ContactGroupId)
         {
-            if (ContactGroupId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             ContactGroup contactGroups = entities.ContactGroups.Where(m => m.ContactGroupId == ContactGroupId).Single();
-            return View(contactGroups);
+            return PartialView("_EditContactGroupModal", contactGroups);
         }
 
-        // GET: /Contacts/DeleteGroup
+        // GET: /Contacts/DeleteGroupModal
         [HttpGet]
-        public ActionResult DeleteGroup(int? ContactGroupId)
+        public ActionResult DeleteContactGroupModal(int ContactGroupId)
         {
-            if (ContactGroupId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             ContactGroup contactGroups = entities.ContactGroups.Where(m => m.ContactGroupId == ContactGroupId).Single();
-            return View(contactGroups);
+            return PartialView("_DeleteContactGroupModal", contactGroups);
         }
 
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

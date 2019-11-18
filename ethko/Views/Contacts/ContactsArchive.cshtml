@@ -56,8 +56,12 @@
                 <tbody>
                     @if (Model != null)
                     {
+                        int i = 0;
                         foreach (var item in Model)
                         {
+                                                            i++;
+                                string e = "e" + i.ToString();
+                                string d = "d" + i.ToString();
                             <tr>
                                 <td>
                                     <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.ContactId})'>@Html.DisplayFor(modelItem => item.FName)</a>

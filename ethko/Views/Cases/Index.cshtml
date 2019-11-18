@@ -53,8 +53,12 @@
                 <tbody>
                     @if (Model != null)
                     {
+                        int i = 0;
                         foreach (var item in Model)
                         {
+                                                            i++;
+                                string e = "e" + i.ToString();
+                                string d = "d" + i.ToString();
                             <tr>
                                 <td>
                                     <a href='@Url.Action("ViewCase", "Cases", new { CaseId = item.CaseId})'>@Html.DisplayFor(modelItem => item.CaseName)</a>

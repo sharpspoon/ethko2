@@ -1,0 +1,11 @@
+﻿@model ethko.ContactGroup
+@using (Html.BeginForm("DeleteConfirmed", "Contacts", new { @class = "form-horizontal", role = "form", ContactGroupId = Model.ContactGroupId }))
+{
+    <font color="red">
+        <h3>Really DELETE this Contact Group?  This action is irreversible!</h3>
+    </font>
+    <h3>Contact Group: @Html.DisplayFor(m => m.ContactGroupName)</h3>
+    @Html.AntiForgeryToken()
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <input type="submit" name="DeleteButton" value="Delete" class="btn btn-danger" />
+}

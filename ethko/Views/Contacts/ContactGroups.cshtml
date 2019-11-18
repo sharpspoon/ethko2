@@ -41,8 +41,12 @@
                 <tbody>
                     @if (Model != null)
                     {
+                        int i = 0;
                         foreach (var item in Model)
                         {
+                                i++;
+                                string e = "e" + i.ToString();
+                                string d = "d" + i.ToString();
                             <tr>
                                 <td>
                                     <a href='@Url.Action("ContactGroups", "Contacts", new { ContactGroupId = item.ContactGroupId})'>@Html.DisplayFor(modelItem => item.ContactGroupName)</a>
@@ -56,22 +60,52 @@
                                 </td>
                                 <td>
                                     <div class="edit">
-                                        <a href='@Url.Action("EditContactGroup", "Contacts", new { ContactGroupId = item.ContactGroupId })'>
+                                        <a href="" data-toggle="modal" data-target='#@e'>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 8 8">
                                                 <title>Edit</title>
                                                 <path d="M6 0l-1 1 2 2 1-1-2-2zm-2 2l-4 4v2h2l4-4-2-2z" />
                                             </svg>
                                         </a>
                                     </div>
+                                    <div class="modal fade" id='@e' tabindex="-1" role="dialog" aria-labelledby="DeleteUserTypeModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="NewCompanyModalCenterTitle">Edit Contact Group</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    @Html.Action("EditContactGroupModal", "Contacts", new { ContactGroupId = item.ContactGroupId })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
                                 <td>
                                     <div class="delete">
-                                        <a href='@Url.Action("DeleteGroup", "Contacts", new { ContactGroupId = item.ContactGroupId })'>
+                                        <a href="" data-toggle="modal" data-target='#@d'>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 8 8">
                                                 <title>Delete</title>
                                                 <path d="M3 0c-.55 0-1 .45-1 1h-1c-.55 0-1 .45-1 1h7c0-.55-.45-1-1-1h-1c0-.55-.45-1-1-1h-1zm-2 3v4.81c0 .11.08.19.19.19h4.63c.11 0 .19-.08.19-.19v-4.81h-1v3.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5v-3.5h-1v3.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5v-3.5h-1z" />
                                             </svg>
                                         </a>
+                                    </div>
+                                    <div class="modal fade" id='@d' tabindex="-1" role="dialog" aria-labelledby="DeleteUserTypeModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="NewCompanyModalCenterTitle">Delete Contact Group</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    @Html.Action("DeleteContactGroupModal", "Contacts", new { ContactGroupId = item.ContactGroupId })
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
@@ -95,12 +129,4 @@
             $('#myTable').dataTable();
         });
     </script>
-    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
-    <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
-    <style>
-
-        .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-            background-color: #c4c4c4;
-        }
-    </style>
 }
