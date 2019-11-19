@@ -147,10 +147,10 @@ namespace ethko.Controllers
             return PartialView("_AddPracticeAreaModal");
         }
 
-        public ActionResult DeletePracticeArea(int PracticeAreaId)
+        public ActionResult DeletePracticeAreaModal(int PracticeAreaId)
         {
             PracticeArea practiceAreas = entities.PracticeAreas.Where(m => m.PracticeAreaId == PracticeAreaId).Single();
-            return View(practiceAreas);
+            return PartialView("_DeletePracticeAreaModal", practiceAreas);
         }
 
         public PracticeArea ConvertViewModelToModel(AddPracticeAreaViewModel vm)
@@ -177,12 +177,12 @@ namespace ethko.Controllers
             return RedirectToAction("PracticeAreas");
         }
 
-        // GET: /Cases/EditPracticeArea
+        // GET: /Cases/EditPracticeAreaModal
         [HttpGet]
-        public ActionResult EditPracticeArea(int PracticeAreaId)
+        public ActionResult EditPracticeAreaModal(int PracticeAreaId)
         {
             PracticeArea practiceAreas = entities.PracticeAreas.Where(m => m.PracticeAreaId == PracticeAreaId).Single();
-            return View(practiceAreas);
+            return PartialView("_EditPracticeAreaModal", practiceAreas);
         }
 
         [HttpPost]

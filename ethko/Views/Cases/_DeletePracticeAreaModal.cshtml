@@ -1,13 +1,4 @@
 ﻿@model ethko.PracticeArea
-@{
-    ViewBag.Title = "Delete Practice Area";
-}
-<br />
-<a class="btn btn-default" href='@Url.Action("Index", "Cases")'>Cases</a>&nbsp;
-<a class="btn btn-default" href='@Url.Action("PracticeAreas", "Cases")'>Practice Areas</a>&nbsp;
-<a class="btn btn-default" href='@Url.Action("CaseInsights", "Cases")'>Case Insights</a>&nbsp;
-<br />
-<h1>Delete Practice Area</h1>
 @using (Html.BeginForm("DeleteConfirmed", "Cases", new { @class = "form-horizontal", role = "form", PracticeAreaId = Model.PracticeAreaId }))
 {
     <font color="red">
@@ -15,11 +6,7 @@
     </font>
     <br />
     <h3>Practice Area: @Html.DisplayFor(m => m.PracticeAreaName)</h3>
-    <br />
-    <br />
-    <br />
-    <br />
     @Html.AntiForgeryToken()
-    <a class="btn btn-default" href='@Url.Action("PRacticeAreas", "Cases")'>Cancel</a>@Html.Raw("   ")<input type="submit" name="DeleteButton" value="Delete" class="btn btn-danger" />
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <input type="submit" name="DeleteButton" value="Delete" class="btn btn-danger" />
 }
-
