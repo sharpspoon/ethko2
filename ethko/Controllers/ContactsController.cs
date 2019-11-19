@@ -55,16 +55,12 @@ namespace ethko.Controllers
             var user = User.Identity.GetUserName().ToString();
             DateTime date = DateTime.Now;
             int intDate = int.Parse(date.ToString("yyyyMMdd"));
-
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                entities.Contacts.Add(contactModel);
-                contactModel.InsDate = intDate;
-                string contactGroupName = Request.Form["ContactGroups"].ToString();
-                contactModel.ContactGroupId = entities.ContactGroups.Where(m => m.ContactGroupName == contactGroupName).Select(m => m.ContactGroupId).FirstOrDefault();
-                contactModel.UserId = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
-                entities.SaveChanges();
-            }
+            entities.Contacts.Add(contactModel);
+            contactModel.InsDate = intDate;
+            string contactGroupName = Request.Form["ContactGroups"].ToString();
+            contactModel.ContactGroupId = entities.ContactGroups.Where(m => m.ContactGroupName == contactGroupName).Select(m => m.ContactGroupId).FirstOrDefault();
+            contactModel.UserId = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            entities.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -72,72 +68,63 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            using(ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                var contacts = from c in entities.Contacts
-                               join cg in entities.ContactGroups on c.ContactGroupId equals cg.ContactGroupId
-                               join d in entities.DimDates on c.InsDate equals d.DateKey
-                               join u in entities.AspNetUsers on c.UserId equals u.Id into lj
-                               from x in lj.DefaultIfEmpty()
-                               where c.Archived == 0
-                               select new GetContactListViewModel() { ContactId = c.ContactId.ToString(), FName = c.FName, LName = c.LName, Email = c.Email, FullName = x.FName + " " + x.LName, InsDate = d.FullDateUSA.ToString(), ContactGroupList = cg.ContactGroupName};
-                return View(contacts.ToList());
-            }
+            var contacts = from c in entities.Contacts
+                           join cg in entities.ContactGroups on c.ContactGroupId equals cg.ContactGroupId
+                           join d in entities.DimDates on c.InsDate equals d.DateKey
+                           join u in entities.AspNetUsers on c.UserId equals u.Id into lj
+                           from x in lj.DefaultIfEmpty()
+                           where c.Archived == 0
+                           select new GetContactListViewModel() { ContactId = c.ContactId.ToString(), FName = c.FName, LName = c.LName, Email = c.Email, FullName = x.FName + " " + x.LName, InsDate = d.FullDateUSA.ToString(), ContactGroupList = cg.ContactGroupName };
+            return View(contacts.ToList());
         }
 
         //View Archive List
         [HttpGet]
         public ActionResult ContactsArchive()
         {
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                var contacts = from c in entities.Contacts
-                               join cg in entities.ContactGroups on c.ContactGroupId equals cg.ContactGroupId
-                               join u in entities.AspNetUsers on c.UserId equals u.Id
-                               where c.Archived == 1
-                               select new GetContactArchiveListViewModel() { ContactId = c.ContactId.ToString(), FName = c.FName, LName = c.LName, Email = c.Email, UserId = u.UserName, InsDate = c.InsDate.ToString(), ContactGroupList = cg.ContactGroupName };
-                return View(contacts.ToList());
-            }
+            var contacts = from c in entities.Contacts
+                           join cg in entities.ContactGroups on c.ContactGroupId equals cg.ContactGroupId
+                           join u in entities.AspNetUsers on c.UserId equals u.Id
+                           where c.Archived == 1
+                           select new GetContactArchiveListViewModel() { ContactId = c.ContactId.ToString(), FName = c.FName, LName = c.LName, Email = c.Email, UserId = u.UserName, InsDate = c.InsDate.ToString(), ContactGroupList = cg.ContactGroupName };
+            return View(contacts.ToList());
         }
 
         //View Specific Contact
         [HttpGet]
         public ActionResult ViewContact(int ContactId)
         {
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                var contacts = (from c in entities.Contacts
-                               join cg in entities.ContactGroups on c.ContactGroupId equals cg.ContactGroupId
-                               join u in entities.AspNetUsers on c.UserId equals u.Id
-                               where c.ContactId == ContactId
-                               select new GetIndividualContactViewModel() { ContactId = c.ContactId
-                               , FName = c.FName
-                               , MName = c.MName
-                               , LName = c.LName
-                               , Email = c.Email
-                               , EnableClientPortal = c.EnableClientPortal
-                               , UserId = u.UserName
-                               , InsDate = c.InsDate.ToString()
-                               , ContactGroupList = cg.ContactGroupName
-                               , CellPhone = c.CellPhone
-                               , WorkPhone = c.WorkPhone
-                               , HomePhone = c.HomePhone
-                               , Fax = c.Fax
-                               , JobTitle = c.JobTitle
-                               , Birthday = c.Birthday
-                               , License = c.License
-                               , Website = c.Website
-                               , Notes = c.Notes
-                               , Address = c.Address
-                               , Address2 = c.Address2
-                               , City = c.City
-                               , State = c.State
-                               , Zip = c.Zip
-                               , Country = c.Country
-                               , Archived = c.Archived
-                               }).FirstOrDefault();
-                return View(contacts);
-            }
+                        var contacts = (from c in entities.Contacts
+                            join cg in entities.ContactGroups on c.ContactGroupId equals cg.ContactGroupId
+                            join u in entities.AspNetUsers on c.UserId equals u.Id
+                            where c.ContactId == ContactId
+                            select new GetIndividualContactViewModel() { ContactId = c.ContactId
+                            , FName = c.FName
+                            , MName = c.MName
+                            , LName = c.LName
+                            , Email = c.Email
+                            , EnableClientPortal = c.EnableClientPortal
+                            , UserId = u.UserName
+                            , InsDate = c.InsDate.ToString()
+                            , ContactGroupList = cg.ContactGroupName
+                            , CellPhone = c.CellPhone
+                            , WorkPhone = c.WorkPhone
+                            , HomePhone = c.HomePhone
+                            , Fax = c.Fax
+                            , JobTitle = c.JobTitle
+                            , Birthday = c.Birthday
+                            , License = c.License
+                            , Website = c.Website
+                            , Notes = c.Notes
+                            , Address = c.Address
+                            , Address2 = c.Address2
+                            , City = c.City
+                            , State = c.State
+                            , Zip = c.Zip
+                            , Country = c.Country
+                            , Archived = c.Archived
+                            }).FirstOrDefault();
+            return View(contacts);
         }
 
         //Edit Specific Contact
@@ -151,7 +138,6 @@ namespace ethko.Controllers
         [HttpPost]
         public ActionResult EditContact([Bind(Include="FName")]Contact contact)
         {
-            ethko_dbEntities entities = new ethko_dbEntities();
             if (ModelState.IsValid)
             {
                 entities.Entry(contact).State = EntityState.Modified;
@@ -226,14 +212,10 @@ namespace ethko.Controllers
             var companyModel = ConvertViewModelToModel(model);
             DateTime date = DateTime.Now;
             int intDate = int.Parse(date.ToString("yyyyMMdd"));
-
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                entities.Companies.Add(companyModel);
-                companyModel.InsDate = intDate;
-                companyModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
-                entities.SaveChanges();
-            }
+            entities.Companies.Add(companyModel);
+            companyModel.InsDate = intDate;
+            companyModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            entities.SaveChanges();
             return RedirectToAction("Companies");
         }
 
@@ -241,14 +223,11 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult Companies()
         {
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                var companies = from c in entities.Companies
-                               join u in entities.AspNetUsers on c.FstUser equals u.Id
-                               where c.Archived == 0
-                               select new GetCompanyListViewModel() { CompanyId = c.CompanyId.ToString(),  Email = c.Email, FstUser = u.UserName, InsDate = c.InsDate.ToString(), Name = c.Name };
-                return View(companies.ToList());
-            }
+            var companies = from c in entities.Companies
+                            join u in entities.AspNetUsers on c.FstUser equals u.Id
+                            where c.Archived == 0
+                            select new GetCompanyListViewModel() { CompanyId = c.CompanyId.ToString(), Email = c.Email, FstUser = u.UserName, InsDate = c.InsDate.ToString(), Name = c.Name };
+            return View(companies.ToList());
         }
 
         //View Archive List
@@ -284,16 +263,12 @@ namespace ethko.Controllers
             var contactGroupModel = ConvertViewModelToModel(model);
             DateTime date = DateTime.Now;
             int intDate = int.Parse(date.ToString("yyyyMMdd"));
-
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                entities.ContactGroups.Add(contactGroupModel);
-                contactGroupModel.InsDate = intDate;
-                contactGroupModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
-                contactGroupModel.LstDate = intDate;
-                contactGroupModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
-                entities.SaveChanges();
-            }
+            entities.ContactGroups.Add(contactGroupModel);
+            contactGroupModel.InsDate = intDate;
+            contactGroupModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            contactGroupModel.LstDate = intDate;
+            contactGroupModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            entities.SaveChanges();
             return RedirectToAction("ContactGroups");
         }
 
@@ -301,15 +276,12 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult ContactGroups()
         {
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                var contactGroups = from cg in entities.ContactGroups
-                                    join u in entities.AspNetUsers on cg.FstUser equals u.Id into lj
-                                    from x in lj.DefaultIfEmpty()
-                                    join d in entities.DimDates on cg.InsDate equals d.DateKey
-                                    select new GetContactGroupListViewModel() { ContactGroupId = cg.ContactGroupId.ToString(), ContactGroupName = cg.ContactGroupName, FstUser = x.FName+" "+x.LName, InsDate = d.FullDateUSA.ToString() };
-                return View(contactGroups.ToList());
-            }
+            var contactGroups = from cg in entities.ContactGroups
+                                join u in entities.AspNetUsers on cg.FstUser equals u.Id into lj
+                                from x in lj.DefaultIfEmpty()
+                                join d in entities.DimDates on cg.InsDate equals d.DateKey
+                                select new GetContactGroupListViewModel() { ContactGroupId = cg.ContactGroupId.ToString(), ContactGroupName = cg.ContactGroupName, FstUser = x.FName + " " + x.LName, InsDate = d.FullDateUSA.ToString() };
+            return View(contactGroups.ToList());
         }
 
         // GET: /Contacts/EditContactGroupModal

@@ -28,30 +28,22 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                var cases = from c in entities.Cases
-                               join u in entities.AspNetUsers on c.FstUser equals u.Id //into users
-                               join cs in entities.CaseStages on c.CaseStageId equals cs.CaseStageId
-                               join d in entities.DimDates on c.InsDate equals d.DateKey
-                               //join 
-                               //where c.Archived == 0
-                               select new GetCaseListViewModel() { CaseId = c.CaseId, CaseNumber = c.CaseNumber, CaseName = c.CaseName, CaseStageId = c.CaseStageId, UserName = u.UserName, InsDate = d.FullDateUSA, CaseStageName = cs.CaseStageName, FullName=u.FName+" "+u.LName };
-                return View(cases.ToList());
-            }
+            var cases = from c in entities.Cases
+                        join u in entities.AspNetUsers on c.FstUser equals u.Id //into users
+                        join cs in entities.CaseStages on c.CaseStageId equals cs.CaseStageId
+                        join d in entities.DimDates on c.InsDate equals d.DateKey
+                        select new GetCaseListViewModel() { CaseId = c.CaseId, CaseNumber = c.CaseNumber, CaseName = c.CaseName, CaseStageId = c.CaseStageId, UserName = u.UserName, InsDate = d.FullDateUSA, CaseStageName = cs.CaseStageName, FullName = u.FName + " " + u.LName };
+            return View(cases.ToList());
         }
 
         [HttpGet]
         public ActionResult PracticeAreas()
         {
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                var practiceAreas = from p in entities.PracticeAreas
-                                    join u in entities.AspNetUsers on p.FstUser equals u.Id
-                                    join d in entities.DimDates on p.InsDate equals d.DateKey
-                                    select new GetPracticeAreasViewModel() { PracticeAreaId = p.PracticeAreaId.ToString(), PracticeAreaName = p.PracticeAreaName, InsDate = d.FullDateUSA.ToString(), UserId = u.UserName, FullName = u.FName + " " + u.LName };
-                return View(practiceAreas.ToList());
-            }
+            var practiceAreas = from p in entities.PracticeAreas
+                                join u in entities.AspNetUsers on p.FstUser equals u.Id
+                                join d in entities.DimDates on p.InsDate equals d.DateKey
+                                select new GetPracticeAreasViewModel() { PracticeAreaId = p.PracticeAreaId.ToString(), PracticeAreaName = p.PracticeAreaName, InsDate = d.FullDateUSA.ToString(), UserId = u.UserName, FullName = u.FName + " " + u.LName };
+            return View(practiceAreas.ToList());
         }
 
         public ActionResult CaseInsights()
@@ -68,16 +60,12 @@ namespace ethko.Controllers
 
         public ActionResult New()
         {
-            using (ethko_dbEntities entities = new ethko_dbEntities())
+            var contactResult = (from contacts in entities.Contacts select contacts).ToList();
+            var companyResult = (from companies in entities.Companies select companies).ToList();
+            var months = (from dimdates in entities.DimDates select new SelectListItem { Text = dimdates.MonthName }).Distinct().ToList();
+            if (contactResult != null)
             {
-                var contactResult = (from contacts in entities.Contacts select contacts).ToList();
-                var companyResult = (from companies in entities.Companies select companies).ToList();
-                var months = (from dimdates in entities.DimDates select new SelectListItem { Text=dimdates.MonthName }).Distinct().ToList();
-                //var totalResults = contactResult.AddRange(companyResult);
-                if (contactResult != null)
-                {
-                    ViewBag.contactList = contactResult.Select(N => new SelectListItem { Text = N.FullName, Value = N.ContactId.ToString() });
-                }
+                ViewBag.contactList = contactResult.Select(N => new SelectListItem { Text = N.FullName, Value = N.ContactId.ToString() });
             }
             var practiceAreas = new SelectList(entities.PracticeAreas.ToList(), "PracticeAreaName", "PracticeAreaName");
             ViewData["DBContactGroupsPracticeArea"] = practiceAreas;
@@ -91,7 +79,6 @@ namespace ethko.Controllers
             ViewData["DBContacts"] = contactList;
             var AspNetUserList = new SelectList(entities.AspNetUsers.ToList(), "FName", "FName");
             ViewData["DBAspNetUsers"] = AspNetUserList;
-            
             return View();
         }
 
@@ -120,43 +107,38 @@ namespace ethko.Controllers
             var caseModel = ConvertViewModelToModel(model);
             DateTime date = DateTime.Now;
             int intDate = int.Parse(date.ToString("yyyyMMdd"));
-
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                entities.Cases.Add(caseModel);
-                caseModel.InsDate = intDate;
-                caseModel.LstDate = intDate;
-                string contactName = Request.Form["Contacts"].ToString();
-                string practiceArea = Request.Form["PracticeAreas"].ToString();
-                string caseStage = Request.Form["CaseStages"].ToString();
-                string office = Request.Form["Offices"].ToString();
-                string billingMethod = Request.Form["BillingMethods"].ToString();
-                string billingContact = Request.Form["BillingContacts"].ToString();
-                string leadAttorney = Request.Form["LeadAttorney"].ToString();
-                string statuteMonth = Request.Form["StatuteMonth"].ToString();
-                string statuteDay = Request.Form["StatuteDay"].ToString();
-                string statuteYear = Request.Form["StatuteYear"].ToString();
-                string statuteDate = statuteYear + statuteMonth + statuteDay;
-                int statuteDateInt = Int32.Parse(statuteDate);
-                string openedMonth = Request.Form["OpenedMonth"].ToString();
-                string openedDay = Request.Form["OpenedDay"].ToString();
-                string openedYear = Request.Form["OpenedYear"].ToString();
-                string openedDate = openedYear + openedMonth + openedDay;
-                int openedDateInt = Int32.Parse(openedDate);
-                caseModel.ContactId = entities.Contacts.Where(m => m.FullName == contactName).Select(m => m.ContactId).FirstOrDefault();
-                caseModel.PracticeAreaId = entities.PracticeAreas.Where(m => m.PracticeAreaName == practiceArea).Select(m => m.PracticeAreaId).FirstOrDefault();
-                caseModel.CaseStageId = entities.CaseStages.Where(m => m.CaseStageName == caseStage).Select(m => m.CaseStageId).FirstOrDefault();
-                caseModel.OfficeId = entities.Offices.Where(m => m.OfficeName == office).Select(m => m.OfficeId).FirstOrDefault();
-                caseModel.BillingMethodId = entities.BillingMethods.Where(m => m.BillingMethodName == billingMethod).Select(m => m.BillingMethodId).FirstOrDefault();
-                caseModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
-                caseModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
-                caseModel.BillingContactId = entities.Contacts.Where(m => m.FullName == billingContact).Select(m => m.ContactId).FirstOrDefault();
-                //caseModel.Description = statuteMonth;//used for testing
-                caseModel.Statute = statuteDateInt;
-                caseModel.DateOpened = openedDateInt;
-                caseModel.LeadAttorneyId = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();//need to fix this
-                entities.SaveChanges();
-            }
+            entities.Cases.Add(caseModel);
+            caseModel.InsDate = intDate;
+            caseModel.LstDate = intDate;
+            string contactName = Request.Form["Contacts"].ToString();
+            string practiceArea = Request.Form["PracticeAreas"].ToString();
+            string caseStage = Request.Form["CaseStages"].ToString();
+            string office = Request.Form["Offices"].ToString();
+            string billingMethod = Request.Form["BillingMethods"].ToString();
+            string billingContact = Request.Form["BillingContacts"].ToString();
+            string leadAttorney = Request.Form["LeadAttorney"].ToString();
+            string statuteMonth = Request.Form["StatuteMonth"].ToString();
+            string statuteDay = Request.Form["StatuteDay"].ToString();
+            string statuteYear = Request.Form["StatuteYear"].ToString();
+            string statuteDate = statuteYear + statuteMonth + statuteDay;
+            int statuteDateInt = Int32.Parse(statuteDate);
+            string openedMonth = Request.Form["OpenedMonth"].ToString();
+            string openedDay = Request.Form["OpenedDay"].ToString();
+            string openedYear = Request.Form["OpenedYear"].ToString();
+            string openedDate = openedYear + openedMonth + openedDay;
+            int openedDateInt = Int32.Parse(openedDate);
+            caseModel.ContactId = entities.Contacts.Where(m => m.FullName == contactName).Select(m => m.ContactId).FirstOrDefault();
+            caseModel.PracticeAreaId = entities.PracticeAreas.Where(m => m.PracticeAreaName == practiceArea).Select(m => m.PracticeAreaId).FirstOrDefault();
+            caseModel.CaseStageId = entities.CaseStages.Where(m => m.CaseStageName == caseStage).Select(m => m.CaseStageId).FirstOrDefault();
+            caseModel.OfficeId = entities.Offices.Where(m => m.OfficeName == office).Select(m => m.OfficeId).FirstOrDefault();
+            caseModel.BillingMethodId = entities.BillingMethods.Where(m => m.BillingMethodName == billingMethod).Select(m => m.BillingMethodId).FirstOrDefault();
+            caseModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            caseModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            caseModel.BillingContactId = entities.Contacts.Where(m => m.FullName == billingContact).Select(m => m.ContactId).FirstOrDefault();
+            caseModel.Statute = statuteDateInt;
+            caseModel.DateOpened = openedDateInt;
+            caseModel.LeadAttorneyId = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();//need to fix this
+            entities.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -186,27 +168,19 @@ namespace ethko.Controllers
             var practiceAreaModel = ConvertViewModelToModel(model);
             DateTime date = DateTime.Now;
             int intDate = int.Parse(date.ToString("yyyyMMdd"));
-
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                entities.PracticeAreas.Add(practiceAreaModel);
-                practiceAreaModel.InsDate = intDate;
-                practiceAreaModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
-                practiceAreaModel.LstDate = intDate;
-                practiceAreaModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
-                entities.SaveChanges();
-            }
+            entities.PracticeAreas.Add(practiceAreaModel);
+            practiceAreaModel.InsDate = intDate;
+            practiceAreaModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            practiceAreaModel.LstDate = intDate;
+            practiceAreaModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            entities.SaveChanges();
             return RedirectToAction("PracticeAreas");
         }
 
         // GET: /Cases/EditPracticeArea
         [HttpGet]
-        public ActionResult EditPracticeArea(int? PracticeAreaId)
+        public ActionResult EditPracticeArea(int PracticeAreaId)
         {
-            if (PracticeAreaId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             PracticeArea practiceAreas = entities.PracticeAreas.Where(m => m.PracticeAreaId == PracticeAreaId).Single();
             return View(practiceAreas);
         }
@@ -249,7 +223,6 @@ namespace ethko.Controllers
                 entities.SaveChanges();
                 return RedirectToAction("PracticeAreas", "Cases");
             }
-
             return RedirectToAction("Index", "Cases");
         }
 
@@ -261,7 +234,6 @@ namespace ethko.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
             if (PracticeAreaId != null)
             {
                 PracticeArea practiceAreas = entities.PracticeAreas.Find(PracticeAreaId);
@@ -280,40 +252,31 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult ViewCase(int CaseId)
         {
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                var contacts = (from c in entities.Cases
-                                    //join cg in entities.ContactGroups on c.ContactGroupId equals cg.ContactGroupId
-                                join u in entities.AspNetUsers on c.LeadAttorneyId equals u.Id
-                                join pa in entities.PracticeAreas on c.PracticeAreaId equals pa.PracticeAreaId
-                                join cs in entities.CaseStages on c.CaseStageId equals cs.CaseStageId
-                                join dd in entities.DimDates on c.DateOpened equals dd.DateKey into dateopened
-                                from x in dateopened.DefaultIfEmpty()
-                                join dd2 in entities.DimDates on c.Statute equals dd2.DateKey into statute
-                                from y in statute.DefaultIfEmpty()
-                                join dd3 in entities.DimDates on c.InsDate equals dd3.DateKey into create
-                                from z in create.DefaultIfEmpty()
-                                where c.CaseId == CaseId
-                                select new GetIndividualCaseViewModel()
-                                {
-                                    CaseId = c.CaseId,
-                                    CaseName = c.CaseName,
-                                    CaseNumber = c.CaseNumber,
-                                    PracticeAreaName = pa.PracticeAreaName,
-                                    CaseStageName = cs.CaseStageName,
-                                    Description = c.Description,
-                                    DateOpened = x.FullDateUSA,
-                                    Statute = y.FullDateUSA,
-                                    DateCreated = z.FullDateUSA,
-                                    LeadAttorney = u.FName + " " + u.LName
-                                }).FirstOrDefault();
-
-
-                //IEnumerable<Contact> contacts = entities.Contacts.Where(m => m.Archived == 0).ToList();
-                //var contactModel = ConvertViewModelToModel(contacts);
-                
-                return View(contacts);
-            }
+            var contacts = (from c in entities.Cases
+                            join u in entities.AspNetUsers on c.LeadAttorneyId equals u.Id
+                            join pa in entities.PracticeAreas on c.PracticeAreaId equals pa.PracticeAreaId
+                            join cs in entities.CaseStages on c.CaseStageId equals cs.CaseStageId
+                            join dd in entities.DimDates on c.DateOpened equals dd.DateKey into dateopened
+                            from x in dateopened.DefaultIfEmpty()
+                            join dd2 in entities.DimDates on c.Statute equals dd2.DateKey into statute
+                            from y in statute.DefaultIfEmpty()
+                            join dd3 in entities.DimDates on c.InsDate equals dd3.DateKey into create
+                            from z in create.DefaultIfEmpty()
+                            where c.CaseId == CaseId
+                            select new GetIndividualCaseViewModel()
+                            {
+                                CaseId = c.CaseId,
+                                CaseName = c.CaseName,
+                                CaseNumber = c.CaseNumber,
+                                PracticeAreaName = pa.PracticeAreaName,
+                                CaseStageName = cs.CaseStageName,
+                                Description = c.Description,
+                                DateOpened = x.FullDateUSA,
+                                Statute = y.FullDateUSA,
+                                DateCreated = z.FullDateUSA,
+                                LeadAttorney = u.FName + " " + u.LName
+                            }).FirstOrDefault();
+            return View(contacts);
         }
 
         public Document ConvertViewModelToModel(AddCaseDocumentsViewModel vm)
@@ -371,13 +334,10 @@ namespace ethko.Controllers
         [HttpGet]
         public PartialViewResult CaseDocuments(GetCaseDocumentsViewModel model)
         {
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                var caseDocuments = from c in entities.Cases
-                                    select new GetCaseDocumentsViewModel() { CaseName = c.CaseName.ToString() };
-                //return RedirectToAction("Cases", "Index");
-                return PartialView(caseDocuments.ToList());
-            }
+            var caseDocuments = from c in entities.Cases
+                                select new GetCaseDocumentsViewModel() { CaseName = c.CaseName.ToString() };
+            //return RedirectToAction("Cases", "Index");
+            return PartialView(caseDocuments.ToList());
         }
     }
 }

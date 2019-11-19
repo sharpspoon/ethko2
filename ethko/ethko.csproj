@@ -3483,7 +3483,7 @@
     <Content Include="Views\Contacts\CompaniesArchive.cshtml" />
     <Content Include="Views\Contacts\ContactGroups.cshtml" />
     <Content Include="Views\Contacts\ContactsArchive.cshtml" />
-    <Content Include="Views\Contacts\EditContact.cshtml" />
+    <Content Include="Views\Contacts\_EditContactModal.cshtml" />
     <Content Include="Views\Contacts\Index.cshtml" />
     <Content Include="NotReferenced\ReplacedWithModals\Contacts\New.cshtml" />
     <Content Include="NotReferenced\ReplacedWithModals\Contacts\NewCompany.cshtml" />
