@@ -379,165 +379,162 @@ namespace ethko.Controllers
         {
             var c1 = Request.Form["c1"];
             Debug.WriteLine("c1="+c1);
-
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                var notifications = from n in entities.Notifications
-                                        //join ut in entities.UserTypes on fu.UserTypeId equals ut.UserTypeId
-                                    select new GetEditNotificationsViewModel()
-                                    {   N1 = (n.N1 == "on") ? "checked" : null,
-                                        N2 = (n.N2 == "on") ? "checked" : null,
-                                        N3 = (n.N3 == "on") ? "checked" : null,
-                                        N4 = (n.N4 == "on") ? "checked" : null,
-                                        N5 = (n.N5 == "on") ? "checked" : null,
-                                        N6 = (n.N6 == "on") ? "checked" : null,
-                                        N7 = (n.N7 == "on") ? "checked" : null,
-                                        N8 = (n.N8 == "on") ? "checked" : null,
-                                        N9 = (n.N9 == "on") ? "checked" : null,
-                                        N10 = (n.N10 == "on") ? "checked" : null,
-                                        N11 = (n.N11 == "on") ? "checked" : null,
-                                        N12 = (n.N12 == "on") ? "checked" : null,
-                                        N13 = (n.N13 == "on") ? "checked" : null,
-                                        N14 = (n.N14 == "on") ? "checked" : null,
-                                        N15 = (n.N15 == "on") ? "checked" : null,
-                                        N16 = (n.N16 == "on") ? "checked" : null,
-                                        N17 = (n.N17 == "on") ? "checked" : null,
-                                        N18 = (n.N18 == "on") ? "checked" : null,
-                                        N19 = (n.N19 == "on") ? "checked" : null,
-                                        N20 = (n.N20 == "on") ? "checked" : null,
-                                        N21 = (n.N21 == "on") ? "checked" : null,
-                                        N22 = (n.N22 == "on") ? "checked" : null,
-                                        N23 = (n.N23 == "on") ? "checked" : null,
-                                        N24 = (n.N24 == "on") ? "checked" : null,
-                                        N25 = (n.N25 == "on") ? "checked" : null,
-                                        N26 = (n.N26 == "on") ? "checked" : null,
-                                        N27 = (n.N27 == "on") ? "checked" : null,
-                                        N28 = (n.N28 == "on") ? "checked" : null,
-                                        N29 = (n.N29 == "on") ? "checked" : null,
-                                        N30 = (n.N30 == "on") ? "checked" : null,
-                                        N31 = (n.N31 == "on") ? "checked" : null,
-                                        N32 = (n.N32 == "on") ? "checked" : null,
-                                        N33 = (n.N33 == "on") ? "checked" : null,
-                                        N34 = (n.N34 == "on") ? "checked" : null,
-                                        N35 = (n.N35 == "on") ? "checked" : null,
-                                        N36 = (n.N36 == "on") ? "checked" : null,
-                                        N37 = (n.N37 == "on") ? "checked" : null,
-                                        N38 = (n.N38 == "on") ? "checked" : null,
-                                        N39 = (n.N39 == "on") ? "checked" : null,
-                                        N40 = (n.N40 == "on") ? "checked" : null,
-                                        N41 = (n.N41 == "on") ? "checked" : null,
-                                        N42 = (n.N42 == "on") ? "checked" : null,
-                                        N43 = (n.N43 == "on") ? "checked" : null,
-                                        N44 = (n.N44 == "on") ? "checked" : null,
-                                        N45 = (n.N45 == "on") ? "checked" : null,
-                                        N46 = (n.N46 == "on") ? "checked" : null,
-                                        N47 = (n.N47 == "on") ? "checked" : null,
-                                        N48 = (n.N48 == "on") ? "checked" : null,
-                                        N49 = (n.N49 == "on") ? "checked" : null,
-                                        N50 = (n.N50 == "on") ? "checked" : null,
-                                        N51 = (n.N51 == "on") ? "checked" : null,
-                                        N52 = (n.N52 == "on") ? "checked" : null,
-                                        N53 = (n.N53 == "on") ? "checked" : null,
-                                        N54 = (n.N54 == "on") ? "checked" : null,
-                                        N55 = (n.N55 == "on") ? "checked" : null,
-                                        N56 = (n.N56 == "on") ? "checked" : null,
-                                        N57 = (n.N57 == "on") ? "checked" : null,
-                                        N58 = (n.N58 == "on") ? "checked" : null,
-                                        N59 = (n.N59 == "on") ? "checked" : null,
-                                        N60 = (n.N60 == "on") ? "checked" : null,
-                                        N61 = (n.N61 == "on") ? "checked" : null,
-                                        N62 = (n.N62 == "on") ? "checked" : null,
-                                        N63 = (n.N63 == "on") ? "checked" : null,
-                                        N64 = (n.N64 == "on") ? "checked" : null,
-                                        N65 = (n.N65 == "on") ? "checked" : null,
-                                        N66 = (n.N66 == "on") ? "checked" : null,
-                                        N67 = (n.N67 == "on") ? "checked" : null,
-                                        N68 = (n.N68 == "on") ? "checked" : null,
-                                        N69 = (n.N69 == "on") ? "checked" : null,
-                                        N70 = (n.N70 == "on") ? "checked" : null,
-                                        N71 = (n.N71 == "on") ? "checked" : null,
-                                        N72 = (n.N72 == "on") ? "checked" : null,
-                                        N73 = (n.N73 == "on") ? "checked" : null,
-                                        N74 = (n.N74 == "on") ? "checked" : null,
-                                        N75 = (n.N75 == "on") ? "checked" : null,
-                                        N76 = (n.N76 == "on") ? "checked" : null,
-                                        N77 = (n.N77 == "on") ? "checked" : null,
-                                        N78 = (n.N78 == "on") ? "checked" : null,
-                                        N79 = (n.N79 == "on") ? "checked" : null,
-                                        N80 = (n.N80 == "on") ? "checked" : null,
-                                        N81 = (n.N81 == "on") ? "checked" : null,
-                                        N82 = (n.N82 == "on") ? "checked" : null,
-                                        N83 = (n.N83 == "on") ? "checked" : null,
-                                        N84 = (n.N84 == "on") ? "checked" : null,
-                                        N85 = (n.N85 == "on") ? "checked" : null,
-                                        N86 = (n.N86 == "on") ? "checked" : null,
-                                        N87 = (n.N87 == "on") ? "checked" : null,
-                                        N88 = (n.N88 == "on") ? "checked" : null,
-                                        N89 = (n.N89 == "on") ? "checked" : null,
-                                        N90 = (n.N90 == "on") ? "checked" : null,
-                                        N91 = (n.N91 == "on") ? "checked" : null,
-                                        N92 = (n.N92 == "on") ? "checked" : null,
-                                        N93 = (n.N93 == "on") ? "checked" : null,
-                                        N94 = (n.N94 == "on") ? "checked" : null,
-                                        N95 = (n.N95 == "on") ? "checked" : null,
-                                        N96 = (n.N96 == "on") ? "checked" : null,
-                                        N97 = (n.N97 == "on") ? "checked" : null,
-                                        N98 = (n.N98 == "on") ? "checked" : null,
-                                        N99 = (n.N99 == "on") ? "checked" : null,
-                                        N100 = (n.N100 == "on") ? "checked" : null,
-                                        N101 = (n.N101 == "on") ? "checked" : null,
-                                        N102 = (n.N102 == "on") ? "checked" : null,
-                                        N103 = (n.N103 == "on") ? "checked" : null,
-                                        N104 = (n.N104 == "on") ? "checked" : null,
-                                        N105 = (n.N105 == "on") ? "checked" : null,
-                                        N106 = (n.N106 == "on") ? "checked" : null,
-                                        N107 = (n.N107 == "on") ? "checked" : null,
-                                        N108 = (n.N108 == "on") ? "checked" : null,
-                                        N109 = (n.N109 == "on") ? "checked" : null,
-                                        N110 = (n.N110 == "on") ? "checked" : null,
-                                        N111 = (n.N111 == "on") ? "checked" : null,
-                                        N112 = (n.N112 == "on") ? "checked" : null,
-                                        N113 = (n.N113 == "on") ? "checked" : null,
-                                        N114 = (n.N114 == "on") ? "checked" : null,
-                                        N115 = (n.N115 == "on") ? "checked" : null,
-                                        N116 = (n.N116 == "on") ? "checked" : null,
-                                        N117 = (n.N117 == "on") ? "checked" : null,
-                                        N118 = (n.N118 == "on") ? "checked" : null,
-                                        N119 = (n.N119 == "on") ? "checked" : null,
-                                        N120 = (n.N120 == "on") ? "checked" : null,
-                                        N121 = (n.N121 == "on") ? "checked" : null,
-                                        N122 = (n.N122 == "on") ? "checked" : null,
-                                        N123 = (n.N123 == "on") ? "checked" : null,
-                                        N124 = (n.N124 == "on") ? "checked" : null,
-                                        N125 = (n.N125 == "on") ? "checked" : null,
-                                        N126 = (n.N126 == "on") ? "checked" : null,
-                                        N127 = (n.N127 == "on") ? "checked" : null,
-                                        N128 = (n.N128 == "on") ? "checked" : null,
-                                        N129 = (n.N129 == "on") ? "checked" : null,
-                                        N130 = (n.N130 == "on") ? "checked" : null,
-                                        N131 = (n.N131 == "on") ? "checked" : null,
-                                        N132 = (n.N132 == "on") ? "checked" : null,
-                                        N133 = (n.N133 == "on") ? "checked" : null,
-                                        N134 = (n.N134 == "on") ? "checked" : null,
-                                        N135 = (n.N135 == "on") ? "checked" : null,
-                                        N136 = (n.N136 == "on") ? "checked" : null,
-                                        N137 = (n.N137 == "on") ? "checked" : null,
-                                        N138 = (n.N138 == "on") ? "checked" : null,
-                                        N139 = (n.N139 == "on") ? "checked" : null,
-                                        N140 = (n.N140 == "on") ? "checked" : null,
-                                        N141 = (n.N141 == "on") ? "checked" : null,
-                                        N142 = (n.N142 == "on") ? "checked" : null,
-                                        N143 = (n.N143 == "on") ? "checked" : null,
-                                        N144 = (n.N144 == "on") ? "checked" : null,
-                                        N145 = (n.N145 == "on") ? "checked" : null,
-                                        N146 = (n.N146 == "on") ? "checked" : null,
-                                        N147 = (n.N147 == "on") ? "checked" : null,
-                                        N148 = (n.N148 == "on") ? "checked" : null,
-                                        N149 = (n.N149 == "on") ? "checked" : null,
-                                        N150 = (n.N150 == "on") ? "checked" : null
-                                    };
-                return View(notifications.ToList());
-            }
+            var notifications = from n in entities.Notifications
+                                    //join ut in entities.UserTypes on fu.UserTypeId equals ut.UserTypeId
+                                select new GetEditNotificationsViewModel()
+                                {
+                                    N1 = (n.N1 == "on") ? "checked" : null,
+                                    N2 = (n.N2 == "on") ? "checked" : null,
+                                    N3 = (n.N3 == "on") ? "checked" : null,
+                                    N4 = (n.N4 == "on") ? "checked" : null,
+                                    N5 = (n.N5 == "on") ? "checked" : null,
+                                    N6 = (n.N6 == "on") ? "checked" : null,
+                                    N7 = (n.N7 == "on") ? "checked" : null,
+                                    N8 = (n.N8 == "on") ? "checked" : null,
+                                    N9 = (n.N9 == "on") ? "checked" : null,
+                                    N10 = (n.N10 == "on") ? "checked" : null,
+                                    N11 = (n.N11 == "on") ? "checked" : null,
+                                    N12 = (n.N12 == "on") ? "checked" : null,
+                                    N13 = (n.N13 == "on") ? "checked" : null,
+                                    N14 = (n.N14 == "on") ? "checked" : null,
+                                    N15 = (n.N15 == "on") ? "checked" : null,
+                                    N16 = (n.N16 == "on") ? "checked" : null,
+                                    N17 = (n.N17 == "on") ? "checked" : null,
+                                    N18 = (n.N18 == "on") ? "checked" : null,
+                                    N19 = (n.N19 == "on") ? "checked" : null,
+                                    N20 = (n.N20 == "on") ? "checked" : null,
+                                    N21 = (n.N21 == "on") ? "checked" : null,
+                                    N22 = (n.N22 == "on") ? "checked" : null,
+                                    N23 = (n.N23 == "on") ? "checked" : null,
+                                    N24 = (n.N24 == "on") ? "checked" : null,
+                                    N25 = (n.N25 == "on") ? "checked" : null,
+                                    N26 = (n.N26 == "on") ? "checked" : null,
+                                    N27 = (n.N27 == "on") ? "checked" : null,
+                                    N28 = (n.N28 == "on") ? "checked" : null,
+                                    N29 = (n.N29 == "on") ? "checked" : null,
+                                    N30 = (n.N30 == "on") ? "checked" : null,
+                                    N31 = (n.N31 == "on") ? "checked" : null,
+                                    N32 = (n.N32 == "on") ? "checked" : null,
+                                    N33 = (n.N33 == "on") ? "checked" : null,
+                                    N34 = (n.N34 == "on") ? "checked" : null,
+                                    N35 = (n.N35 == "on") ? "checked" : null,
+                                    N36 = (n.N36 == "on") ? "checked" : null,
+                                    N37 = (n.N37 == "on") ? "checked" : null,
+                                    N38 = (n.N38 == "on") ? "checked" : null,
+                                    N39 = (n.N39 == "on") ? "checked" : null,
+                                    N40 = (n.N40 == "on") ? "checked" : null,
+                                    N41 = (n.N41 == "on") ? "checked" : null,
+                                    N42 = (n.N42 == "on") ? "checked" : null,
+                                    N43 = (n.N43 == "on") ? "checked" : null,
+                                    N44 = (n.N44 == "on") ? "checked" : null,
+                                    N45 = (n.N45 == "on") ? "checked" : null,
+                                    N46 = (n.N46 == "on") ? "checked" : null,
+                                    N47 = (n.N47 == "on") ? "checked" : null,
+                                    N48 = (n.N48 == "on") ? "checked" : null,
+                                    N49 = (n.N49 == "on") ? "checked" : null,
+                                    N50 = (n.N50 == "on") ? "checked" : null,
+                                    N51 = (n.N51 == "on") ? "checked" : null,
+                                    N52 = (n.N52 == "on") ? "checked" : null,
+                                    N53 = (n.N53 == "on") ? "checked" : null,
+                                    N54 = (n.N54 == "on") ? "checked" : null,
+                                    N55 = (n.N55 == "on") ? "checked" : null,
+                                    N56 = (n.N56 == "on") ? "checked" : null,
+                                    N57 = (n.N57 == "on") ? "checked" : null,
+                                    N58 = (n.N58 == "on") ? "checked" : null,
+                                    N59 = (n.N59 == "on") ? "checked" : null,
+                                    N60 = (n.N60 == "on") ? "checked" : null,
+                                    N61 = (n.N61 == "on") ? "checked" : null,
+                                    N62 = (n.N62 == "on") ? "checked" : null,
+                                    N63 = (n.N63 == "on") ? "checked" : null,
+                                    N64 = (n.N64 == "on") ? "checked" : null,
+                                    N65 = (n.N65 == "on") ? "checked" : null,
+                                    N66 = (n.N66 == "on") ? "checked" : null,
+                                    N67 = (n.N67 == "on") ? "checked" : null,
+                                    N68 = (n.N68 == "on") ? "checked" : null,
+                                    N69 = (n.N69 == "on") ? "checked" : null,
+                                    N70 = (n.N70 == "on") ? "checked" : null,
+                                    N71 = (n.N71 == "on") ? "checked" : null,
+                                    N72 = (n.N72 == "on") ? "checked" : null,
+                                    N73 = (n.N73 == "on") ? "checked" : null,
+                                    N74 = (n.N74 == "on") ? "checked" : null,
+                                    N75 = (n.N75 == "on") ? "checked" : null,
+                                    N76 = (n.N76 == "on") ? "checked" : null,
+                                    N77 = (n.N77 == "on") ? "checked" : null,
+                                    N78 = (n.N78 == "on") ? "checked" : null,
+                                    N79 = (n.N79 == "on") ? "checked" : null,
+                                    N80 = (n.N80 == "on") ? "checked" : null,
+                                    N81 = (n.N81 == "on") ? "checked" : null,
+                                    N82 = (n.N82 == "on") ? "checked" : null,
+                                    N83 = (n.N83 == "on") ? "checked" : null,
+                                    N84 = (n.N84 == "on") ? "checked" : null,
+                                    N85 = (n.N85 == "on") ? "checked" : null,
+                                    N86 = (n.N86 == "on") ? "checked" : null,
+                                    N87 = (n.N87 == "on") ? "checked" : null,
+                                    N88 = (n.N88 == "on") ? "checked" : null,
+                                    N89 = (n.N89 == "on") ? "checked" : null,
+                                    N90 = (n.N90 == "on") ? "checked" : null,
+                                    N91 = (n.N91 == "on") ? "checked" : null,
+                                    N92 = (n.N92 == "on") ? "checked" : null,
+                                    N93 = (n.N93 == "on") ? "checked" : null,
+                                    N94 = (n.N94 == "on") ? "checked" : null,
+                                    N95 = (n.N95 == "on") ? "checked" : null,
+                                    N96 = (n.N96 == "on") ? "checked" : null,
+                                    N97 = (n.N97 == "on") ? "checked" : null,
+                                    N98 = (n.N98 == "on") ? "checked" : null,
+                                    N99 = (n.N99 == "on") ? "checked" : null,
+                                    N100 = (n.N100 == "on") ? "checked" : null,
+                                    N101 = (n.N101 == "on") ? "checked" : null,
+                                    N102 = (n.N102 == "on") ? "checked" : null,
+                                    N103 = (n.N103 == "on") ? "checked" : null,
+                                    N104 = (n.N104 == "on") ? "checked" : null,
+                                    N105 = (n.N105 == "on") ? "checked" : null,
+                                    N106 = (n.N106 == "on") ? "checked" : null,
+                                    N107 = (n.N107 == "on") ? "checked" : null,
+                                    N108 = (n.N108 == "on") ? "checked" : null,
+                                    N109 = (n.N109 == "on") ? "checked" : null,
+                                    N110 = (n.N110 == "on") ? "checked" : null,
+                                    N111 = (n.N111 == "on") ? "checked" : null,
+                                    N112 = (n.N112 == "on") ? "checked" : null,
+                                    N113 = (n.N113 == "on") ? "checked" : null,
+                                    N114 = (n.N114 == "on") ? "checked" : null,
+                                    N115 = (n.N115 == "on") ? "checked" : null,
+                                    N116 = (n.N116 == "on") ? "checked" : null,
+                                    N117 = (n.N117 == "on") ? "checked" : null,
+                                    N118 = (n.N118 == "on") ? "checked" : null,
+                                    N119 = (n.N119 == "on") ? "checked" : null,
+                                    N120 = (n.N120 == "on") ? "checked" : null,
+                                    N121 = (n.N121 == "on") ? "checked" : null,
+                                    N122 = (n.N122 == "on") ? "checked" : null,
+                                    N123 = (n.N123 == "on") ? "checked" : null,
+                                    N124 = (n.N124 == "on") ? "checked" : null,
+                                    N125 = (n.N125 == "on") ? "checked" : null,
+                                    N126 = (n.N126 == "on") ? "checked" : null,
+                                    N127 = (n.N127 == "on") ? "checked" : null,
+                                    N128 = (n.N128 == "on") ? "checked" : null,
+                                    N129 = (n.N129 == "on") ? "checked" : null,
+                                    N130 = (n.N130 == "on") ? "checked" : null,
+                                    N131 = (n.N131 == "on") ? "checked" : null,
+                                    N132 = (n.N132 == "on") ? "checked" : null,
+                                    N133 = (n.N133 == "on") ? "checked" : null,
+                                    N134 = (n.N134 == "on") ? "checked" : null,
+                                    N135 = (n.N135 == "on") ? "checked" : null,
+                                    N136 = (n.N136 == "on") ? "checked" : null,
+                                    N137 = (n.N137 == "on") ? "checked" : null,
+                                    N138 = (n.N138 == "on") ? "checked" : null,
+                                    N139 = (n.N139 == "on") ? "checked" : null,
+                                    N140 = (n.N140 == "on") ? "checked" : null,
+                                    N141 = (n.N141 == "on") ? "checked" : null,
+                                    N142 = (n.N142 == "on") ? "checked" : null,
+                                    N143 = (n.N143 == "on") ? "checked" : null,
+                                    N144 = (n.N144 == "on") ? "checked" : null,
+                                    N145 = (n.N145 == "on") ? "checked" : null,
+                                    N146 = (n.N146 == "on") ? "checked" : null,
+                                    N147 = (n.N147 == "on") ? "checked" : null,
+                                    N148 = (n.N148 == "on") ? "checked" : null,
+                                    N149 = (n.N149 == "on") ? "checked" : null,
+                                    N150 = (n.N150 == "on") ? "checked" : null
+                                };
+            return View(notifications.ToList());
         }
 
         [HttpGet]
@@ -558,7 +555,6 @@ namespace ethko.Controllers
             var user = User.Identity.GetUserName().ToString();
             var userid = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
             var notificationId = entities.Notifications.Where(m => m.UserId == userid).Select(m => m.NotificationId).First();
-
             if (userid != null)
             {
                 Notification notifications = entities.Notifications.Find(notificationId);
@@ -712,8 +708,6 @@ namespace ethko.Controllers
                 string c148 = Request.Form["c148"];
                 string c149 = Request.Form["c149"];
                 string c150 = Request.Form["c150"];
-
-
                 notifications.N1 = c1;
                 notifications.N2 = c2;
                 notifications.N3 = c3;
@@ -879,13 +873,10 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult FirmUsers()
         {
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                var firmUsers = from fu in entities.AspNetUsers
-                                join ut in entities.UserTypes on fu.UserTypeId equals ut.UserTypeId
-                                select new GetFirmUsersViewModel() { Name = fu.FName + " " + fu.LName, UserType = ut.UserTypeName };
-                return View(firmUsers.ToList());
-            }
+            var firmUsers = from fu in entities.AspNetUsers
+                            join ut in entities.UserTypes on fu.UserTypeId equals ut.UserTypeId
+                            select new GetFirmUsersViewModel() { Name = fu.FName + " " + fu.LName, UserType = ut.UserTypeName };
+            return View(firmUsers.ToList());
         }
 
         // GET: /Manage/FirmUsersArchive
@@ -916,12 +907,8 @@ namespace ethko.Controllers
         {
             var user = User.Identity.GetUserName().ToString();
             var firmUserModel = ConvertViewModelToModel(model);
-
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                entities.AspNetUsers.Add(firmUserModel);
-                entities.SaveChanges();
-            }
+            entities.AspNetUsers.Add(firmUserModel);
+            entities.SaveChanges();
             return RedirectToAction("FirmUsers");
         }
 
@@ -939,17 +926,14 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult FirmSettings()
         {
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                var offices = from o in entities.Offices
-                              join u in entities.AspNetUsers on o.FstUser equals u.Id into gj
-                              from x in gj.DefaultIfEmpty()
-                              join d in entities.DimDates on o.InsDate equals d.DateKey
-                              join u in entities.AspNetUsers on o.LstUser equals u.Id into lst
-                              from y in lst.DefaultIfEmpty()
-                              select new GetFirmSettingsViewModel() { OfficeId = o.OfficeId.ToString(), OfficeName = o.OfficeName, InsDate = d.FullDateUSA.ToString(), FullName = x.FName + " " + x.LName, LstUser=y.FName+" "+y.LName };
-                return View(offices.ToList());
-            }
+            var offices = from o in entities.Offices
+                          join u in entities.AspNetUsers on o.FstUser equals u.Id into gj
+                          from x in gj.DefaultIfEmpty()
+                          join d in entities.DimDates on o.InsDate equals d.DateKey
+                          join u in entities.AspNetUsers on o.LstUser equals u.Id into lst
+                          from y in lst.DefaultIfEmpty()
+                          select new GetFirmSettingsViewModel() { OfficeId = o.OfficeId.ToString(), OfficeName = o.OfficeName, InsDate = d.FullDateUSA.ToString(), FullName = x.FName + " " + x.LName, LstUser = y.FName + " " + y.LName };
+            return View(offices.ToList());
         }
 
         // GET: /Manage/NewOffice
@@ -975,16 +959,12 @@ namespace ethko.Controllers
             var officeModel = ConvertViewModelToModel(model);
             DateTime date = DateTime.Now;
             int intDate = int.Parse(date.ToString("yyyyMMdd"));
-
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                entities.Offices.Add(officeModel);
-                officeModel.InsDate = intDate;
-                officeModel.LstDate = intDate;
-                officeModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
-                officeModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
-                entities.SaveChanges();
-            }
+            entities.Offices.Add(officeModel);
+            officeModel.InsDate = intDate;
+            officeModel.LstDate = intDate;
+            officeModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            officeModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            entities.SaveChanges();
             return RedirectToAction("FirmSettings");
         }
 
@@ -1031,13 +1011,9 @@ namespace ethko.Controllers
             var userTypeModel = ConvertViewModelToModel(model);
             DateTime date = DateTime.Now;
             int intDate = int.Parse(date.ToString("yyyyMMdd"));
-
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                entities.UserTypes.Add(userTypeModel);
-                userTypeModel.InsDate = intDate;
-                entities.SaveChanges();
-            }
+            entities.UserTypes.Add(userTypeModel);
+            userTypeModel.InsDate = intDate;
+            entities.SaveChanges();
             return RedirectToAction("UserTypes");
         }
 
@@ -1045,20 +1021,16 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult UserTypes()
         {
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                var userTypes = from ut in entities.UserTypes
-                                join d in entities.DimDates on ut.InsDate equals d.DateKey
-                                select new GetUserTypesViewModel() { UserTypeId = ut.UserTypeId.ToString(), UserTypeName = ut.UserTypeName, InsDate = d.FullDateUSA.ToString() };
-                return View(userTypes.ToList());
-            }
+            var userTypes = from ut in entities.UserTypes
+                            join d in entities.DimDates on ut.InsDate equals d.DateKey
+                            select new GetUserTypesViewModel() { UserTypeId = ut.UserTypeId.ToString(), UserTypeName = ut.UserTypeName, InsDate = d.FullDateUSA.ToString() };
+            return View(userTypes.ToList());
         }
 
         // GET: /Manage/DeleteUserTypeModal
         [HttpGet]
         public ActionResult DeleteUserTypeModal(int UserTypeId)
         {
-            ethko_dbEntities entities = new ethko_dbEntities();
             UserType userTypes = entities.UserTypes.Where(m => m.UserTypeId == UserTypeId).Single();
             return PartialView("_DeleteUserTypeModal", userTypes);
         }
@@ -1081,15 +1053,12 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult ClientBilling()
         {
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                var billingMethods = from bm in entities.BillingMethods
-                                     join u in entities.AspNetUsers on bm.FstUser equals u.Id into gj
-                                     join d in entities.DimDates on bm.InsDate equals d.DateKey
-                                     from x in gj.DefaultIfEmpty()
-                                     select new GetClientBillingViewModel() { BillingMethodId = bm.BillingMethodId.ToString(), BillingMethodName = bm.BillingMethodName, InsDate = d.FullDateUSA.ToString(), FullName = x.FName + " " + x.LName };
-                return View(billingMethods.ToList());
-            }
+            var billingMethods = from bm in entities.BillingMethods
+                                 join u in entities.AspNetUsers on bm.FstUser equals u.Id into gj
+                                 join d in entities.DimDates on bm.InsDate equals d.DateKey
+                                 from x in gj.DefaultIfEmpty()
+                                 select new GetClientBillingViewModel() { BillingMethodId = bm.BillingMethodId.ToString(), BillingMethodName = bm.BillingMethodName, InsDate = d.FullDateUSA.ToString(), FullName = x.FName + " " + x.LName };
+            return View(billingMethods.ToList());
         }
 
         // GET: /Manage/NewBillingMethodModal
@@ -1116,16 +1085,12 @@ namespace ethko.Controllers
             var billingMthodModel = ConvertViewModelToModel(model);
             DateTime date = DateTime.Now;
             int intDate = int.Parse(date.ToString("yyyyMMdd"));
-
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                entities.BillingMethods.Add(billingMthodModel);
-                billingMthodModel.InsDate = intDate;
-                billingMthodModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
-                billingMthodModel.LstDate = intDate;
-                billingMthodModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
-                entities.SaveChanges();
-            }
+            entities.BillingMethods.Add(billingMthodModel);
+            billingMthodModel.InsDate = intDate;
+            billingMthodModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            billingMthodModel.LstDate = intDate;
+            billingMthodModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            entities.SaveChanges();
             return RedirectToAction("ClientBilling");
         }
 
@@ -1207,15 +1172,12 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult CaseStages()
         {
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                var caseStages = from c in entities.CaseStages
-                                 join u in entities.AspNetUsers on c.FstUser equals u.Id into lj
-                                 from x in lj.DefaultIfEmpty()
-                                 join d in entities.DimDates on c.InsDate equals d.DateKey
-                                 select new GetCaseStagesViewModel() { CaseStageId = c.CaseStageId.ToString(), CaseStageName = c.CaseStageName, InsDate = d.FullDateUSA.ToString(), FullName = x.FName + " " + x.LName };
-                return View(caseStages.ToList());
-            }
+            var caseStages = from c in entities.CaseStages
+                             join u in entities.AspNetUsers on c.FstUser equals u.Id into lj
+                             from x in lj.DefaultIfEmpty()
+                             join d in entities.DimDates on c.InsDate equals d.DateKey
+                             select new GetCaseStagesViewModel() { CaseStageId = c.CaseStageId.ToString(), CaseStageName = c.CaseStageName, InsDate = d.FullDateUSA.ToString(), FullName = x.FName + " " + x.LName };
+            return View(caseStages.ToList());
         }
 
         // GET: /Manage/NewCaseStage
@@ -1242,16 +1204,12 @@ namespace ethko.Controllers
             var caseStageModel = ConvertViewModelToModel(model);
             DateTime date = DateTime.Now;
             int intDate = int.Parse(date.ToString("yyyyMMdd"));
-
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                entities.CaseStages.Add(caseStageModel);
-                caseStageModel.InsDate = intDate;
-                caseStageModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
-                caseStageModel.LstDate = intDate;
-                caseStageModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
-                entities.SaveChanges();
-            }
+            entities.CaseStages.Add(caseStageModel);
+            caseStageModel.InsDate = intDate;
+            caseStageModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            caseStageModel.LstDate = intDate;
+            caseStageModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            entities.SaveChanges();
             return RedirectToAction("CaseStages");
         }
 
@@ -1259,7 +1217,6 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult DeleteCaseStageModal(int CaseStageId)
         {
-            ethko_dbEntities entities = new ethko_dbEntities();
             CaseStage caseStages = entities.CaseStages.Where(m => m.CaseStageId == CaseStageId).Single();
             return PartialView("_DeleteCaseStageModal", caseStages);
         }
@@ -1282,30 +1239,24 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult Leads()
         {
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                var leadReferralSources = from lrs in entities.LeadReferralSources
-                                          join u in entities.AspNetUsers on lrs.FstUser equals u.Id into lj
-                                          from x in lj.DefaultIfEmpty()
-                                          join d in entities.DimDates on lrs.InsDate equals d.DateKey
-                                          select new GetLeadReferralSourcesViewModel() { ReferralSourceId = lrs.ReferralSourceId.ToString(), ReferralSourceName = lrs.ReferralSourceName, InsDate = d.FullDateUSA.ToString(), FullName = x.FName + " " + x.LName };
-                return View(leadReferralSources.ToList());
-            }
+            var leadReferralSources = from lrs in entities.LeadReferralSources
+                                      join u in entities.AspNetUsers on lrs.FstUser equals u.Id into lj
+                                      from x in lj.DefaultIfEmpty()
+                                      join d in entities.DimDates on lrs.InsDate equals d.DateKey
+                                      select new GetLeadReferralSourcesViewModel() { ReferralSourceId = lrs.ReferralSourceId.ToString(), ReferralSourceName = lrs.ReferralSourceName, InsDate = d.FullDateUSA.ToString(), FullName = x.FName + " " + x.LName };
+            return View(leadReferralSources.ToList());
         }
 
         // GET: /Manage/LeadStatus
         [HttpGet]
         public ActionResult LeadStatus()
         {
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                var leadStatuses = from ls in entities.LeadStatuses
-                                   join u in entities.AspNetUsers on ls.FstUser equals u.Id into lj
-                                   from x in lj.DefaultIfEmpty()
-                                   join d in entities.DimDates on ls.InsDate equals d.DateKey
-                                   select new GetLeadStatusesViewModel() { LeadStatusId = ls.LeadStatusId.ToString(), LeadStatusName = ls.LeadStatusName, InsDate = d.FullDateUSA.ToString(), FullName = x.FName + " " + x.LName };
-                return View(leadStatuses.ToList());
-            }
+            var leadStatuses = from ls in entities.LeadStatuses
+                               join u in entities.AspNetUsers on ls.FstUser equals u.Id into lj
+                               from x in lj.DefaultIfEmpty()
+                               join d in entities.DimDates on ls.InsDate equals d.DateKey
+                               select new GetLeadStatusesViewModel() { LeadStatusId = ls.LeadStatusId.ToString(), LeadStatusName = ls.LeadStatusName, InsDate = d.FullDateUSA.ToString(), FullName = x.FName + " " + x.LName };
+            return View(leadStatuses.ToList());
         }
 
         // GET: /Manage/NewLeadStatusModal
@@ -1332,16 +1283,12 @@ namespace ethko.Controllers
             var leadStatusModel = ConvertViewModelToModel(model);
             DateTime date = DateTime.Now;
             int intDate = int.Parse(date.ToString("yyyyMMdd"));
-
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                entities.LeadStatuses.Add(leadStatusModel);
-                leadStatusModel.InsDate = intDate;
-                leadStatusModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
-                leadStatusModel.LstDate = intDate;
-                leadStatusModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
-                entities.SaveChanges();
-            }
+            entities.LeadStatuses.Add(leadStatusModel);
+            leadStatusModel.InsDate = intDate;
+            leadStatusModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            leadStatusModel.LstDate = intDate;
+            leadStatusModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            entities.SaveChanges();
             return RedirectToAction("LeadStatus");
         }
 
@@ -1349,7 +1296,6 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult DeleteLeadStatusModal(int LeadStatusId)
         {
-            ethko_dbEntities entities = new ethko_dbEntities();
             LeadStatus leadStatuses = entities.LeadStatuses.Where(m => m.LeadStatusId == LeadStatusId).Single();
             return PartialView("_DeleteLeadStatusModal", leadStatuses);
         }
@@ -1386,16 +1332,12 @@ namespace ethko.Controllers
             var referralSourceModel = ConvertViewModelToModel(model);
             DateTime date = DateTime.Now;
             int intDate = int.Parse(date.ToString("yyyyMMdd"));
-
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-                entities.LeadReferralSources.Add(referralSourceModel);
-                referralSourceModel.InsDate = intDate;
-                referralSourceModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
-                referralSourceModel.LstDate = intDate;
-                referralSourceModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
-                entities.SaveChanges();
-            }
+            entities.LeadReferralSources.Add(referralSourceModel);
+            referralSourceModel.InsDate = intDate;
+            referralSourceModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            referralSourceModel.LstDate = intDate;
+            referralSourceModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            entities.SaveChanges();
             return RedirectToAction("Leads");
         }
 
@@ -1403,7 +1345,6 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult DeleteLeadReferralSourceModal(int ReferralSourceId)
         {
-            ethko_dbEntities entities = new ethko_dbEntities();
             LeadReferralSource referralSources = entities.LeadReferralSources.Where(m => m.ReferralSourceId == ReferralSourceId).Single();
             return PartialView("_DeleteLeadReferralSourceModal", referralSources);
         }
