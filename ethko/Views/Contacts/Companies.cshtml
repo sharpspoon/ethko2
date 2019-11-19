@@ -15,82 +15,79 @@
     @ViewBag.Title
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#NewCompanyModalCenter" style="float: right">+ Add Company</button>
 </h2>
-@using (Html.BeginForm("Companies", "Contacts", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <hr />
-    <!DOCTYPE html>
-    <html lang="en">
-    <body style="margin:20px auto">
-        <div class="container">
-            <br />
-            <br />
-            <table id="myTable" class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Cases</th>
-                        <th>Contacts</th>
-                        <th>@Html.DisplayNameFor(model => model.Email)</th>
-                        <th>Added</th>
-                        <th>Edit</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (Model != null)
+@Html.AntiForgeryToken()
+<hr />
+<!DOCTYPE html>
+<html lang="en">
+<body style="margin:20px auto">
+    <div class="container">
+        <br />
+        <br />
+        <table id="myTable" class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Cases</th>
+                    <th>Contacts</th>
+                    <th>@Html.DisplayNameFor(model => model.Email)</th>
+                    <th>Added</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    int i = 0;
+                    foreach (var item in Model)
                     {
-                        int i = 0;
-                        foreach (var item in Model)
-                        {
-                                i++;
-                                string e = "e" + i.ToString();
-                                string d = "d" + i.ToString();
-                            <tr>
-                                <td>
-                                    <a href='@Url.Action("ViewContact", "Contacts", new { CompanyId = item.CompanyId})'>@Html.DisplayFor(modelItem => item.Name)</a>
-                                </td>
-                                <td>
-                                    5
-                                </td>
-                                <td>
-                                    3
-                                </td>
-                                <td>
-                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
-
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.InsDate)
-                                    by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.FstUser)</a>
-                                </td>
-                                <td>
-                                    <div class="edit">
-                                        <a href='@Url.Action("EditCompany", "Manage", new { CompanyId = item.CompanyId })'>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 8 8">
-                                                <title>Edit</title>
-                                                <path d="M6 0l-1 1 2 2 1-1-2-2zm-2 2l-4 4v2h2l4-4-2-2z" />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        }
-                    }
-                    @if (Model == null)
-                    {
+                        i++;
+                        string e = "e" + i.ToString();
+                        string d = "d" + i.ToString();
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>
+                                <a href='@Url.Action("ViewContact", "Contacts", new { CompanyId = item.CompanyId})'>@Html.DisplayFor(modelItem => item.Name)</a>
+                            </td>
+                            <td>
+                                5
+                            </td>
+                            <td>
+                                3
+                            </td>
+                            <td>
+                                <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.InsDate)
+                                by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.FstUser)</a>
+                            </td>
+                            <td>
+                                <div class="edit">
+                                    <a href='@Url.Action("EditCompany", "Manage", new { CompanyId = item.CompanyId })'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 8 8">
+                                            <title>Edit</title>
+                                            <path d="M6 0l-1 1 2 2 1-1-2-2zm-2 2l-4 4v2h2l4-4-2-2z" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </td>
                         </tr>
                     }
+                }
+                @if (Model == null)
+                {
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                }
 
-                </tbody>
-            </table>
-        </div>
-    </body>
+            </tbody>
+        </table>
+    </div>
+</body>
 </html>
-}

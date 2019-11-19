@@ -16,86 +16,70 @@
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#NewCompanyModalCenter" style="float: right">+ Add Company</button>
 </h2>
 
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-
-
-@using (Html.BeginForm("Index", "Contacts", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <hr />
-    <!DOCTYPE html>
-    <html lang="en">
-    <body style="margin:20px auto">
-        <div class="container">
-            <br />
-            <br />
-            <table id="myTable" class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Cases</th>
-                        <th>Contacts</th>
-                        <th>@Html.DisplayNameFor(model => model.Email)</th>
-                        <th>Added</th>
-                        <th>Edit</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (Model != null)
+@Html.AntiForgeryToken()
+<hr />
+<!DOCTYPE html>
+<html lang="en">
+<body style="margin:20px auto">
+    <div class="container">
+        <br />
+        <br />
+        <table id="myTable" class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Cases</th>
+                    <th>Contacts</th>
+                    <th>@Html.DisplayNameFor(model => model.Email)</th>
+                    <th>Added</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    int i = 0;
+                    foreach (var item in Model)
                     {
-                        int i = 0;
-                        foreach (var item in Model)
-                        {
-                                                            i++;
-                                string e = "e" + i.ToString();
-                                string d = "d" + i.ToString();
-                            <tr>
-                                <td>
-                                    <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.Name})'>@Html.DisplayFor(modelItem => item.Name)</a>
-                                </td>
-                                <td>
-                                    5
-                                </td>
-                                <td>
-                                    3
-                                </td>
-                                <td>
-                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
-
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.InsDate)
-                                    by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.FstUser)</a>
-
-
-                                </td>
-                                <td>
-                                    <a class="btn btn-primary" href="#individual" rel="modal:open" style="float: right">Edit Contact</a>
-
-                                </td>
-                            </tr>
-                        }
-                    }
-                    @if (Model == null)
-                    {
+                        i++;
+                        string e = "e" + i.ToString();
+                        string d = "d" + i.ToString();
                         <tr>
-                            <td></td>
+                            <td>
+                                <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.Name})'>@Html.DisplayFor(modelItem => item.Name)</a>
+                            </td>
+                            <td>
+                                5
+                            </td>
+                            <td>
+                                3
+                            </td>
+                            <td>
+                                <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.InsDate)
+                                by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.FstUser)</a>
+
+
+                            </td>
+                            <td>
+                                <a class="btn btn-primary" href="#individual" rel="modal:open" style="float: right">Edit Contact</a>
+
+                            </td>
                         </tr>
                     }
+                }
+                @if (Model == null)
+                {
+                    <tr>
+                        <td></td>
+                    </tr>
+                }
 
-                </tbody>
-            </table>
-        </div>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    </body>
-
+            </tbody>
+        </table>
+    </div>
+</body>
 </html>
-}
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

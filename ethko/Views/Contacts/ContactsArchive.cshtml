@@ -18,146 +18,97 @@
     </button>
 </h2>
 
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-
-
-@using (Html.BeginForm("Index", "Contacts", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <hr />
-    <!DOCTYPE html>
-    <html lang="en">
-    <body style="margin:20px auto">
-        <div class="container">
-            <br />
-            Select Group
-            <select id='filterText' style='display:inline-block' onchange='filterText()'>
-                <option disabled selected>Select</option>
-                <option value='yes'>Yes</option>
-                <option value='no'>No</option>
-                <option value='all'>All</option>
-            </select>
-            <br />
-            <br />
-            <table id="myTable" class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Group</th>
-                        <th>Cases</th>
-                        <th>@Html.DisplayNameFor(model => model.Email)</th>
-                        <th>Added</th>
-                        <th>Edit</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (Model != null)
+@Html.AntiForgeryToken()
+<hr />
+<!DOCTYPE html>
+<html lang="en">
+<body style="margin:20px auto">
+    <div class="container">
+        <br />
+        Select Group
+        <select id='filterText' style='display:inline-block' onchange='filterText()'>
+            <option disabled selected>Select</option>
+            <option value='yes'>Yes</option>
+            <option value='no'>No</option>
+            <option value='all'>All</option>
+        </select>
+        <br />
+        <br />
+        <table id="myTable" class="table table-hover">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Group</th>
+                    <th>Cases</th>
+                    <th>@Html.DisplayNameFor(model => model.Email)</th>
+                    <th>Added</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    int i = 0;
+                    foreach (var item in Model)
                     {
-                        int i = 0;
-                        foreach (var item in Model)
-                        {
-                                                            i++;
-                                string e = "e" + i.ToString();
-                                string d = "d" + i.ToString();
-                            <tr>
-                                <td>
-                                    <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.ContactId})'>@Html.DisplayFor(modelItem => item.FName)</a>
-                                </td>
-                                <td>
-                                    <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.ContactId})'>@Html.DisplayFor(modelItem => item.LName)</a>
-
-                                </td>
-                                <td>
-                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
-
-                                </td>
-                                <td>
-                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
-
-                                </td>
-                                <td>
-                                    <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
-
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.InsDate)
-                                    by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.UserId)</a>
-
-
-                                </td>
-                                <td>
-                                    <div class="edit">
-                                        <a href='@Url.Action("EditContact", "Contacts", new { ContactId = item.ContactId })'>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 8 8">
-                                                <title>Edit</title>
-                                                <path d="M6 0l-1 1 2 2 1-1-2-2zm-2 2l-4 4v2h2l4-4-2-2z" />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        }
-                    }
-                    @if (Model == null)
-                    {
+                        i++;
+                        string e = "e" + i.ToString();
+                        string d = "d" + i.ToString();
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>
+                                <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.ContactId})'>@Html.DisplayFor(modelItem => item.FName)</a>
+                            </td>
+                            <td>
+                                <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.ContactId})'>@Html.DisplayFor(modelItem => item.LName)</a>
+
+                            </td>
+                            <td>
+                                <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
+
+                            </td>
+                            <td>
+                                <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
+
+                            </td>
+                            <td>
+                                <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.Email)</a>
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.InsDate)
+                                by <a href='@Url.Action("ContactGroups", "Contacts")'>@Html.DisplayFor(modelItem => item.UserId)</a>
+
+
+                            </td>
+                            <td>
+                                <div class="edit">
+                                    <a href='@Url.Action("EditContact", "Contacts", new { ContactId = item.ContactId })'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 8 8">
+                                            <title>Edit</title>
+                                            <path d="M6 0l-1 1 2 2 1-1-2-2zm-2 2l-4 4v2h2l4-4-2-2z" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </td>
                         </tr>
                     }
+                }
+                @if (Model == null)
+                {
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                }
 
-                </tbody>
-            </table>
-        </div>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    </body>
-
+            </tbody>
+        </table>
+    </div>
+</body>
 </html>
-}
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        $(document).ready(function () {
-            $('#myTable').dataTable();
-        });
-    </script>
-    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
-    <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
-
-    <style>
-
-        .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-            background-color: #c4c4c4;
-        }
-    </style>
-
-
-    <script>
-        function filterText() {
-            var rex = new RegExp($('#filterText').val());
-            if (rex == "/all/") { clearFilter() } else {
-                $('.content').hide();
-                $('.content').filter(function () {
-                    return rex.test($(this).text());
-                }).show();
-            }
-        }
-
-        function clearFilter() {
-            $('.filterText').val('');
-            $('.content').show();
-        }
-    </script>
-}
