@@ -207,6 +207,17 @@
           <Property Name="Birthday" Type="date" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Iso" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Iso3" Type="varchar" MaxLength="3" />
+          <Property Name="NumCode" Type="int" />
+          <Property Name="PhoneCode" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="DimDate">
           <Key>
             <PropertyRef Name="DateKey" />
@@ -496,6 +507,26 @@
           <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
+        <EntityType Name="States">
+          <Key>
+            <PropertyRef Name="stateID" />
+          </Key>
+          <Property Name="stateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="stateCode" Type="nchar" MaxLength="2" Nullable="false" />
+          <Property Name="stateName" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ToDoReferences">
+          <Key>
+            <PropertyRef Name="ToDoReferenceId" />
+          </Key>
+          <Property Name="ToDoReferenceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ToDoReferenceName" Type="varchar(max)" Nullable="false" />
+          <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="InsDate" Type="int" Nullable="false" />
+          <Property Name="LstDate" Type="int" Nullable="false" />
+          <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
         <EntityType Name="ToDos">
           <Key>
             <PropertyRef Name="ToDoId" />
@@ -503,6 +534,8 @@
           <Property Name="ToDoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ToDoName" Type="varchar(max)" Nullable="false" />
           <Property Name="ToDoPriorityId" Type="int" Nullable="false" />
+          <Property Name="DueDate" Type="int" Nullable="false" />
+          <Property Name="ToDoReferenceId" Type="int" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="InsDate" Type="int" Nullable="false" />
           <Property Name="LstDate" Type="int" Nullable="false" />
@@ -712,7 +745,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Tasks_ToPriorities">
+        <Association Name="FK_ToDos_ToPriorities">
           <End Role="Priorities" Type="Self.Priorities" Multiplicity="1" />
           <End Role="ToDos" Type="Self.ToDos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -721,6 +754,18 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             </Principal>
             <Dependent Role="ToDos">
               <PropertyRef Name="ToDoPriorityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToDos_ToToDoReferences">
+          <End Role="ToDoReferences" Type="Self.ToDoReferences" Multiplicity="1" />
+          <End Role="ToDos" Type="Self.ToDos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ToDoReferences">
+              <PropertyRef Name="ToDoReferenceId" />
+            </Principal>
+            <Dependent Role="ToDos">
+              <PropertyRef Name="ToDoReferenceId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -737,6 +782,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySet Name="Companies" EntityType="Self.Companies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ContactGroups" EntityType="Self.ContactGroups" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DimDate" EntityType="Self.DimDate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Documents" EntityType="Self.Documents" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DocumentTypes" EntityType="Self.DocumentTypes" Schema="dbo" store:Type="Tables" />
@@ -746,6 +792,8 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySet Name="Offices" EntityType="Self.Offices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PracticeAreas" EntityType="Self.PracticeAreas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Priorities" EntityType="Self.Priorities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ToDoReferences" EntityType="Self.ToDoReferences" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ToDos" EntityType="Self.ToDos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserTypes" EntityType="Self.UserTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" store:Type="Views" store:Schema="sys">
@@ -814,8 +862,12 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             <End Role="DocumentTypes" EntitySet="DocumentTypes" />
             <End Role="Documents" EntitySet="Documents" />
           </AssociationSet>
-          <AssociationSet Name="FK_Tasks_ToPriorities" Association="Self.FK_Tasks_ToPriorities">
+          <AssociationSet Name="FK_ToDos_ToPriorities" Association="Self.FK_ToDos_ToPriorities">
             <End Role="Priorities" EntitySet="Priorities" />
+            <End Role="ToDos" EntitySet="ToDos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToDos_ToToDoReferences" Association="Self.FK_ToDos_ToToDoReferences">
+            <End Role="ToDoReferences" EntitySet="ToDoReferences" />
             <End Role="ToDos" EntitySet="ToDos" />
           </AssociationSet>
         </EntityContainer>
@@ -918,6 +970,13 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <AssociationSet Name="AspNetUserRoles" Association="ethko_dbModel.AspNetUserRoles">
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="Countries" EntityType="ethko_dbModel.Country" />
+          <EntitySet Name="States" EntityType="ethko_dbModel.State" />
+          <EntitySet Name="ToDoReferences" EntityType="ethko_dbModel.ToDoReference" />
+          <AssociationSet Name="FK_ToDos_ToToDoReferences" Association="ethko_dbModel.FK_ToDos_ToToDoReferences">
+            <End Role="ToDoReference" EntitySet="ToDoReferences" />
+            <End Role="ToDo" EntitySet="ToDos" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="C__MigrationHistory">
@@ -1442,6 +1501,9 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Priority" Relationship="ethko_dbModel.FK_Tasks_ToPriorities" FromRole="ToDo" ToRole="Priority" />
+          <Property Name="DueDate" Type="Int32" Nullable="false" />
+          <Property Name="ToDoReferenceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ToDoReference" Relationship="ethko_dbModel.FK_ToDos_ToToDoReferences" FromRole="ToDo" ToRole="ToDoReference" />
         </EntityType>
         <EntityType Name="UserType">
           <Key>
@@ -1616,6 +1678,50 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
         <Association Name="AspNetUserRoles">
           <End Type="ethko_dbModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
           <End Type="ethko_dbModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Iso" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Iso3" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="NumCode" Type="Int32" />
+          <Property Name="PhoneCode" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="stateID" />
+          </Key>
+          <Property Name="stateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="stateCode" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="stateName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ToDoReference">
+          <Key>
+            <PropertyRef Name="ToDoReferenceId" />
+          </Key>
+          <Property Name="ToDoReferenceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ToDoReferenceName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="ToDos" Relationship="ethko_dbModel.FK_ToDos_ToToDoReferences" FromRole="ToDoReference" ToRole="ToDo" />
+        </EntityType>
+        <Association Name="FK_ToDos_ToToDoReferences">
+          <End Type="ethko_dbModel.ToDoReference" Role="ToDoReference" Multiplicity="1" />
+          <End Type="ethko_dbModel.ToDo" Role="ToDo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ToDoReference">
+              <PropertyRef Name="ToDoReferenceId" />
+            </Principal>
+            <Dependent Role="ToDo">
+              <PropertyRef Name="ToDoReferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -2138,6 +2244,8 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySetMapping Name="ToDos">
             <EntityTypeMapping TypeName="ethko_dbModel.ToDo">
               <MappingFragment StoreEntitySet="ToDos">
+                <ScalarProperty Name="ToDoReferenceId" ColumnName="ToDoReferenceId" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
                 <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
                 <ScalarProperty Name="LstUser" ColumnName="LstUser" />
                 <ScalarProperty Name="LstDate" ColumnName="LstDate" />
@@ -2167,6 +2275,40 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="ethko_dbModel.Country">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="PhoneCode" ColumnName="PhoneCode" />
+                <ScalarProperty Name="NumCode" ColumnName="NumCode" />
+                <ScalarProperty Name="Iso3" ColumnName="Iso3" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Iso" ColumnName="Iso" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="ethko_dbModel.State">
+              <MappingFragment StoreEntitySet="States">
+                <ScalarProperty Name="stateName" ColumnName="stateName" />
+                <ScalarProperty Name="stateCode" ColumnName="stateCode" />
+                <ScalarProperty Name="stateID" ColumnName="stateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ToDoReferences">
+            <EntityTypeMapping TypeName="ethko_dbModel.ToDoReference">
+              <MappingFragment StoreEntitySet="ToDoReferences">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="ToDoReferenceName" ColumnName="ToDoReferenceName" />
+                <ScalarProperty Name="ToDoReferenceId" ColumnName="ToDoReferenceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -41,6 +41,10 @@
         <AssociationConnector Association="ethko_dbModel.FK_Documents_ToDocumentTypes" />
         <AssociationConnector Association="ethko_dbModel.FK_Tasks_ToPriorities" />
         <AssociationConnector Association="ethko_dbModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="ethko_dbModel.Country" Width="1.5" PointX="12.375" PointY="12.75" />
+        <EntityTypeShape EntityType="ethko_dbModel.State" Width="1.5" PointX="8.375" PointY="13.75" />
+        <EntityTypeShape EntityType="ethko_dbModel.ToDoReference" Width="1.5" PointX="12.375" PointY="1" />
+        <AssociationConnector Association="ethko_dbModel.FK_ToDos_ToToDoReferences" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
