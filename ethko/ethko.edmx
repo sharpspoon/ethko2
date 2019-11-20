@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ethko_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ethko_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -871,141 +871,38 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             <End Role="ToDos" EntitySet="ToDos" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ethko_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="database_firewall_rules">
-          <Key>
-            <PropertyRef Name="id" />
-            <PropertyRef Name="name" />
-            <PropertyRef Name="start_ip_address" />
-            <PropertyRef Name="end_ip_address" />
-            <PropertyRef Name="create_date" />
-            <PropertyRef Name="modify_date" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityContainer Name="ethko_dbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
-          <EntitySet Name="C__MigrationHistory" EntityType="ethko_dbModel.C__MigrationHistory" />
-          <EntitySet Name="AspNetRoles" EntityType="ethko_dbModel.AspNetRole" />
-          <EntitySet Name="AspNetUserClaims" EntityType="ethko_dbModel.AspNetUserClaim" />
-          <EntitySet Name="AspNetUserLogins" EntityType="ethko_dbModel.AspNetUserLogin" />
-          <EntitySet Name="AspNetUsers" EntityType="ethko_dbModel.AspNetUser" />
-          <EntitySet Name="BillingMethods" EntityType="ethko_dbModel.BillingMethod" />
-          <EntitySet Name="Cases" EntityType="ethko_dbModel.Case" />
-          <EntitySet Name="CaseStages" EntityType="ethko_dbModel.CaseStage" />
-          <EntitySet Name="Companies" EntityType="ethko_dbModel.Company" />
-          <EntitySet Name="ContactGroups" EntityType="ethko_dbModel.ContactGroup" />
-          <EntitySet Name="Contacts" EntityType="ethko_dbModel.Contact" />
-          <EntitySet Name="DimDates" EntityType="ethko_dbModel.DimDate" />
-          <EntitySet Name="Documents" EntityType="ethko_dbModel.Document" />
-          <EntitySet Name="DocumentTypes" EntityType="ethko_dbModel.DocumentType" />
-          <EntitySet Name="LeadReferralSources" EntityType="ethko_dbModel.LeadReferralSource" />
-          <EntitySet Name="LeadStatuses" EntityType="ethko_dbModel.LeadStatus" />
-          <EntitySet Name="Notifications" EntityType="ethko_dbModel.Notification" />
-          <EntitySet Name="Offices" EntityType="ethko_dbModel.Office" />
-          <EntitySet Name="PracticeAreas" EntityType="ethko_dbModel.PracticeArea" />
-          <EntitySet Name="Priorities" EntityType="ethko_dbModel.Priority" />
-          <EntitySet Name="ToDos" EntityType="ethko_dbModel.ToDo" />
-          <EntitySet Name="UserTypes" EntityType="ethko_dbModel.UserType" />
-          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="ethko_dbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="ethko_dbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AspNetUsers_ToUserTypes" Association="ethko_dbModel.FK_AspNetUsers_ToUserTypes">
-            <End Role="UserType" EntitySet="UserTypes" />
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cases_dbo_AspNetUsers_UserId" Association="ethko_dbModel.FK_Cases_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-            <End Role="Case" EntitySet="Cases" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cases_ToBillingMethods" Association="ethko_dbModel.FK_Cases_ToBillingMethods">
-            <End Role="BillingMethod" EntitySet="BillingMethods" />
-            <End Role="Case" EntitySet="Cases" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cases_ToCaseStages" Association="ethko_dbModel.FK_Cases_ToCaseStages">
-            <End Role="CaseStage" EntitySet="CaseStages" />
-            <End Role="Case" EntitySet="Cases" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cases_ToContacts" Association="ethko_dbModel.FK_Cases_ToContacts">
-            <End Role="Contact" EntitySet="Contacts" />
-            <End Role="Case" EntitySet="Cases" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cases_ToContacts2" Association="ethko_dbModel.FK_Cases_ToContacts2">
-            <End Role="Contact" EntitySet="Contacts" />
-            <End Role="Case" EntitySet="Cases" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cases_ToOffices" Association="ethko_dbModel.FK_Cases_ToOffices">
-            <End Role="Office" EntitySet="Offices" />
-            <End Role="Case" EntitySet="Cases" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cases_ToPracticeAreas" Association="ethko_dbModel.FK_Cases_ToPracticeAreas">
-            <End Role="PracticeArea" EntitySet="PracticeAreas" />
-            <End Role="Case" EntitySet="Cases" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Documents_ToCases" Association="ethko_dbModel.FK_Documents_ToCases">
-            <End Role="Case" EntitySet="Cases" />
-            <End Role="Document" EntitySet="Documents" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Documents_ToDocumentTypes" Association="ethko_dbModel.FK_Documents_ToDocumentTypes">
-            <End Role="DocumentType" EntitySet="DocumentTypes" />
-            <End Role="Document" EntitySet="Documents" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tasks_ToPriorities" Association="ethko_dbModel.FK_Tasks_ToPriorities">
-            <End Role="Priority" EntitySet="Priorities" />
-            <End Role="ToDo" EntitySet="ToDos" />
-          </AssociationSet>
-          <AssociationSet Name="AspNetUserRoles" Association="ethko_dbModel.AspNetUserRoles">
-            <End Role="AspNetRole" EntitySet="AspNetRoles" />
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-          </AssociationSet>
-          <EntitySet Name="Countries" EntityType="ethko_dbModel.Country" />
-          <EntitySet Name="States" EntityType="ethko_dbModel.State" />
-          <EntitySet Name="ToDoReferences" EntityType="ethko_dbModel.ToDoReference" />
-          <AssociationSet Name="FK_ToDos_ToToDoReferences" Association="ethko_dbModel.FK_ToDos_ToToDoReferences">
-            <End Role="ToDoReference" EntitySet="ToDoReferences" />
-            <End Role="ToDo" EntitySet="ToDos" />
-          </AssociationSet>
-          </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
             <PropertyRef Name="ContextKey" />
           </Key>
-          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="AspNetRole">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUsers" Relationship="ethko_dbModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="AspNetUserClaim">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUser" Relationship="ethko_dbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="AspNetUserLogin">
           <Key>
@@ -1013,18 +910,18 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             <PropertyRef Name="ProviderKey" />
             <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUser" Relationship="ethko_dbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="AspNetUser">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="FName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="LName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="UserTypeId" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -1049,7 +946,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Birthday" Type="DateTime" Precision="0" />
           <Property Name="DefaultHourlyRate" Type="Int32" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
           <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -1060,25 +957,25 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="LastLogin" Type="Int32" />
           <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUserClaims" Relationship="ethko_dbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
-          <NavigationProperty Name="AspNetUserLogins" Relationship="ethko_dbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
-          <NavigationProperty Name="UserType" Relationship="ethko_dbModel.FK_AspNetUsers_ToUserTypes" FromRole="AspNetUser" ToRole="UserType" />
-          <NavigationProperty Name="Cases" Relationship="ethko_dbModel.FK_Cases_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="Case" />
-          <NavigationProperty Name="AspNetRoles" Relationship="ethko_dbModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="UserType" Relationship="Self.FK_AspNetUsers_ToUserTypes" FromRole="AspNetUsers" ToRole="UserTypes" />
+          <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="Cases" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
         </EntityType>
         <EntityType Name="BillingMethod">
           <Key>
             <PropertyRef Name="BillingMethodId" />
           </Key>
           <Property Name="BillingMethodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BillingMethodName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="BillingMethodName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="InsDate" Type="Int32" Nullable="false" />
           <Property Name="LstDate" Type="Int32" Nullable="false" />
-          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Cases" Relationship="ethko_dbModel.FK_Cases_ToBillingMethods" FromRole="BillingMethod" ToRole="Case" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_ToBillingMethods" FromRole="BillingMethods" ToRole="Cases" />
         </EntityType>
         <EntityType Name="Case">
           <Key>
@@ -1087,9 +984,9 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="CaseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ContactId" Type="Int32" Nullable="false" />
           <Property Name="BillingContactId" Type="Int32" Nullable="false" />
-          <Property Name="LeadAttorneyId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="CaseName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CaseNumber" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LeadAttorneyId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CaseName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CaseNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PracticeAreaId" Type="Int32" Nullable="false" />
           <Property Name="BillingMethodId" Type="Int32" Nullable="false" />
           <Property Name="OfficeId" Type="Int32" Nullable="false" />
@@ -1097,43 +994,43 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="DateOpened" Type="Int32" Nullable="false" />
           <Property Name="Statute" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="InsDate" Type="Int32" Nullable="false" />
           <Property Name="LstDate" Type="Int32" Nullable="false" />
-          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="AspNetUser" Relationship="ethko_dbModel.FK_Cases_dbo_AspNetUsers_UserId" FromRole="Case" ToRole="AspNetUser" />
-          <NavigationProperty Name="BillingMethod" Relationship="ethko_dbModel.FK_Cases_ToBillingMethods" FromRole="Case" ToRole="BillingMethod" />
-          <NavigationProperty Name="CaseStage" Relationship="ethko_dbModel.FK_Cases_ToCaseStages" FromRole="Case" ToRole="CaseStage" />
-          <NavigationProperty Name="Contact" Relationship="ethko_dbModel.FK_Cases_ToContacts" FromRole="Case" ToRole="Contact" />
-          <NavigationProperty Name="Contact1" Relationship="ethko_dbModel.FK_Cases_ToContacts2" FromRole="Case" ToRole="Contact" />
-          <NavigationProperty Name="Office" Relationship="ethko_dbModel.FK_Cases_ToOffices" FromRole="Case" ToRole="Office" />
-          <NavigationProperty Name="PracticeArea" Relationship="ethko_dbModel.FK_Cases_ToPracticeAreas" FromRole="Case" ToRole="PracticeArea" />
-          <NavigationProperty Name="Documents" Relationship="ethko_dbModel.FK_Documents_ToCases" FromRole="Case" ToRole="Document" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Cases_dbo_AspNetUsers_UserId" FromRole="Cases" ToRole="AspNetUsers" />
+          <NavigationProperty Name="BillingMethod" Relationship="Self.FK_Cases_ToBillingMethods" FromRole="Cases" ToRole="BillingMethods" />
+          <NavigationProperty Name="CaseStage" Relationship="Self.FK_Cases_ToCaseStages" FromRole="Cases" ToRole="CaseStages" />
+          <NavigationProperty Name="Contact" Relationship="Self.FK_Cases_ToContacts" FromRole="Cases" ToRole="Contacts" />
+          <NavigationProperty Name="Contact1" Relationship="Self.FK_Cases_ToContacts2" FromRole="Cases" ToRole="Contacts" />
+          <NavigationProperty Name="Office" Relationship="Self.FK_Cases_ToOffices" FromRole="Cases" ToRole="Offices" />
+          <NavigationProperty Name="PracticeArea" Relationship="Self.FK_Cases_ToPracticeAreas" FromRole="Cases" ToRole="PracticeAreas" />
+          <NavigationProperty Name="Documents" Relationship="Self.FK_Documents_ToCases" FromRole="Cases" ToRole="Documents" />
         </EntityType>
         <EntityType Name="CaseStage">
           <Key>
             <PropertyRef Name="CaseStageId" />
           </Key>
           <Property Name="CaseStageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CaseStageName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CaseStageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="InsDate" Type="Int32" Nullable="false" />
           <Property Name="LstDate" Type="Int32" Nullable="false" />
-          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Cases" Relationship="ethko_dbModel.FK_Cases_ToCaseStages" FromRole="CaseStage" ToRole="Case" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_ToCaseStages" FromRole="CaseStages" ToRole="Cases" />
         </EntityType>
         <EntityType Name="Company">
           <Key>
             <PropertyRef Name="CompanyId" />
           </Key>
           <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="InsDate" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Archived" Type="Int16" Nullable="false" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MainPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FaxNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -1143,33 +1040,33 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Zip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="ContactGroup">
           <Key>
             <PropertyRef Name="ContactGroupId" />
           </Key>
           <Property Name="ContactGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ContactGroupName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="InsDate" Type="Int32" Nullable="false" />
-          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LstDate" Type="Int32" Nullable="false" />
-          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
             <PropertyRef Name="ContactId" />
           </Key>
           <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="InsDate" Type="Int32" Nullable="false" />
-          <Property Name="FName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="LName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Archived" Type="Int16" Nullable="false" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ContactGroupId" Type="Int32" />
           <Property Name="CompanyId" Type="Int32" />
           <Property Name="EnableClientPortal" Type="Int16" Nullable="false" />
@@ -1189,9 +1086,20 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="Website" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Birthday" Type="DateTime" Precision="0" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Cases" Relationship="ethko_dbModel.FK_Cases_ToContacts" FromRole="Contact" ToRole="Case" />
-          <NavigationProperty Name="Cases1" Relationship="ethko_dbModel.FK_Cases_ToContacts2" FromRole="Contact" ToRole="Case" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_ToContacts" FromRole="Contacts" ToRole="Cases" />
+          <NavigationProperty Name="Cases1" Relationship="Self.FK_Cases_ToContacts2" FromRole="Contacts" ToRole="Cases" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Iso" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Iso3" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="NumCode" Type="Int32" />
+          <Property Name="PhoneCode" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="DimDate">
           <Key>
@@ -1241,58 +1149,58 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="DocumentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DocumentTypeId" Type="Int32" Nullable="false" />
           <Property Name="CaseId" Type="Int32" Nullable="false" />
-          <Property Name="DocumentName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="DocumentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="InsDate" Type="Int32" Nullable="false" />
           <Property Name="LstDate" Type="Int32" Nullable="false" />
-          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Case" Relationship="ethko_dbModel.FK_Documents_ToCases" FromRole="Document" ToRole="Case" />
-          <NavigationProperty Name="DocumentType" Relationship="ethko_dbModel.FK_Documents_ToDocumentTypes" FromRole="Document" ToRole="DocumentType" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Case" Relationship="Self.FK_Documents_ToCases" FromRole="Documents" ToRole="Cases" />
+          <NavigationProperty Name="DocumentType" Relationship="Self.FK_Documents_ToDocumentTypes" FromRole="Documents" ToRole="DocumentTypes" />
         </EntityType>
         <EntityType Name="DocumentType">
           <Key>
             <PropertyRef Name="DocumentTypeId" />
           </Key>
           <Property Name="DocumentTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DocumentTypeName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="DocumentTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="InsDate" Type="Int32" Nullable="false" />
           <Property Name="LstDate" Type="Int32" Nullable="false" />
-          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Documents" Relationship="ethko_dbModel.FK_Documents_ToDocumentTypes" FromRole="DocumentType" ToRole="Document" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Documents" Relationship="Self.FK_Documents_ToDocumentTypes" FromRole="DocumentTypes" ToRole="Documents" />
         </EntityType>
         <EntityType Name="LeadReferralSource">
           <Key>
             <PropertyRef Name="ReferralSourceId" />
           </Key>
           <Property Name="ReferralSourceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ReferralSourceName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ReferralSourceName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="InsDate" Type="Int32" Nullable="false" />
           <Property Name="LstDate" Type="Int32" Nullable="false" />
-          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="LeadStatus">
           <Key>
             <PropertyRef Name="LeadStatusId" />
           </Key>
           <Property Name="LeadStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LeadStatusName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LeadStatusName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="InsDate" Type="Int32" Nullable="false" />
           <Property Name="LstDate" Type="Int32" Nullable="false" />
-          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Notification">
           <Key>
             <PropertyRef Name="NotificationId" />
           </Key>
           <Property Name="NotificationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="N1" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="N2" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="N3" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
@@ -1443,292 +1351,945 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="N148" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="N149" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="N150" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LstDate" Type="Int32" Nullable="false" />
-          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="InsDate" Type="Int32" Nullable="false" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Office">
           <Key>
             <PropertyRef Name="OfficeId" />
           </Key>
           <Property Name="OfficeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OfficeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="OfficeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="InsDate" Type="Int32" Nullable="false" />
           <Property Name="LstDate" Type="Int32" Nullable="false" />
-          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Cases" Relationship="ethko_dbModel.FK_Cases_ToOffices" FromRole="Office" ToRole="Case" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_ToOffices" FromRole="Offices" ToRole="Cases" />
         </EntityType>
         <EntityType Name="PracticeArea">
           <Key>
             <PropertyRef Name="PracticeAreaId" />
           </Key>
           <Property Name="PracticeAreaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PracticeAreaName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PracticeAreaName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="InsDate" Type="Int32" Nullable="false" />
           <Property Name="LstDate" Type="Int32" Nullable="false" />
-          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Cases" Relationship="ethko_dbModel.FK_Cases_ToPracticeAreas" FromRole="PracticeArea" ToRole="Case" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_ToPracticeAreas" FromRole="PracticeAreas" ToRole="Cases" />
         </EntityType>
         <EntityType Name="Priority">
           <Key>
             <PropertyRef Name="PriorityId" />
           </Key>
           <Property Name="PriorityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PriorityName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PriorityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="InsDate" Type="Int32" Nullable="false" />
           <Property Name="LstDate" Type="Int32" Nullable="false" />
-          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="ToDos" Relationship="ethko_dbModel.FK_Tasks_ToPriorities" FromRole="Priority" ToRole="ToDo" />
-        </EntityType>
-        <EntityType Name="ToDo">
-          <Key>
-            <PropertyRef Name="ToDoId" />
-          </Key>
-          <Property Name="ToDoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ToDoName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ToDoPriorityId" Type="Int32" Nullable="false" />
-          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="InsDate" Type="Int32" Nullable="false" />
-          <Property Name="LstDate" Type="Int32" Nullable="false" />
-          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Priority" Relationship="ethko_dbModel.FK_Tasks_ToPriorities" FromRole="ToDo" ToRole="Priority" />
-          <Property Name="DueDate" Type="Int32" Nullable="false" />
-          <Property Name="ToDoReferenceId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ToDoReference" Relationship="ethko_dbModel.FK_ToDos_ToToDoReferences" FromRole="ToDo" ToRole="ToDoReference" />
-        </EntityType>
-        <EntityType Name="UserType">
-          <Key>
-            <PropertyRef Name="UserTypeId" />
-          </Key>
-          <Property Name="UserTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="InsDate" Type="Int32" Nullable="false" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="AspNetUsers" Relationship="ethko_dbModel.FK_AspNetUsers_ToUserTypes" FromRole="UserType" ToRole="AspNetUser" />
-        </EntityType>
-        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Type="ethko_dbModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="ethko_dbModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUser">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserClaim">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Type="ethko_dbModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="ethko_dbModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUser">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserLogin">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AspNetUsers_ToUserTypes">
-          <End Type="ethko_dbModel.UserType" Role="UserType" Multiplicity="1" />
-          <End Type="ethko_dbModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserType">
-              <PropertyRef Name="UserTypeId" />
-            </Principal>
-            <Dependent Role="AspNetUser">
-              <PropertyRef Name="UserTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cases_dbo_AspNetUsers_UserId">
-          <End Type="ethko_dbModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
-          <End Type="ethko_dbModel.Case" Role="Case" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUser">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Case">
-              <PropertyRef Name="LeadAttorneyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cases_ToBillingMethods">
-          <End Type="ethko_dbModel.BillingMethod" Role="BillingMethod" Multiplicity="1" />
-          <End Type="ethko_dbModel.Case" Role="Case" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BillingMethod">
-              <PropertyRef Name="BillingMethodId" />
-            </Principal>
-            <Dependent Role="Case">
-              <PropertyRef Name="BillingMethodId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cases_ToCaseStages">
-          <End Type="ethko_dbModel.CaseStage" Role="CaseStage" Multiplicity="1" />
-          <End Type="ethko_dbModel.Case" Role="Case" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CaseStage">
-              <PropertyRef Name="CaseStageId" />
-            </Principal>
-            <Dependent Role="Case">
-              <PropertyRef Name="CaseStageId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cases_ToContacts">
-          <End Type="ethko_dbModel.Contact" Role="Contact" Multiplicity="1" />
-          <End Type="ethko_dbModel.Case" Role="Case" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Contact">
-              <PropertyRef Name="ContactId" />
-            </Principal>
-            <Dependent Role="Case">
-              <PropertyRef Name="ContactId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cases_ToContacts2">
-          <End Type="ethko_dbModel.Contact" Role="Contact" Multiplicity="1" />
-          <End Type="ethko_dbModel.Case" Role="Case" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Contact">
-              <PropertyRef Name="ContactId" />
-            </Principal>
-            <Dependent Role="Case">
-              <PropertyRef Name="BillingContactId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cases_ToOffices">
-          <End Type="ethko_dbModel.Office" Role="Office" Multiplicity="1" />
-          <End Type="ethko_dbModel.Case" Role="Case" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Office">
-              <PropertyRef Name="OfficeId" />
-            </Principal>
-            <Dependent Role="Case">
-              <PropertyRef Name="OfficeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cases_ToPracticeAreas">
-          <End Type="ethko_dbModel.PracticeArea" Role="PracticeArea" Multiplicity="1" />
-          <End Type="ethko_dbModel.Case" Role="Case" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PracticeArea">
-              <PropertyRef Name="PracticeAreaId" />
-            </Principal>
-            <Dependent Role="Case">
-              <PropertyRef Name="PracticeAreaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Documents_ToCases">
-          <End Type="ethko_dbModel.Case" Role="Case" Multiplicity="1" />
-          <End Type="ethko_dbModel.Document" Role="Document" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Case">
-              <PropertyRef Name="CaseId" />
-            </Principal>
-            <Dependent Role="Document">
-              <PropertyRef Name="CaseId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Documents_ToDocumentTypes">
-          <End Type="ethko_dbModel.DocumentType" Role="DocumentType" Multiplicity="1" />
-          <End Type="ethko_dbModel.Document" Role="Document" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DocumentType">
-              <PropertyRef Name="DocumentTypeId" />
-            </Principal>
-            <Dependent Role="Document">
-              <PropertyRef Name="DocumentTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tasks_ToPriorities">
-          <End Type="ethko_dbModel.Priority" Role="Priority" Multiplicity="1" />
-          <End Type="ethko_dbModel.ToDo" Role="ToDo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Priority">
-              <PropertyRef Name="PriorityId" />
-            </Principal>
-            <Dependent Role="ToDo">
-              <PropertyRef Name="ToDoPriorityId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="AspNetUserRoles">
-          <End Type="ethko_dbModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
-          <End Type="ethko_dbModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
-        </Association>
-        <EntityType Name="Country">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Iso" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="Iso3" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
-          <Property Name="NumCode" Type="Int32" />
-          <Property Name="PhoneCode" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="ToDos" Relationship="Self.FK_ToDos_ToPriorities" FromRole="Priorities" ToRole="ToDos" />
         </EntityType>
         <EntityType Name="State">
           <Key>
             <PropertyRef Name="stateID" />
           </Key>
           <Property Name="stateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="stateCode" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="true" />
-          <Property Name="stateName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="stateCode" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="stateName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="ToDoReference">
           <Key>
             <PropertyRef Name="ToDoReferenceId" />
           </Key>
           <Property Name="ToDoReferenceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ToDoReferenceName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ToDoReferenceName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="InsDate" Type="Int32" Nullable="false" />
           <Property Name="LstDate" Type="Int32" Nullable="false" />
-          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="ToDos" Relationship="ethko_dbModel.FK_ToDos_ToToDoReferences" FromRole="ToDoReference" ToRole="ToDo" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="ToDos" Relationship="Self.FK_ToDos_ToToDoReferences" FromRole="ToDoReferences" ToRole="ToDos" />
         </EntityType>
-        <Association Name="FK_ToDos_ToToDoReferences">
-          <End Type="ethko_dbModel.ToDoReference" Role="ToDoReference" Multiplicity="1" />
-          <End Type="ethko_dbModel.ToDo" Role="ToDo" Multiplicity="*" />
+        <EntityType Name="ToDo">
+          <Key>
+            <PropertyRef Name="ToDoId" />
+          </Key>
+          <Property Name="ToDoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ToDoName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ToDoPriorityId" Type="Int32" Nullable="false" />
+          <Property Name="DueDate" Type="Int32" Nullable="false" />
+          <Property Name="ToDoReferenceId" Type="Int32" Nullable="false" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Priority" Relationship="Self.FK_ToDos_ToPriorities" FromRole="ToDos" ToRole="Priorities" />
+          <NavigationProperty Name="ToDoReference" Relationship="Self.FK_ToDos_ToToDoReferences" FromRole="ToDos" ToRole="ToDoReferences" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUsers_ToUserTypes" FromRole="UserTypes" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="database_firewall_rules">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="start_ip_address" />
+            <PropertyRef Name="end_ip_address" />
+            <PropertyRef Name="create_date" />
+            <PropertyRef Name="modify_date" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ToDoReference">
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUsers_ToUserTypes">
+          <End Role="UserTypes" Type="Self.UserType" Multiplicity="1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTypes">
+              <PropertyRef Name="UserTypeId" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="LeadAttorneyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToBillingMethods">
+          <End Role="BillingMethods" Type="Self.BillingMethod" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BillingMethods">
+              <PropertyRef Name="BillingMethodId" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="BillingMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToCaseStages">
+          <End Role="CaseStages" Type="Self.CaseStage" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CaseStages">
+              <PropertyRef Name="CaseStageId" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="CaseStageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToContacts">
+          <End Role="Contacts" Type="Self.Contact" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToContacts2">
+          <End Role="Contacts" Type="Self.Contact" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="BillingContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToOffices">
+          <End Role="Offices" Type="Self.Office" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offices">
+              <PropertyRef Name="OfficeId" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToPracticeAreas">
+          <End Role="PracticeAreas" Type="Self.PracticeArea" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PracticeAreas">
+              <PropertyRef Name="PracticeAreaId" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="PracticeAreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Documents_ToCases">
+          <End Role="Cases" Type="Self.Case" Multiplicity="1" />
+          <End Role="Documents" Type="Self.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cases">
+              <PropertyRef Name="CaseId" />
+            </Principal>
+            <Dependent Role="Documents">
+              <PropertyRef Name="CaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Documents_ToDocumentTypes">
+          <End Role="DocumentTypes" Type="Self.DocumentType" Multiplicity="1" />
+          <End Role="Documents" Type="Self.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentTypes">
+              <PropertyRef Name="DocumentTypeId" />
+            </Principal>
+            <Dependent Role="Documents">
+              <PropertyRef Name="DocumentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToDos_ToPriorities">
+          <End Role="Priorities" Type="Self.Priority" Multiplicity="1" />
+          <End Role="ToDos" Type="Self.ToDo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Priorities">
+              <PropertyRef Name="PriorityId" />
+            </Principal>
+            <Dependent Role="ToDos">
+              <PropertyRef Name="ToDoPriorityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToDos_ToToDoReferences">
+          <End Role="ToDoReferences" Type="Self.ToDoReference" Multiplicity="1" />
+          <End Role="ToDos" Type="Self.ToDo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ToDoReferences">
               <PropertyRef Name="ToDoReferenceId" />
             </Principal>
-            <Dependent Role="ToDo">
+            <Dependent Role="ToDos">
               <PropertyRef Name="ToDoReferenceId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        </Schema>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="ethko_dbEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="BillingMethods" EntityType="Self.BillingMethod" />
+          <EntitySet Name="Cases" EntityType="Self.Case" />
+          <EntitySet Name="CaseStages" EntityType="Self.CaseStage" />
+          <EntitySet Name="Companies" EntityType="Self.Company" />
+          <EntitySet Name="ContactGroups" EntityType="Self.ContactGroup" />
+          <EntitySet Name="Contacts" EntityType="Self.Contact" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="DimDates" EntityType="Self.DimDate" />
+          <EntitySet Name="Documents" EntityType="Self.Document" />
+          <EntitySet Name="DocumentTypes" EntityType="Self.DocumentType" />
+          <EntitySet Name="LeadReferralSources" EntityType="Self.LeadReferralSource" />
+          <EntitySet Name="LeadStatuses" EntityType="Self.LeadStatus" />
+          <EntitySet Name="Notifications" EntityType="Self.Notification" />
+          <EntitySet Name="Offices" EntityType="Self.Office" />
+          <EntitySet Name="PracticeAreas" EntityType="Self.PracticeArea" />
+          <EntitySet Name="Priorities" EntityType="Self.Priority" />
+          <EntitySet Name="States" EntityType="Self.State" />
+          <EntitySet Name="ToDoReferences" EntityType="Self.ToDoReference" />
+          <EntitySet Name="ToDos" EntityType="Self.ToDo" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUsers_ToUserTypes" Association="Self.FK_AspNetUsers_ToUserTypes">
+            <End Role="UserTypes" EntitySet="UserTypes" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_dbo_AspNetUsers_UserId" Association="Self.FK_Cases_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToBillingMethods" Association="Self.FK_Cases_ToBillingMethods">
+            <End Role="BillingMethods" EntitySet="BillingMethods" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToCaseStages" Association="Self.FK_Cases_ToCaseStages">
+            <End Role="CaseStages" EntitySet="CaseStages" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToContacts" Association="Self.FK_Cases_ToContacts">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToContacts2" Association="Self.FK_Cases_ToContacts2">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToOffices" Association="Self.FK_Cases_ToOffices">
+            <End Role="Offices" EntitySet="Offices" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToPracticeAreas" Association="Self.FK_Cases_ToPracticeAreas">
+            <End Role="PracticeAreas" EntitySet="PracticeAreas" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documents_ToCases" Association="Self.FK_Documents_ToCases">
+            <End Role="Cases" EntitySet="Cases" />
+            <End Role="Documents" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documents_ToDocumentTypes" Association="Self.FK_Documents_ToDocumentTypes">
+            <End Role="DocumentTypes" EntitySet="DocumentTypes" />
+            <End Role="Documents" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToDos_ToPriorities" Association="Self.FK_ToDos_ToPriorities">
+            <End Role="Priorities" EntitySet="Priorities" />
+            <End Role="ToDos" EntitySet="ToDos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToDos_ToToDoReferences" Association="Self.FK_ToDos_ToToDoReferences">
+            <End Role="ToDoReferences" EntitySet="ToDoReferences" />
+            <End Role="ToDos" EntitySet="ToDos" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ethko_dbModelStoreContainer" CdmEntityContainer="ethko_dbEntities">
+        <EntityContainerMapping StorageEntityContainer="ethko_dbModelStoreContainer" CdmEntityContainer="ethko_dbEntities1">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="ethko_dbModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="ethko_dbModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="ethko_dbModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="ethko_dbModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="ethko_dbModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="MName" ColumnName="MName" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="Hometown" ColumnName="Hometown" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+                <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="SSN" ColumnName="SSN" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="License" ColumnName="License" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="CalendarColor" ColumnName="CalendarColor" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="DefaultHourlyRate" ColumnName="DefaultHourlyRate" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillingMethods">
+            <EntityTypeMapping TypeName="ethko_dbModel.BillingMethod">
+              <MappingFragment StoreEntitySet="BillingMethods">
+                <ScalarProperty Name="BillingMethodId" ColumnName="BillingMethodId" />
+                <ScalarProperty Name="BillingMethodName" ColumnName="BillingMethodName" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cases">
+            <EntityTypeMapping TypeName="ethko_dbModel.Case">
+              <MappingFragment StoreEntitySet="Cases">
+                <ScalarProperty Name="CaseId" ColumnName="CaseId" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="BillingContactId" ColumnName="BillingContactId" />
+                <ScalarProperty Name="LeadAttorneyId" ColumnName="LeadAttorneyId" />
+                <ScalarProperty Name="CaseName" ColumnName="CaseName" />
+                <ScalarProperty Name="CaseNumber" ColumnName="CaseNumber" />
+                <ScalarProperty Name="PracticeAreaId" ColumnName="PracticeAreaId" />
+                <ScalarProperty Name="BillingMethodId" ColumnName="BillingMethodId" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+                <ScalarProperty Name="CaseStageId" ColumnName="CaseStageId" />
+                <ScalarProperty Name="DateOpened" ColumnName="DateOpened" />
+                <ScalarProperty Name="Statute" ColumnName="Statute" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CaseStages">
+            <EntityTypeMapping TypeName="ethko_dbModel.CaseStage">
+              <MappingFragment StoreEntitySet="CaseStages">
+                <ScalarProperty Name="CaseStageId" ColumnName="CaseStageId" />
+                <ScalarProperty Name="CaseStageName" ColumnName="CaseStageName" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="ethko_dbModel.Company">
+              <MappingFragment StoreEntitySet="Companies">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="MainPhone" ColumnName="MainPhone" />
+                <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactGroups">
+            <EntityTypeMapping TypeName="ethko_dbModel.ContactGroup">
+              <MappingFragment StoreEntitySet="ContactGroups">
+                <ScalarProperty Name="ContactGroupId" ColumnName="ContactGroupId" />
+                <ScalarProperty Name="ContactGroupName" ColumnName="ContactGroupName" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="ethko_dbModel.Contact">
+              <MappingFragment StoreEntitySet="Contacts">
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="MName" ColumnName="MName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ContactGroupId" ColumnName="ContactGroupId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="EnableClientPortal" ColumnName="EnableClientPortal" />
+                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+                <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="SSN" ColumnName="SSN" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="License" ColumnName="License" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="ethko_dbModel.Country">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Iso" ColumnName="Iso" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Iso3" ColumnName="Iso3" />
+                <ScalarProperty Name="NumCode" ColumnName="NumCode" />
+                <ScalarProperty Name="PhoneCode" ColumnName="PhoneCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimDates">
+            <EntityTypeMapping TypeName="ethko_dbModel.DimDate">
+              <MappingFragment StoreEntitySet="DimDate">
+                <ScalarProperty Name="DateKey" ColumnName="DateKey" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="FullDateUK" ColumnName="FullDateUK" />
+                <ScalarProperty Name="FullDateUSA" ColumnName="FullDateUSA" />
+                <ScalarProperty Name="DayOfMonth" ColumnName="DayOfMonth" />
+                <ScalarProperty Name="DaySuffix" ColumnName="DaySuffix" />
+                <ScalarProperty Name="DayName" ColumnName="DayName" />
+                <ScalarProperty Name="DayOfWeekUSA" ColumnName="DayOfWeekUSA" />
+                <ScalarProperty Name="DayOfWeekUK" ColumnName="DayOfWeekUK" />
+                <ScalarProperty Name="DayOfWeekInMonth" ColumnName="DayOfWeekInMonth" />
+                <ScalarProperty Name="DayOfWeekInYear" ColumnName="DayOfWeekInYear" />
+                <ScalarProperty Name="DayOfQuarter" ColumnName="DayOfQuarter" />
+                <ScalarProperty Name="DayOfYear" ColumnName="DayOfYear" />
+                <ScalarProperty Name="WeekOfMonth" ColumnName="WeekOfMonth" />
+                <ScalarProperty Name="WeekOfQuarter" ColumnName="WeekOfQuarter" />
+                <ScalarProperty Name="WeekOfYear" ColumnName="WeekOfYear" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="MonthName" ColumnName="MonthName" />
+                <ScalarProperty Name="MonthOfQuarter" ColumnName="MonthOfQuarter" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="QuarterName" ColumnName="QuarterName" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="YearName" ColumnName="YearName" />
+                <ScalarProperty Name="MonthYear" ColumnName="MonthYear" />
+                <ScalarProperty Name="MMYYYY" ColumnName="MMYYYY" />
+                <ScalarProperty Name="FirstDayOfMonth" ColumnName="FirstDayOfMonth" />
+                <ScalarProperty Name="LastDayOfMonth" ColumnName="LastDayOfMonth" />
+                <ScalarProperty Name="FirstDayOfQuarter" ColumnName="FirstDayOfQuarter" />
+                <ScalarProperty Name="LastDayOfQuarter" ColumnName="LastDayOfQuarter" />
+                <ScalarProperty Name="FirstDayOfYear" ColumnName="FirstDayOfYear" />
+                <ScalarProperty Name="LastDayOfYear" ColumnName="LastDayOfYear" />
+                <ScalarProperty Name="IsHolidayUSA" ColumnName="IsHolidayUSA" />
+                <ScalarProperty Name="IsWeekday" ColumnName="IsWeekday" />
+                <ScalarProperty Name="HolidayUSA" ColumnName="HolidayUSA" />
+                <ScalarProperty Name="IsHolidayUK" ColumnName="IsHolidayUK" />
+                <ScalarProperty Name="HolidayUK" ColumnName="HolidayUK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="ethko_dbModel.Document">
+              <MappingFragment StoreEntitySet="Documents">
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+                <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
+                <ScalarProperty Name="CaseId" ColumnName="CaseId" />
+                <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocumentTypes">
+            <EntityTypeMapping TypeName="ethko_dbModel.DocumentType">
+              <MappingFragment StoreEntitySet="DocumentTypes">
+                <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
+                <ScalarProperty Name="DocumentTypeName" ColumnName="DocumentTypeName" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LeadReferralSources">
+            <EntityTypeMapping TypeName="ethko_dbModel.LeadReferralSource">
+              <MappingFragment StoreEntitySet="LeadReferralSources">
+                <ScalarProperty Name="ReferralSourceId" ColumnName="ReferralSourceId" />
+                <ScalarProperty Name="ReferralSourceName" ColumnName="ReferralSourceName" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LeadStatuses">
+            <EntityTypeMapping TypeName="ethko_dbModel.LeadStatus">
+              <MappingFragment StoreEntitySet="LeadStatuses">
+                <ScalarProperty Name="LeadStatusId" ColumnName="LeadStatusId" />
+                <ScalarProperty Name="LeadStatusName" ColumnName="LeadStatusName" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="ethko_dbModel.Notification">
+              <MappingFragment StoreEntitySet="Notifications">
+                <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="N1" ColumnName="N1" />
+                <ScalarProperty Name="N2" ColumnName="N2" />
+                <ScalarProperty Name="N3" ColumnName="N3" />
+                <ScalarProperty Name="N4" ColumnName="N4" />
+                <ScalarProperty Name="N5" ColumnName="N5" />
+                <ScalarProperty Name="N6" ColumnName="N6" />
+                <ScalarProperty Name="N7" ColumnName="N7" />
+                <ScalarProperty Name="N8" ColumnName="N8" />
+                <ScalarProperty Name="N9" ColumnName="N9" />
+                <ScalarProperty Name="N10" ColumnName="N10" />
+                <ScalarProperty Name="N11" ColumnName="N11" />
+                <ScalarProperty Name="N12" ColumnName="N12" />
+                <ScalarProperty Name="N13" ColumnName="N13" />
+                <ScalarProperty Name="N14" ColumnName="N14" />
+                <ScalarProperty Name="N15" ColumnName="N15" />
+                <ScalarProperty Name="N16" ColumnName="N16" />
+                <ScalarProperty Name="N17" ColumnName="N17" />
+                <ScalarProperty Name="N18" ColumnName="N18" />
+                <ScalarProperty Name="N19" ColumnName="N19" />
+                <ScalarProperty Name="N20" ColumnName="N20" />
+                <ScalarProperty Name="N21" ColumnName="N21" />
+                <ScalarProperty Name="N22" ColumnName="N22" />
+                <ScalarProperty Name="N23" ColumnName="N23" />
+                <ScalarProperty Name="N24" ColumnName="N24" />
+                <ScalarProperty Name="N25" ColumnName="N25" />
+                <ScalarProperty Name="N26" ColumnName="N26" />
+                <ScalarProperty Name="N27" ColumnName="N27" />
+                <ScalarProperty Name="N28" ColumnName="N28" />
+                <ScalarProperty Name="N29" ColumnName="N29" />
+                <ScalarProperty Name="N30" ColumnName="N30" />
+                <ScalarProperty Name="N31" ColumnName="N31" />
+                <ScalarProperty Name="N32" ColumnName="N32" />
+                <ScalarProperty Name="N33" ColumnName="N33" />
+                <ScalarProperty Name="N34" ColumnName="N34" />
+                <ScalarProperty Name="N35" ColumnName="N35" />
+                <ScalarProperty Name="N36" ColumnName="N36" />
+                <ScalarProperty Name="N37" ColumnName="N37" />
+                <ScalarProperty Name="N38" ColumnName="N38" />
+                <ScalarProperty Name="N39" ColumnName="N39" />
+                <ScalarProperty Name="N40" ColumnName="N40" />
+                <ScalarProperty Name="N41" ColumnName="N41" />
+                <ScalarProperty Name="N42" ColumnName="N42" />
+                <ScalarProperty Name="N43" ColumnName="N43" />
+                <ScalarProperty Name="N44" ColumnName="N44" />
+                <ScalarProperty Name="N45" ColumnName="N45" />
+                <ScalarProperty Name="N46" ColumnName="N46" />
+                <ScalarProperty Name="N47" ColumnName="N47" />
+                <ScalarProperty Name="N48" ColumnName="N48" />
+                <ScalarProperty Name="N49" ColumnName="N49" />
+                <ScalarProperty Name="N50" ColumnName="N50" />
+                <ScalarProperty Name="N51" ColumnName="N51" />
+                <ScalarProperty Name="N52" ColumnName="N52" />
+                <ScalarProperty Name="N53" ColumnName="N53" />
+                <ScalarProperty Name="N54" ColumnName="N54" />
+                <ScalarProperty Name="N55" ColumnName="N55" />
+                <ScalarProperty Name="N56" ColumnName="N56" />
+                <ScalarProperty Name="N57" ColumnName="N57" />
+                <ScalarProperty Name="N58" ColumnName="N58" />
+                <ScalarProperty Name="N59" ColumnName="N59" />
+                <ScalarProperty Name="N60" ColumnName="N60" />
+                <ScalarProperty Name="N61" ColumnName="N61" />
+                <ScalarProperty Name="N62" ColumnName="N62" />
+                <ScalarProperty Name="N63" ColumnName="N63" />
+                <ScalarProperty Name="N64" ColumnName="N64" />
+                <ScalarProperty Name="N65" ColumnName="N65" />
+                <ScalarProperty Name="N66" ColumnName="N66" />
+                <ScalarProperty Name="N67" ColumnName="N67" />
+                <ScalarProperty Name="N68" ColumnName="N68" />
+                <ScalarProperty Name="N69" ColumnName="N69" />
+                <ScalarProperty Name="N70" ColumnName="N70" />
+                <ScalarProperty Name="N71" ColumnName="N71" />
+                <ScalarProperty Name="N72" ColumnName="N72" />
+                <ScalarProperty Name="N73" ColumnName="N73" />
+                <ScalarProperty Name="N74" ColumnName="N74" />
+                <ScalarProperty Name="N75" ColumnName="N75" />
+                <ScalarProperty Name="N76" ColumnName="N76" />
+                <ScalarProperty Name="N77" ColumnName="N77" />
+                <ScalarProperty Name="N78" ColumnName="N78" />
+                <ScalarProperty Name="N79" ColumnName="N79" />
+                <ScalarProperty Name="N80" ColumnName="N80" />
+                <ScalarProperty Name="N81" ColumnName="N81" />
+                <ScalarProperty Name="N82" ColumnName="N82" />
+                <ScalarProperty Name="N83" ColumnName="N83" />
+                <ScalarProperty Name="N84" ColumnName="N84" />
+                <ScalarProperty Name="N85" ColumnName="N85" />
+                <ScalarProperty Name="N86" ColumnName="N86" />
+                <ScalarProperty Name="N87" ColumnName="N87" />
+                <ScalarProperty Name="N88" ColumnName="N88" />
+                <ScalarProperty Name="N89" ColumnName="N89" />
+                <ScalarProperty Name="N90" ColumnName="N90" />
+                <ScalarProperty Name="N91" ColumnName="N91" />
+                <ScalarProperty Name="N92" ColumnName="N92" />
+                <ScalarProperty Name="N93" ColumnName="N93" />
+                <ScalarProperty Name="N94" ColumnName="N94" />
+                <ScalarProperty Name="N95" ColumnName="N95" />
+                <ScalarProperty Name="N96" ColumnName="N96" />
+                <ScalarProperty Name="N97" ColumnName="N97" />
+                <ScalarProperty Name="N98" ColumnName="N98" />
+                <ScalarProperty Name="N99" ColumnName="N99" />
+                <ScalarProperty Name="N100" ColumnName="N100" />
+                <ScalarProperty Name="N101" ColumnName="N101" />
+                <ScalarProperty Name="N102" ColumnName="N102" />
+                <ScalarProperty Name="N103" ColumnName="N103" />
+                <ScalarProperty Name="N104" ColumnName="N104" />
+                <ScalarProperty Name="N105" ColumnName="N105" />
+                <ScalarProperty Name="N106" ColumnName="N106" />
+                <ScalarProperty Name="N107" ColumnName="N107" />
+                <ScalarProperty Name="N108" ColumnName="N108" />
+                <ScalarProperty Name="N109" ColumnName="N109" />
+                <ScalarProperty Name="N110" ColumnName="N110" />
+                <ScalarProperty Name="N111" ColumnName="N111" />
+                <ScalarProperty Name="N112" ColumnName="N112" />
+                <ScalarProperty Name="N113" ColumnName="N113" />
+                <ScalarProperty Name="N114" ColumnName="N114" />
+                <ScalarProperty Name="N115" ColumnName="N115" />
+                <ScalarProperty Name="N116" ColumnName="N116" />
+                <ScalarProperty Name="N117" ColumnName="N117" />
+                <ScalarProperty Name="N118" ColumnName="N118" />
+                <ScalarProperty Name="N119" ColumnName="N119" />
+                <ScalarProperty Name="N120" ColumnName="N120" />
+                <ScalarProperty Name="N121" ColumnName="N121" />
+                <ScalarProperty Name="N122" ColumnName="N122" />
+                <ScalarProperty Name="N123" ColumnName="N123" />
+                <ScalarProperty Name="N124" ColumnName="N124" />
+                <ScalarProperty Name="N125" ColumnName="N125" />
+                <ScalarProperty Name="N126" ColumnName="N126" />
+                <ScalarProperty Name="N127" ColumnName="N127" />
+                <ScalarProperty Name="N128" ColumnName="N128" />
+                <ScalarProperty Name="N129" ColumnName="N129" />
+                <ScalarProperty Name="N130" ColumnName="N130" />
+                <ScalarProperty Name="N131" ColumnName="N131" />
+                <ScalarProperty Name="N132" ColumnName="N132" />
+                <ScalarProperty Name="N133" ColumnName="N133" />
+                <ScalarProperty Name="N134" ColumnName="N134" />
+                <ScalarProperty Name="N135" ColumnName="N135" />
+                <ScalarProperty Name="N136" ColumnName="N136" />
+                <ScalarProperty Name="N137" ColumnName="N137" />
+                <ScalarProperty Name="N138" ColumnName="N138" />
+                <ScalarProperty Name="N139" ColumnName="N139" />
+                <ScalarProperty Name="N140" ColumnName="N140" />
+                <ScalarProperty Name="N141" ColumnName="N141" />
+                <ScalarProperty Name="N142" ColumnName="N142" />
+                <ScalarProperty Name="N143" ColumnName="N143" />
+                <ScalarProperty Name="N144" ColumnName="N144" />
+                <ScalarProperty Name="N145" ColumnName="N145" />
+                <ScalarProperty Name="N146" ColumnName="N146" />
+                <ScalarProperty Name="N147" ColumnName="N147" />
+                <ScalarProperty Name="N148" ColumnName="N148" />
+                <ScalarProperty Name="N149" ColumnName="N149" />
+                <ScalarProperty Name="N150" ColumnName="N150" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Offices">
+            <EntityTypeMapping TypeName="ethko_dbModel.Office">
+              <MappingFragment StoreEntitySet="Offices">
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+                <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PracticeAreas">
+            <EntityTypeMapping TypeName="ethko_dbModel.PracticeArea">
+              <MappingFragment StoreEntitySet="PracticeAreas">
+                <ScalarProperty Name="PracticeAreaId" ColumnName="PracticeAreaId" />
+                <ScalarProperty Name="PracticeAreaName" ColumnName="PracticeAreaName" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Priorities">
+            <EntityTypeMapping TypeName="ethko_dbModel.Priority">
+              <MappingFragment StoreEntitySet="Priorities">
+                <ScalarProperty Name="PriorityId" ColumnName="PriorityId" />
+                <ScalarProperty Name="PriorityName" ColumnName="PriorityName" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="ethko_dbModel.State">
+              <MappingFragment StoreEntitySet="States">
+                <ScalarProperty Name="stateID" ColumnName="stateID" />
+                <ScalarProperty Name="stateCode" ColumnName="stateCode" />
+                <ScalarProperty Name="stateName" ColumnName="stateName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ToDoReferences">
+            <EntityTypeMapping TypeName="ethko_dbModel.ToDoReference">
+              <MappingFragment StoreEntitySet="ToDoReferences">
+                <ScalarProperty Name="ToDoReferenceId" ColumnName="ToDoReferenceId" />
+                <ScalarProperty Name="ToDoReferenceName" ColumnName="ToDoReferenceName" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ToDos">
+            <EntityTypeMapping TypeName="ethko_dbModel.ToDo">
+              <MappingFragment StoreEntitySet="ToDos">
+                <ScalarProperty Name="ToDoId" ColumnName="ToDoId" />
+                <ScalarProperty Name="ToDoName" ColumnName="ToDoName" />
+                <ScalarProperty Name="ToDoPriorityId" ColumnName="ToDoPriorityId" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="ToDoReferenceId" ColumnName="ToDoReferenceId" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="ethko_dbModel.UserType">
+              <MappingFragment StoreEntitySet="UserTypes">
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="database_firewall_rules">
             <EntityTypeMapping TypeName="ethko_dbModel.database_firewall_rules">
               <MappingFragment StoreEntitySet="database_firewall_rules">
@@ -1741,575 +2302,15 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="C__MigrationHistory">
-            <EntityTypeMapping TypeName="ethko_dbModel.C__MigrationHistory">
-              <MappingFragment StoreEntitySet="__MigrationHistory">
-                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
-                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="ethko_dbModel.AspNetRole">
-              <MappingFragment StoreEntitySet="AspNetRoles">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserClaims">
-            <EntityTypeMapping TypeName="ethko_dbModel.AspNetUserClaim">
-              <MappingFragment StoreEntitySet="AspNetUserClaims">
-                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
-                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserLogins">
-            <EntityTypeMapping TypeName="ethko_dbModel.AspNetUserLogin">
-              <MappingFragment StoreEntitySet="AspNetUserLogins">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
-                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="ethko_dbModel.AspNetUser">
-              <MappingFragment StoreEntitySet="AspNetUsers">
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
-                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-                <ScalarProperty Name="DefaultHourlyRate" ColumnName="DefaultHourlyRate" />
-                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="CalendarColor" ColumnName="CalendarColor" />
-                <ScalarProperty Name="Website" ColumnName="Website" />
-                <ScalarProperty Name="License" ColumnName="License" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="Zip" ColumnName="Zip" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Address2" ColumnName="Address2" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
-                <ScalarProperty Name="SSN" ColumnName="SSN" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
-                <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
-                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Hometown" ColumnName="Hometown" />
-                <ScalarProperty Name="Archived" ColumnName="Archived" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
-                <ScalarProperty Name="MName" ColumnName="MName" />
-                <ScalarProperty Name="LName" ColumnName="LName" />
-                <ScalarProperty Name="FName" ColumnName="FName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BillingMethods">
-            <EntityTypeMapping TypeName="ethko_dbModel.BillingMethod">
-              <MappingFragment StoreEntitySet="BillingMethods">
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
-                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="BillingMethodName" ColumnName="BillingMethodName" />
-                <ScalarProperty Name="BillingMethodId" ColumnName="BillingMethodId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Cases">
-            <EntityTypeMapping TypeName="ethko_dbModel.Case">
-              <MappingFragment StoreEntitySet="Cases">
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
-                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Statute" ColumnName="Statute" />
-                <ScalarProperty Name="DateOpened" ColumnName="DateOpened" />
-                <ScalarProperty Name="CaseStageId" ColumnName="CaseStageId" />
-                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
-                <ScalarProperty Name="BillingMethodId" ColumnName="BillingMethodId" />
-                <ScalarProperty Name="PracticeAreaId" ColumnName="PracticeAreaId" />
-                <ScalarProperty Name="CaseNumber" ColumnName="CaseNumber" />
-                <ScalarProperty Name="CaseName" ColumnName="CaseName" />
-                <ScalarProperty Name="LeadAttorneyId" ColumnName="LeadAttorneyId" />
-                <ScalarProperty Name="BillingContactId" ColumnName="BillingContactId" />
-                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
-                <ScalarProperty Name="CaseId" ColumnName="CaseId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CaseStages">
-            <EntityTypeMapping TypeName="ethko_dbModel.CaseStage">
-              <MappingFragment StoreEntitySet="CaseStages">
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
-                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="CaseStageName" ColumnName="CaseStageName" />
-                <ScalarProperty Name="CaseStageId" ColumnName="CaseStageId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Companies">
-            <EntityTypeMapping TypeName="ethko_dbModel.Company">
-              <MappingFragment StoreEntitySet="Companies">
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="Zip" ColumnName="Zip" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Address2" ColumnName="Address2" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
-                <ScalarProperty Name="MainPhone" ColumnName="MainPhone" />
-                <ScalarProperty Name="Website" ColumnName="Website" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Archived" ColumnName="Archived" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ContactGroups">
-            <EntityTypeMapping TypeName="ethko_dbModel.ContactGroup">
-              <MappingFragment StoreEntitySet="ContactGroups">
-                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
-                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="ContactGroupName" ColumnName="ContactGroupName" />
-                <ScalarProperty Name="ContactGroupId" ColumnName="ContactGroupId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Contacts">
-            <EntityTypeMapping TypeName="ethko_dbModel.Contact">
-              <MappingFragment StoreEntitySet="Contacts">
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="Website" ColumnName="Website" />
-                <ScalarProperty Name="License" ColumnName="License" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="Zip" ColumnName="Zip" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Address2" ColumnName="Address2" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
-                <ScalarProperty Name="SSN" ColumnName="SSN" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
-                <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
-                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
-                <ScalarProperty Name="EnableClientPortal" ColumnName="EnableClientPortal" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="ContactGroupId" ColumnName="ContactGroupId" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Archived" ColumnName="Archived" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="MName" ColumnName="MName" />
-                <ScalarProperty Name="LName" ColumnName="LName" />
-                <ScalarProperty Name="FName" ColumnName="FName" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DimDates">
-            <EntityTypeMapping TypeName="ethko_dbModel.DimDate">
-              <MappingFragment StoreEntitySet="DimDate">
-                <ScalarProperty Name="HolidayUK" ColumnName="HolidayUK" />
-                <ScalarProperty Name="IsHolidayUK" ColumnName="IsHolidayUK" />
-                <ScalarProperty Name="HolidayUSA" ColumnName="HolidayUSA" />
-                <ScalarProperty Name="IsWeekday" ColumnName="IsWeekday" />
-                <ScalarProperty Name="IsHolidayUSA" ColumnName="IsHolidayUSA" />
-                <ScalarProperty Name="LastDayOfYear" ColumnName="LastDayOfYear" />
-                <ScalarProperty Name="FirstDayOfYear" ColumnName="FirstDayOfYear" />
-                <ScalarProperty Name="LastDayOfQuarter" ColumnName="LastDayOfQuarter" />
-                <ScalarProperty Name="FirstDayOfQuarter" ColumnName="FirstDayOfQuarter" />
-                <ScalarProperty Name="LastDayOfMonth" ColumnName="LastDayOfMonth" />
-                <ScalarProperty Name="FirstDayOfMonth" ColumnName="FirstDayOfMonth" />
-                <ScalarProperty Name="MMYYYY" ColumnName="MMYYYY" />
-                <ScalarProperty Name="MonthYear" ColumnName="MonthYear" />
-                <ScalarProperty Name="YearName" ColumnName="YearName" />
-                <ScalarProperty Name="Year" ColumnName="Year" />
-                <ScalarProperty Name="QuarterName" ColumnName="QuarterName" />
-                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
-                <ScalarProperty Name="MonthOfQuarter" ColumnName="MonthOfQuarter" />
-                <ScalarProperty Name="MonthName" ColumnName="MonthName" />
-                <ScalarProperty Name="Month" ColumnName="Month" />
-                <ScalarProperty Name="WeekOfYear" ColumnName="WeekOfYear" />
-                <ScalarProperty Name="WeekOfQuarter" ColumnName="WeekOfQuarter" />
-                <ScalarProperty Name="WeekOfMonth" ColumnName="WeekOfMonth" />
-                <ScalarProperty Name="DayOfYear" ColumnName="DayOfYear" />
-                <ScalarProperty Name="DayOfQuarter" ColumnName="DayOfQuarter" />
-                <ScalarProperty Name="DayOfWeekInYear" ColumnName="DayOfWeekInYear" />
-                <ScalarProperty Name="DayOfWeekInMonth" ColumnName="DayOfWeekInMonth" />
-                <ScalarProperty Name="DayOfWeekUK" ColumnName="DayOfWeekUK" />
-                <ScalarProperty Name="DayOfWeekUSA" ColumnName="DayOfWeekUSA" />
-                <ScalarProperty Name="DayName" ColumnName="DayName" />
-                <ScalarProperty Name="DaySuffix" ColumnName="DaySuffix" />
-                <ScalarProperty Name="DayOfMonth" ColumnName="DayOfMonth" />
-                <ScalarProperty Name="FullDateUSA" ColumnName="FullDateUSA" />
-                <ScalarProperty Name="FullDateUK" ColumnName="FullDateUK" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="DateKey" ColumnName="DateKey" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Documents">
-            <EntityTypeMapping TypeName="ethko_dbModel.Document">
-              <MappingFragment StoreEntitySet="Documents">
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
-                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
-                <ScalarProperty Name="CaseId" ColumnName="CaseId" />
-                <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
-                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DocumentTypes">
-            <EntityTypeMapping TypeName="ethko_dbModel.DocumentType">
-              <MappingFragment StoreEntitySet="DocumentTypes">
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
-                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="DocumentTypeName" ColumnName="DocumentTypeName" />
-                <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LeadReferralSources">
-            <EntityTypeMapping TypeName="ethko_dbModel.LeadReferralSource">
-              <MappingFragment StoreEntitySet="LeadReferralSources">
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
-                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="ReferralSourceName" ColumnName="ReferralSourceName" />
-                <ScalarProperty Name="ReferralSourceId" ColumnName="ReferralSourceId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LeadStatuses">
-            <EntityTypeMapping TypeName="ethko_dbModel.LeadStatus">
-              <MappingFragment StoreEntitySet="LeadStatuses">
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
-                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="LeadStatusName" ColumnName="LeadStatusName" />
-                <ScalarProperty Name="LeadStatusId" ColumnName="LeadStatusId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Notifications">
-            <EntityTypeMapping TypeName="ethko_dbModel.Notification">
-              <MappingFragment StoreEntitySet="Notifications">
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
-                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
-                <ScalarProperty Name="N150" ColumnName="N150" />
-                <ScalarProperty Name="N149" ColumnName="N149" />
-                <ScalarProperty Name="N148" ColumnName="N148" />
-                <ScalarProperty Name="N147" ColumnName="N147" />
-                <ScalarProperty Name="N146" ColumnName="N146" />
-                <ScalarProperty Name="N145" ColumnName="N145" />
-                <ScalarProperty Name="N144" ColumnName="N144" />
-                <ScalarProperty Name="N143" ColumnName="N143" />
-                <ScalarProperty Name="N142" ColumnName="N142" />
-                <ScalarProperty Name="N141" ColumnName="N141" />
-                <ScalarProperty Name="N140" ColumnName="N140" />
-                <ScalarProperty Name="N139" ColumnName="N139" />
-                <ScalarProperty Name="N138" ColumnName="N138" />
-                <ScalarProperty Name="N137" ColumnName="N137" />
-                <ScalarProperty Name="N136" ColumnName="N136" />
-                <ScalarProperty Name="N135" ColumnName="N135" />
-                <ScalarProperty Name="N134" ColumnName="N134" />
-                <ScalarProperty Name="N133" ColumnName="N133" />
-                <ScalarProperty Name="N132" ColumnName="N132" />
-                <ScalarProperty Name="N131" ColumnName="N131" />
-                <ScalarProperty Name="N130" ColumnName="N130" />
-                <ScalarProperty Name="N129" ColumnName="N129" />
-                <ScalarProperty Name="N128" ColumnName="N128" />
-                <ScalarProperty Name="N127" ColumnName="N127" />
-                <ScalarProperty Name="N126" ColumnName="N126" />
-                <ScalarProperty Name="N125" ColumnName="N125" />
-                <ScalarProperty Name="N124" ColumnName="N124" />
-                <ScalarProperty Name="N123" ColumnName="N123" />
-                <ScalarProperty Name="N122" ColumnName="N122" />
-                <ScalarProperty Name="N121" ColumnName="N121" />
-                <ScalarProperty Name="N120" ColumnName="N120" />
-                <ScalarProperty Name="N119" ColumnName="N119" />
-                <ScalarProperty Name="N118" ColumnName="N118" />
-                <ScalarProperty Name="N117" ColumnName="N117" />
-                <ScalarProperty Name="N116" ColumnName="N116" />
-                <ScalarProperty Name="N115" ColumnName="N115" />
-                <ScalarProperty Name="N114" ColumnName="N114" />
-                <ScalarProperty Name="N113" ColumnName="N113" />
-                <ScalarProperty Name="N112" ColumnName="N112" />
-                <ScalarProperty Name="N111" ColumnName="N111" />
-                <ScalarProperty Name="N110" ColumnName="N110" />
-                <ScalarProperty Name="N109" ColumnName="N109" />
-                <ScalarProperty Name="N108" ColumnName="N108" />
-                <ScalarProperty Name="N107" ColumnName="N107" />
-                <ScalarProperty Name="N106" ColumnName="N106" />
-                <ScalarProperty Name="N105" ColumnName="N105" />
-                <ScalarProperty Name="N104" ColumnName="N104" />
-                <ScalarProperty Name="N103" ColumnName="N103" />
-                <ScalarProperty Name="N102" ColumnName="N102" />
-                <ScalarProperty Name="N101" ColumnName="N101" />
-                <ScalarProperty Name="N100" ColumnName="N100" />
-                <ScalarProperty Name="N99" ColumnName="N99" />
-                <ScalarProperty Name="N98" ColumnName="N98" />
-                <ScalarProperty Name="N97" ColumnName="N97" />
-                <ScalarProperty Name="N96" ColumnName="N96" />
-                <ScalarProperty Name="N95" ColumnName="N95" />
-                <ScalarProperty Name="N94" ColumnName="N94" />
-                <ScalarProperty Name="N93" ColumnName="N93" />
-                <ScalarProperty Name="N92" ColumnName="N92" />
-                <ScalarProperty Name="N91" ColumnName="N91" />
-                <ScalarProperty Name="N90" ColumnName="N90" />
-                <ScalarProperty Name="N89" ColumnName="N89" />
-                <ScalarProperty Name="N88" ColumnName="N88" />
-                <ScalarProperty Name="N87" ColumnName="N87" />
-                <ScalarProperty Name="N86" ColumnName="N86" />
-                <ScalarProperty Name="N85" ColumnName="N85" />
-                <ScalarProperty Name="N84" ColumnName="N84" />
-                <ScalarProperty Name="N83" ColumnName="N83" />
-                <ScalarProperty Name="N82" ColumnName="N82" />
-                <ScalarProperty Name="N81" ColumnName="N81" />
-                <ScalarProperty Name="N80" ColumnName="N80" />
-                <ScalarProperty Name="N79" ColumnName="N79" />
-                <ScalarProperty Name="N78" ColumnName="N78" />
-                <ScalarProperty Name="N77" ColumnName="N77" />
-                <ScalarProperty Name="N76" ColumnName="N76" />
-                <ScalarProperty Name="N75" ColumnName="N75" />
-                <ScalarProperty Name="N74" ColumnName="N74" />
-                <ScalarProperty Name="N73" ColumnName="N73" />
-                <ScalarProperty Name="N72" ColumnName="N72" />
-                <ScalarProperty Name="N71" ColumnName="N71" />
-                <ScalarProperty Name="N70" ColumnName="N70" />
-                <ScalarProperty Name="N69" ColumnName="N69" />
-                <ScalarProperty Name="N68" ColumnName="N68" />
-                <ScalarProperty Name="N67" ColumnName="N67" />
-                <ScalarProperty Name="N66" ColumnName="N66" />
-                <ScalarProperty Name="N65" ColumnName="N65" />
-                <ScalarProperty Name="N64" ColumnName="N64" />
-                <ScalarProperty Name="N63" ColumnName="N63" />
-                <ScalarProperty Name="N62" ColumnName="N62" />
-                <ScalarProperty Name="N61" ColumnName="N61" />
-                <ScalarProperty Name="N60" ColumnName="N60" />
-                <ScalarProperty Name="N59" ColumnName="N59" />
-                <ScalarProperty Name="N58" ColumnName="N58" />
-                <ScalarProperty Name="N57" ColumnName="N57" />
-                <ScalarProperty Name="N56" ColumnName="N56" />
-                <ScalarProperty Name="N55" ColumnName="N55" />
-                <ScalarProperty Name="N54" ColumnName="N54" />
-                <ScalarProperty Name="N53" ColumnName="N53" />
-                <ScalarProperty Name="N52" ColumnName="N52" />
-                <ScalarProperty Name="N51" ColumnName="N51" />
-                <ScalarProperty Name="N50" ColumnName="N50" />
-                <ScalarProperty Name="N49" ColumnName="N49" />
-                <ScalarProperty Name="N48" ColumnName="N48" />
-                <ScalarProperty Name="N47" ColumnName="N47" />
-                <ScalarProperty Name="N46" ColumnName="N46" />
-                <ScalarProperty Name="N45" ColumnName="N45" />
-                <ScalarProperty Name="N44" ColumnName="N44" />
-                <ScalarProperty Name="N43" ColumnName="N43" />
-                <ScalarProperty Name="N42" ColumnName="N42" />
-                <ScalarProperty Name="N41" ColumnName="N41" />
-                <ScalarProperty Name="N40" ColumnName="N40" />
-                <ScalarProperty Name="N39" ColumnName="N39" />
-                <ScalarProperty Name="N38" ColumnName="N38" />
-                <ScalarProperty Name="N37" ColumnName="N37" />
-                <ScalarProperty Name="N36" ColumnName="N36" />
-                <ScalarProperty Name="N35" ColumnName="N35" />
-                <ScalarProperty Name="N34" ColumnName="N34" />
-                <ScalarProperty Name="N33" ColumnName="N33" />
-                <ScalarProperty Name="N32" ColumnName="N32" />
-                <ScalarProperty Name="N31" ColumnName="N31" />
-                <ScalarProperty Name="N30" ColumnName="N30" />
-                <ScalarProperty Name="N29" ColumnName="N29" />
-                <ScalarProperty Name="N28" ColumnName="N28" />
-                <ScalarProperty Name="N27" ColumnName="N27" />
-                <ScalarProperty Name="N26" ColumnName="N26" />
-                <ScalarProperty Name="N25" ColumnName="N25" />
-                <ScalarProperty Name="N24" ColumnName="N24" />
-                <ScalarProperty Name="N23" ColumnName="N23" />
-                <ScalarProperty Name="N22" ColumnName="N22" />
-                <ScalarProperty Name="N21" ColumnName="N21" />
-                <ScalarProperty Name="N20" ColumnName="N20" />
-                <ScalarProperty Name="N19" ColumnName="N19" />
-                <ScalarProperty Name="N18" ColumnName="N18" />
-                <ScalarProperty Name="N17" ColumnName="N17" />
-                <ScalarProperty Name="N16" ColumnName="N16" />
-                <ScalarProperty Name="N15" ColumnName="N15" />
-                <ScalarProperty Name="N14" ColumnName="N14" />
-                <ScalarProperty Name="N13" ColumnName="N13" />
-                <ScalarProperty Name="N12" ColumnName="N12" />
-                <ScalarProperty Name="N11" ColumnName="N11" />
-                <ScalarProperty Name="N10" ColumnName="N10" />
-                <ScalarProperty Name="N9" ColumnName="N9" />
-                <ScalarProperty Name="N8" ColumnName="N8" />
-                <ScalarProperty Name="N7" ColumnName="N7" />
-                <ScalarProperty Name="N6" ColumnName="N6" />
-                <ScalarProperty Name="N5" ColumnName="N5" />
-                <ScalarProperty Name="N4" ColumnName="N4" />
-                <ScalarProperty Name="N3" ColumnName="N3" />
-                <ScalarProperty Name="N2" ColumnName="N2" />
-                <ScalarProperty Name="N1" ColumnName="N1" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Offices">
-            <EntityTypeMapping TypeName="ethko_dbModel.Office">
-              <MappingFragment StoreEntitySet="Offices">
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
-                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
-                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PracticeAreas">
-            <EntityTypeMapping TypeName="ethko_dbModel.PracticeArea">
-              <MappingFragment StoreEntitySet="PracticeAreas">
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
-                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="PracticeAreaName" ColumnName="PracticeAreaName" />
-                <ScalarProperty Name="PracticeAreaId" ColumnName="PracticeAreaId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Priorities">
-            <EntityTypeMapping TypeName="ethko_dbModel.Priority">
-              <MappingFragment StoreEntitySet="Priorities">
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
-                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="PriorityName" ColumnName="PriorityName" />
-                <ScalarProperty Name="PriorityId" ColumnName="PriorityId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ToDos">
-            <EntityTypeMapping TypeName="ethko_dbModel.ToDo">
-              <MappingFragment StoreEntitySet="ToDos">
-                <ScalarProperty Name="ToDoReferenceId" ColumnName="ToDoReferenceId" />
-                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
-                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="ToDoPriorityId" ColumnName="ToDoPriorityId" />
-                <ScalarProperty Name="ToDoName" ColumnName="ToDoName" />
-                <ScalarProperty Name="ToDoId" ColumnName="ToDoId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserTypes">
-            <EntityTypeMapping TypeName="ethko_dbModel.UserType">
-              <MappingFragment StoreEntitySet="UserTypes">
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
-                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="AspNetUserRoles" TypeName="ethko_dbModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-            <EndProperty Name="AspNetUser">
-              <ScalarProperty Name="Id" ColumnName="UserId" />
-            </EndProperty>
-            <EndProperty Name="AspNetRole">
+            <EndProperty Name="AspNetRoles">
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Countries">
-            <EntityTypeMapping TypeName="ethko_dbModel.Country">
-              <MappingFragment StoreEntitySet="Countries">
-                <ScalarProperty Name="PhoneCode" ColumnName="PhoneCode" />
-                <ScalarProperty Name="NumCode" ColumnName="NumCode" />
-                <ScalarProperty Name="Iso3" ColumnName="Iso3" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Iso" ColumnName="Iso" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="States">
-            <EntityTypeMapping TypeName="ethko_dbModel.State">
-              <MappingFragment StoreEntitySet="States">
-                <ScalarProperty Name="stateName" ColumnName="stateName" />
-                <ScalarProperty Name="stateCode" ColumnName="stateCode" />
-                <ScalarProperty Name="stateID" ColumnName="stateID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ToDoReferences">
-            <EntityTypeMapping TypeName="ethko_dbModel.ToDoReference">
-              <MappingFragment StoreEntitySet="ToDoReferences">
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
-                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="ToDoReferenceName" ColumnName="ToDoReferenceName" />
-                <ScalarProperty Name="ToDoReferenceId" ColumnName="ToDoReferenceId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          </EntityContainerMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

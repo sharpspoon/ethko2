@@ -13,10 +13,10 @@ namespace ethko
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ethko_dbEntities : DbContext
+    public partial class ethko_dbEntities1 : DbContext
     {
-        public ethko_dbEntities()
-            : base("name=ethko_dbEntities")
+        public ethko_dbEntities1()
+            : base("name=ethko_dbEntities1")
         {
         }
     
@@ -25,7 +25,6 @@ namespace ethko
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
@@ -37,6 +36,7 @@ namespace ethko
         public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<ContactGroup> ContactGroups { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<DimDate> DimDates { get; set; }
         public virtual DbSet<Document> Documents { get; set; }
         public virtual DbSet<DocumentType> DocumentTypes { get; set; }
@@ -46,7 +46,10 @@ namespace ethko
         public virtual DbSet<Office> Offices { get; set; }
         public virtual DbSet<PracticeArea> PracticeAreas { get; set; }
         public virtual DbSet<Priority> Priorities { get; set; }
+        public virtual DbSet<State> States { get; set; }
+        public virtual DbSet<ToDoReference> ToDoReferences { get; set; }
         public virtual DbSet<ToDo> ToDos { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
+        public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
     }
 }

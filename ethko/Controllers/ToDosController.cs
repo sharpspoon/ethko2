@@ -10,7 +10,7 @@ namespace ethko.Controllers
     [Authorize]
     public class ToDosController : Controller
     {
-        ethko_dbEntities entities = new ethko_dbEntities();
+        ethko_dbEntities1 entities = new ethko_dbEntities1();
         [HttpGet]
         public ActionResult Index()
         {

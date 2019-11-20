@@ -18,7 +18,7 @@ namespace ethko.Controllers
     [Authorize]
     public class CasesController : Controller
     {
-        ethko_dbEntities entities = new ethko_dbEntities();
+        ethko_dbEntities1 entities = new ethko_dbEntities1();
 
         readonly string storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=ethko;AccountKey=Onwb/R0jWlYKaiPT6Nypnea6++vkZMVRKUp1eq97Rvpn25QKvtJrUMEPJPQyQcg/kOwpYCMaqaVF1rTot7VEJw==;EndpointSuffix=core.windows.net";
 
@@ -307,26 +307,21 @@ namespace ethko.Controllers
             var documentModel = ConvertViewModelToModel(model);
             DateTime date = DateTime.Now;
             int intDate = int.Parse(date.ToString("yyyyMMdd"));
+            //var documentId = (from d in entities.Documents
+            //                select new GetDocumentsViewModel()
+            //                {
+            //                    DocumentId = d.DocumentId
+            //                }).FirstOrDefault();
 
-            using (ethko_dbEntities entities = new ethko_dbEntities())
-            {
-
-                //var documentId = (from d in entities.Documents
-                //                select new GetDocumentsViewModel()
-                //                {
-                //                    DocumentId = d.DocumentId
-                //                }).FirstOrDefault();
-
-                entities.Documents.Add(documentModel);
-                documentModel.InsDate = intDate;
-                documentModel.LstDate = intDate;
-                documentModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
-                documentModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
-                documentModel.DocumentName = file;
-                documentModel.DocumentTypeId = 1;
-                documentModel.CaseId = CaseId;
-                entities.SaveChanges();
-            }
+            entities.Documents.Add(documentModel);
+            documentModel.InsDate = intDate;
+            documentModel.LstDate = intDate;
+            documentModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            documentModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            documentModel.DocumentName = file;
+            documentModel.DocumentTypeId = 1;
+            documentModel.CaseId = CaseId;
+            entities.SaveChanges();
             return RedirectToAction("Index");
         }
 

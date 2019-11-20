@@ -15,7 +15,7 @@ namespace ethko.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        ethko_dbEntities entities = new ethko_dbEntities();
+        ethko_dbEntities1 entities = new ethko_dbEntities1();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 

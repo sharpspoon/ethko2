@@ -16,7 +16,7 @@ namespace ethko.Controllers
     [Authorize]
     public class DocumentsController : Controller
     {
-        ethko_dbEntities entities = new ethko_dbEntities();
+        ethko_dbEntities1 entities = new ethko_dbEntities1();
         //vision
         static string subscriptionKey = "07c8c872b1844e49ac5db5258dc53dc3";
         const string endpoint = @"https://ethko.cognitiveservices.azure.com/";

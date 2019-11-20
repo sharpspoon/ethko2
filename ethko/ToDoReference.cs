@@ -12,20 +12,23 @@ namespace ethko
     using System;
     using System.Collections.Generic;
     
-    public partial class ToDo
+    public partial class ToDoReference
     {
-        public int ToDoId { get; set; }
-        public string ToDoName { get; set; }
-        public int ToDoPriorityId { get; set; }
-        public int DueDate { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ToDoReference()
+        {
+            this.ToDos = new HashSet<ToDo>();
+        }
+    
         public int ToDoReferenceId { get; set; }
+        public string ToDoReferenceName { get; set; }
         public string FstUser { get; set; }
         public int InsDate { get; set; }
         public int LstDate { get; set; }
         public string LstUser { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual Priority Priority { get; set; }
-        public virtual ToDoReference ToDoReference { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ToDo> ToDos { get; set; }
     }
 }
