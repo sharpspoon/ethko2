@@ -3488,7 +3488,7 @@
     <Content Include="NotReferenced\ReplacedWithModals\Contacts\New.cshtml" />
     <Content Include="NotReferenced\ReplacedWithModals\Contacts\NewCompany.cshtml" />
     <Content Include="NotReferenced\ReplacedWithModals\Contacts\NewGroup.cshtml" />
-    <Content Include="Views\Contacts\ViewContact.cshtml" />
+    <Content Include="Views\Contacts\_ViewContactModal.cshtml" />
     <Content Include="NotReferenced\ReplacedWithModals\Contacts\_AddCompany.cshtml" />
     <Content Include="NotReferenced\ReplacedWithModals\Contacts\_AddContact.cshtml" />
     <Content Include="NotReferenced\ReplacedWithModals\Contacts\_AddGroup.cshtml" />

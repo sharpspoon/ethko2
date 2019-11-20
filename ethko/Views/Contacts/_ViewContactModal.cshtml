@@ -1,18 +1,4 @@
 ﻿@model ethko.Models.GetIndividualContactViewModel
-@{
-    ViewBag.Title = "Contact Details";
-}
-
-<br />
-<a class="btn btn-default" href='@Url.Action("Index", "Contacts")'>Contacts</a>&nbsp;
-<a class="btn btn-default" href='@Url.Action("Companies", "Contacts")'>Companies</a>&nbsp;
-<a class="btn btn-default" href='@Url.Action("ContactGroups", "Contacts")'>Contact Groups</a>&nbsp;
-<a class="btn btn-primary" href='@Url.Action("ViewContact", "Contacts")'>Contact Details</a>&nbsp;
-<br />
-<br />
-<h2>
-    @ViewBag.Title
-</h2>
 
 
 
@@ -22,12 +8,6 @@
     <hr />
     <!DOCTYPE html>
     <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Final Output</title>
-        <meta name="description" content="Bootstrap.">
-
-    </head>
     <body style="margin:20px auto">
         <div class="col-md-2">
             <div class="well">
@@ -179,24 +159,5 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>
-
 </html>
-}
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        $(document).ready(function () {
-            $('#myTable').dataTable();
-        });
-    </script>
-    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
-    <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
-
-    <style>
-
-        .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-            background-color: #c4c4c4;
-        }
-    </style>
 }
