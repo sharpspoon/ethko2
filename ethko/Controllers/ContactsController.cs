@@ -143,7 +143,6 @@ namespace ethko.Controllers
                 entities.Entry(contact).State = EntityState.Modified;
                 entities.SaveChanges();
             }
-            
             return RedirectToAction("Index");
         }
 
