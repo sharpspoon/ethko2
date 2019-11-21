@@ -5,20 +5,20 @@
         <div class="form-group row">
             <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">Name</label>
             <div class="col">
-                <input type="text" class="form-control" id="colFormLabel" placeholder="First Name">
+                <input type="text" class="form-control" id="colFormLabel" placeholder="First Name" value="@Html.DisplayFor(modelItem => Model.FName)">
             </div>
             <div class="col">
-                <input type="text" class="form-control" id="colFormLabel" placeholder="M">
+                <input type="text" class="form-control" id="colFormLabel" placeholder="M" value="@Html.DisplayFor(modelItem => Model.MName)">
             </div>
             <div class="col">
-                <input type="text" class="form-control" id="colFormLabel" placeholder="Last Name">
+                <input type="text" class="form-control" id="colFormLabel" placeholder="Last Name" value="@Html.DisplayFor(modelItem => Model.LName)">
             </div>
         </div>
 
         <div class="form-group row">
             <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
             <div class="col-sm-10">
-                <input type="email" class="form-control" id="colFormLabel" placeholder="Email">
+                <input type="email" class="form-control" id="colFormLabel" placeholder="Email" value="@Html.DisplayFor(modelItem => Model.Email)">
             </div>
         </div>
 
@@ -49,24 +49,127 @@
         <div class="form-group row">
             <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">Cell Phone</label>
             <div class="col-sm-10">
-                <input type="tel" class="form-control" id="colFormLabel" placeholder="(555) 555-5555">
+                <input type="tel" class="form-control" id="colFormLabel" placeholder="(555) 555-5555" value="@Html.DisplayFor(modelItem => Model.CellPhone)">
             </div>
         </div>
 
         <div class="form-group row">
             <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">Work Phone</label>
             <div class="col-sm-10">
-                <input type="tel" class="form-control" id="colFormLabel" placeholder="(555) 555-5555">
+                <input type="tel" class="form-control" id="colFormLabel" placeholder="(555) 555-5555" value="@Html.DisplayFor(modelItem => Model.WorkPhone)">
             </div>
         </div>
 
         <div class="form-group row">
             <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">Home Phone</label>
             <div class="col-sm-10">
-                <input type="tel" class="form-control" id="colFormLabel" placeholder="(555) 555-5555">
+                <input type="tel" class="form-control" id="colFormLabel" placeholder="(555) 555-5555" value="@Html.DisplayFor(modelItem => Model.HomePhone)">
             </div>
         </div>
+
+        <div class="form-group row">
+            <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">Address</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="colFormLabel" placeholder="1234 Main St" value="@Html.DisplayFor(modelItem => Model.Address)">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">Address 2</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="colFormLabel" placeholder="Apartment, studio, or floor" value="@Html.DisplayFor(modelItem => Model.Address2)">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">City</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="colFormLabel" placeholder="Apartment, studio, or floor" value="@Html.DisplayFor(modelItem => Model.City)">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">State</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="colFormLabel" placeholder="Apartment, studio, or floor" @Html.DisplayFor(modelItem => Model.State)>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">Zip</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="colFormLabel" placeholder="Apartment, studio, or floor" value="@Html.DisplayFor(modelItem => Model.Zip)">
+            </div>
+        </div>
+
+        <p>
+            @*<a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Link with href
+            </a>*@
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Add More Information
+            </button>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                <div class="form-group row">
+                    <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">Birthday</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="colFormLabel" placeholder="Birthday" value="@Html.DisplayFor(modelItem => Model.Birthday)">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">Company</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="colFormLabel" placeholder="Company" value="@Html.DisplayFor(modelItem => Model.CompanyId)">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">Job Title</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="colFormLabel" placeholder="Job Title" value="@Html.DisplayFor(modelItem => Model.JobTitle)">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">DL#, State</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="colFormLabel" placeholder="Birthday" value="@Html.DisplayFor(modelItem => Model.Birthday)">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">Website</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="colFormLabel" placeholder="Birthday" value="@Html.DisplayFor(modelItem => Model.Website)">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">Fax</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="colFormLabel" placeholder="Birthday" value="@Html.DisplayFor(modelItem => Model.Fax)">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">Notes</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="colFormLabel" placeholder="Birthday" value="@Html.DisplayFor(modelItem => Model.Notes)">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+        &nbsp;<input type="submit" class="btn btn-primary" value="Save Contact" style="float: right" /> &nbsp;
+        &nbsp;<input type="submit" class="btn btn-secondary" value="Save & Add Case" style="float: right" />&nbsp;
     </form>
+    <br />
+}
 
 
 
@@ -82,8 +185,7 @@
 
 
 
-
-    @Html.AntiForgeryToken()
+    @*@Html.AntiForgeryToken()
     <hr />
     <!DOCTYPE html>
     <html lang="en">
@@ -95,142 +197,8 @@
         <div class="col-md-2">
             <div class="well">
                 @Html.ValidationSummary(true)
-                <input type="submit" class="btn btn-success" value="Save Contact" />
-            </div>
-        </div>
-        <div class="col-md-10">
-            <div class="tabbable">
-                <!-- Only required for left/right tabs -->
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
-                    <li><a href="#cases" data-toggle="tab">Cases</a></li>
-                    <li><a href="#activity" data-toggle="tab">Activity</a></li>
-                    <li><a href="#notes" data-toggle="tab">Notes</a></li>
-                    <li><a href="#billing" data-toggle="tab">Billing</a></li>
-                    <li><a href="#messages" data-toggle="tab">Messages</a></li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="info">
-                        <div class="col-md-8">
-                            <br />
-                            <div class="well">
-                                <h4>Contact Information</h4>
-                                First Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.EditorFor(m => m.FName) @Html.ValidationMessageFor(m => m.FName)
-                                <br />
-                                <br />
-                                Middle Name:&nbsp;@Html.EditorFor(m => m.MName) @Html.ValidationMessageFor(m => m.MName)
-                                <br />
-                                <br />
-                                Last Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.EditorFor(m => m.LName) @Html.ValidationMessageFor(m => m.LName)
-                                <br />
-                                <br />
-                                Company:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.EditorFor(m => m.CompanyId) @Html.ValidationMessageFor(m => m.CompanyId)
-                                <br />
-                                <br />
-                                Job Title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.EditorFor(m => m.JobTitle) @Html.ValidationMessageFor(m => m.JobTitle)
-                                <br />
-                                <br />
-                                Group:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.EditorFor(m => m.ContactGroupId) @Html.ValidationMessageFor(m => m.ContactGroupId)
-                                <br />
-                                <br />
-                                Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.EditorFor(m => m.Email) @Html.ValidationMessageFor(m => m.Email)
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <br />
-                            <div class="well">
-                                <h4>Portal Access</h4>
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <br />
-                            <div class="well">
-                                <h4>Phone Numbers</h4>
-                                Home:&nbsp;@Html.EditorFor(m => m.HomePhone) @Html.ValidationMessageFor(m => m.HomePhone)
-                                <br />
-                                <br />
-                                Work:&nbsp;&nbsp;@Html.EditorFor(m => m.WorkPhone) @Html.ValidationMessageFor(m => m.WorkPhone)
-                                <br />
-                                <br />
-                                Cell:&nbsp;&nbsp;&nbsp;&nbsp;@Html.EditorFor(m => m.CellPhone) @Html.ValidationMessageFor(m => m.CellPhone)
-                                <br />
-                                <br />
-                                Fax:&nbsp;&nbsp;&nbsp;&nbsp;@Html.EditorFor(m => m.Fax) @Html.ValidationMessageFor(m => m.Fax)
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <br />
-                            <div class="well">
-                                <h4>Address</h4>
-                                Street:&nbsp;@Html.EditorFor(m => m.Address) @Html.ValidationMessageFor(m => m.Address)
-                                <br />
-                                <br />
-                                Apt:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.EditorFor(m => m.Address2) @Html.ValidationMessageFor(m => m.Address2)
-                                <br />
-                                <br />
-                                City:&nbsp;&nbsp;&nbsp;&nbsp;@Html.EditorFor(m => m.City) @Html.ValidationMessageFor(m => m.City)
-                                <br />
-                                <br />
-                                State:&nbsp;&nbsp;@Html.EditorFor(m => m.State) @Html.ValidationMessageFor(m => m.State)
-                                <br />
-                                <br />
-                                Zip:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.EditorFor(m => m.Zip) @Html.ValidationMessageFor(m => m.Zip)
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <br />
-                            <div class="well">
-                                <h4>Other Information</h4>
-                                Birthday:&nbsp;@Html.EditorFor(m => m.Birthday) @Html.ValidationMessageFor(m => m.Birthday)
-                                <br />
-                                <br />
-                                License:&nbsp;&nbsp;@Html.EditorFor(m => m.License) @Html.ValidationMessageFor(m => m.License)
-                                <br />
-                                <br />
-                                Website:&nbsp;@Html.EditorFor(m => m.Website) @Html.ValidationMessageFor(m => m.Website)
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <br />
-                            <div class="well">
-                                <h4>Notes</h4>
-                                @Html.EditorFor(m => m.Notes) @Html.ValidationMessageFor(m => m.Notes)
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="cases">
-                        <div class="well">
-                            <p>Howdy, I'm in Section 2.</p>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="activity">
-                        <div class="well">
-                            <p>Howdy, I'm in Section 2.</p>
-                        </div>
 
-                    </div>
-                    <div class="tab-pane" id="notes">
-                        <div class="well">
-                            <p>Howdy, I'm in Section 2.</p>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="billing">
-                        <div class="well">
-                            <p>Howdy, I'm in Section 2.</p>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="messages">
-                        <div class="well">
-                            <p>Howdy, I'm in Section 2.</p>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
-        <div class="container">
-            <br />
-
         </div>
     </body>
-</html>
-}
+</html>*@
