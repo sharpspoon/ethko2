@@ -9,19 +9,26 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <style>
-        .copyright {
-            float: left;
-        }
 
         .links {
             float: right;
         }
+        html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 60px; /* Margin bottom by footer height */
+}
 
-        #footer {
-            position: fixed;
-            bottom: 0;
-            right: 0;
-        }
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px; /* Set the fixed height of the footer here */
+  line-height: 60px; /* Vertically center the text there */
+}
 
         #top {
             position: fixed;
@@ -278,38 +285,44 @@
                     </div>
                 </div>
             </div>
-
-            <footer>
-                @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+            <footer class="footer">
+                <div class="container">
+                    <center>
+                        <span class="text-muted">&copy; Copyright 2019 Ethko by <a href="https://steelcitysites.net">SteelCitySites.NET</a></span>
+                    </center>
+                </div>
+            </footer>
+            @*<div id="footer">
+                @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm" }))
                 {
                     @Html.AntiForgeryToken()
-                    <div id="footer">
-                        <div class="btn-group dropup links">
-                            <a class="btn btn-secondary" href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();">Logout</a>
-                            <a class="btn btn-secondary" href='@Url.Action("Index", "Manage")'>Settings</a>
-                            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="sr-only">Settings</span>
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>Settings Dashboard</a>
-                                <a class="dropdown-item" href='@Url.Action("MyProfile", "Manage")'>My Profile</a>
-                                <a class="dropdown-item" href='@Url.Action("MySettings", "Manage")'>My Settings</a>
-                                <a class="dropdown-item" href='@Url.Action("MyNotifications", "Manage")'>My Notifications</a>
-                                <a class="dropdown-item" href='@Url.Action("FirmUsers", "Manage")'>Firm Users</a>
-                                <a class="dropdown-item" href='@Url.Action("FirmSettings", "Manage")'>Firm Settings</a>
-                                <a class="dropdown-item" href='@Url.Action("ClientBilling", "Manage")'>Client Billing</a>
-                                <a class="dropdown-item" href='@Url.Action("ImportExport", "Manage")'>Import/Export</a>
-                                <a class="dropdown-item" href='@Url.Action("CustomFields", "Manage")'>Custom Fields</a>
-                                <a class="dropdown-item" href='@Url.Action("IntakeForms", "Manage")'>Intake Forms</a>
-                                <a class="dropdown-item" href='@Url.Action("Workflows", "Manage")'>Workflows</a>
-                                <a class="dropdown-item" href='@Url.Action("CaseStages", "Manage")'>Case Stages</a>
-                                <a class="dropdown-item" href='@Url.Action("Leads", "Manage")'>Leads</a>
-                            </div>
+                    <div class="btn-group dropup links" align="right">
+                        <a class="btn btn-secondary" href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();">Logout</a>
+                        <a class="btn btn-secondary" href='@Url.Action("Index", "Manage")'>Settings</a>
+                        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Settings</span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>Settings Dashboard</a>
+                            <a class="dropdown-item" href='@Url.Action("MyProfile", "Manage")'>My Profile</a>
+                            <a class="dropdown-item" href='@Url.Action("MySettings", "Manage")'>My Settings</a>
+                            <a class="dropdown-item" href='@Url.Action("MyNotifications", "Manage")'>My Notifications</a>
+                            <a class="dropdown-item" href='@Url.Action("FirmUsers", "Manage")'>Firm Users</a>
+                            <a class="dropdown-item" href='@Url.Action("FirmSettings", "Manage")'>Firm Settings</a>
+                            <a class="dropdown-item" href='@Url.Action("ClientBilling", "Manage")'>Client Billing</a>
+                            <a class="dropdown-item" href='@Url.Action("ImportExport", "Manage")'>Import/Export</a>
+                            <a class="dropdown-item" href='@Url.Action("CustomFields", "Manage")'>Custom Fields</a>
+                            <a class="dropdown-item" href='@Url.Action("IntakeForms", "Manage")'>Intake Forms</a>
+                            <a class="dropdown-item" href='@Url.Action("Workflows", "Manage")'>Workflows</a>
+                            <a class="dropdown-item" href='@Url.Action("CaseStages", "Manage")'>Case Stages</a>
+                            <a class="dropdown-item" href='@Url.Action("Leads", "Manage")'>Leads</a>
                         </div>
                     </div>
+                    <center>asdfa</center>
                     <img class="copyright" src="~/Content/img/logo.png" alt="SCS" style="width:50px;">
+
                 }
-            </footer>
+            </div>*@
 
         }
         else

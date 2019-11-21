@@ -274,6 +274,7 @@
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\api\DocumentsController.cs" />
     <Compile Include="Controllers\DocumentsController.cs" />
+    <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ToDosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
