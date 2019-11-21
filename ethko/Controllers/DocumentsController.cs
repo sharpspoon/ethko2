@@ -13,7 +13,7 @@ using System.Web.Mvc;
 
 namespace ethko.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class DocumentsController : Controller
     {
         ethko_dbEntities1 entities = new ethko_dbEntities1();

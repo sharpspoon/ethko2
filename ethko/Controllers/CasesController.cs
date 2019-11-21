@@ -15,7 +15,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace ethko.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class CasesController : Controller
     {
         ethko_dbEntities1 entities = new ethko_dbEntities1();
