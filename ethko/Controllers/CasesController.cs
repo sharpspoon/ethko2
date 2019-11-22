@@ -1,15 +1,10 @@
 ﻿using ethko.Models;
 using Microsoft.AspNet.Identity;
 using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using System.Data.Entity;
-using System.Web;
 using System.IO;
-using System.Configuration;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 
@@ -19,12 +14,9 @@ namespace ethko.Controllers
     public class CasesController : Controller
     {
         ethko_dbEntities1 entities = new ethko_dbEntities1();
-
         readonly string storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=ethko;AccountKey=Onwb/R0jWlYKaiPT6Nypnea6++vkZMVRKUp1eq97Rvpn25QKvtJrUMEPJPQyQcg/kOwpYCMaqaVF1rTot7VEJw==;EndpointSuffix=core.windows.net";
 
-
-
-        //View List
+        // GET: /Cases/Index
         [HttpGet]
         public ActionResult Index()
         {
@@ -36,6 +28,7 @@ namespace ethko.Controllers
             return View(cases.ToList());
         }
 
+        // GET: /Cases/PracticeAreas
         [HttpGet]
         public ActionResult PracticeAreas()
         {
@@ -46,18 +39,19 @@ namespace ethko.Controllers
             return View(practiceAreas.ToList());
         }
 
+        // GET: /Cases/CaseInsights
         public ActionResult CaseInsights()
         {
             return View();
         }
 
+        // GET: /Cases/Closed
         public ActionResult Closed()
         {
             return View();
         }
 
-        //New
-
+        // GET: /Cases/New
         public ActionResult New()
         {
             var contactResult = (from contacts in entities.Contacts select contacts).ToList();
@@ -100,6 +94,7 @@ namespace ethko.Controllers
             };
         }
 
+        // POST: /Cases/New
         [HttpPost]
         public ActionResult New(AddCaseViewModel model)
         {
@@ -142,11 +137,13 @@ namespace ethko.Controllers
             return RedirectToAction("Index");
         }
 
+        // GET: /Cases/NewPracticeAreaModal
         public ActionResult NewPracticeAreaModal()
         {
             return PartialView("_AddPracticeAreaModal");
         }
 
+        // GET: /Cases/DeletePracticeAreaModal
         public ActionResult DeletePracticeAreaModal(int PracticeAreaId)
         {
             PracticeArea practiceAreas = entities.PracticeAreas.Where(m => m.PracticeAreaId == PracticeAreaId).Single();
@@ -161,6 +158,7 @@ namespace ethko.Controllers
             };
         }
 
+        // POST: /Cases/NewPracticeArea
         [HttpPost]
         public ActionResult NewPracticeArea(AddPracticeAreaViewModel model)
         {
@@ -248,7 +246,7 @@ namespace ethko.Controllers
             return RedirectToAction("Index", "Contacts");
         }
 
-        //View Specific Case
+        // GET: /Cases/ViewCase
         [HttpGet]
         public ActionResult ViewCase(int CaseId)
         {
@@ -287,6 +285,7 @@ namespace ethko.Controllers
             };
         }
 
+        // GET: /Cases/UploadDocument
         [HttpPost]
         public ActionResult UploadDocument(AddCaseDocumentsViewModel model, int CaseId)
         {
@@ -325,7 +324,7 @@ namespace ethko.Controllers
             return RedirectToAction("Index");
         }
 
-        //View Case Documentscase
+        // GET: /Cases/CaseDocuments
         [HttpGet]
         public PartialViewResult CaseDocuments(GetCaseDocumentsViewModel model)
         {
