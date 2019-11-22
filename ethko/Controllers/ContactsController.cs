@@ -18,8 +18,8 @@ namespace ethko.Controllers
         //////////
         //CONTACTS
         //////////
-        //New
 
+        // GET: /Contacts/NewContactModal
         public ActionResult NewContactModal()
         {
             var contactGroups = new SelectList(entities.ContactGroups.ToList(), "ContactGroupName", "ContactGroupName");
@@ -48,6 +48,7 @@ namespace ethko.Controllers
             };
         }
 
+        // POST: /Contacts/NewContactModal
         [HttpPost]
         public ActionResult NewContactModal(AddContactIndividualViewModel model)
         {
@@ -64,7 +65,7 @@ namespace ethko.Controllers
             return RedirectToAction("Index");
         }
 
-        //View List
+        // GET: /Contacts/Index
         [HttpGet]
         public ActionResult Index()
         {
@@ -78,7 +79,7 @@ namespace ethko.Controllers
             return View(contacts.ToList());
         }
 
-        //View Archive List
+        // GET: /Contacts/ContactsArchive
         [HttpGet]
         public ActionResult ContactsArchive()
         {
@@ -90,7 +91,7 @@ namespace ethko.Controllers
             return View(contacts.ToList());
         }
 
-        //View Specific Contact
+        // GET: /Contacts/ViewContact
         [HttpGet]
         public ActionResult ViewContact(int ContactId)
         {
@@ -127,7 +128,7 @@ namespace ethko.Controllers
             return View(contacts);
         }
 
-        //Edit Specific Contact
+        // GET: /Contacts/EditContactModal
         [HttpGet]
         public ActionResult EditContactModal(int ContactId)
         {
@@ -135,6 +136,7 @@ namespace ethko.Controllers
             return PartialView("_EditContactModal", contacts);
         }
 
+        // POST: /Contacts/EditContact
         [HttpPost]
         public ActionResult EditContact([Bind(Include="FName")]Contact contact)
         {
@@ -146,7 +148,7 @@ namespace ethko.Controllers
             return RedirectToAction("Index");
         }
 
-        //Delete Specific Contact
+        // GET: /Contacts/Delete
         [HttpGet]
         public ActionResult Delete(int ContactId)
         {
@@ -154,7 +156,7 @@ namespace ethko.Controllers
             return View(contacts);
         }
 
-        //Archive Specific Contact
+        // GET: /Contacts/Archive
         [HttpGet]
         public ActionResult Archive(int ContactId)
         {
@@ -179,7 +181,8 @@ namespace ethko.Controllers
         //////////
         //COMPANIES
         //////////
-        //New
+
+        // GET: /Contacts/NewCompanyModal
         [HttpGet]
         public ActionResult NewCompanyModal()
         {
@@ -204,6 +207,7 @@ namespace ethko.Controllers
             };
         }
 
+        // POST: /Contacts/NewCompany
         [HttpPost]
         public ActionResult NewCompany(AddCompanyViewModel model)
         {
@@ -218,7 +222,7 @@ namespace ethko.Controllers
             return RedirectToAction("Companies");
         }
 
-        //View List
+        // GET: /Contacts/Companies
         [HttpGet]
         public ActionResult Companies()
         {
@@ -229,7 +233,8 @@ namespace ethko.Controllers
             return View(companies.ToList());
         }
 
-        //View Archive List
+        // GET: /Contacts/CompaniesArchive
+        [HttpGet]
         public ActionResult CompaniesArchive()
         {
             IEnumerable<Company> companies = entities.Companies.Where(m => m.Archived == 1).ToList();
@@ -240,7 +245,8 @@ namespace ethko.Controllers
         //////////
         //GROUPS
         //////////
-        //New
+
+        // GET: /Contacts/NewContactGroupModal
         [HttpGet]
         public ActionResult NewContactGroupModal()
         {
@@ -255,6 +261,7 @@ namespace ethko.Controllers
             };
         }
 
+        // POST: /Contacts/NewGroup
         [HttpPost]
         public ActionResult NewGroup(AddContactGroupViewModel model)
         {
