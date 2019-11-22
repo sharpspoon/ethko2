@@ -91,9 +91,9 @@ namespace ethko.Controllers
             return View(contacts.ToList());
         }
 
-        // GET: /Contacts/ViewContact
+        // GET: /Contacts/ViewContactModal
         [HttpGet]
-        public ActionResult ViewContact(int ContactId)
+        public ActionResult ViewContactModal(int ContactId)
         {
                         var contacts = (from c in entities.Contacts
                             join cg in entities.ContactGroups on c.ContactGroupId equals cg.ContactGroupId
@@ -125,7 +125,7 @@ namespace ethko.Controllers
                             , Country = c.Country
                             , Archived = c.Archived
                             }).FirstOrDefault();
-            return View(contacts);
+            return PartialView("_ViewContactModal", contacts);
         }
 
         // GET: /Contacts/EditContactModal

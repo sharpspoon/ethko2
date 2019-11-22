@@ -51,13 +51,36 @@
                         i++;
                         string e = "e" + i.ToString();
                         string d = "d" + i.ToString();
+                        string v = "v" + i.ToString();
                         <tr>
                             <td>
-                                <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.ContactId})'>@Html.DisplayFor(modelItem => item.FName)</a>
+                                <div class="edit">
+                                    <a href="" data-toggle="modal" data-target='#@v'>
+                                        @Html.DisplayFor(modelItem => item.FName)
+                                    </a>
+                                </div>
+                                <div class="modal fade" id='@v' tabindex="-1" role="dialog" aria-labelledby="ViewContactModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="ViewContactModalCenterTitle">View Contact</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                @Html.Action("ViewContactModal", "Contacts", new { ContactId = item.ContactId })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                             <td>
-                                <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.ContactId})'>@Html.DisplayFor(modelItem => item.LName)</a>
-
+                                <div class="edit">
+                                    <a href="" data-toggle="modal" data-target='#@v'>
+                                        @Html.DisplayFor(modelItem => item.LName)
+                                    </a>
+                                </div>
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.ContactGroupList)
