@@ -1,16 +1,10 @@
 ﻿@model ethko.Models.GetIndividualContactViewModel
-
-
-
 @using (Html.BeginForm("ViewContact", "Contacts", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <hr />
-    <!DOCTYPE html>
-    <html lang="en">
-    <body style="margin:20px auto">
-        <div class="col-md-2">
-            <div class="well">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
                 <a class="btn btn-primary" href='@Url.Action("EditContact", "Contacts", new { ContactId = Model.ContactId })'>Edit Contact</a>
                 <br />
                 <br />
@@ -27,137 +21,94 @@
                 <br />
                 <a class="btn btn-danger" href='@Url.Action("Delete", "Contacts", new { ContactId = Model.ContactId })'>Delete Contact</a>
             </div>
-        </div>
-        <div class="col-md-10">
-            <div class="tabbable">
-                <!-- Only required for left/right tabs -->
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
-                    <li><a href="#cases" data-toggle="tab">Cases</a></li>
-                    <li><a href="#activity" data-toggle="tab">Activity</a></li>
-                    <li><a href="#notes" data-toggle="tab">Notes</a></li>
-                    <li><a href="#billing" data-toggle="tab">Billing</a></li>
-                    <li><a href="#messages" data-toggle="tab">Messages</a></li>
+            <div class="col-10">
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="pills-info-tab" data-toggle="pill" href="#pills-info" role="tab" aria-controls="pills-info" aria-selected="true">Info</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-cases-tab" data-toggle="pill" href="#pills-cases" role="tab" aria-controls="pills-cases" aria-selected="false">Cases</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-activity-tab" data-toggle="pill" href="#pills-activity" role="tab" aria-controls="pills-activity" aria-selected="false">Activity</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-notes-tab" data-toggle="pill" href="#pills-notes" role="tab" aria-controls="pills-notes" aria-selected="false">Notes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-billing-tab" data-toggle="pill" href="#pills-billing" role="tab" aria-controls="pills-billing" aria-selected="false">Billing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-messages-tab" data-toggle="pill" href="#pills-messages" role="tab" aria-controls="pills-messages" aria-selected="false">Messages</a>
+                    </li>
                 </ul>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="info">
-                        <div class="col-md-8">
-                            <br />
-                            <div class="well">
-                                <h4>Contact Information</h4>
-                                Name:  @Html.DisplayFor(m => m.FName)   @Html.DisplayFor(m => m.MName)   @Html.DisplayFor(m => m.LName)
-                                <br />
-                                <br />
-                                Company:  @Html.DisplayFor(m => m.CompanyId)
-                                <br />
-                                <br />
-                                Job Title:  @Html.DisplayFor(m => m.JobTitle)
-                                <br />
-                                <br />
-                                Group:  @Html.DisplayFor(m => m.ContactGroupId)
-                                <br />
-                                <br />
-                                Email:  @Html.DisplayFor(m => m.Email)
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <br />
-                            <div class="well">
-                                <h4>Portal Access</h4>
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <br />
-                            <div class="well">
-                                <h4>Phone Numbers</h4>
-                                Home:  @Html.DisplayFor(m => m.HomePhone)
-                                <br />
-                                <br />
-                                Work:  @Html.DisplayFor(m => m.WorkPhone)
-                                <br />
-                                <br />
-                                Cell:  @Html.DisplayFor(m => m.CellPhone)
-                                <br />
-                                <br />
-                                Fax:  @Html.DisplayFor(m => m.Fax)
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <br />
-                            <div class="well">
-                                <h4>Address</h4>
-                                Street:  @Html.DisplayFor(m => m.Address)
-                                <br />
-                                <br />
-                                Apt:  @Html.DisplayFor(m => m.Address2)
-                                <br />
-                                <br />
-                                City:  @Html.DisplayFor(m => m.City)
-                                <br />
-                                <br />
-                                State:  @Html.DisplayFor(m => m.State)
-                                <br />
-                                <br />
-                                Zip:  @Html.DisplayFor(m => m.Zip)
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <br />
-                            <div class="well">
-                                <h4>Other Information</h4>
-                                Birthday:  @Html.DisplayFor(m => m.Birthday)
-                                <br />
-                                <br />
-                                License:  @Html.DisplayFor(m => m.License)
-                                <br />
-                                <br />
-                                Website:  @Html.DisplayFor(m => m.Website)
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <br />
-                            <div class="well">
-                                <h4>Notes</h4>
-                                @Html.DisplayFor(m => m.Notes)
-                            </div>
-                        </div>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-info" role="tabpanel" aria-labelledby="pills-info-tab">
+                        <h4>Contact Information</h4>
+                        Name:  @Html.DisplayFor(m => m.FName)   @Html.DisplayFor(m => m.MName)   @Html.DisplayFor(m => m.LName)
+                        <br />
+                        <br />
+                        Company:  @Html.DisplayFor(m => m.CompanyId)
+                        <br />
+                        <br />
+                        Job Title:  @Html.DisplayFor(m => m.JobTitle)
+                        <br />
+                        <br />
+                        Group:  @Html.DisplayFor(m => m.ContactGroupId)
+                        <br />
+                        <br />
+                        Email:  @Html.DisplayFor(m => m.Email)
+                        <br />
+                        <br />
+                        <h4>Phone Numbers</h4>
+                        Home:  @Html.DisplayFor(m => m.HomePhone)
+                        <br />
+                        <br />
+                        Work:  @Html.DisplayFor(m => m.WorkPhone)
+                        <br />
+                        <br />
+                        Cell:  @Html.DisplayFor(m => m.CellPhone)
+                        <br />
+                        <br />
+                        Fax:  @Html.DisplayFor(m => m.Fax)
+                        <br />
+                        <br />
+                        <h4>Address</h4>
+                        Street:  @Html.DisplayFor(m => m.Address)
+                        <br />
+                        <br />
+                        Apt:  @Html.DisplayFor(m => m.Address2)
+                        <br />
+                        <br />
+                        City:  @Html.DisplayFor(m => m.City)
+                        <br />
+                        <br />
+                        State:  @Html.DisplayFor(m => m.State)
+                        <br />
+                        <br />
+                        Zip:  @Html.DisplayFor(m => m.Zip)
+                        <br />
+                        <br />
+                        <h4>Other Information</h4>
+                        Birthday:  @Html.DisplayFor(m => m.Birthday)
+                        <br />
+                        <br />
+                        License:  @Html.DisplayFor(m => m.License)
+                        <br />
+                        <br />
+                        Website:  @Html.DisplayFor(m => m.Website)
+                        <br />
+                        <br />
+                        <h4>Notes</h4>
+                        @Html.DisplayFor(m => m.Notes)
                     </div>
-                    <div class="tab-pane" id="cases">
-                        <div class="well">
-                            <p>Howdy, I'm in Section 2.</p>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="activity">
-                        <div class="well">
-                            <p>Howdy, I'm in Section 2.</p>
-                        </div>
-
-                    </div>
-                    <div class="tab-pane" id="notes">
-                        <div class="well">
-                            <p>Howdy, I'm in Section 2.</p>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="billing">
-                        <div class="well">
-                            <p>Howdy, I'm in Section 2.</p>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="messages">
-                        <div class="well">
-                            <p>Howdy, I'm in Section 2.</p>
-                        </div>
-                    </div>
+                    <div class="tab-pane fade" id="pills-cases" role="tabpanel" aria-labelledby="pills-cases-tab">.cases..</div>
+                    <div class="tab-pane fade" id="pills-activity" role="tabpanel" aria-labelledby="pills-activity-tab">.activity..</div>
+                    <div class="tab-pane fade" id="pills-notes" role="tabpanel" aria-labelledby="pills-notes-tab">.notes..</div>
+                    <div class="tab-pane fade" id="pills-billing" role="tabpanel" aria-labelledby="pills-billing-tab">.billing..</div>
+                    <div class="tab-pane fade" id="pills-messages" role="tabpanel" aria-labelledby="pills-messages-tab">.messages..</div>
                 </div>
             </div>
         </div>
-        <div class="container">
-            <br />
-
-        </div>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    </body>
-</html>
+    </div>
 }
