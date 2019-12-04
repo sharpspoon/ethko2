@@ -44,7 +44,7 @@
                                 <a href='@Url.Action("ViewContact", "Contacts", new { ContactId = item.PracticeAreaId})'>@Html.DisplayFor(modelItem => item.PracticeAreaName)</a>
                             </td>
                             <td>
-                                5
+                                @ViewBag.totalCases
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.InsDate)

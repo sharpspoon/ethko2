@@ -35,7 +35,13 @@ namespace ethko.Controllers
             var practiceAreas = from p in entities.PracticeAreas
                                 join u in entities.AspNetUsers on p.FstUser equals u.Id
                                 join d in entities.DimDates on p.InsDate equals d.DateKey
-                                select new GetPracticeAreasViewModel() { PracticeAreaId = p.PracticeAreaId.ToString(), PracticeAreaName = p.PracticeAreaName, InsDate = d.FullDateUSA.ToString(), UserId = u.UserName, FullName = u.FName + " " + u.LName };
+                                select new GetPracticeAreasViewModel() { PracticeAreaId = p.PracticeAreaId.ToString(), 
+                                    PracticeAreaName = p.PracticeAreaName, 
+                                    InsDate = d.FullDateUSA.ToString(), 
+                                    UserId = u.UserName, 
+                                    FullName = u.FName + " " + u.LName };
+            var totalCases = entities.Cases.Where(x => x.PracticeAreaId.Equals(9)).Count();
+            ViewBag.totalCases = totalCases;
             return View(practiceAreas.ToList());
         }
 
