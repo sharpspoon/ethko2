@@ -13,13 +13,13 @@
                         Name
                     </div>
                     <div class="col-md-4" align="left">
-                        @Html.TextBoxFor(m => m.FName, new { @class = "form-control", placeholder = "First Name" })
+                        @Html.TextBoxFor(m => m.FName, new { @class = "form-control", placeholder = "First Name", required = "required" })
                     </div>
                     <div class="col-md-2" align="left">
                         @Html.TextBoxFor(m => m.MName, new { @class = "form-control", placeholder = "M" })
                     </div>
                     <div class="col-md-4" align="left">
-                        @Html.TextBoxFor(m => m.LName, new { @class = "form-control", placeholder = "Last Name" })
+                        @Html.TextBoxFor(m => m.LName, new { @class = "form-control", placeholder = "Last Name", required = "required" })
                     </div>
                 </div>
 
@@ -28,7 +28,7 @@
                         Email
                     </div>
                     <div class="col-md-10" align="left">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "example@ethko.com" })
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "example@ethko.com", required = "required" })
                     </div>
                 </div>
 
