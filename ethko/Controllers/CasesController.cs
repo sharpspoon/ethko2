@@ -40,8 +40,16 @@ namespace ethko.Controllers
                                     InsDate = d.FullDateUSA.ToString(), 
                                     UserId = u.UserName, 
                                     FullName = u.FName + " " + u.LName };
-            var totalCases = entities.Cases.Where(x => x.PracticeAreaId.Equals(9)).Count();
-            ViewBag.totalCases = totalCases;
+
+            //count logic
+            int i = 0;
+            foreach (var item in practiceAreas.ToList())
+            {
+                i++;
+                var totalCases = entities.Cases.Where(x => x.PracticeAreaId.Equals(i)).Count();
+                ViewBag.totalCases = totalCases;
+            }
+
             return View(practiceAreas.ToList());
         }
 
