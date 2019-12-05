@@ -66,7 +66,7 @@ namespace ethko.Controllers
         }
 
         // GET: /Cases/New
-        public ActionResult New()
+        public ActionResult NewCaseModal()
         {
             var contactResult = (from contacts in entities.Contacts select contacts).ToList();
             var companyResult = (from companies in entities.Companies select companies).ToList();
@@ -87,7 +87,7 @@ namespace ethko.Controllers
             ViewData["DBContacts"] = contactList;
             var AspNetUserList = new SelectList(entities.AspNetUsers.ToList(), "FName", "FName");
             ViewData["DBAspNetUsers"] = AspNetUserList;
-            return View();
+            return PartialView("_AddCaseModal");
         }
 
         public Case ConvertViewModelToModel(AddCaseViewModel vm)
@@ -110,7 +110,7 @@ namespace ethko.Controllers
 
         // POST: /Cases/New
         [HttpPost]
-        public ActionResult New(AddCaseViewModel model)
+        public ActionResult NewCaseModal(AddCaseViewModel model)
         {
             var user = User.Identity.GetUserName().ToString();
             var caseModel = ConvertViewModelToModel(model);

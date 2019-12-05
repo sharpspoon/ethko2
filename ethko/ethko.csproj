@@ -3514,7 +3514,7 @@
     <Content Include="Views\Cases\CaseInsights.cshtml" />
     <Content Include="Views\Cases\Closed.cshtml" />
     <Content Include="Views\Cases\Index.cshtml" />
-    <Content Include="Views\Cases\New.cshtml" />
+    <Content Include="NotReferenced\ReplacedWithModals\New.cshtml" />
     <Content Include="Views\Cases\PracticeAreas.cshtml" />
     <Content Include="Views\Cases\_AddPracticeAreaModal.cshtml" />
     <Content Include="Views\Cases\_DeletePracticeAreaModal.cshtml" />
@@ -3594,6 +3594,7 @@
     <Content Include="Views\Manage\_DeleteLeadStatusModal.cshtml" />
     <Content Include="Views\Manage\_DeleteOfficeModal.cshtml" />
     <Content Include="Views\ToDos\_AddToDoModal.cshtml" />
+    <Content Include="Views\Cases\_AddCaseModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

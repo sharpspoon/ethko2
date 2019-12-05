@@ -13,7 +13,7 @@
 <a class="btn btn-default" href='@Url.Action("Closed", "Cases")'>Closed</a>
 <h2>
     @ViewBag.Title
-    <a class="btn btn-success" href='@Url.Action("New", "Cases")' style="float: right">+ Add Case</a>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#NewCaseModalCenter" style="float: right">+ Add Case</button>
 </h2>
 @Html.AntiForgeryToken()
 <hr />
