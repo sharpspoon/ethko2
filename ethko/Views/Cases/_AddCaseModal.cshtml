@@ -29,7 +29,7 @@
                                         @Html.DropDownList("Contacts", (IEnumerable<SelectListItem>)ViewData["DBContacts"], new { @class = "custom-select", @id = "contact", @name = "contact" })
                                         <div class="input-group-append">
                                             <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-dismiss="modal" data-target="#NewContactModalCenter">New Contact</button>
-                                            <a class="btn btn-outline-secondary" href='@Url.Action("NewCompany", "Contacts")' type="button">New Company</a>
+                                            <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-dismiss="modal" data-target="#NewCompanyModalCenter">New Company</button>
                                         </div>
                                     </div>
                                     <label>Select a contact or company</label>
@@ -54,7 +54,7 @@
                                             Case Name
                                         </div>
                                         <div class="col-md-10" align="left">
-                                            @Html.TextBoxFor(m => m.CaseName, new { @class = "form-control", placeholder = "e.g. John Doe - Divorce" })
+                                            @Html.TextBoxFor(m => m.CaseName, new { @class = "form-control", placeholder = "e.g. John Doe - Divorce", required = "required" })
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -62,7 +62,7 @@
                                             Case Number
                                         </div>
                                         <div class="col-md-10" align="left">
-                                            @Html.TextBoxFor(m => m.CaseNumber, new { @class = "form-control", placeholder = "A Unique Identifier" })
+                                            @Html.TextBoxFor(m => m.CaseNumber, new { @class = "form-control", placeholder = "A Unique Identifier", required = "required" })
                                             @Html.ValidationMessageFor(m => m.CaseNumber, "", new { @class = "text-danger" })
                                         </div>
                                     </div>

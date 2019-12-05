@@ -1,58 +1,38 @@
 ﻿@model ethko.Models.AddToDoViewModel
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="~/Content/svg.css">
-    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-        .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-            background-color: #c4c4c4;
-        }
-    </style>
-</head>
+@using (Html.BeginForm("NewToDoModal", "ToDos", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary("", new { @class = "text-danger" })
 
-<br />
-    <p>
-        <div class="col-md-12">
-            @using (Html.BeginForm("NewToDoModal", "ToDos", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary("", new { @class = "text-danger" })
-
-                <div class="form-group">
-                    <div class="col-md-4" align="left">
-                        To-Do Name
-                    </div>
-                    <div class="col-md-8" align="left">
-                        @Html.TextBoxFor(m => m.ToDoName, new { @class = "form-control", placeholder = "To-Do Name" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-2" align="left">
-                        Priority
-                    </div>
-                    <div class="col-md-10" align="left">
-                        @Html.DropDownList("PriorityNames", (IEnumerable<SelectListItem>)ViewData["DBPriorityNames"], new { @class = "form-control" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="dtp_input1" class="col-md-2 control-label">Due Date</label>
-                    <div class="input-group date form_datetime col-md-10" data-date="1979-09-16T05:25:07Z" data-date-format="MM dd, yyyy - HH:ii p" data-link-field="dtp_input1">
-                        <input class="form-control" size="16" type="text" value="" readonly>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
-                    </div>
-                    <input type="hidden" id="dtp_input1" value="" /><br />
-                </div> 
-
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <input type="submit" class="btn btn-success" value="Save To-Do" />
-                    </div>
-                </div>
-            }
+    <div class="form-group">
+        <div class="col-md-4" align="left">
+            To-Do Name
         </div>
-    </p>
+        <div class="col-md-8" align="left">
+            @Html.TextBoxFor(m => m.ToDoName, new { @class = "form-control", placeholder = "To-Do Name", required = "required" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2" align="left">
+            Priority
+        </div>
+        <div class="col-md-10" align="left">
+            @Html.DropDownList("PriorityNames", (IEnumerable<SelectListItem>)ViewData["DBPriorityNames"], new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="dtp_input1" class="col-md-2 control-label">Due Date</label>
+        <div class="input-group date form_datetime col-md-10" data-date="1979-09-16T05:25:07Z" data-date-format="MM dd, yyyy - HH:ii p" data-link-field="dtp_input1">
+            <input class="form-control" size="16" type="text" value="" readonly>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+        </div>
+        <input type="hidden" id="dtp_input1" value="" /><br />
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-success" value="Save To-Do" />
+        </div>
+    </div>
+}
