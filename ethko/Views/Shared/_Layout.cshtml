@@ -290,7 +290,10 @@ body {
                                 <i class="fas fa-id-card"></i>
                                 Add Contact
                             </button>
-                            <a class="dropdown-item" href='@Url.Action("New", "Cases")'><i class="fas fa-briefcase"></i> Add Case</a>
+                            <button type="button" class="dropdown-item" data-toggle="modal" data-target="#NewCaseModalCenter">
+                                <i class="fas fa-briefcase"></i>
+                                Add Case
+                            </button>
                             <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-envelope"></i> New Message</a>
                             <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-clock"></i> Add Time Entry</a>
                             <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-money-bill-wave"></i> Add Expense</a>
