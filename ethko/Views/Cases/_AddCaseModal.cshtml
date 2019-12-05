@@ -28,7 +28,7 @@
                                             </div>*@
                                         @Html.DropDownList("Contacts", (IEnumerable<SelectListItem>)ViewData["DBContacts"], new { @class = "custom-select", @id = "contact", @name = "contact" })
                                         <div class="input-group-append">
-                                            <a class="btn btn-outline-secondary" href='@Url.Action("New", "Contacts")' type="button">New Contact</a>
+                                            <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-dismiss="modal" data-target="#NewContactModalCenter">New Contact</button>
                                             <a class="btn btn-outline-secondary" href='@Url.Action("NewCompany", "Contacts")' type="button">New Company</a>
                                         </div>
                                     </div>
