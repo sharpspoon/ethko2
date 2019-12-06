@@ -490,13 +490,20 @@ CREATE TABLE [dbo].[ToDos] (
     [ToDoId]   INT            IDENTITY (1, 1) NOT NULL,
     [ToDoName] VARCHAR (MAX)  NOT NULL,
 	[ToDoPriorityId]       INT            NOT NULL,
+	[CaseId]       INT             NULL,
+	[LeadId]       INT             NULL,
+	[AssignedTo]       INT        NOT     NULL,
+	[DueDate]         INT  NOT NULL,
     [FstUser]          NVARCHAR (128) NOT NULL,
     [InsDate]          INT  NOT NULL,
 	[LstDate]         INT  NOT NULL,
 	[LstUser]         NVARCHAR (128) NOT NULL,
     [RowVersion]       ROWVERSION     NOT NULL,
 	CONSTRAINT [PK_dbo.ToDos] PRIMARY KEY CLUSTERED ([ToDoId] ASC),
-	CONSTRAINT [FK_Tasks_ToPriorities] FOREIGN KEY ([ToDoPriorityId]) REFERENCES [dbo].[Priorities] ([PriorityId])
+	CONSTRAINT [FK_ToDos_ToPriorities] FOREIGN KEY ([ToDoPriorityId]) REFERENCES [dbo].[Priorities] ([PriorityId]),
+	CONSTRAINT [FK_ToDos_ToCases] FOREIGN KEY ([CaseId]) REFERENCES [dbo].[Cases] ([CaseId]),
+	--CONSTRAINT [FK_ToDos_ToPriorities] FOREIGN KEY ([ToDoPriorityId]) REFERENCES [dbo].[Priorities] ([PriorityId]),
+	--CONSTRAINT [FK_ToDos_ToPriorities] FOREIGN KEY ([ToDoPriorityId]) REFERENCES [dbo].[Priorities] ([PriorityId])
 );
 
 --DocumentTypes
