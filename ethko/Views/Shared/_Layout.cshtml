@@ -13,22 +13,24 @@
         .links {
             float: right;
         }
-        html {
-  position: relative;
-  min-height: 100%;
-}
-body {
-  margin-bottom: 60px; /* Margin bottom by footer height */
-}
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 60px; /* Set the fixed height of the footer here */
-  line-height: 60px; /* Vertically center the text there */
-}
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+
+        body {
+            margin-bottom: 60px; /* Margin bottom by footer height */
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px; /* Set the fixed height of the footer here */
+            line-height: 60px; /* Vertically center the text there */
+        }
 
         #top {
             position: fixed;
@@ -66,6 +68,7 @@ body {
             background-color: #c4c4c4;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -284,7 +287,10 @@ body {
                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                             <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-calendar-plus"></i> Add Event</a>
                             <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-file"></i> Add Document</a>
-                            <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-check"></i> Add To-Do</a>
+                            <button type="button" class="dropdown-item" data-toggle="modal" data-target="#NewToDoModalCenter">
+                                <i class="fas fa-check"></i>
+                                Add To-Do
+                            </button>
                             <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-child"></i> Add Lead</a>
                             <button type="button" class="dropdown-item" data-toggle="modal" data-target="#NewContactModalCenter">
                                 <i class="fas fa-id-card"></i>
@@ -325,38 +331,11 @@ body {
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
     <script type="text/javascript">
-        $('.form_datetime').datetimepicker({
-            //language:  'fr',
-            weekStart: 1,
-            todayBtn: 1,
-            autoclose: 1,
-            todayHighlight: 1,
-            startView: 2,
-            forceParse: 0,
-            showMeridian: 1
-        });
-        $('.form_date').datetimepicker({
-            //language: 'fr',
-            weekStart: 1,
-            todayBtn: 1,
-            autoclose: 1,
-            todayHighlight: 1,
-            startView: 2,
-            minView: 2,
-            forceParse: 0
-        });
-        $('.form_time').datetimepicker({
-            //language: 'fr',
-            weekStart: 1,
-            todayBtn: 1,
-            autoclose: 1,
-            todayHighlight: 1,
-            startView: 1,
-            minView: 0,
-            maxView: 1,
-            forceParse: 0
+        $(function () {
+            $('#datetimepicker1').datetimepicker();
         });
     </script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.js"></script>
@@ -402,7 +381,6 @@ body {
             $('#myTable').dataTable();
         });
     </script>
-    
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>

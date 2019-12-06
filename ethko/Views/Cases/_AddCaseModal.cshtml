@@ -72,7 +72,9 @@
                                         </div>
                                         <div class="col-md-10" align="left">
                                             @Html.DropDownList("PracticeAreas", (IEnumerable<SelectListItem>)ViewData["DBContactGroupsPracticeArea"], new { @class = "form-control" })
-                                            @Html.ActionLink("Add new practice area", "NewPracticeArea")
+                                            <div class="input-group-append">
+                                                <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-dismiss="modal" data-target="#NewPracticeAreaModalCenter">New Practice Area</button>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
