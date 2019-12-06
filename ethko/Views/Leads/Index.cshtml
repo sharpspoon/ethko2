@@ -1,29 +1,146 @@
-﻿@model ethko.Models.AddPhoneNumberViewModel
+﻿@model IEnumerable<ethko.Models.GetContactListViewModel>
 @{
-    ViewBag.Title = "Phone Number";
+    ViewBag.Title = "Active Contacts";
 }
+<br />
+<a class="btn btn-primary" href='@Url.Action("Index", "Contacts")'>Contacts</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("Companies", "Contacts")'>Companies</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("ContactGroups", "Contacts")'>Contact Groups</a>&nbsp;
+<br />
+<br />
+<a class="btn btn-primary" href='@Url.Action("Index", "Contacts")'>Active</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("ContactsArchive", "Contacts")'>Archived</a>
+<h2>
+    @ViewBag.Title
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#NewContactModalCenter" style="float: right">+ Add Contact</button>
+</h2>
+@Html.AntiForgeryToken()
+<hr />
+<!DOCTYPE html>
+<html lang="en">
+<body style="margin:20px auto">
+    <div class="container">
+        <br />
+        Select Group
+        <select id='filterText' style='display:inline-block' onchange='filterText()'>
+            <option disabled selected>Select</option>
+            <option value='yes'>Yes</option>
+            <option value='no'>No</option>
+            <option value='all'>All</option>
+        </select>
+        <br />
+        <br />
+        <table id="myTable" class="table table-hover table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Group</th>
+                    <th>Cases</th>
+                    <th>Email</th>
+                    <th>Added</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    int i = 0;
+                    foreach (var item in Model)
+                    {
+                        i++;
+                        string e = "e" + i.ToString();
+                        string d = "d" + i.ToString();
+                        string v = "v" + i.ToString();
+                        <tr>
+                            <td>
+                                <div class="edit">
+                                    <a href="" data-toggle="modal" data-target='#@v'>
+                                        @Html.DisplayFor(modelItem => item.FName)
+                                    </a>
+                                </div>
+                                <div class="modal fade" id='@v' tabindex="-1" role="dialog" aria-labelledby="ViewContactModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="ViewContactModalCenterTitle">View Contact</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                @Html.Action("ViewContactModal", "Contacts", new { ContactId = item.ContactId })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="edit">
+                                    <a href="" data-toggle="modal" data-target='#@v'>
+                                        @Html.DisplayFor(modelItem => item.LName)
+                                    </a>
+                                </div>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ContactGroupList)
 
-<h2>@ViewBag.Title.</h2>
+                            </td>
+                            <td>
+                                5
 
-@using (Html.BeginForm("AddPhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Add a phone number</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Number, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Number, new { @class = "form-control" })
-        </div>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.InsDate)
+                                by @Html.DisplayFor(modelItem => item.FullName)
+                            </td>
+                            <td>
+                                <div class="edit">
+                                    <a href="" data-toggle="modal" data-target='#@e'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 8 8">
+                                            <title>Edit</title>
+                                            <path d="M6 0l-1 1 2 2 1-1-2-2zm-2 2l-4 4v2h2l4-4-2-2z" />
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="modal fade" id='@e' tabindex="-1" role="dialog" aria-labelledby="DeleteUserTypeModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="NewCompanyModalCenterTitle">Edit Contact</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                @Html.Action("EditContactModal", "Contacts", new { ContactId = item.ContactId })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                @if (Model == null)
+                {
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
     </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Submit" />
-        </div>
-    </div>
-}
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+</body>
+</html>
