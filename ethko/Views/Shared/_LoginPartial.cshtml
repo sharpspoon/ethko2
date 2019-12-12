@@ -234,6 +234,21 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="NewLeadModalCenter" tabindex="-1" role="dialog" aria-labelledby="NewLeadModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="NewLeadModalCenterTitle">Add Lead</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @Html.Action("NewLeadModal", "Leads")
+                </div>
+            </div>
+        </div>
+    </div>
     <center>
         <div class="nav btn-group" role="group" aria-label="Button group with nested dropdown">
             <a class="btn btn-secondary" href='@Url.Action("Index", "Home")'>Home</a>
@@ -343,8 +358,8 @@
                     Leads
                 </button>
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <a class="dropdown-item" href='@Url.Action("Index", "Contacts")'>Dashboard</a>
-                    <a class="dropdown-item" href='@Url.Action("Index", "Contacts")'>Leads Insights</a>
+                    <a class="dropdown-item" href='@Url.Action("Index", "Leads")'>Dashboard</a>
+                    <a class="dropdown-item" href='@Url.Action("Index", "Leads")'>Leads Insights</a>
                 </div>
             </div>
             <div class="btn-group" role="group">

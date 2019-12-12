@@ -20,11 +20,11 @@ namespace ethko.Controllers
         //////////
 
         // GET: /Contacts/NewContactModal
-        public ActionResult NewContactModal()
+        public ActionResult NewLeadModal()
         {
             var contactGroups = new SelectList(entities.ContactGroups.ToList(), "ContactGroupName", "ContactGroupName");
             ViewData["DBContactGroups"] = contactGroups;
-            return PartialView("_AddContactModal");
+            return PartialView("_AddLeadModal");
         }
 
         public Contact ConvertViewModelToModel(AddContactIndividualViewModel vm)
@@ -65,7 +65,7 @@ namespace ethko.Controllers
             return RedirectToAction("Index");
         }
 
-        // GET: /Contacts/Index
+        // GET: /Leads/Index
         [HttpGet]
         public ActionResult Index()
         {

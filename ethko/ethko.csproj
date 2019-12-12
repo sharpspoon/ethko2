@@ -3597,6 +3597,7 @@
     <Content Include="Views\ToDos\_AddToDoModal.cshtml" />
     <Content Include="Views\Cases\_AddCaseModal.cshtml" />
     <Content Include="Views\Leads\Index.cshtml" />
+    <Content Include="Views\Leads\_AddLeadModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

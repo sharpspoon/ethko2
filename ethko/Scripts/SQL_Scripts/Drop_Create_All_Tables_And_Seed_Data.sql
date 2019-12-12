@@ -1,5 +1,6 @@
 ﻿--Drop All Tables
 drop table IF EXISTS Documents
+drop table IF EXISTS ToDos
 drop table IF EXISTS Cases
 drop table IF EXISTS BillingMethods
 drop table IF EXISTS Offices
@@ -17,9 +18,9 @@ drop table IF EXISTS UserTypes
 drop table IF EXISTS LeadReferralSources
 drop table IF EXISTS LeadStatuses
 drop table IF EXISTS Notifications
-drop table IF EXISTS ToDos
 drop table IF EXISTS Priorities
 drop table IF EXISTS DocumentTypes
+drop table IF EXISTS Leads
 
 
 
@@ -532,6 +533,37 @@ CREATE TABLE [dbo].[Documents] (
 	CONSTRAINT [PK_dbo.Documents] PRIMARY KEY CLUSTERED ([DocumentId] ASC),
 	CONSTRAINT [FK_Documents_ToDocumentTypes] FOREIGN KEY ([DocumentTypeId]) REFERENCES [dbo].[DocumentTypes] ([DocumentTypeId]),
 	CONSTRAINT [FK_Documents_ToCases] FOREIGN KEY ([CaseId]) REFERENCES [dbo].[Cases] ([CaseId])
+);
+
+--Leads
+CREATE TABLE [dbo].[Leads] (
+    [LeadId]          INT            IDENTITY (1, 1) NOT NULL,
+    [FName]              VARCHAR (MAX)  NOT NULL,
+    [LName]              VARCHAR (MAX)  NOT NULL,
+    [MName]              VARCHAR (MAX)  NULL,
+	[FullName]              VARCHAR (MAX)  NULL,
+    [Title]              VARCHAR (50)   NULL,
+    [Archived]           SMALLINT       NOT NULL,
+    [Email]              VARCHAR (MAX)  NOT NULL,
+    [CellPhone]          VARCHAR (50)   NULL,
+    [WorkPhone]          VARCHAR (50)   NULL,
+    [HomePhone]          VARCHAR (50)   NULL,
+    [Address]            VARCHAR (50)   NULL,
+    [Address2]           VARCHAR (50)   NULL,
+    [City]               VARCHAR (50)   NULL,
+    [State]              VARCHAR (50)   NULL,
+    [Zip]                VARCHAR (50)   NULL,
+    [Country]            VARCHAR (MAX)  NULL,
+    [License]            VARCHAR (MAX)  NULL,
+    [Website]            VARCHAR (MAX)  NULL,
+    [Notes]              VARCHAR (MAX)  NULL,
+    [Birthday]           DATE           NULL,
+	[FstUser]          NVARCHAR (128) NOT NULL,
+    [InsDate]          INT  NOT NULL,
+	[LstDate]         INT  NOT NULL,
+	[LstUser]         NVARCHAR (128) NOT NULL,
+    [RowVersion]         ROWVERSION     NOT NULL,
+    CONSTRAINT [PK_dbo.Leads] PRIMARY KEY CLUSTERED ([LeadId] ASC)
 );
 
 

@@ -1,18 +1,19 @@
 ﻿@model IEnumerable<ethko.Models.GetContactListViewModel>
 @{
-    ViewBag.Title = "Active Contacts";
+    ViewBag.Title = "Active Leads";
 }
 <br />
-<a class="btn btn-primary" href='@Url.Action("Index", "Contacts")'>Contacts</a>&nbsp;
-<a class="btn btn-default" href='@Url.Action("Companies", "Contacts")'>Companies</a>&nbsp;
-<a class="btn btn-default" href='@Url.Action("ContactGroups", "Contacts")'>Contact Groups</a>&nbsp;
+<a class="btn btn-primary" href='@Url.Action("Index", "Leads")'>Dashboard</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("LeadInsights", "Leads")'>Lead Insights</a>&nbsp;
 <br />
 <br />
-<a class="btn btn-primary" href='@Url.Action("Index", "Contacts")'>Active</a>&nbsp;
-<a class="btn btn-default" href='@Url.Action("ContactsArchive", "Contacts")'>Archived</a>
+<a class="btn btn-primary" href='@Url.Action("Index", "Leads")'>Active</a>
+<a class="btn btn-default" href='@Url.Action("Status", "Leads")'>Status</a>&nbsp;
+<a class="btn btn-default" href='@Url.Action("DidNotHire", "Leads")'>Did Not Hire</a>
+<a class="btn btn-default" href='@Url.Action("Converted", "Leads")'>Converted</a>
 <h2>
     @ViewBag.Title
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#NewContactModalCenter" style="float: right">+ Add Contact</button>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#NewLeadModalCenter" style="float: right">+ Add Lead</button>
 </h2>
 @Html.AntiForgeryToken()
 <hr />
@@ -20,25 +21,17 @@
 <html lang="en">
 <body style="margin:20px auto">
     <div class="container">
-        <br />
-        Select Group
-        <select id='filterText' style='display:inline-block' onchange='filterText()'>
-            <option disabled selected>Select</option>
-            <option value='yes'>Yes</option>
-            <option value='no'>No</option>
-            <option value='all'>All</option>
-        </select>
-        <br />
-        <br />
         <table id="myTable" class="table table-hover table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Group</th>
-                    <th>Cases</th>
-                    <th>Email</th>
-                    <th>Added</th>
+                    <th>Name</th>
+                    <th>Source</th>
+                    <th>Status</th>
+                    <th>Practice Area</th>
+                    <th>Value</th>
+                    <th>Assign To</th>
+                    <th>Date Added</th>
+                    <th>Referred By</th>
                     <th>Edit</th>
                 </tr>
             </thead>
