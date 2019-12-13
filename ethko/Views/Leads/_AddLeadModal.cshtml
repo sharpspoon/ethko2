@@ -1,7 +1,7 @@
 ﻿@model ethko.Models.AddContactIndividualViewModel
 <br />
 <h5>Potential New Client</h5>
-@using (Html.BeginForm("NewContactModal", "Contacts", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("NewLeadModal", "Leads", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary("", new { @class = "text-danger" })
@@ -47,7 +47,16 @@
     </div>
 
     <div class="form-group">
-        <label>Referred By</label>
+        <label>Referred By Contact</label>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                @Html.TextBoxFor(m => m.CellPhone, new { @class = "form-control", placeholder = "555-555-5555" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Referred By Company</label>
         <div class="form-row">
             <div class="form-group col-md-12">
                 @Html.TextBoxFor(m => m.CellPhone, new { @class = "form-control", placeholder = "555-555-5555" })
@@ -85,8 +94,9 @@
     <div class="form-group">
         <label>Practice Area</label>
         <div class="form-row">
-            <div class="form-group col-md-12">
-                @Html.TextBoxFor(m => m.CellPhone, new { @class = "form-control", placeholder = "555-555-5555" })
+            @Html.TextBoxFor(m => m.CellPhone, new { @class = "form-control", placeholder = "555-555-5555" })
+            <div class="input-group-append">
+                <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-dismiss="modal" data-target="#NewPracticeAreaModalCenter">New</button>
             </div>
         </div>
     </div>
@@ -119,9 +129,11 @@
     </div>
 
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <input type="submit" class="btn btn-success" value="Save Contact" />
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <input type="submit" class="btn btn-success" value="Save Lead" />
+            </div>
         </div>
     </div>
 }
