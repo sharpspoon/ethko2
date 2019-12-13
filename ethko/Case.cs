@@ -18,6 +18,7 @@ namespace ethko
         public Case()
         {
             this.Documents = new HashSet<Document>();
+            this.ToDos = new HashSet<ToDo>();
         }
     
         public int CaseId { get; set; }
@@ -48,5 +49,7 @@ namespace ethko
         public virtual PracticeArea PracticeArea { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Document> Documents { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ToDo> ToDos { get; set; }
     }
 }

@@ -47,9 +47,9 @@ namespace ethko
         public virtual DbSet<PracticeArea> PracticeAreas { get; set; }
         public virtual DbSet<Priority> Priorities { get; set; }
         public virtual DbSet<State> States { get; set; }
-        public virtual DbSet<ToDoReference> ToDoReferences { get; set; }
-        public virtual DbSet<ToDo> ToDos { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
         public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
+        public virtual DbSet<Lead> Leads { get; set; }
+        public virtual DbSet<ToDo> ToDos { get; set; }
     }
 }

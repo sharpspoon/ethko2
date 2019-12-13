@@ -27,8 +27,6 @@
         <EntityTypeShape EntityType="ethko_dbModel.PracticeArea" Width="1.5" PointX="0.75" PointY="36.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ethko_dbModel.Priority" Width="1.5" PointX="7.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ethko_dbModel.State" Width="1.5" PointX="7.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ethko_dbModel.ToDoReference" Width="1.5" PointX="7.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ethko_dbModel.ToDo" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="ethko_dbModel.UserType" Width="1.5" PointX="1.5" PointY="26.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ethko_dbModel.database_firewall_rules" Width="1.5" PointX="13.75" PointY="8.75" IsExpanded="true" />
         <AssociationConnector Association="ethko_dbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
@@ -43,9 +41,11 @@
         <AssociationConnector Association="ethko_dbModel.FK_Cases_ToPracticeAreas" ManuallyRouted="false" />
         <AssociationConnector Association="ethko_dbModel.FK_Documents_ToCases" ManuallyRouted="false" />
         <AssociationConnector Association="ethko_dbModel.FK_Documents_ToDocumentTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="ethko_dbModel.FK_ToDos_ToPriorities" ManuallyRouted="false" />
-        <AssociationConnector Association="ethko_dbModel.FK_ToDos_ToToDoReferences" ManuallyRouted="false" />
         <AssociationConnector Association="ethko_dbModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ethko_dbModel.Lead" Width="1.5" PointX="10.375" PointY="14.75" />
+        <EntityTypeShape EntityType="ethko_dbModel.ToDo" Width="1.5" PointX="10" PointY="0.75" />
+        <AssociationConnector Association="ethko_dbModel.FK_ToDos_ToCases" />
+        <AssociationConnector Association="ethko_dbModel.FK_ToDos_ToPriorities" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

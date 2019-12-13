@@ -17,15 +17,17 @@ namespace ethko
         public int ToDoId { get; set; }
         public string ToDoName { get; set; }
         public int ToDoPriorityId { get; set; }
+        public Nullable<int> CaseId { get; set; }
+        public Nullable<int> LeadId { get; set; }
+        public int AssignedTo { get; set; }
         public int DueDate { get; set; }
-        public int ToDoReferenceId { get; set; }
         public string FstUser { get; set; }
         public int InsDate { get; set; }
         public int LstDate { get; set; }
         public string LstUser { get; set; }
         public byte[] RowVersion { get; set; }
     
+        public virtual Case Case { get; set; }
         public virtual Priority Priority { get; set; }
-        public virtual ToDoReference ToDoReference { get; set; }
     }
 }

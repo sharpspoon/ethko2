@@ -315,6 +315,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Lead.cs">
+      <DependentUpon>Ethko.tt</DependentUpon>
+    </Compile>
     <Compile Include="LeadReferralSource.cs">
       <DependentUpon>Ethko.tt</DependentUpon>
     </Compile>
@@ -350,9 +353,6 @@
       <DependentUpon>Ethko.tt</DependentUpon>
     </Compile>
     <Compile Include="ToDo.cs">
-      <DependentUpon>Ethko.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ToDoReference.cs">
       <DependentUpon>Ethko.tt</DependentUpon>
     </Compile>
     <Compile Include="UserType.cs">

@@ -2,7 +2,7 @@
 {
     public class AddLeadViewModel
     {
-        public string ContactGroupName { get; set; }
+        public string FName { get; set; }
     }
 
     public class GetLeadListViewModel
