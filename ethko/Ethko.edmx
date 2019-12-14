@@ -1,0 +1,2401 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ethko_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="FName" Type="varchar(max)" Nullable="false" />
+          <Property Name="LName" Type="varchar(max)" Nullable="false" />
+          <Property Name="MName" Type="varchar(max)" />
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="Archived" Type="smallint" Nullable="false" />
+          <Property Name="Hometown" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="CellPhone" Type="varchar" MaxLength="50" />
+          <Property Name="WorkPhone" Type="varchar" MaxLength="50" />
+          <Property Name="HomePhone" Type="varchar" MaxLength="50" />
+          <Property Name="Fax" Type="varchar" MaxLength="50" />
+          <Property Name="SSN" Type="varchar" MaxLength="9" />
+          <Property Name="JobTitle" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="Address2" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="Zip" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar(max)" />
+          <Property Name="License" Type="varchar(max)" />
+          <Property Name="Website" Type="varchar(max)" />
+          <Property Name="CalendarColor" Type="varchar(max)" />
+          <Property Name="Notes" Type="varchar(max)" />
+          <Property Name="Birthday" Type="date" />
+          <Property Name="DefaultHourlyRate" Type="int" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="int" />
+          <Property Name="LastLogin" Type="int" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillingMethods">
+          <Key>
+            <PropertyRef Name="BillingMethodId" />
+          </Key>
+          <Property Name="BillingMethodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BillingMethodName" Type="varchar(max)" Nullable="false" />
+          <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="InsDate" Type="int" Nullable="false" />
+          <Property Name="LstDate" Type="int" Nullable="false" />
+          <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cases">
+          <Key>
+            <PropertyRef Name="CaseId" />
+          </Key>
+          <Property Name="CaseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactId" Type="int" Nullable="false" />
+          <Property Name="BillingContactId" Type="int" Nullable="false" />
+          <Property Name="LeadAttorneyId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CaseName" Type="varchar(max)" Nullable="false" />
+          <Property Name="CaseNumber" Type="varchar(max)" Nullable="false" />
+          <Property Name="PracticeAreaId" Type="int" Nullable="false" />
+          <Property Name="BillingMethodId" Type="int" Nullable="false" />
+          <Property Name="OfficeId" Type="int" Nullable="false" />
+          <Property Name="CaseStageId" Type="int" Nullable="false" />
+          <Property Name="DateOpened" Type="int" Nullable="false" />
+          <Property Name="Statute" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="InsDate" Type="int" Nullable="false" />
+          <Property Name="LstDate" Type="int" Nullable="false" />
+          <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CaseStages">
+          <Key>
+            <PropertyRef Name="CaseStageId" />
+          </Key>
+          <Property Name="CaseStageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CaseStageName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="InsDate" Type="int" Nullable="false" />
+          <Property Name="LstDate" Type="int" Nullable="false" />
+          <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Companies">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="InsDate" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" Nullable="false" />
+          <Property Name="Archived" Type="smallint" Nullable="false" />
+          <Property Name="Email" Type="varchar(max)" Nullable="false" />
+          <Property Name="Website" Type="varchar" MaxLength="50" />
+          <Property Name="MainPhone" Type="varchar" MaxLength="50" />
+          <Property Name="FaxNumber" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="Address2" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="Zip" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar(max)" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContactGroups">
+          <Key>
+            <PropertyRef Name="ContactGroupId" />
+          </Key>
+          <Property Name="ContactGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactGroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="InsDate" Type="int" Nullable="false" />
+          <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="LstDate" Type="int" Nullable="false" />
+          <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contacts">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="InsDate" Type="int" Nullable="false" />
+          <Property Name="FName" Type="varchar(max)" Nullable="false" />
+          <Property Name="LName" Type="varchar(max)" Nullable="false" />
+          <Property Name="MName" Type="varchar(max)" />
+          <Property Name="FullName" Type="varchar(max)" />
+          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="Archived" Type="smallint" Nullable="false" />
+          <Property Name="Email" Type="varchar(max)" Nullable="false" />
+          <Property Name="ContactGroupId" Type="int" />
+          <Property Name="CompanyId" Type="int" />
+          <Property Name="EnableClientPortal" Type="smallint" Nullable="false" />
+          <Property Name="CellPhone" Type="varchar" MaxLength="50" />
+          <Property Name="WorkPhone" Type="varchar" MaxLength="50" />
+          <Property Name="HomePhone" Type="varchar" MaxLength="50" />
+          <Property Name="Fax" Type="varchar" MaxLength="50" />
+          <Property Name="SSN" Type="varchar" MaxLength="9" />
+          <Property Name="JobTitle" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="Address2" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="Zip" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar(max)" />
+          <Property Name="License" Type="varchar(max)" />
+          <Property Name="Website" Type="varchar(max)" />
+          <Property Name="Notes" Type="varchar(max)" />
+          <Property Name="Birthday" Type="date" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Iso" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Iso3" Type="varchar" MaxLength="3" />
+          <Property Name="NumCode" Type="int" />
+          <Property Name="PhoneCode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DimDate">
+          <Key>
+            <PropertyRef Name="DateKey" />
+          </Key>
+          <Property Name="DateKey" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="FullDateUK" Type="char" MaxLength="10" />
+          <Property Name="FullDateUSA" Type="char" MaxLength="10" />
+          <Property Name="DayOfMonth" Type="varchar" MaxLength="2" />
+          <Property Name="DaySuffix" Type="varchar" MaxLength="4" />
+          <Property Name="DayName" Type="varchar" MaxLength="9" />
+          <Property Name="DayOfWeekUSA" Type="char" MaxLength="1" />
+          <Property Name="DayOfWeekUK" Type="char" MaxLength="1" />
+          <Property Name="DayOfWeekInMonth" Type="varchar" MaxLength="2" />
+          <Property Name="DayOfWeekInYear" Type="varchar" MaxLength="2" />
+          <Property Name="DayOfQuarter" Type="varchar" MaxLength="3" />
+          <Property Name="DayOfYear" Type="varchar" MaxLength="3" />
+          <Property Name="WeekOfMonth" Type="varchar" MaxLength="1" />
+          <Property Name="WeekOfQuarter" Type="varchar" MaxLength="2" />
+          <Property Name="WeekOfYear" Type="varchar" MaxLength="2" />
+          <Property Name="Month" Type="varchar" MaxLength="2" />
+          <Property Name="MonthName" Type="varchar" MaxLength="9" />
+          <Property Name="MonthOfQuarter" Type="varchar" MaxLength="2" />
+          <Property Name="Quarter" Type="char" MaxLength="1" />
+          <Property Name="QuarterName" Type="varchar" MaxLength="9" />
+          <Property Name="Year" Type="char" MaxLength="4" />
+          <Property Name="YearName" Type="char" MaxLength="7" />
+          <Property Name="MonthYear" Type="char" MaxLength="10" />
+          <Property Name="MMYYYY" Type="char" MaxLength="6" />
+          <Property Name="FirstDayOfMonth" Type="date" />
+          <Property Name="LastDayOfMonth" Type="date" />
+          <Property Name="FirstDayOfQuarter" Type="date" />
+          <Property Name="LastDayOfQuarter" Type="date" />
+          <Property Name="FirstDayOfYear" Type="date" />
+          <Property Name="LastDayOfYear" Type="date" />
+          <Property Name="IsHolidayUSA" Type="bit" />
+          <Property Name="IsWeekday" Type="bit" />
+          <Property Name="HolidayUSA" Type="varchar" MaxLength="50" />
+          <Property Name="IsHolidayUK" Type="bit" />
+          <Property Name="HolidayUK" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Documents">
+          <Key>
+            <PropertyRef Name="DocumentId" />
+          </Key>
+          <Property Name="DocumentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DocumentTypeId" Type="int" Nullable="false" />
+          <Property Name="CaseId" Type="int" Nullable="false" />
+          <Property Name="DocumentName" Type="varchar(max)" Nullable="false" />
+          <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="InsDate" Type="int" Nullable="false" />
+          <Property Name="LstDate" Type="int" Nullable="false" />
+          <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DocumentTypes">
+          <Key>
+            <PropertyRef Name="DocumentTypeId" />
+          </Key>
+          <Property Name="DocumentTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DocumentTypeName" Type="varchar(max)" Nullable="false" />
+          <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="InsDate" Type="int" Nullable="false" />
+          <Property Name="LstDate" Type="int" Nullable="false" />
+          <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LeadReferralSources">
+          <Key>
+            <PropertyRef Name="ReferralSourceId" />
+          </Key>
+          <Property Name="ReferralSourceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReferralSourceName" Type="varchar(max)" Nullable="false" />
+          <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="InsDate" Type="int" Nullable="false" />
+          <Property Name="LstDate" Type="int" Nullable="false" />
+          <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Leads">
+          <Key>
+            <PropertyRef Name="LeadId" />
+          </Key>
+          <Property Name="LeadId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FName" Type="varchar(max)" Nullable="false" />
+          <Property Name="LName" Type="varchar(max)" Nullable="false" />
+          <Property Name="MName" Type="varchar(max)" />
+          <Property Name="FullName" Type="varchar(max)" />
+          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="Archived" Type="smallint" Nullable="false" />
+          <Property Name="Email" Type="varchar(max)" Nullable="false" />
+          <Property Name="CellPhone" Type="varchar" MaxLength="50" />
+          <Property Name="WorkPhone" Type="varchar" MaxLength="50" />
+          <Property Name="HomePhone" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="Address2" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="Zip" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar(max)" />
+          <Property Name="License" Type="varchar(max)" />
+          <Property Name="Website" Type="varchar(max)" />
+          <Property Name="LeadNotes" Type="varchar(max)" />
+          <Property Name="CaseNotes" Type="varchar(max)" />
+          <Property Name="Birthday" Type="date" />
+          <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="InsDate" Type="int" Nullable="false" />
+          <Property Name="LstDate" Type="int" Nullable="false" />
+          <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LeadStatuses">
+          <Key>
+            <PropertyRef Name="LeadStatusId" />
+          </Key>
+          <Property Name="LeadStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LeadStatusName" Type="varchar(max)" Nullable="false" />
+          <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="InsDate" Type="int" Nullable="false" />
+          <Property Name="LstDate" Type="int" Nullable="false" />
+          <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notifications">
+          <Key>
+            <PropertyRef Name="NotificationId" />
+          </Key>
+          <Property Name="NotificationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="N1" Type="varchar" MaxLength="2" />
+          <Property Name="N2" Type="varchar" MaxLength="2" />
+          <Property Name="N3" Type="varchar" MaxLength="2" />
+          <Property Name="N4" Type="varchar" MaxLength="2" />
+          <Property Name="N5" Type="varchar" MaxLength="2" />
+          <Property Name="N6" Type="varchar" MaxLength="2" />
+          <Property Name="N7" Type="varchar" MaxLength="2" />
+          <Property Name="N8" Type="varchar" MaxLength="2" />
+          <Property Name="N9" Type="varchar" MaxLength="2" />
+          <Property Name="N10" Type="varchar" MaxLength="2" />
+          <Property Name="N11" Type="varchar" MaxLength="2" />
+          <Property Name="N12" Type="varchar" MaxLength="2" />
+          <Property Name="N13" Type="varchar" MaxLength="2" />
+          <Property Name="N14" Type="varchar" MaxLength="2" />
+          <Property Name="N15" Type="varchar" MaxLength="2" />
+          <Property Name="N16" Type="varchar" MaxLength="2" />
+          <Property Name="N17" Type="varchar" MaxLength="2" />
+          <Property Name="N18" Type="varchar" MaxLength="2" />
+          <Property Name="N19" Type="varchar" MaxLength="2" />
+          <Property Name="N20" Type="varchar" MaxLength="2" />
+          <Property Name="N21" Type="varchar" MaxLength="2" />
+          <Property Name="N22" Type="varchar" MaxLength="2" />
+          <Property Name="N23" Type="varchar" MaxLength="2" />
+          <Property Name="N24" Type="varchar" MaxLength="2" />
+          <Property Name="N25" Type="varchar" MaxLength="2" />
+          <Property Name="N26" Type="varchar" MaxLength="2" />
+          <Property Name="N27" Type="varchar" MaxLength="2" />
+          <Property Name="N28" Type="varchar" MaxLength="2" />
+          <Property Name="N29" Type="varchar" MaxLength="2" />
+          <Property Name="N30" Type="varchar" MaxLength="2" />
+          <Property Name="N31" Type="varchar" MaxLength="2" />
+          <Property Name="N32" Type="varchar" MaxLength="2" />
+          <Property Name="N33" Type="varchar" MaxLength="2" />
+          <Property Name="N34" Type="varchar" MaxLength="2" />
+          <Property Name="N35" Type="varchar" MaxLength="2" />
+          <Property Name="N36" Type="varchar" MaxLength="2" />
+          <Property Name="N37" Type="varchar" MaxLength="2" />
+          <Property Name="N38" Type="varchar" MaxLength="2" />
+          <Property Name="N39" Type="varchar" MaxLength="2" />
+          <Property Name="N40" Type="varchar" MaxLength="2" />
+          <Property Name="N41" Type="varchar" MaxLength="2" />
+          <Property Name="N42" Type="varchar" MaxLength="2" />
+          <Property Name="N43" Type="varchar" MaxLength="2" />
+          <Property Name="N44" Type="varchar" MaxLength="2" />
+          <Property Name="N45" Type="varchar" MaxLength="2" />
+          <Property Name="N46" Type="varchar" MaxLength="2" />
+          <Property Name="N47" Type="varchar" MaxLength="2" />
+          <Property Name="N48" Type="varchar" MaxLength="2" />
+          <Property Name="N49" Type="varchar" MaxLength="2" />
+          <Property Name="N50" Type="varchar" MaxLength="2" />
+          <Property Name="N51" Type="varchar" MaxLength="2" />
+          <Property Name="N52" Type="varchar" MaxLength="2" />
+          <Property Name="N53" Type="varchar" MaxLength="2" />
+          <Property Name="N54" Type="varchar" MaxLength="2" />
+          <Property Name="N55" Type="varchar" MaxLength="2" />
+          <Property Name="N56" Type="varchar" MaxLength="2" />
+          <Property Name="N57" Type="varchar" MaxLength="2" />
+          <Property Name="N58" Type="varchar" MaxLength="2" />
+          <Property Name="N59" Type="varchar" MaxLength="2" />
+          <Property Name="N60" Type="varchar" MaxLength="2" />
+          <Property Name="N61" Type="varchar" MaxLength="2" />
+          <Property Name="N62" Type="varchar" MaxLength="2" />
+          <Property Name="N63" Type="varchar" MaxLength="2" />
+          <Property Name="N64" Type="varchar" MaxLength="2" />
+          <Property Name="N65" Type="varchar" MaxLength="2" />
+          <Property Name="N66" Type="varchar" MaxLength="2" />
+          <Property Name="N67" Type="varchar" MaxLength="2" />
+          <Property Name="N68" Type="varchar" MaxLength="2" />
+          <Property Name="N69" Type="varchar" MaxLength="2" />
+          <Property Name="N70" Type="varchar" MaxLength="2" />
+          <Property Name="N71" Type="varchar" MaxLength="2" />
+          <Property Name="N72" Type="varchar" MaxLength="2" />
+          <Property Name="N73" Type="varchar" MaxLength="2" />
+          <Property Name="N74" Type="varchar" MaxLength="2" />
+          <Property Name="N75" Type="varchar" MaxLength="2" />
+          <Property Name="N76" Type="varchar" MaxLength="2" />
+          <Property Name="N77" Type="varchar" MaxLength="2" />
+          <Property Name="N78" Type="varchar" MaxLength="2" />
+          <Property Name="N79" Type="varchar" MaxLength="2" />
+          <Property Name="N80" Type="varchar" MaxLength="2" />
+          <Property Name="N81" Type="varchar" MaxLength="2" />
+          <Property Name="N82" Type="varchar" MaxLength="2" />
+          <Property Name="N83" Type="varchar" MaxLength="2" />
+          <Property Name="N84" Type="varchar" MaxLength="2" />
+          <Property Name="N85" Type="varchar" MaxLength="2" />
+          <Property Name="N86" Type="varchar" MaxLength="2" />
+          <Property Name="N87" Type="varchar" MaxLength="2" />
+          <Property Name="N88" Type="varchar" MaxLength="2" />
+          <Property Name="N89" Type="varchar" MaxLength="2" />
+          <Property Name="N90" Type="varchar" MaxLength="2" />
+          <Property Name="N91" Type="varchar" MaxLength="2" />
+          <Property Name="N92" Type="varchar" MaxLength="2" />
+          <Property Name="N93" Type="varchar" MaxLength="2" />
+          <Property Name="N94" Type="varchar" MaxLength="2" />
+          <Property Name="N95" Type="varchar" MaxLength="2" />
+          <Property Name="N96" Type="varchar" MaxLength="2" />
+          <Property Name="N97" Type="varchar" MaxLength="2" />
+          <Property Name="N98" Type="varchar" MaxLength="2" />
+          <Property Name="N99" Type="varchar" MaxLength="2" />
+          <Property Name="N100" Type="varchar" MaxLength="2" />
+          <Property Name="N101" Type="varchar" MaxLength="2" />
+          <Property Name="N102" Type="varchar" MaxLength="2" />
+          <Property Name="N103" Type="varchar" MaxLength="2" />
+          <Property Name="N104" Type="varchar" MaxLength="2" />
+          <Property Name="N105" Type="varchar" MaxLength="2" />
+          <Property Name="N106" Type="varchar" MaxLength="2" />
+          <Property Name="N107" Type="varchar" MaxLength="2" />
+          <Property Name="N108" Type="varchar" MaxLength="2" />
+          <Property Name="N109" Type="varchar" MaxLength="2" />
+          <Property Name="N110" Type="varchar" MaxLength="2" />
+          <Property Name="N111" Type="varchar" MaxLength="2" />
+          <Property Name="N112" Type="varchar" MaxLength="2" />
+          <Property Name="N113" Type="varchar" MaxLength="2" />
+          <Property Name="N114" Type="varchar" MaxLength="2" />
+          <Property Name="N115" Type="varchar" MaxLength="2" />
+          <Property Name="N116" Type="varchar" MaxLength="2" />
+          <Property Name="N117" Type="varchar" MaxLength="2" />
+          <Property Name="N118" Type="varchar" MaxLength="2" />
+          <Property Name="N119" Type="varchar" MaxLength="2" />
+          <Property Name="N120" Type="varchar" MaxLength="2" />
+          <Property Name="N121" Type="varchar" MaxLength="2" />
+          <Property Name="N122" Type="varchar" MaxLength="2" />
+          <Property Name="N123" Type="varchar" MaxLength="2" />
+          <Property Name="N124" Type="varchar" MaxLength="2" />
+          <Property Name="N125" Type="varchar" MaxLength="2" />
+          <Property Name="N126" Type="varchar" MaxLength="2" />
+          <Property Name="N127" Type="varchar" MaxLength="2" />
+          <Property Name="N128" Type="varchar" MaxLength="2" />
+          <Property Name="N129" Type="varchar" MaxLength="2" />
+          <Property Name="N130" Type="varchar" MaxLength="2" />
+          <Property Name="N131" Type="varchar" MaxLength="2" />
+          <Property Name="N132" Type="varchar" MaxLength="2" />
+          <Property Name="N133" Type="varchar" MaxLength="2" />
+          <Property Name="N134" Type="varchar" MaxLength="2" />
+          <Property Name="N135" Type="varchar" MaxLength="2" />
+          <Property Name="N136" Type="varchar" MaxLength="2" />
+          <Property Name="N137" Type="varchar" MaxLength="2" />
+          <Property Name="N138" Type="varchar" MaxLength="2" />
+          <Property Name="N139" Type="varchar" MaxLength="2" />
+          <Property Name="N140" Type="varchar" MaxLength="2" />
+          <Property Name="N141" Type="varchar" MaxLength="2" />
+          <Property Name="N142" Type="varchar" MaxLength="2" />
+          <Property Name="N143" Type="varchar" MaxLength="2" />
+          <Property Name="N144" Type="varchar" MaxLength="2" />
+          <Property Name="N145" Type="varchar" MaxLength="2" />
+          <Property Name="N146" Type="varchar" MaxLength="2" />
+          <Property Name="N147" Type="varchar" MaxLength="2" />
+          <Property Name="N148" Type="varchar" MaxLength="2" />
+          <Property Name="N149" Type="varchar" MaxLength="2" />
+          <Property Name="N150" Type="varchar" MaxLength="2" />
+          <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="LstDate" Type="int" Nullable="false" />
+          <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="InsDate" Type="int" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Offices">
+          <Key>
+            <PropertyRef Name="OfficeId" />
+          </Key>
+          <Property Name="OfficeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OfficeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="InsDate" Type="int" Nullable="false" />
+          <Property Name="LstDate" Type="int" Nullable="false" />
+          <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PracticeAreas">
+          <Key>
+            <PropertyRef Name="PracticeAreaId" />
+          </Key>
+          <Property Name="PracticeAreaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PracticeAreaName" Type="varchar(max)" Nullable="false" />
+          <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="InsDate" Type="int" Nullable="false" />
+          <Property Name="LstDate" Type="int" Nullable="false" />
+          <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Priorities">
+          <Key>
+            <PropertyRef Name="PriorityId" />
+          </Key>
+          <Property Name="PriorityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PriorityName" Type="varchar(max)" Nullable="false" />
+          <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="InsDate" Type="int" Nullable="false" />
+          <Property Name="LstDate" Type="int" Nullable="false" />
+          <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="States">
+          <Key>
+            <PropertyRef Name="stateID" />
+          </Key>
+          <Property Name="stateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="stateCode" Type="nchar" MaxLength="2" Nullable="false" />
+          <Property Name="stateName" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ToDos">
+          <Key>
+            <PropertyRef Name="ToDoId" />
+          </Key>
+          <Property Name="ToDoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ToDoName" Type="varchar(max)" Nullable="false" />
+          <Property Name="ToDoPriorityId" Type="int" Nullable="false" />
+          <Property Name="CaseId" Type="int" />
+          <Property Name="LeadId" Type="int" />
+          <Property Name="AssignedTo" Type="int" Nullable="false" />
+          <Property Name="DueDate" Type="int" Nullable="false" />
+          <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="InsDate" Type="int" Nullable="false" />
+          <Property Name="LstDate" Type="int" Nullable="false" />
+          <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserTypes">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="InsDate" Type="int" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="database_firewall_rules">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="start_ip_address" />
+            <PropertyRef Name="end_ip_address" />
+            <PropertyRef Name="create_date" />
+            <PropertyRef Name="modify_date" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="start_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="end_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="modify_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AspNetUsers_ToUserTypes">
+          <End Role="UserTypes" Type="Self.UserTypes" Multiplicity="1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTypes">
+              <PropertyRef Name="UserTypeId" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Cases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="LeadAttorneyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToBillingMethods">
+          <End Role="BillingMethods" Type="Self.BillingMethods" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Cases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BillingMethods">
+              <PropertyRef Name="BillingMethodId" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="BillingMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToCaseStages">
+          <End Role="CaseStages" Type="Self.CaseStages" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Cases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CaseStages">
+              <PropertyRef Name="CaseStageId" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="CaseStageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToContacts">
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Cases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToContacts2">
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Cases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="BillingContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToOffices">
+          <End Role="Offices" Type="Self.Offices" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Cases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offices">
+              <PropertyRef Name="OfficeId" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToPracticeAreas">
+          <End Role="PracticeAreas" Type="Self.PracticeAreas" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Cases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PracticeAreas">
+              <PropertyRef Name="PracticeAreaId" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="PracticeAreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Documents_ToCases">
+          <End Role="Cases" Type="Self.Cases" Multiplicity="1" />
+          <End Role="Documents" Type="Self.Documents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cases">
+              <PropertyRef Name="CaseId" />
+            </Principal>
+            <Dependent Role="Documents">
+              <PropertyRef Name="CaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Documents_ToDocumentTypes">
+          <End Role="DocumentTypes" Type="Self.DocumentTypes" Multiplicity="1" />
+          <End Role="Documents" Type="Self.Documents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentTypes">
+              <PropertyRef Name="DocumentTypeId" />
+            </Principal>
+            <Dependent Role="Documents">
+              <PropertyRef Name="DocumentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToDos_ToCases">
+          <End Role="Cases" Type="Self.Cases" Multiplicity="0..1" />
+          <End Role="ToDos" Type="Self.ToDos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cases">
+              <PropertyRef Name="CaseId" />
+            </Principal>
+            <Dependent Role="ToDos">
+              <PropertyRef Name="CaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToDos_ToPriorities">
+          <End Role="Priorities" Type="Self.Priorities" Multiplicity="1" />
+          <End Role="ToDos" Type="Self.ToDos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Priorities">
+              <PropertyRef Name="PriorityId" />
+            </Principal>
+            <Dependent Role="ToDos">
+              <PropertyRef Name="ToDoPriorityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ethko_dbModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BillingMethods" EntityType="Self.BillingMethods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cases" EntityType="Self.Cases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CaseStages" EntityType="Self.CaseStages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Companies" EntityType="Self.Companies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactGroups" EntityType="Self.ContactGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DimDate" EntityType="Self.DimDate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Documents" EntityType="Self.Documents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocumentTypes" EntityType="Self.DocumentTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LeadReferralSources" EntityType="Self.LeadReferralSources" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Leads" EntityType="Self.Leads" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LeadStatuses" EntityType="Self.LeadStatuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Offices" EntityType="Self.Offices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PracticeAreas" EntityType="Self.PracticeAreas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Priorities" EntityType="Self.Priorities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ToDos" EntityType="Self.ToDos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" store:Type="Views" store:Schema="sys">
+            <DefiningQuery>SELECT 
+    [database_firewall_rules].[id] AS [id], 
+    [database_firewall_rules].[name] AS [name], 
+    [database_firewall_rules].[start_ip_address] AS [start_ip_address], 
+    [database_firewall_rules].[end_ip_address] AS [end_ip_address], 
+    [database_firewall_rules].[create_date] AS [create_date], 
+    [database_firewall_rules].[modify_date] AS [modify_date]
+    FROM [sys].[database_firewall_rules] AS [database_firewall_rules]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_AspNetUsers_ToUserTypes" Association="Self.FK_AspNetUsers_ToUserTypes">
+            <End Role="UserTypes" EntitySet="UserTypes" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_dbo_AspNetUsers_UserId" Association="Self.FK_Cases_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToBillingMethods" Association="Self.FK_Cases_ToBillingMethods">
+            <End Role="BillingMethods" EntitySet="BillingMethods" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToCaseStages" Association="Self.FK_Cases_ToCaseStages">
+            <End Role="CaseStages" EntitySet="CaseStages" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToContacts" Association="Self.FK_Cases_ToContacts">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToContacts2" Association="Self.FK_Cases_ToContacts2">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToOffices" Association="Self.FK_Cases_ToOffices">
+            <End Role="Offices" EntitySet="Offices" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToPracticeAreas" Association="Self.FK_Cases_ToPracticeAreas">
+            <End Role="PracticeAreas" EntitySet="PracticeAreas" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documents_ToCases" Association="Self.FK_Documents_ToCases">
+            <End Role="Cases" EntitySet="Cases" />
+            <End Role="Documents" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documents_ToDocumentTypes" Association="Self.FK_Documents_ToDocumentTypes">
+            <End Role="DocumentTypes" EntitySet="DocumentTypes" />
+            <End Role="Documents" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToDos_ToCases" Association="Self.FK_ToDos_ToCases">
+            <End Role="Cases" EntitySet="Cases" />
+            <End Role="ToDos" EntitySet="ToDos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToDos_ToPriorities" Association="Self.FK_ToDos_ToPriorities">
+            <End Role="Priorities" EntitySet="Priorities" />
+            <End Role="ToDos" EntitySet="ToDos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ethko_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Archived" Type="Int16" Nullable="false" />
+          <Property Name="Hometown" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CellPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WorkPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HomePhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SSN" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="JobTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Zip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="License" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Website" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CalendarColor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Birthday" Type="DateTime" Precision="0" />
+          <Property Name="DefaultHourlyRate" Type="Int32" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="Int32" />
+          <Property Name="LastLogin" Type="Int32" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="UserType" Relationship="Self.FK_AspNetUsers_ToUserTypes" FromRole="AspNetUsers" ToRole="UserTypes" />
+          <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="Cases" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="BillingMethod">
+          <Key>
+            <PropertyRef Name="BillingMethodId" />
+          </Key>
+          <Property Name="BillingMethodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BillingMethodName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_ToBillingMethods" FromRole="BillingMethods" ToRole="Cases" />
+        </EntityType>
+        <EntityType Name="Case">
+          <Key>
+            <PropertyRef Name="CaseId" />
+          </Key>
+          <Property Name="CaseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactId" Type="Int32" Nullable="false" />
+          <Property Name="BillingContactId" Type="Int32" Nullable="false" />
+          <Property Name="LeadAttorneyId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CaseName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CaseNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PracticeAreaId" Type="Int32" Nullable="false" />
+          <Property Name="BillingMethodId" Type="Int32" Nullable="false" />
+          <Property Name="OfficeId" Type="Int32" Nullable="false" />
+          <Property Name="CaseStageId" Type="Int32" Nullable="false" />
+          <Property Name="DateOpened" Type="Int32" Nullable="false" />
+          <Property Name="Statute" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Cases_dbo_AspNetUsers_UserId" FromRole="Cases" ToRole="AspNetUsers" />
+          <NavigationProperty Name="BillingMethod" Relationship="Self.FK_Cases_ToBillingMethods" FromRole="Cases" ToRole="BillingMethods" />
+          <NavigationProperty Name="CaseStage" Relationship="Self.FK_Cases_ToCaseStages" FromRole="Cases" ToRole="CaseStages" />
+          <NavigationProperty Name="Contact" Relationship="Self.FK_Cases_ToContacts" FromRole="Cases" ToRole="Contacts" />
+          <NavigationProperty Name="Contact1" Relationship="Self.FK_Cases_ToContacts2" FromRole="Cases" ToRole="Contacts" />
+          <NavigationProperty Name="Office" Relationship="Self.FK_Cases_ToOffices" FromRole="Cases" ToRole="Offices" />
+          <NavigationProperty Name="PracticeArea" Relationship="Self.FK_Cases_ToPracticeAreas" FromRole="Cases" ToRole="PracticeAreas" />
+          <NavigationProperty Name="Documents" Relationship="Self.FK_Documents_ToCases" FromRole="Cases" ToRole="Documents" />
+          <NavigationProperty Name="ToDos" Relationship="ethko_dbModel.FK_ToDos_ToCases" FromRole="Case" ToRole="ToDo" />
+        </EntityType>
+        <EntityType Name="CaseStage">
+          <Key>
+            <PropertyRef Name="CaseStageId" />
+          </Key>
+          <Property Name="CaseStageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CaseStageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_ToCaseStages" FromRole="CaseStages" ToRole="Cases" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Archived" Type="Int16" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MainPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FaxNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Zip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="ContactGroup">
+          <Key>
+            <PropertyRef Name="ContactGroupId" />
+          </Key>
+          <Property Name="ContactGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="FName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Archived" Type="Int16" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactGroupId" Type="Int32" />
+          <Property Name="CompanyId" Type="Int32" />
+          <Property Name="EnableClientPortal" Type="Int16" Nullable="false" />
+          <Property Name="CellPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WorkPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HomePhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SSN" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="JobTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Zip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="License" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Website" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Birthday" Type="DateTime" Precision="0" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_ToContacts" FromRole="Contacts" ToRole="Cases" />
+          <NavigationProperty Name="Cases1" Relationship="Self.FK_Cases_ToContacts2" FromRole="Contacts" ToRole="Cases" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Iso" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Iso3" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="NumCode" Type="Int32" />
+          <Property Name="PhoneCode" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DimDate">
+          <Key>
+            <PropertyRef Name="DateKey" />
+          </Key>
+          <Property Name="DateKey" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="FullDateUK" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="FullDateUSA" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="DayOfMonth" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="DaySuffix" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="DayName" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="DayOfWeekUSA" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="DayOfWeekUK" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="DayOfWeekInMonth" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="DayOfWeekInYear" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="DayOfQuarter" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="DayOfYear" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="WeekOfMonth" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="WeekOfQuarter" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="WeekOfYear" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Month" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="MonthName" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="MonthOfQuarter" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Quarter" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="QuarterName" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="YearName" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="MonthYear" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="MMYYYY" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="FirstDayOfMonth" Type="DateTime" Precision="0" />
+          <Property Name="LastDayOfMonth" Type="DateTime" Precision="0" />
+          <Property Name="FirstDayOfQuarter" Type="DateTime" Precision="0" />
+          <Property Name="LastDayOfQuarter" Type="DateTime" Precision="0" />
+          <Property Name="FirstDayOfYear" Type="DateTime" Precision="0" />
+          <Property Name="LastDayOfYear" Type="DateTime" Precision="0" />
+          <Property Name="IsHolidayUSA" Type="Boolean" />
+          <Property Name="IsWeekday" Type="Boolean" />
+          <Property Name="HolidayUSA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsHolidayUK" Type="Boolean" />
+          <Property Name="HolidayUK" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="DocumentId" />
+          </Key>
+          <Property Name="DocumentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DocumentTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CaseId" Type="Int32" Nullable="false" />
+          <Property Name="DocumentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Case" Relationship="Self.FK_Documents_ToCases" FromRole="Documents" ToRole="Cases" />
+          <NavigationProperty Name="DocumentType" Relationship="Self.FK_Documents_ToDocumentTypes" FromRole="Documents" ToRole="DocumentTypes" />
+        </EntityType>
+        <EntityType Name="DocumentType">
+          <Key>
+            <PropertyRef Name="DocumentTypeId" />
+          </Key>
+          <Property Name="DocumentTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DocumentTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Documents" Relationship="Self.FK_Documents_ToDocumentTypes" FromRole="DocumentTypes" ToRole="Documents" />
+        </EntityType>
+        <EntityType Name="LeadReferralSource">
+          <Key>
+            <PropertyRef Name="ReferralSourceId" />
+          </Key>
+          <Property Name="ReferralSourceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReferralSourceName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="LeadStatus">
+          <Key>
+            <PropertyRef Name="LeadStatusId" />
+          </Key>
+          <Property Name="LeadStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LeadStatusName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="NotificationId" />
+          </Key>
+          <Property Name="NotificationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="N1" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N2" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N3" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N4" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N5" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N6" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N7" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N8" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N9" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N10" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N11" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N12" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N13" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N14" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N15" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N16" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N17" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N18" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N19" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N20" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N21" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N22" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N23" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N24" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N25" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N26" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N27" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N28" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N29" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N30" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N31" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N32" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N33" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N34" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N35" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N36" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N37" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N38" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N39" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N40" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N41" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N42" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N43" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N44" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N45" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N46" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N47" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N48" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N49" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N50" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N51" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N52" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N53" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N54" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N55" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N56" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N57" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N58" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N59" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N60" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N61" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N62" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N63" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N64" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N65" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N66" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N67" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N68" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N69" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N70" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N71" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N72" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N73" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N74" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N75" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N76" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N77" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N78" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N79" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N80" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N81" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N82" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N83" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N84" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N85" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N86" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N87" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N88" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N89" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N90" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N91" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N92" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N93" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N94" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N95" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N96" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N97" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N98" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N99" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N100" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N101" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N102" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N103" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N104" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N105" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N106" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N107" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N108" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N109" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N110" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N111" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N112" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N113" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N114" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N115" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N116" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N117" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N118" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N119" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N120" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N121" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N122" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N123" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N124" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N125" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N126" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N127" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N128" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N129" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N130" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N131" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N132" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N133" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N134" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N135" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N136" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N137" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N138" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N139" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N140" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N141" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N142" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N143" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N144" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N145" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N146" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N147" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N148" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N149" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="N150" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Office">
+          <Key>
+            <PropertyRef Name="OfficeId" />
+          </Key>
+          <Property Name="OfficeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OfficeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_ToOffices" FromRole="Offices" ToRole="Cases" />
+        </EntityType>
+        <EntityType Name="PracticeArea">
+          <Key>
+            <PropertyRef Name="PracticeAreaId" />
+          </Key>
+          <Property Name="PracticeAreaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PracticeAreaName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_ToPracticeAreas" FromRole="PracticeAreas" ToRole="Cases" />
+        </EntityType>
+        <EntityType Name="Priority">
+          <Key>
+            <PropertyRef Name="PriorityId" />
+          </Key>
+          <Property Name="PriorityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PriorityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="ToDos" Relationship="ethko_dbModel.FK_ToDos_ToPriorities" FromRole="Priority" ToRole="ToDo" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="stateID" />
+          </Key>
+          <Property Name="stateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="stateCode" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="stateName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUsers_ToUserTypes" FromRole="UserTypes" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="database_firewall_rules">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="start_ip_address" />
+            <PropertyRef Name="end_ip_address" />
+            <PropertyRef Name="create_date" />
+            <PropertyRef Name="modify_date" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUsers_ToUserTypes">
+          <End Role="UserTypes" Type="Self.UserType" Multiplicity="1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTypes">
+              <PropertyRef Name="UserTypeId" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="LeadAttorneyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToBillingMethods">
+          <End Role="BillingMethods" Type="Self.BillingMethod" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BillingMethods">
+              <PropertyRef Name="BillingMethodId" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="BillingMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToCaseStages">
+          <End Role="CaseStages" Type="Self.CaseStage" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CaseStages">
+              <PropertyRef Name="CaseStageId" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="CaseStageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToContacts">
+          <End Role="Contacts" Type="Self.Contact" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToContacts2">
+          <End Role="Contacts" Type="Self.Contact" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="BillingContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToOffices">
+          <End Role="Offices" Type="Self.Office" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offices">
+              <PropertyRef Name="OfficeId" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToPracticeAreas">
+          <End Role="PracticeAreas" Type="Self.PracticeArea" Multiplicity="1" />
+          <End Role="Cases" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PracticeAreas">
+              <PropertyRef Name="PracticeAreaId" />
+            </Principal>
+            <Dependent Role="Cases">
+              <PropertyRef Name="PracticeAreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Documents_ToCases">
+          <End Role="Cases" Type="Self.Case" Multiplicity="1" />
+          <End Role="Documents" Type="Self.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cases">
+              <PropertyRef Name="CaseId" />
+            </Principal>
+            <Dependent Role="Documents">
+              <PropertyRef Name="CaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Documents_ToDocumentTypes">
+          <End Role="DocumentTypes" Type="Self.DocumentType" Multiplicity="1" />
+          <End Role="Documents" Type="Self.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentTypes">
+              <PropertyRef Name="DocumentTypeId" />
+            </Principal>
+            <Dependent Role="Documents">
+              <PropertyRef Name="DocumentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="ethko_dbEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="BillingMethods" EntityType="Self.BillingMethod" />
+          <EntitySet Name="Cases" EntityType="Self.Case" />
+          <EntitySet Name="CaseStages" EntityType="Self.CaseStage" />
+          <EntitySet Name="Companies" EntityType="Self.Company" />
+          <EntitySet Name="ContactGroups" EntityType="Self.ContactGroup" />
+          <EntitySet Name="Contacts" EntityType="Self.Contact" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="DimDates" EntityType="Self.DimDate" />
+          <EntitySet Name="Documents" EntityType="Self.Document" />
+          <EntitySet Name="DocumentTypes" EntityType="Self.DocumentType" />
+          <EntitySet Name="LeadReferralSources" EntityType="Self.LeadReferralSource" />
+          <EntitySet Name="LeadStatuses" EntityType="Self.LeadStatus" />
+          <EntitySet Name="Notifications" EntityType="Self.Notification" />
+          <EntitySet Name="Offices" EntityType="Self.Office" />
+          <EntitySet Name="PracticeAreas" EntityType="Self.PracticeArea" />
+          <EntitySet Name="Priorities" EntityType="Self.Priority" />
+          <EntitySet Name="States" EntityType="Self.State" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUsers_ToUserTypes" Association="Self.FK_AspNetUsers_ToUserTypes">
+            <End Role="UserTypes" EntitySet="UserTypes" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_dbo_AspNetUsers_UserId" Association="Self.FK_Cases_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToBillingMethods" Association="Self.FK_Cases_ToBillingMethods">
+            <End Role="BillingMethods" EntitySet="BillingMethods" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToCaseStages" Association="Self.FK_Cases_ToCaseStages">
+            <End Role="CaseStages" EntitySet="CaseStages" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToContacts" Association="Self.FK_Cases_ToContacts">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToContacts2" Association="Self.FK_Cases_ToContacts2">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToOffices" Association="Self.FK_Cases_ToOffices">
+            <End Role="Offices" EntitySet="Offices" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToPracticeAreas" Association="Self.FK_Cases_ToPracticeAreas">
+            <End Role="PracticeAreas" EntitySet="PracticeAreas" />
+            <End Role="Cases" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documents_ToCases" Association="Self.FK_Documents_ToCases">
+            <End Role="Cases" EntitySet="Cases" />
+            <End Role="Documents" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Documents_ToDocumentTypes" Association="Self.FK_Documents_ToDocumentTypes">
+            <End Role="DocumentTypes" EntitySet="DocumentTypes" />
+            <End Role="Documents" EntitySet="Documents" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="ToDos" EntityType="ethko_dbModel.ToDo" />
+          <AssociationSet Name="FK_ToDos_ToCases" Association="ethko_dbModel.FK_ToDos_ToCases">
+            <End Role="Case" EntitySet="Cases" />
+            <End Role="ToDo" EntitySet="ToDos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToDos_ToPriorities" Association="ethko_dbModel.FK_ToDos_ToPriorities">
+            <End Role="Priority" EntitySet="Priorities" />
+            <End Role="ToDo" EntitySet="ToDos" />
+          </AssociationSet>
+          <EntitySet Name="Leads" EntityType="ethko_dbModel.Lead" />
+        </EntityContainer>
+        <EntityType Name="ToDo">
+          <Key>
+            <PropertyRef Name="ToDoId" />
+          </Key>
+          <Property Name="ToDoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ToDoName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ToDoPriorityId" Type="Int32" Nullable="false" />
+          <Property Name="CaseId" Type="Int32" />
+          <Property Name="LeadId" Type="Int32" />
+          <Property Name="AssignedTo" Type="Int32" Nullable="false" />
+          <Property Name="DueDate" Type="Int32" Nullable="false" />
+          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Case" Relationship="ethko_dbModel.FK_ToDos_ToCases" FromRole="ToDo" ToRole="Case" />
+          <NavigationProperty Name="Priority" Relationship="ethko_dbModel.FK_ToDos_ToPriorities" FromRole="ToDo" ToRole="Priority" />
+        </EntityType>
+        <Association Name="FK_ToDos_ToCases">
+          <End Type="ethko_dbModel.Case" Role="Case" Multiplicity="0..1" />
+          <End Type="ethko_dbModel.ToDo" Role="ToDo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Case">
+              <PropertyRef Name="CaseId" />
+            </Principal>
+            <Dependent Role="ToDo">
+              <PropertyRef Name="CaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToDos_ToPriorities">
+          <End Type="ethko_dbModel.Priority" Role="Priority" Multiplicity="1" />
+          <End Type="ethko_dbModel.ToDo" Role="ToDo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Priority">
+              <PropertyRef Name="PriorityId" />
+            </Principal>
+            <Dependent Role="ToDo">
+              <PropertyRef Name="ToDoPriorityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Lead">
+          <Key>
+            <PropertyRef Name="LeadId" />
+          </Key>
+          <Property Name="LeadId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Archived" Type="Int16" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CellPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WorkPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HomePhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Zip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="License" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Website" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LeadNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CaseNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Birthday" Type="DateTime" Precision="0" />
+          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ethko_dbModelStoreContainer" CdmEntityContainer="ethko_dbEntities1">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="ethko_dbModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="ethko_dbModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="ethko_dbModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="ethko_dbModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="ethko_dbModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="MName" ColumnName="MName" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="Hometown" ColumnName="Hometown" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+                <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="SSN" ColumnName="SSN" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="License" ColumnName="License" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="CalendarColor" ColumnName="CalendarColor" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="DefaultHourlyRate" ColumnName="DefaultHourlyRate" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillingMethods">
+            <EntityTypeMapping TypeName="ethko_dbModel.BillingMethod">
+              <MappingFragment StoreEntitySet="BillingMethods">
+                <ScalarProperty Name="BillingMethodId" ColumnName="BillingMethodId" />
+                <ScalarProperty Name="BillingMethodName" ColumnName="BillingMethodName" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cases">
+            <EntityTypeMapping TypeName="ethko_dbModel.Case">
+              <MappingFragment StoreEntitySet="Cases">
+                <ScalarProperty Name="CaseId" ColumnName="CaseId" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="BillingContactId" ColumnName="BillingContactId" />
+                <ScalarProperty Name="LeadAttorneyId" ColumnName="LeadAttorneyId" />
+                <ScalarProperty Name="CaseName" ColumnName="CaseName" />
+                <ScalarProperty Name="CaseNumber" ColumnName="CaseNumber" />
+                <ScalarProperty Name="PracticeAreaId" ColumnName="PracticeAreaId" />
+                <ScalarProperty Name="BillingMethodId" ColumnName="BillingMethodId" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+                <ScalarProperty Name="CaseStageId" ColumnName="CaseStageId" />
+                <ScalarProperty Name="DateOpened" ColumnName="DateOpened" />
+                <ScalarProperty Name="Statute" ColumnName="Statute" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CaseStages">
+            <EntityTypeMapping TypeName="ethko_dbModel.CaseStage">
+              <MappingFragment StoreEntitySet="CaseStages">
+                <ScalarProperty Name="CaseStageId" ColumnName="CaseStageId" />
+                <ScalarProperty Name="CaseStageName" ColumnName="CaseStageName" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="ethko_dbModel.Company">
+              <MappingFragment StoreEntitySet="Companies">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="MainPhone" ColumnName="MainPhone" />
+                <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactGroups">
+            <EntityTypeMapping TypeName="ethko_dbModel.ContactGroup">
+              <MappingFragment StoreEntitySet="ContactGroups">
+                <ScalarProperty Name="ContactGroupId" ColumnName="ContactGroupId" />
+                <ScalarProperty Name="ContactGroupName" ColumnName="ContactGroupName" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="ethko_dbModel.Contact">
+              <MappingFragment StoreEntitySet="Contacts">
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="MName" ColumnName="MName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ContactGroupId" ColumnName="ContactGroupId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="EnableClientPortal" ColumnName="EnableClientPortal" />
+                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+                <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="SSN" ColumnName="SSN" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="License" ColumnName="License" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="ethko_dbModel.Country">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Iso" ColumnName="Iso" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Iso3" ColumnName="Iso3" />
+                <ScalarProperty Name="NumCode" ColumnName="NumCode" />
+                <ScalarProperty Name="PhoneCode" ColumnName="PhoneCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimDates">
+            <EntityTypeMapping TypeName="ethko_dbModel.DimDate">
+              <MappingFragment StoreEntitySet="DimDate">
+                <ScalarProperty Name="DateKey" ColumnName="DateKey" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="FullDateUK" ColumnName="FullDateUK" />
+                <ScalarProperty Name="FullDateUSA" ColumnName="FullDateUSA" />
+                <ScalarProperty Name="DayOfMonth" ColumnName="DayOfMonth" />
+                <ScalarProperty Name="DaySuffix" ColumnName="DaySuffix" />
+                <ScalarProperty Name="DayName" ColumnName="DayName" />
+                <ScalarProperty Name="DayOfWeekUSA" ColumnName="DayOfWeekUSA" />
+                <ScalarProperty Name="DayOfWeekUK" ColumnName="DayOfWeekUK" />
+                <ScalarProperty Name="DayOfWeekInMonth" ColumnName="DayOfWeekInMonth" />
+                <ScalarProperty Name="DayOfWeekInYear" ColumnName="DayOfWeekInYear" />
+                <ScalarProperty Name="DayOfQuarter" ColumnName="DayOfQuarter" />
+                <ScalarProperty Name="DayOfYear" ColumnName="DayOfYear" />
+                <ScalarProperty Name="WeekOfMonth" ColumnName="WeekOfMonth" />
+                <ScalarProperty Name="WeekOfQuarter" ColumnName="WeekOfQuarter" />
+                <ScalarProperty Name="WeekOfYear" ColumnName="WeekOfYear" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="MonthName" ColumnName="MonthName" />
+                <ScalarProperty Name="MonthOfQuarter" ColumnName="MonthOfQuarter" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="QuarterName" ColumnName="QuarterName" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="YearName" ColumnName="YearName" />
+                <ScalarProperty Name="MonthYear" ColumnName="MonthYear" />
+                <ScalarProperty Name="MMYYYY" ColumnName="MMYYYY" />
+                <ScalarProperty Name="FirstDayOfMonth" ColumnName="FirstDayOfMonth" />
+                <ScalarProperty Name="LastDayOfMonth" ColumnName="LastDayOfMonth" />
+                <ScalarProperty Name="FirstDayOfQuarter" ColumnName="FirstDayOfQuarter" />
+                <ScalarProperty Name="LastDayOfQuarter" ColumnName="LastDayOfQuarter" />
+                <ScalarProperty Name="FirstDayOfYear" ColumnName="FirstDayOfYear" />
+                <ScalarProperty Name="LastDayOfYear" ColumnName="LastDayOfYear" />
+                <ScalarProperty Name="IsHolidayUSA" ColumnName="IsHolidayUSA" />
+                <ScalarProperty Name="IsWeekday" ColumnName="IsWeekday" />
+                <ScalarProperty Name="HolidayUSA" ColumnName="HolidayUSA" />
+                <ScalarProperty Name="IsHolidayUK" ColumnName="IsHolidayUK" />
+                <ScalarProperty Name="HolidayUK" ColumnName="HolidayUK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="ethko_dbModel.Document">
+              <MappingFragment StoreEntitySet="Documents">
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+                <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
+                <ScalarProperty Name="CaseId" ColumnName="CaseId" />
+                <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocumentTypes">
+            <EntityTypeMapping TypeName="ethko_dbModel.DocumentType">
+              <MappingFragment StoreEntitySet="DocumentTypes">
+                <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
+                <ScalarProperty Name="DocumentTypeName" ColumnName="DocumentTypeName" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LeadReferralSources">
+            <EntityTypeMapping TypeName="ethko_dbModel.LeadReferralSource">
+              <MappingFragment StoreEntitySet="LeadReferralSources">
+                <ScalarProperty Name="ReferralSourceId" ColumnName="ReferralSourceId" />
+                <ScalarProperty Name="ReferralSourceName" ColumnName="ReferralSourceName" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LeadStatuses">
+            <EntityTypeMapping TypeName="ethko_dbModel.LeadStatus">
+              <MappingFragment StoreEntitySet="LeadStatuses">
+                <ScalarProperty Name="LeadStatusId" ColumnName="LeadStatusId" />
+                <ScalarProperty Name="LeadStatusName" ColumnName="LeadStatusName" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="ethko_dbModel.Notification">
+              <MappingFragment StoreEntitySet="Notifications">
+                <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="N1" ColumnName="N1" />
+                <ScalarProperty Name="N2" ColumnName="N2" />
+                <ScalarProperty Name="N3" ColumnName="N3" />
+                <ScalarProperty Name="N4" ColumnName="N4" />
+                <ScalarProperty Name="N5" ColumnName="N5" />
+                <ScalarProperty Name="N6" ColumnName="N6" />
+                <ScalarProperty Name="N7" ColumnName="N7" />
+                <ScalarProperty Name="N8" ColumnName="N8" />
+                <ScalarProperty Name="N9" ColumnName="N9" />
+                <ScalarProperty Name="N10" ColumnName="N10" />
+                <ScalarProperty Name="N11" ColumnName="N11" />
+                <ScalarProperty Name="N12" ColumnName="N12" />
+                <ScalarProperty Name="N13" ColumnName="N13" />
+                <ScalarProperty Name="N14" ColumnName="N14" />
+                <ScalarProperty Name="N15" ColumnName="N15" />
+                <ScalarProperty Name="N16" ColumnName="N16" />
+                <ScalarProperty Name="N17" ColumnName="N17" />
+                <ScalarProperty Name="N18" ColumnName="N18" />
+                <ScalarProperty Name="N19" ColumnName="N19" />
+                <ScalarProperty Name="N20" ColumnName="N20" />
+                <ScalarProperty Name="N21" ColumnName="N21" />
+                <ScalarProperty Name="N22" ColumnName="N22" />
+                <ScalarProperty Name="N23" ColumnName="N23" />
+                <ScalarProperty Name="N24" ColumnName="N24" />
+                <ScalarProperty Name="N25" ColumnName="N25" />
+                <ScalarProperty Name="N26" ColumnName="N26" />
+                <ScalarProperty Name="N27" ColumnName="N27" />
+                <ScalarProperty Name="N28" ColumnName="N28" />
+                <ScalarProperty Name="N29" ColumnName="N29" />
+                <ScalarProperty Name="N30" ColumnName="N30" />
+                <ScalarProperty Name="N31" ColumnName="N31" />
+                <ScalarProperty Name="N32" ColumnName="N32" />
+                <ScalarProperty Name="N33" ColumnName="N33" />
+                <ScalarProperty Name="N34" ColumnName="N34" />
+                <ScalarProperty Name="N35" ColumnName="N35" />
+                <ScalarProperty Name="N36" ColumnName="N36" />
+                <ScalarProperty Name="N37" ColumnName="N37" />
+                <ScalarProperty Name="N38" ColumnName="N38" />
+                <ScalarProperty Name="N39" ColumnName="N39" />
+                <ScalarProperty Name="N40" ColumnName="N40" />
+                <ScalarProperty Name="N41" ColumnName="N41" />
+                <ScalarProperty Name="N42" ColumnName="N42" />
+                <ScalarProperty Name="N43" ColumnName="N43" />
+                <ScalarProperty Name="N44" ColumnName="N44" />
+                <ScalarProperty Name="N45" ColumnName="N45" />
+                <ScalarProperty Name="N46" ColumnName="N46" />
+                <ScalarProperty Name="N47" ColumnName="N47" />
+                <ScalarProperty Name="N48" ColumnName="N48" />
+                <ScalarProperty Name="N49" ColumnName="N49" />
+                <ScalarProperty Name="N50" ColumnName="N50" />
+                <ScalarProperty Name="N51" ColumnName="N51" />
+                <ScalarProperty Name="N52" ColumnName="N52" />
+                <ScalarProperty Name="N53" ColumnName="N53" />
+                <ScalarProperty Name="N54" ColumnName="N54" />
+                <ScalarProperty Name="N55" ColumnName="N55" />
+                <ScalarProperty Name="N56" ColumnName="N56" />
+                <ScalarProperty Name="N57" ColumnName="N57" />
+                <ScalarProperty Name="N58" ColumnName="N58" />
+                <ScalarProperty Name="N59" ColumnName="N59" />
+                <ScalarProperty Name="N60" ColumnName="N60" />
+                <ScalarProperty Name="N61" ColumnName="N61" />
+                <ScalarProperty Name="N62" ColumnName="N62" />
+                <ScalarProperty Name="N63" ColumnName="N63" />
+                <ScalarProperty Name="N64" ColumnName="N64" />
+                <ScalarProperty Name="N65" ColumnName="N65" />
+                <ScalarProperty Name="N66" ColumnName="N66" />
+                <ScalarProperty Name="N67" ColumnName="N67" />
+                <ScalarProperty Name="N68" ColumnName="N68" />
+                <ScalarProperty Name="N69" ColumnName="N69" />
+                <ScalarProperty Name="N70" ColumnName="N70" />
+                <ScalarProperty Name="N71" ColumnName="N71" />
+                <ScalarProperty Name="N72" ColumnName="N72" />
+                <ScalarProperty Name="N73" ColumnName="N73" />
+                <ScalarProperty Name="N74" ColumnName="N74" />
+                <ScalarProperty Name="N75" ColumnName="N75" />
+                <ScalarProperty Name="N76" ColumnName="N76" />
+                <ScalarProperty Name="N77" ColumnName="N77" />
+                <ScalarProperty Name="N78" ColumnName="N78" />
+                <ScalarProperty Name="N79" ColumnName="N79" />
+                <ScalarProperty Name="N80" ColumnName="N80" />
+                <ScalarProperty Name="N81" ColumnName="N81" />
+                <ScalarProperty Name="N82" ColumnName="N82" />
+                <ScalarProperty Name="N83" ColumnName="N83" />
+                <ScalarProperty Name="N84" ColumnName="N84" />
+                <ScalarProperty Name="N85" ColumnName="N85" />
+                <ScalarProperty Name="N86" ColumnName="N86" />
+                <ScalarProperty Name="N87" ColumnName="N87" />
+                <ScalarProperty Name="N88" ColumnName="N88" />
+                <ScalarProperty Name="N89" ColumnName="N89" />
+                <ScalarProperty Name="N90" ColumnName="N90" />
+                <ScalarProperty Name="N91" ColumnName="N91" />
+                <ScalarProperty Name="N92" ColumnName="N92" />
+                <ScalarProperty Name="N93" ColumnName="N93" />
+                <ScalarProperty Name="N94" ColumnName="N94" />
+                <ScalarProperty Name="N95" ColumnName="N95" />
+                <ScalarProperty Name="N96" ColumnName="N96" />
+                <ScalarProperty Name="N97" ColumnName="N97" />
+                <ScalarProperty Name="N98" ColumnName="N98" />
+                <ScalarProperty Name="N99" ColumnName="N99" />
+                <ScalarProperty Name="N100" ColumnName="N100" />
+                <ScalarProperty Name="N101" ColumnName="N101" />
+                <ScalarProperty Name="N102" ColumnName="N102" />
+                <ScalarProperty Name="N103" ColumnName="N103" />
+                <ScalarProperty Name="N104" ColumnName="N104" />
+                <ScalarProperty Name="N105" ColumnName="N105" />
+                <ScalarProperty Name="N106" ColumnName="N106" />
+                <ScalarProperty Name="N107" ColumnName="N107" />
+                <ScalarProperty Name="N108" ColumnName="N108" />
+                <ScalarProperty Name="N109" ColumnName="N109" />
+                <ScalarProperty Name="N110" ColumnName="N110" />
+                <ScalarProperty Name="N111" ColumnName="N111" />
+                <ScalarProperty Name="N112" ColumnName="N112" />
+                <ScalarProperty Name="N113" ColumnName="N113" />
+                <ScalarProperty Name="N114" ColumnName="N114" />
+                <ScalarProperty Name="N115" ColumnName="N115" />
+                <ScalarProperty Name="N116" ColumnName="N116" />
+                <ScalarProperty Name="N117" ColumnName="N117" />
+                <ScalarProperty Name="N118" ColumnName="N118" />
+                <ScalarProperty Name="N119" ColumnName="N119" />
+                <ScalarProperty Name="N120" ColumnName="N120" />
+                <ScalarProperty Name="N121" ColumnName="N121" />
+                <ScalarProperty Name="N122" ColumnName="N122" />
+                <ScalarProperty Name="N123" ColumnName="N123" />
+                <ScalarProperty Name="N124" ColumnName="N124" />
+                <ScalarProperty Name="N125" ColumnName="N125" />
+                <ScalarProperty Name="N126" ColumnName="N126" />
+                <ScalarProperty Name="N127" ColumnName="N127" />
+                <ScalarProperty Name="N128" ColumnName="N128" />
+                <ScalarProperty Name="N129" ColumnName="N129" />
+                <ScalarProperty Name="N130" ColumnName="N130" />
+                <ScalarProperty Name="N131" ColumnName="N131" />
+                <ScalarProperty Name="N132" ColumnName="N132" />
+                <ScalarProperty Name="N133" ColumnName="N133" />
+                <ScalarProperty Name="N134" ColumnName="N134" />
+                <ScalarProperty Name="N135" ColumnName="N135" />
+                <ScalarProperty Name="N136" ColumnName="N136" />
+                <ScalarProperty Name="N137" ColumnName="N137" />
+                <ScalarProperty Name="N138" ColumnName="N138" />
+                <ScalarProperty Name="N139" ColumnName="N139" />
+                <ScalarProperty Name="N140" ColumnName="N140" />
+                <ScalarProperty Name="N141" ColumnName="N141" />
+                <ScalarProperty Name="N142" ColumnName="N142" />
+                <ScalarProperty Name="N143" ColumnName="N143" />
+                <ScalarProperty Name="N144" ColumnName="N144" />
+                <ScalarProperty Name="N145" ColumnName="N145" />
+                <ScalarProperty Name="N146" ColumnName="N146" />
+                <ScalarProperty Name="N147" ColumnName="N147" />
+                <ScalarProperty Name="N148" ColumnName="N148" />
+                <ScalarProperty Name="N149" ColumnName="N149" />
+                <ScalarProperty Name="N150" ColumnName="N150" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Offices">
+            <EntityTypeMapping TypeName="ethko_dbModel.Office">
+              <MappingFragment StoreEntitySet="Offices">
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+                <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PracticeAreas">
+            <EntityTypeMapping TypeName="ethko_dbModel.PracticeArea">
+              <MappingFragment StoreEntitySet="PracticeAreas">
+                <ScalarProperty Name="PracticeAreaId" ColumnName="PracticeAreaId" />
+                <ScalarProperty Name="PracticeAreaName" ColumnName="PracticeAreaName" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Priorities">
+            <EntityTypeMapping TypeName="ethko_dbModel.Priority">
+              <MappingFragment StoreEntitySet="Priorities">
+                <ScalarProperty Name="PriorityId" ColumnName="PriorityId" />
+                <ScalarProperty Name="PriorityName" ColumnName="PriorityName" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="ethko_dbModel.State">
+              <MappingFragment StoreEntitySet="States">
+                <ScalarProperty Name="stateID" ColumnName="stateID" />
+                <ScalarProperty Name="stateCode" ColumnName="stateCode" />
+                <ScalarProperty Name="stateName" ColumnName="stateName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="ethko_dbModel.UserType">
+              <MappingFragment StoreEntitySet="UserTypes">
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="database_firewall_rules">
+            <EntityTypeMapping TypeName="ethko_dbModel.database_firewall_rules">
+              <MappingFragment StoreEntitySet="database_firewall_rules">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
+                <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="ethko_dbModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="ToDos">
+            <EntityTypeMapping TypeName="ethko_dbModel.ToDo">
+              <MappingFragment StoreEntitySet="ToDos">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+                <ScalarProperty Name="LeadId" ColumnName="LeadId" />
+                <ScalarProperty Name="CaseId" ColumnName="CaseId" />
+                <ScalarProperty Name="ToDoPriorityId" ColumnName="ToDoPriorityId" />
+                <ScalarProperty Name="ToDoName" ColumnName="ToDoName" />
+                <ScalarProperty Name="ToDoId" ColumnName="ToDoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Leads">
+            <EntityTypeMapping TypeName="ethko_dbModel.Lead">
+              <MappingFragment StoreEntitySet="Leads">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="CaseNotes" ColumnName="CaseNotes" />
+                <ScalarProperty Name="LeadNotes" ColumnName="LeadNotes" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="License" ColumnName="License" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
+                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="MName" ColumnName="MName" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="LeadId" ColumnName="LeadId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
