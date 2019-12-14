@@ -31,6 +31,9 @@ namespace ethko.Controllers
             var contacts = new SelectList(entities.Contacts.ToList(), "FullName", "FullName");
             ViewData["DBContacts"] = contacts;
 
+            var companies = new SelectList(entities.Companies.ToList(), "Name", "Name");
+            ViewData["DBCompanies"] = companies;
+
             var contactGroups = new SelectList(entities.ContactGroups.ToList(), "ContactGroupName", "ContactGroupName");
             ViewData["DBContactGroups"] = contactGroups;
 
@@ -69,7 +72,7 @@ namespace ethko.Controllers
             var contacts = from c in entities.Contacts
                            join cg in entities.ContactGroups on c.ContactGroupId equals cg.ContactGroupId
                            join d in entities.DimDates on c.InsDate equals d.DateKey
-                           join u in entities.AspNetUsers on c.UserId equals u.Id into lj
+                           join u in entities.AspNetUsers on c.FstUser equals u.Id into lj
                            from x in lj.DefaultIfEmpty()
                            where c.Archived == 0
                            select new GetContactListViewModel() { ContactId = c.ContactId.ToString(), FName = c.FName, LName = c.LName, Email = c.Email, FullName = x.FName + " " + x.LName, InsDate = d.FullDateUSA.ToString(), ContactGroupList = cg.ContactGroupName };

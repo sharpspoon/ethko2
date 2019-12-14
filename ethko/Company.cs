@@ -15,8 +15,6 @@ namespace ethko
     public partial class Company
     {
         public int CompanyId { get; set; }
-        public string FstUser { get; set; }
-        public int InsDate { get; set; }
         public string Name { get; set; }
         public short Archived { get; set; }
         public string Email { get; set; }
@@ -29,6 +27,10 @@ namespace ethko
         public string State { get; set; }
         public string Zip { get; set; }
         public string Country { get; set; }
+        public int InsDate { get; set; }
+        public string FstUser { get; set; }
+        public int LstDate { get; set; }
+        public string LstUser { get; set; }
         public byte[] RowVersion { get; set; }
     }
 }

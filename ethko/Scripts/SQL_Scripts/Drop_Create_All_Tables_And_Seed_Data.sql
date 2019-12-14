@@ -1,4 +1,6 @@
-﻿--Drop All Tables
+﻿use ethko_db
+
+--Drop All Tables
 drop table IF EXISTS Documents
 drop table IF EXISTS ToDos
 drop table IF EXISTS Cases
@@ -146,8 +148,6 @@ CREATE NONCLUSTERED INDEX [IX_UserId]
 --Companies
 CREATE TABLE [dbo].[Companies] (
     [CompanyId]  INT            IDENTITY (1, 1) NOT NULL,
-    [FstUser]    NVARCHAR (128) NOT NULL,
-    [InsDate]    INT       NOT NULL,
     [Name]       VARCHAR (MAX)  NOT NULL,
     [Archived]   SMALLINT       NOT NULL,
     [Email]      VARCHAR (MAX)  NOT NULL,
@@ -160,6 +160,10 @@ CREATE TABLE [dbo].[Companies] (
     [State]      VARCHAR (50)   NULL,
     [Zip]        VARCHAR (50)   NULL,
     [Country]    VARCHAR (MAX)  NULL,
+	[InsDate]          INT  NOT NULL,
+    [FstUser]          NVARCHAR (128) NOT NULL,
+	[LstDate]         INT  NOT NULL,
+	[LstUser]         NVARCHAR (128) NOT NULL,
     [RowVersion] ROWVERSION     NOT NULL,
     CONSTRAINT [PK_dbo.Companies] PRIMARY KEY CLUSTERED ([CompanyId] ASC)
 );
@@ -172,14 +176,13 @@ CREATE TABLE [dbo].[ContactGroups] (
     [FstUser]          NVARCHAR (128) NOT NULL,
 	[LstDate]         INT  NOT NULL,
 	[LstUser]         NVARCHAR (128) NOT NULL,
+	[RowVersion] ROWVERSION     NOT NULL,
     CONSTRAINT [PK_dbo.ContactGroups] PRIMARY KEY CLUSTERED ([ContactGroupId] ASC)
 );
 
 --Contacts
 CREATE TABLE [dbo].[Contacts] (
     [ContactId]          INT            IDENTITY (1, 1) NOT NULL,
-    [UserId]             NVARCHAR (128) NOT NULL,
-    [InsDate]            INT  NOT NULL,
     [FName]              VARCHAR (MAX)  NOT NULL,
     [LName]              VARCHAR (MAX)  NOT NULL,
     [MName]              VARCHAR (MAX)  NULL,
@@ -206,6 +209,10 @@ CREATE TABLE [dbo].[Contacts] (
     [Website]            VARCHAR (MAX)  NULL,
     [Notes]              VARCHAR (MAX)  NULL,
     [Birthday]           DATE           NULL,
+	[InsDate]          INT  NOT NULL,
+    [FstUser]          NVARCHAR (128) NOT NULL,
+	[LstDate]         INT  NOT NULL,
+	[LstUser]         NVARCHAR (128) NOT NULL,
     [RowVersion]         ROWVERSION     NOT NULL,
     CONSTRAINT [PK_dbo.Contacts] PRIMARY KEY CLUSTERED ([ContactId] ASC)
 );
@@ -659,14 +666,15 @@ values
 ('Pending', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'))
 
 insert into Contacts
-(FName, LName, MName, FullName, Title, Email, ContactGroupId, CellPhone, WorkPhone, HomePhone, Fax, SSN, JobTitle, Address, Address2, City, State, Zip, Country, License, Website, Notes, Birthday, InsDate, UserId, Archived, EnableClientPortal)
+(FName, LName, MName, FullName, Title, Email, ContactGroupId, CellPhone, WorkPhone, HomePhone, Fax, SSN, JobTitle, Address, Address2, City, State, Zip, Country, License, Website, Notes, Birthday, Archived, EnableClientPortal, fstuser, lstuser, insdate, lstdate)
 values
 ('Robin','Ward', 'Conn', 'Robin Conn Ward', 'Mr.', 'system@steelcitysites.net', 1, '334-332-7010', '334-332-7010', '334-332-7010', '334-332-7010', '123456789', 'Awesome Person', '123 Main Street', 'APT 1', 'Birmingham', 'AL', '36830', 'USA', 
 'License-001', 'https://steelcitysites.net', 'Insert some notes', '2000-01-31',
- CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), 0, 0),
+  0, 0,(select id from AspNetUsers where UserName='system@steelcitysites.net'),(select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), CONVERT (INT,@CurrentDateChar)),
+ 
  ('Billing','Ward', 'Conn', 'Billing Conn Ward', 'Mr.', 'system@steelcitysites.net', 1, '334-332-7010', '334-332-7010', '334-332-7010', '334-332-7010', '123456789', 'Awesome Person', '123 Main Street', 'APT 1', 'Birmingham', 'AL', '36830', 'USA', 
 'License-001', 'https://steelcitysites.net', 'Insert some notes', '2000-01-31',
- CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), 0, 0)
+  0, 0,(select id from AspNetUsers where UserName='system@steelcitysites.net'),(select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), CONVERT (INT,@CurrentDateChar))
 
 insert into Notifications
 (UserId, LstUser, FstUser, InsDate, LstDate)
@@ -687,3 +695,8 @@ values
 ('Case', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
 ('Firm', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net')),
 ('Template', CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), (select id from AspNetUsers where UserName='system@steelcitysites.net'))
+
+insert into companies
+(Name, email, archived, LstUser, FstUser, InsDate, LstDate)
+values
+( 'CoolCo','guy@CoolCo.com', 0, (select id from AspNetUsers where UserName='system@steelcitysites.net'), (select id from AspNetUsers where UserName='system@steelcitysites.net'), CONVERT (INT,@CurrentDateChar), CONVERT (INT,@CurrentDateChar))

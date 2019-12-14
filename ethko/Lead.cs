@@ -33,7 +33,8 @@ namespace ethko
         public string Country { get; set; }
         public string License { get; set; }
         public string Website { get; set; }
-        public string Notes { get; set; }
+        public string LeadNotes { get; set; }
+        public string CaseNotes { get; set; }
         public Nullable<System.DateTime> Birthday { get; set; }
         public string FstUser { get; set; }
         public int InsDate { get; set; }

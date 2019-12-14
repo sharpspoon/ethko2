@@ -60,7 +60,8 @@ namespace ethko.Controllers
             contactModel.InsDate = intDate;
             string contactGroupName = Request.Form["ContactGroups"].ToString();
             contactModel.ContactGroupId = entities.ContactGroups.Where(m => m.ContactGroupName == contactGroupName).Select(m => m.ContactGroupId).FirstOrDefault();
-            contactModel.UserId = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            contactModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            contactModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
             entities.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -72,7 +73,7 @@ namespace ethko.Controllers
             var contacts = from c in entities.Contacts
                            join cg in entities.ContactGroups on c.ContactGroupId equals cg.ContactGroupId
                            join d in entities.DimDates on c.InsDate equals d.DateKey
-                           join u in entities.AspNetUsers on c.UserId equals u.Id into lj
+                           join u in entities.AspNetUsers on c.FstUser equals u.Id into lj
                            from x in lj.DefaultIfEmpty()
                            where c.Archived == 0
                            select new GetContactListViewModel() { ContactId = c.ContactId.ToString(), FName = c.FName, LName = c.LName, Email = c.Email, FullName = x.FName + " " + x.LName, InsDate = d.FullDateUSA.ToString(), ContactGroupList = cg.ContactGroupName };
@@ -85,7 +86,7 @@ namespace ethko.Controllers
         {
             var contacts = from c in entities.Contacts
                            join cg in entities.ContactGroups on c.ContactGroupId equals cg.ContactGroupId
-                           join u in entities.AspNetUsers on c.UserId equals u.Id
+                           join u in entities.AspNetUsers on c.FstUser equals u.Id
                            where c.Archived == 1
                            select new GetContactArchiveListViewModel() { ContactId = c.ContactId.ToString(), FName = c.FName, LName = c.LName, Email = c.Email, UserId = u.UserName, InsDate = c.InsDate.ToString(), ContactGroupList = cg.ContactGroupName };
             return View(contacts.ToList());
@@ -97,7 +98,7 @@ namespace ethko.Controllers
         {
                         var contacts = (from c in entities.Contacts
                             join cg in entities.ContactGroups on c.ContactGroupId equals cg.ContactGroupId
-                            join u in entities.AspNetUsers on c.UserId equals u.Id
+                            join u in entities.AspNetUsers on c.FstUser equals u.Id
                             where c.ContactId == ContactId
                             select new GetIndividualContactViewModel() { ContactId = c.ContactId
                             , FName = c.FName

@@ -145,8 +145,6 @@
             <PropertyRef Name="CompanyId" />
           </Key>
           <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="InsDate" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar(max)" Nullable="false" />
           <Property Name="Archived" Type="smallint" Nullable="false" />
           <Property Name="Email" Type="varchar(max)" Nullable="false" />
@@ -159,6 +157,10 @@
           <Property Name="State" Type="varchar" MaxLength="50" />
           <Property Name="Zip" Type="varchar" MaxLength="50" />
           <Property Name="Country" Type="varchar(max)" />
+          <Property Name="InsDate" Type="int" Nullable="false" />
+          <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="LstDate" Type="int" Nullable="false" />
+          <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="ContactGroups">
@@ -171,14 +173,13 @@
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="LstDate" Type="int" Nullable="false" />
           <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="Contacts">
           <Key>
             <PropertyRef Name="ContactId" />
           </Key>
           <Property Name="ContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="InsDate" Type="int" Nullable="false" />
           <Property Name="FName" Type="varchar(max)" Nullable="false" />
           <Property Name="LName" Type="varchar(max)" Nullable="false" />
           <Property Name="MName" Type="varchar(max)" />
@@ -205,6 +206,10 @@
           <Property Name="Website" Type="varchar(max)" />
           <Property Name="Notes" Type="varchar(max)" />
           <Property Name="Birthday" Type="date" />
+          <Property Name="InsDate" Type="int" Nullable="false" />
+          <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="LstDate" Type="int" Nullable="false" />
+          <Property Name="LstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="Countries">
@@ -1023,12 +1028,12 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Cases_dbo_AspNetUsers_UserId" FromRole="Cases" ToRole="AspNetUsers" />
           <NavigationProperty Name="BillingMethod" Relationship="Self.FK_Cases_ToBillingMethods" FromRole="Cases" ToRole="BillingMethods" />
           <NavigationProperty Name="CaseStage" Relationship="Self.FK_Cases_ToCaseStages" FromRole="Cases" ToRole="CaseStages" />
-          <NavigationProperty Name="Contact" Relationship="Self.FK_Cases_ToContacts" FromRole="Cases" ToRole="Contacts" />
-          <NavigationProperty Name="Contact1" Relationship="Self.FK_Cases_ToContacts2" FromRole="Cases" ToRole="Contacts" />
           <NavigationProperty Name="Office" Relationship="Self.FK_Cases_ToOffices" FromRole="Cases" ToRole="Offices" />
           <NavigationProperty Name="PracticeArea" Relationship="Self.FK_Cases_ToPracticeAreas" FromRole="Cases" ToRole="PracticeAreas" />
           <NavigationProperty Name="Documents" Relationship="Self.FK_Documents_ToCases" FromRole="Cases" ToRole="Documents" />
           <NavigationProperty Name="ToDos" Relationship="ethko_dbModel.FK_ToDos_ToCases" FromRole="Case" ToRole="ToDo" />
+          <NavigationProperty Name="Contact" Relationship="ethko_dbModel.FK_Cases_ToContacts" FromRole="Case" ToRole="Contact" />
+          <NavigationProperty Name="Contact1" Relationship="ethko_dbModel.FK_Cases_ToContacts2" FromRole="Case" ToRole="Contact" />
         </EntityType>
         <EntityType Name="CaseStage">
           <Key>
@@ -1043,27 +1048,6 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_ToCaseStages" FromRole="CaseStages" ToRole="Cases" />
         </EntityType>
-        <EntityType Name="Company">
-          <Key>
-            <PropertyRef Name="CompanyId" />
-          </Key>
-          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="InsDate" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Archived" Type="Int16" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MainPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FaxNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Zip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-        </EntityType>
         <EntityType Name="ContactGroup">
           <Key>
             <PropertyRef Name="ContactGroupId" />
@@ -1074,43 +1058,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LstDate" Type="Int32" Nullable="false" />
           <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Contact">
-          <Key>
-            <PropertyRef Name="ContactId" />
-          </Key>
-          <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="InsDate" Type="Int32" Nullable="false" />
-          <Property Name="FName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Archived" Type="Int16" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ContactGroupId" Type="Int32" />
-          <Property Name="CompanyId" Type="Int32" />
-          <Property Name="EnableClientPortal" Type="Int16" Nullable="false" />
-          <Property Name="CellPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="WorkPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="HomePhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SSN" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
-          <Property Name="JobTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Zip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="License" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Website" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Birthday" Type="DateTime" Precision="0" />
-          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_ToContacts" FromRole="Contacts" ToRole="Cases" />
-          <NavigationProperty Name="Cases1" Relationship="Self.FK_Cases_ToContacts2" FromRole="Contacts" ToRole="Cases" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -1528,30 +1476,6 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Cases_ToContacts">
-          <End Role="Contacts" Type="Self.Contact" Multiplicity="1" />
-          <End Role="Cases" Type="Self.Case" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Contacts">
-              <PropertyRef Name="ContactId" />
-            </Principal>
-            <Dependent Role="Cases">
-              <PropertyRef Name="ContactId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cases_ToContacts2">
-          <End Role="Contacts" Type="Self.Contact" Multiplicity="1" />
-          <End Role="Cases" Type="Self.Case" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Contacts">
-              <PropertyRef Name="ContactId" />
-            </Principal>
-            <Dependent Role="Cases">
-              <PropertyRef Name="BillingContactId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Cases_ToOffices">
           <End Role="Offices" Type="Self.Office" Multiplicity="1" />
           <End Role="Cases" Type="Self.Case" Multiplicity="*" />
@@ -1613,9 +1537,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySet Name="BillingMethods" EntityType="Self.BillingMethod" />
           <EntitySet Name="Cases" EntityType="Self.Case" />
           <EntitySet Name="CaseStages" EntityType="Self.CaseStage" />
-          <EntitySet Name="Companies" EntityType="Self.Company" />
           <EntitySet Name="ContactGroups" EntityType="Self.ContactGroup" />
-          <EntitySet Name="Contacts" EntityType="Self.Contact" />
           <EntitySet Name="Countries" EntityType="Self.Country" />
           <EntitySet Name="DimDates" EntityType="Self.DimDate" />
           <EntitySet Name="Documents" EntityType="Self.Document" />
@@ -1653,14 +1575,6 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             <End Role="CaseStages" EntitySet="CaseStages" />
             <End Role="Cases" EntitySet="Cases" />
           </AssociationSet>
-          <AssociationSet Name="FK_Cases_ToContacts" Association="Self.FK_Cases_ToContacts">
-            <End Role="Contacts" EntitySet="Contacts" />
-            <End Role="Cases" EntitySet="Cases" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cases_ToContacts2" Association="Self.FK_Cases_ToContacts2">
-            <End Role="Contacts" EntitySet="Contacts" />
-            <End Role="Cases" EntitySet="Cases" />
-          </AssociationSet>
           <AssociationSet Name="FK_Cases_ToOffices" Association="Self.FK_Cases_ToOffices">
             <End Role="Offices" EntitySet="Offices" />
             <End Role="Cases" EntitySet="Cases" />
@@ -1691,6 +1605,16 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             <End Role="ToDo" EntitySet="ToDos" />
           </AssociationSet>
           <EntitySet Name="Leads" EntityType="ethko_dbModel.Lead" />
+          <EntitySet Name="Companies" EntityType="ethko_dbModel.Company" />
+          <EntitySet Name="Contacts" EntityType="ethko_dbModel.Contact" />
+          <AssociationSet Name="FK_Cases_ToContacts" Association="ethko_dbModel.FK_Cases_ToContacts">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Case" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cases_ToContacts2" Association="ethko_dbModel.FK_Cases_ToContacts2">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Case" EntitySet="Cases" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="ToDo">
           <Key>
@@ -1767,6 +1691,92 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Archived" Type="Int16" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MainPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FaxNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Zip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Archived" Type="Int16" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ContactGroupId" Type="Int32" />
+          <Property Name="CompanyId" Type="Int32" />
+          <Property Name="EnableClientPortal" Type="Int16" Nullable="false" />
+          <Property Name="CellPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WorkPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HomePhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SSN" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="JobTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Zip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="License" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Website" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Birthday" Type="DateTime" Precision="0" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Cases" Relationship="ethko_dbModel.FK_Cases_ToContacts" FromRole="Contact" ToRole="Case" />
+          <NavigationProperty Name="Cases1" Relationship="ethko_dbModel.FK_Cases_ToContacts2" FromRole="Contact" ToRole="Case" />
+        </EntityType>
+        <Association Name="FK_Cases_ToContacts">
+          <End Type="ethko_dbModel.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="ethko_dbModel.Case" Role="Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="Case">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cases_ToContacts2">
+          <End Type="ethko_dbModel.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="ethko_dbModel.Case" Role="Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="Case">
+              <PropertyRef Name="BillingContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1905,73 +1915,16 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Companies">
-            <EntityTypeMapping TypeName="ethko_dbModel.Company">
-              <MappingFragment StoreEntitySet="Companies">
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Archived" ColumnName="Archived" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Website" ColumnName="Website" />
-                <ScalarProperty Name="MainPhone" ColumnName="MainPhone" />
-                <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Address2" ColumnName="Address2" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Zip" ColumnName="Zip" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ContactGroups">
             <EntityTypeMapping TypeName="ethko_dbModel.ContactGroup">
               <MappingFragment StoreEntitySet="ContactGroups">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
                 <ScalarProperty Name="ContactGroupId" ColumnName="ContactGroupId" />
                 <ScalarProperty Name="ContactGroupName" ColumnName="ContactGroupName" />
                 <ScalarProperty Name="InsDate" ColumnName="InsDate" />
                 <ScalarProperty Name="FstUser" ColumnName="FstUser" />
                 <ScalarProperty Name="LstDate" ColumnName="LstDate" />
                 <ScalarProperty Name="LstUser" ColumnName="LstUser" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Contacts">
-            <EntityTypeMapping TypeName="ethko_dbModel.Contact">
-              <MappingFragment StoreEntitySet="Contacts">
-                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="FName" ColumnName="FName" />
-                <ScalarProperty Name="LName" ColumnName="LName" />
-                <ScalarProperty Name="MName" ColumnName="MName" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Archived" ColumnName="Archived" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="ContactGroupId" ColumnName="ContactGroupId" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="EnableClientPortal" ColumnName="EnableClientPortal" />
-                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
-                <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
-                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="SSN" ColumnName="SSN" />
-                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Address2" ColumnName="Address2" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Zip" ColumnName="Zip" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="License" ColumnName="License" />
-                <ScalarProperty Name="Website" ColumnName="Website" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2372,6 +2325,68 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
                 <ScalarProperty Name="LName" ColumnName="LName" />
                 <ScalarProperty Name="FName" ColumnName="FName" />
                 <ScalarProperty Name="LeadId" ColumnName="LeadId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="ethko_dbModel.Company">
+              <MappingFragment StoreEntitySet="Companies">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+                <ScalarProperty Name="MainPhone" ColumnName="MainPhone" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="ethko_dbModel.Contact">
+              <MappingFragment StoreEntitySet="Contacts">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="License" ColumnName="License" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="SSN" ColumnName="SSN" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
+                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+                <ScalarProperty Name="EnableClientPortal" ColumnName="EnableClientPortal" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="ContactGroupId" ColumnName="ContactGroupId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="MName" ColumnName="MName" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -33,9 +33,7 @@ namespace ethko
         public virtual DbSet<BillingMethod> BillingMethods { get; set; }
         public virtual DbSet<Case> Cases { get; set; }
         public virtual DbSet<CaseStage> CaseStages { get; set; }
-        public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<ContactGroup> ContactGroups { get; set; }
-        public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<DimDate> DimDates { get; set; }
         public virtual DbSet<Document> Documents { get; set; }
@@ -49,7 +47,9 @@ namespace ethko
         public virtual DbSet<State> States { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
         public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
-        public virtual DbSet<Lead> Leads { get; set; }
         public virtual DbSet<ToDo> ToDos { get; set; }
+        public virtual DbSet<Lead> Leads { get; set; }
+        public virtual DbSet<Company> Companies { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
     }
 }

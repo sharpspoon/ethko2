@@ -13,9 +13,7 @@
         <EntityTypeShape EntityType="ethko_dbModel.BillingMethod" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ethko_dbModel.Case" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ethko_dbModel.CaseStage" Width="1.5" PointX="0.75" PointY="29.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ethko_dbModel.Company" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ethko_dbModel.ContactGroup" Width="1.5" PointX="9.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ethko_dbModel.Contact" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ethko_dbModel.Country" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ethko_dbModel.DimDate" Width="1.5" PointX="11.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ethko_dbModel.Document" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
@@ -35,8 +33,6 @@
         <AssociationConnector Association="ethko_dbModel.FK_Cases_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="ethko_dbModel.FK_Cases_ToBillingMethods" ManuallyRouted="false" />
         <AssociationConnector Association="ethko_dbModel.FK_Cases_ToCaseStages" ManuallyRouted="false" />
-        <AssociationConnector Association="ethko_dbModel.FK_Cases_ToContacts" ManuallyRouted="false" />
-        <AssociationConnector Association="ethko_dbModel.FK_Cases_ToContacts2" ManuallyRouted="false" />
         <AssociationConnector Association="ethko_dbModel.FK_Cases_ToOffices" ManuallyRouted="false" />
         <AssociationConnector Association="ethko_dbModel.FK_Cases_ToPracticeAreas" ManuallyRouted="false" />
         <AssociationConnector Association="ethko_dbModel.FK_Documents_ToCases" ManuallyRouted="false" />
@@ -46,6 +42,10 @@
         <AssociationConnector Association="ethko_dbModel.FK_ToDos_ToCases" />
         <AssociationConnector Association="ethko_dbModel.FK_ToDos_ToPriorities" />
         <EntityTypeShape EntityType="ethko_dbModel.Lead" Width="1.5" PointX="10.375" PointY="14.75" />
+        <EntityTypeShape EntityType="ethko_dbModel.Company" Width="1.5" PointX="14.375" PointY="11.75" />
+        <EntityTypeShape EntityType="ethko_dbModel.Contact" Width="1.5" PointX="0.75" PointY="1.125" />
+        <AssociationConnector Association="ethko_dbModel.FK_Cases_ToContacts" />
+        <AssociationConnector Association="ethko_dbModel.FK_Cases_ToContacts2" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

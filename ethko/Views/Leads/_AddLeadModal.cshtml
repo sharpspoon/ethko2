@@ -53,7 +53,7 @@
         <label>Referred By Contact</label>
         <div class="form-row">
             <div class="input-group col-md-12">
-                @Html.DropDownList("Contacts", (IEnumerable<SelectListItem>)ViewData["DBContacts"], new { @class = "custom-select", @id = "contact", @name = "contact" })
+                @Html.DropDownList("Contacts", (IEnumerable<SelectListItem>)ViewData["DBContacts"], new { @class = "custom-select" })
                 <div class="input-group-append">
                     <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-dismiss="modal" data-target="#NewContactModalCenter">New</button>
                 </div>
@@ -65,7 +65,7 @@
         <label>Referred By Company</label>
         <div class="form-row">
             <div class="input-group col-md-12">
-                @Html.DropDownList("Contacts", (IEnumerable<SelectListItem>)ViewData["DBContacts"], new { @class = "custom-select", @id = "contact", @Value = "contact" })
+                @Html.DropDownList("Companies", (IEnumerable<SelectListItem>)ViewData["DBCompanies"], new { @class = "custom-select" })
                 <div class="input-group-append">
                     <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-dismiss="modal" data-target="#NewCompanyModalCenter">New</button>
                 </div>

@@ -20,5 +20,6 @@ namespace ethko
         public string FstUser { get; set; }
         public int LstDate { get; set; }
         public string LstUser { get; set; }
+        public byte[] RowVersion { get; set; }
     }
 }

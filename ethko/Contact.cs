@@ -22,8 +22,6 @@ namespace ethko
         }
     
         public int ContactId { get; set; }
-        public string UserId { get; set; }
-        public int InsDate { get; set; }
         public string FName { get; set; }
         public string LName { get; set; }
         public string MName { get; set; }
@@ -50,6 +48,10 @@ namespace ethko
         public string Website { get; set; }
         public string Notes { get; set; }
         public Nullable<System.DateTime> Birthday { get; set; }
+        public int InsDate { get; set; }
+        public string FstUser { get; set; }
+        public int LstDate { get; set; }
+        public string LstUser { get; set; }
         public byte[] RowVersion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
