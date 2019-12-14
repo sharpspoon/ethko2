@@ -1,6 +1,146 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
+    <div class="nav btn-group" role="group" aria-label="Button group with nested dropdown">
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Calendar
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href='@Url.Action("Index", "Calendar")'>Day</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Calendar")'>Week</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Calendar")'>Month</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Calendar")'>Agenda</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Calendar")'>Locations</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Calendar")'>Calendar Sync</a>
+            </div>
+        </div>
+        <a class="btn btn-secondary" href='@Url.Action("Index", "ToDos")'>To-Do</a>
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Contacts
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href='@Url.Action("Index", "Contacts")'>Clients</a>
+                <a class="dropdown-item" href='@Url.Action("Companies", "Contacts")'>Companies</a>
+                <a class="dropdown-item" href='@Url.Action("ContactGroups", "Contacts")'>Contact Groups</a>
+            </div>
+        </div>
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Cases
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href='@Url.Action("Index", "Cases")'>My Open Cases</a>
+                <a class="dropdown-item" href='@Url.Action("Closed", "Cases")'>My Closed Cases</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Cases")'>Firm Open Cases</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Cases")'>Firm Closed Cases</a>
+                <a class="dropdown-item" href='@Url.Action("PracticeAreas", "Cases")'>Practice Areas</a>
+                <a class="dropdown-item" href='@Url.Action("CaseInsights", "Cases")'>Case Insights</a>
+            </div>
+        </div>
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Documents
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href='@Url.Action("Index", "Documents")'>Case Documents</a>
+                <a class="dropdown-item" href='@Url.Action("Unread", "Documents")'>Unread Case Documents</a>
+                <a class="dropdown-item" href='@Url.Action("Firm", "Documents")'>Firm Documents</a>
+                <a class="dropdown-item" href='@Url.Action("Templates", "Documents")'>Templates</a>
+            </div>
+        </div>
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Billing
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href='@Url.Action("Index", "Contacts")'>Time Entries</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Contacts")'>Expenses</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Contacts")'>Requested Funds</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Contacts")'>Invoices</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Contacts")'>Saved Activities</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Contacts")'>Account Activity</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Contacts")'>Trust Accounting</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Contacts")'>Financial Insights</a>
+            </div>
+        </div>
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Reporting
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href='@Url.Action("Index", "Reporting")'>My Time & Expenses Today</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Reporting")'>My Time & Expenses This Week</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Reporting")'>My Time & Expenses This Month</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Reporting")'>Firm Time & Expenses Today</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Reporting")'>Firm Time & Expenses This Week</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Reporting")'>Firm Time & Expenses This Month</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Reporting")'>Aging Invoices</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Reporting")'>Accounts Receivable</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Reporting")'>Saved Reports</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Reporting")'>More Reports</a>
+            </div>
+        </div>
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Messages
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href='@Url.Action("Index", "Messages")'>Inbox</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Messages")'>Unread</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Messages")'>Sent</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Messages")'>Drafts</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Messages")'>Archived</a>
+            </div>
+        </div>
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Comments
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href='@Url.Action("Index", "Comments")'>All</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Comments")'>Unread</a>
+            </div>
+        </div>
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Leads
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href='@Url.Action("Index", "Leads")'>Dashboard</a>
+                <a class="dropdown-item" href='@Url.Action("Index", "Leads")'>Leads Insights</a>
+            </div>
+        </div>
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Settings
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href='@Url.Action("Index", "Manage")'>Settings Dashboard</a>
+                <a class="dropdown-item" href='@Url.Action("MyProfile", "Manage")'>My Profile</a>
+                <a class="dropdown-item" href='@Url.Action("MySettings", "Manage")'>My Settings</a>
+                <a class="dropdown-item" href='@Url.Action("MyNotifications", "Manage")'>My Notifications</a>
+                <a class="dropdown-item" href='@Url.Action("FirmUsers", "Manage")'>Firm Users</a>
+                <a class="dropdown-item" href='@Url.Action("FirmSettings", "Manage")'>Firm Settings</a>
+                <a class="dropdown-item" href='@Url.Action("ClientBilling", "Manage")'>Client Billing</a>
+                <a class="dropdown-item" href='@Url.Action("ImportExport", "Manage")'>Import/Export</a>
+                <a class="dropdown-item" href='@Url.Action("CustomFields", "Manage")'>Custom Fields</a>
+                <a class="dropdown-item" href='@Url.Action("IntakeForms", "Manage")'>Intake Forms</a>
+                <a class="dropdown-item" href='@Url.Action("Workflows", "Manage")'>Workflows</a>
+                <a class="dropdown-item" href='@Url.Action("CaseStages", "Manage")'>Case Stages</a>
+                <a class="dropdown-item" href='@Url.Action("Leads", "Manage")'>Leads</a>
+                @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="dropdown-item">
+                        <a class="btn btn-secondary" href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();">Logout</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="NewContactModalCenter" tabindex="-1" role="dialog" aria-labelledby="NewContactModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">

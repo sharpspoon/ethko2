@@ -23,9 +23,6 @@
                                 <br />
                                 <div class="col">
                                     <div class="input-group mb-lg-auto">
-                                        @*<div class="input-group-prepend">
-                                                <button class="btn btn-outline-primary" id="addRow" type="button">Add</button>
-                                            </div>*@
                                         @Html.DropDownList("Contacts", (IEnumerable<SelectListItem>)ViewData["DBContacts"], new { @class = "custom-select", @id = "contact", @name = "contact" })
                                         <div class="input-group-append">
                                             <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-dismiss="modal" data-target="#NewContactModalCenter">New Contact</button>
@@ -35,14 +32,6 @@
                                     <label>Select a contact or company</label>
                                 </div>
                             </div>
-                            @*<table id="example" class="display" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>Case Contacts</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                </table>*@
                         </div>
                         <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
                             <h3>Case Details</h3>

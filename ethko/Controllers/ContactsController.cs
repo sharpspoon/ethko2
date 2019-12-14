@@ -58,6 +58,7 @@ namespace ethko.Controllers
             int intDate = int.Parse(date.ToString("yyyyMMdd"));
             entities.Contacts.Add(contactModel);
             contactModel.InsDate = intDate;
+            contactModel.LstDate = intDate;
             string contactGroupName = Request.Form["ContactGroups"].ToString();
             contactModel.ContactGroupId = entities.ContactGroups.Where(m => m.ContactGroupName == contactGroupName).Select(m => m.ContactGroupId).FirstOrDefault();
             contactModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
@@ -218,7 +219,9 @@ namespace ethko.Controllers
             int intDate = int.Parse(date.ToString("yyyyMMdd"));
             entities.Companies.Add(companyModel);
             companyModel.InsDate = intDate;
+            companyModel.LstDate = intDate;
             companyModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            companyModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
             entities.SaveChanges();
             return RedirectToAction("Companies");
         }
