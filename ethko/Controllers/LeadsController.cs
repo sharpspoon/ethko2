@@ -22,21 +22,16 @@ namespace ethko.Controllers
         // GET: /Leads/NewContactModal
         public ActionResult NewLeadModal()
         {
-            //var contactResult = (from contacts in entities.Contacts select contacts).ToList();
-            //var companyResult = (from companies in entities.Companies select companies).ToList();
-
             var referralSources = new SelectList(entities.LeadReferralSources.ToList(), "ReferralSourceName", "ReferralSourceName");
             ViewData["DBReferralSources"] = referralSources;
-
             var contacts = new SelectList(entities.Contacts.ToList(), "FullName", "FullName");
             ViewData["DBContacts"] = contacts;
-
             var companies = new SelectList(entities.Companies.ToList(), "Name", "Name");
             ViewData["DBCompanies"] = companies;
-
-            var contactGroups = new SelectList(entities.ContactGroups.ToList(), "ContactGroupName", "ContactGroupName");
-            ViewData["DBContactGroups"] = contactGroups;
-
+            var AspNetUserList = new SelectList(entities.AspNetUsers.ToList(), "FName", "FName");
+            ViewData["DBAspNetUsers"] = AspNetUserList;
+            var leadStatus = new SelectList(entities.LeadStatuses.ToList(), "LeadStatusName", "LeadStatusName");
+            ViewData["DBLeadStatuses"] = leadStatus;
             return PartialView("_AddLeadModal");
         }
 
@@ -44,7 +39,15 @@ namespace ethko.Controllers
         {
             return new Lead()
             {
-                FName = vm.FName
+                FName = vm.FName,
+                MName = vm.MName,
+                LName = vm.LName,
+                FullName = vm.FullName,
+                Email = vm.Email,
+                CellPhone = vm.CellPhone,
+                LeadNotes = vm.LeadNotes,
+                CaseNotes = vm.CaseNotes,
+                PotentialValue = vm.PotentialValue
             };
         }
 
@@ -59,7 +62,7 @@ namespace ethko.Controllers
             entities.Leads.Add(leadModel);
             leadModel.InsDate = intDate;
             string contactGroupName = Request.Form["ContactGroups"].ToString();
-            //leadModel.ContactGroupId = entities.ContactGroups.Where(m => m.ContactGroupName == contactGroupName).Select(m => m.ContactGroupId).FirstOrDefault();
+            leadModel. = entities.ContactGroups.Where(m => m.ContactGroupName == contactGroupName).Select(m => m.ContactGroupId).FirstOrDefault();
             //leadModel.UserId = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
             entities.SaveChanges();
             return RedirectToAction("Index");

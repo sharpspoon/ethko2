@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="92d4ff19fe434bd88c621e670117a1f9" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="ethko_dbModel.C__MigrationHistory" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ethko_dbModel.AspNetRole" Width="1.5" PointX="1.5" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="ethko_dbModel.AspNetUserClaim" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ethko_dbModel.AspNetUserLogin" Width="1.5" PointX="3" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ethko_dbModel.AspNetUser" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ethko_dbModel.BillingMethod" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ethko_dbModel.Case" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ethko_dbModel.CaseStage" Width="1.5" PointX="0.75" PointY="29.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ethko_dbModel.ContactGroup" Width="1.5" PointX="9.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ethko_dbModel.Country" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ethko_dbModel.DimDate" Width="1.5" PointX="11.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ethko_dbModel.Document" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ethko_dbModel.DocumentType" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ethko_dbModel.LeadReferralSource" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ethko_dbModel.LeadStatus" Width="1.5" PointX="13.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ethko_dbModel.Notification" Width="1.5" PointX="5.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ethko_dbModel.Office" Width="1.5" PointX="0.75" PointY="32.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ethko_dbModel.PracticeArea" Width="1.5" PointX="0.75" PointY="36.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ethko_dbModel.Priority" Width="1.5" PointX="7.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ethko_dbModel.State" Width="1.5" PointX="7.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ethko_dbModel.UserType" Width="1.5" PointX="1.5" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ethko_dbModel.database_firewall_rules" Width="1.5" PointX="13.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="ethko_dbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="ethko_dbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="ethko_dbModel.FK_AspNetUsers_ToUserTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="ethko_dbModel.FK_Cases_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="ethko_dbModel.FK_Cases_ToBillingMethods" ManuallyRouted="false" />
+        <AssociationConnector Association="ethko_dbModel.FK_Cases_ToCaseStages" ManuallyRouted="false" />
+        <AssociationConnector Association="ethko_dbModel.FK_Cases_ToOffices" ManuallyRouted="false" />
+        <AssociationConnector Association="ethko_dbModel.FK_Cases_ToPracticeAreas" ManuallyRouted="false" />
+        <AssociationConnector Association="ethko_dbModel.FK_Documents_ToCases" ManuallyRouted="false" />
+        <AssociationConnector Association="ethko_dbModel.FK_Documents_ToDocumentTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="ethko_dbModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ethko_dbModel.ToDo" Width="1.5" PointX="10" PointY="0.75" />
+        <AssociationConnector Association="ethko_dbModel.FK_ToDos_ToCases" />
+        <AssociationConnector Association="ethko_dbModel.FK_ToDos_ToPriorities" />
+        <EntityTypeShape EntityType="ethko_dbModel.Company" Width="1.5" PointX="14.375" PointY="11.75" />
+        <EntityTypeShape EntityType="ethko_dbModel.Contact" Width="1.5" PointX="0.75" PointY="1.125" />
+        <AssociationConnector Association="ethko_dbModel.FK_Cases_ToContacts" />
+        <AssociationConnector Association="ethko_dbModel.FK_Cases_ToContacts2" />
+        <EntityTypeShape EntityType="ethko_dbModel.Lead" Width="1.5" PointX="16.625" PointY="7.75" />
+        <AssociationConnector Association="ethko_dbModel.FK_Leads_ToAspNetUsers" />
+        <AssociationConnector Association="ethko_dbModel.FK_Leads_ToCompanies" />
+        <AssociationConnector Association="ethko_dbModel.FK_Leads_ToContacts" />
+        <AssociationConnector Association="ethko_dbModel.FK_Leads_ToLeadReferralSources" />
+        <AssociationConnector Association="ethko_dbModel.FK_Leads_ToLeadStatuses" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

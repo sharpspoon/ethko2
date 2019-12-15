@@ -8,6 +8,7 @@ drop table IF EXISTS BillingMethods
 drop table IF EXISTS Offices
 drop table IF EXISTS CaseStages
 drop table IF EXISTS PracticeAreas
+drop table IF EXISTS Leads
 drop table IF EXISTS Contacts
 drop table IF EXISTS ContactGroups
 drop table IF EXISTS Companies
@@ -22,7 +23,6 @@ drop table IF EXISTS LeadStatuses
 drop table IF EXISTS Notifications
 drop table IF EXISTS Priorities
 drop table IF EXISTS DocumentTypes
-drop table IF EXISTS Leads
 
 
 
@@ -549,6 +549,12 @@ CREATE TABLE [dbo].[Leads] (
     [LName]              VARCHAR (MAX)  NOT NULL,
     [MName]              VARCHAR (MAX)  NULL,
 	[FullName]              VARCHAR (MAX)  NULL,
+	[PotentialValue]          INT  NULL,
+	[ReferralSourceId]       INT            NOT NULL,
+	[LeadStatusId]       INT            NOT NULL,
+	[AssignTo]       NVARCHAR (128)            NOT NULL,
+	[ReferredByContact]       INT            NOT NULL,
+	[ReferredByCompany]       INT            NOT NULL,
     [Title]              VARCHAR (50)   NULL,
     [Archived]           SMALLINT       NOT NULL,
     [Email]              VARCHAR (MAX)  NOT NULL,
@@ -571,7 +577,12 @@ CREATE TABLE [dbo].[Leads] (
 	[LstDate]         INT  NOT NULL,
 	[LstUser]         NVARCHAR (128) NOT NULL,
     [RowVersion]         ROWVERSION     NOT NULL,
-    CONSTRAINT [PK_dbo.Leads] PRIMARY KEY CLUSTERED ([LeadId] ASC)
+    CONSTRAINT [PK_dbo.Leads] PRIMARY KEY CLUSTERED ([LeadId] ASC),
+	CONSTRAINT [FK_Leads_ToLeadReferralSources] FOREIGN KEY ([ReferralSourceId]) REFERENCES [dbo].[LeadReferralSources] ([ReferralSourceId]),
+	CONSTRAINT [FK_Leads_ToLeadStatuses] FOREIGN KEY ([LeadStatusId]) REFERENCES [dbo].[LeadStatuses] ([LeadStatusId]),
+	CONSTRAINT [FK_Leads_ToAspNetUsers] FOREIGN KEY ([AssignTo]) REFERENCES [dbo].[AspNetUsers] ([Id]),
+	CONSTRAINT [FK_Leads_ToContacts] FOREIGN KEY ([ReferredByContact]) REFERENCES [dbo].[Contacts] ([ContactId]),
+	CONSTRAINT [FK_Leads_ToCompanies] FOREIGN KEY ([ReferredByCompany]) REFERENCES [dbo].[Companies] ([CompanyId])
 );
 
 
