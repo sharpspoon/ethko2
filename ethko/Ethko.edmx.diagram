@@ -45,13 +45,13 @@
         <EntityTypeShape EntityType="ethko_dbModel.Contact" Width="1.5" PointX="0.75" PointY="1.125" />
         <AssociationConnector Association="ethko_dbModel.FK_Cases_ToContacts" />
         <AssociationConnector Association="ethko_dbModel.FK_Cases_ToContacts2" />
-        <EntityTypeShape EntityType="ethko_dbModel.Lead" Width="1.5" PointX="16.625" PointY="7.75" />
+        <EntityTypeShape EntityType="ethko_dbModel.Lead" Width="1.5" PointX="16.625" PointY="7.875" />
         <AssociationConnector Association="ethko_dbModel.FK_Leads_ToAspNetUsers" />
         <AssociationConnector Association="ethko_dbModel.FK_Leads_ToCompanies" />
         <AssociationConnector Association="ethko_dbModel.FK_Leads_ToContacts" />
         <AssociationConnector Association="ethko_dbModel.FK_Leads_ToLeadReferralSources" />
         <AssociationConnector Association="ethko_dbModel.FK_Leads_ToLeadStatuses" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

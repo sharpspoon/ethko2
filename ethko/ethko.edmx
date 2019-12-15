@@ -57,6 +57,7 @@
           <Property Name="FName" Type="varchar(max)" Nullable="false" />
           <Property Name="LName" Type="varchar(max)" Nullable="false" />
           <Property Name="MName" Type="varchar(max)" />
+          <Property Name="FullName" Type="varchar(max)" Nullable="false" />
           <Property Name="UserTypeId" Type="int" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="50" />
           <Property Name="Archived" Type="smallint" Nullable="false" />
@@ -315,8 +316,8 @@
           <Property Name="ReferralSourceId" Type="int" Nullable="false" />
           <Property Name="LeadStatusId" Type="int" Nullable="false" />
           <Property Name="AssignTo" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="ReferredByContact" Type="int" Nullable="false" />
-          <Property Name="ReferredByCompany" Type="int" Nullable="false" />
+          <Property Name="ReferredByContact" Type="int" />
+          <Property Name="ReferredByCompany" Type="int" />
           <Property Name="Title" Type="varchar" MaxLength="50" />
           <Property Name="Archived" Type="smallint" Nullable="false" />
           <Property Name="Email" Type="varchar(max)" Nullable="false" />
@@ -791,7 +792,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Leads_ToCompanies">
-          <End Role="Companies" Type="Self.Companies" Multiplicity="1" />
+          <End Role="Companies" Type="Self.Companies" Multiplicity="0..1" />
           <End Role="Leads" Type="Self.Leads" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Companies">
@@ -803,7 +804,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Leads_ToContacts">
-          <End Role="Contacts" Type="Self.Contacts" Multiplicity="1" />
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="0..1" />
           <End Role="Leads" Type="Self.Leads" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Contacts">
@@ -1075,6 +1076,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <NavigationProperty Name="UserType" Relationship="Self.FK_AspNetUsers_ToUserTypes" FromRole="AspNetUsers" ToRole="UserTypes" />
           <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="Cases" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Leads" Relationship="ethko_dbModel.FK_Leads_ToAspNetUsers" FromRole="AspNetUser" ToRole="Lead" />
         </EntityType>
         <EntityType Name="BillingMethod">
@@ -1724,7 +1726,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             <End Role="LeadStatus" EntitySet="LeadStatuses" />
             <End Role="Lead" EntitySet="Leads" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="ToDo">
           <Key>
             <PropertyRef Name="ToDoId" />
@@ -1869,8 +1871,8 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="ReferralSourceId" Type="Int32" Nullable="false" />
           <Property Name="LeadStatusId" Type="Int32" Nullable="false" />
           <Property Name="AssignTo" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ReferredByContact" Type="Int32" Nullable="false" />
-          <Property Name="ReferredByCompany" Type="Int32" Nullable="false" />
+          <Property Name="ReferredByContact" Type="Int32" />
+          <Property Name="ReferredByCompany" Type="Int32" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Archived" Type="Int16" Nullable="false" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -1912,7 +1914,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Leads_ToCompanies">
-          <End Type="ethko_dbModel.Company" Role="Company" Multiplicity="1" />
+          <End Type="ethko_dbModel.Company" Role="Company" Multiplicity="0..1" />
           <End Type="ethko_dbModel.Lead" Role="Lead" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Company">
@@ -1924,7 +1926,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Leads_ToContacts">
-          <End Type="ethko_dbModel.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="ethko_dbModel.Contact" Role="Contact" Multiplicity="0..1" />
           <End Type="ethko_dbModel.Lead" Role="Lead" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Contact">
@@ -1959,7 +1961,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -2005,6 +2007,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySetMapping Name="AspNetUsers">
             <EntityTypeMapping TypeName="ethko_dbModel.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FName" ColumnName="FName" />
                 <ScalarProperty Name="LName" ColumnName="LName" />
