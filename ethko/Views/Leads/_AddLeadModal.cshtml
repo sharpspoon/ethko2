@@ -101,7 +101,7 @@
         <label>Status</label>
         <div class="form-row">
             <div class="input-group col-md-12">
-                @Html.DropDownList("Companies", (IEnumerable<SelectListItem>)ViewData["DBLeadStatuses"], new { @class = "custom-select" })
+                @Html.DropDownList("LeadStatus", (IEnumerable<SelectListItem>)ViewData["DBLeadStatuses"], new { @class = "custom-select" })
                 <div class="input-group-append">
                     <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-dismiss="modal" data-target="#NewLeadStatusModalCenter">New</button>
                 </div>
@@ -125,7 +125,7 @@
         <label>Assign To</label>
         <div class="form-row">
             <div class="input-group col-md-12">
-                @Html.DropDownList("LeadAttorney", (IEnumerable<SelectListItem>)ViewData["DBAspNetUsers"], new { @class = "custom-select", @id = "contact", @name = "contact" })
+                @Html.DropDownList("LeadAssignTo", (IEnumerable<SelectListItem>)ViewData["DBAspNetUsers"], new { @class = "custom-select", @id = "contact", @name = "contact" })
             </div>
         </div>
     </div>

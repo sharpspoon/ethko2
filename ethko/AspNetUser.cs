@@ -21,6 +21,7 @@ namespace ethko
             this.AspNetUserLogins = new HashSet<AspNetUserLogin>();
             this.Cases = new HashSet<Case>();
             this.AspNetRoles = new HashSet<AspNetRole>();
+            this.Leads = new HashSet<Lead>();
         }
     
         public string Id { get; set; }
@@ -62,6 +63,7 @@ namespace ethko
         public bool LockoutEnabled { get; set; }
         public int AccessFailedCount { get; set; }
         public string UserName { get; set; }
+        public string FullName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
@@ -72,5 +74,7 @@ namespace ethko
         public virtual ICollection<Case> Cases { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Lead> Leads { get; set; }
     }
 }

@@ -14,6 +14,12 @@ namespace ethko
     
     public partial class LeadReferralSource
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public LeadReferralSource()
+        {
+            this.Leads = new HashSet<Lead>();
+        }
+    
         public int ReferralSourceId { get; set; }
         public string ReferralSourceName { get; set; }
         public string FstUser { get; set; }
@@ -21,5 +27,8 @@ namespace ethko
         public int LstDate { get; set; }
         public string LstUser { get; set; }
         public byte[] RowVersion { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Lead> Leads { get; set; }
     }
 }

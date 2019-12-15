@@ -23,8 +23,8 @@ namespace ethko
         public int ReferralSourceId { get; set; }
         public int LeadStatusId { get; set; }
         public string AssignTo { get; set; }
-        public int ReferredByContact { get; set; }
-        public int ReferredByCompany { get; set; }
+        public Nullable<int> ReferredByContact { get; set; }
+        public Nullable<int> ReferredByCompany { get; set; }
         public string Title { get; set; }
         public short Archived { get; set; }
         public string Email { get; set; }

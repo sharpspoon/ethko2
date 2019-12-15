@@ -21,6 +21,8 @@ namespace ethko.Models
 
     public class GetLeadListViewModel
     {
-        public string ContactId { get; set; }
+        public string LeadId { get; set; }
+        public string FullName { get; set; }
+        public string Email { get; set; }
     }
 }

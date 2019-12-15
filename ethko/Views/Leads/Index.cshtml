@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ethko.Models.GetContactListViewModel>
+﻿@model IEnumerable<ethko.Models.GetLeadListViewModel>
 @{
     ViewBag.Title = "Active Leads";
 }
@@ -49,7 +49,7 @@
                             <td>
                                 <div class="edit">
                                     <a href="" data-toggle="modal" data-target='#@v'>
-                                        @Html.DisplayFor(modelItem => item.FName)
+                                        @Html.DisplayFor(modelItem => item.FullName)
                                     </a>
                                 </div>
                                 <div class="modal fade" id='@v' tabindex="-1" role="dialog" aria-labelledby="ViewContactModalCenterTitle" aria-hidden="true">
@@ -62,7 +62,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                @Html.Action("ViewContactModal", "Contacts", new { ContactId = item.ContactId })
+                                               asdf
                                             </div>
                                         </div>
                                     </div>
@@ -71,12 +71,12 @@
                             <td>
                                 <div class="edit">
                                     <a href="" data-toggle="modal" data-target='#@v'>
-                                        @Html.DisplayFor(modelItem => item.LName)
+                                       asdf
                                     </a>
                                 </div>
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.ContactGroupList)
+                               asdf
 
                             </td>
                             <td>
@@ -88,7 +88,7 @@
 
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.InsDate)
+                                @Html.DisplayFor(modelItem => item.FullName)
                                 by @Html.DisplayFor(modelItem => item.FullName)
                             </td>
                             <td>
@@ -110,7 +110,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                @Html.Action("EditContactModal", "Contacts", new { ContactId = item.ContactId })
+                                              asdf
                                             </div>
                                         </div>
                                     </div>

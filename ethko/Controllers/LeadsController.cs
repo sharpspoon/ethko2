@@ -28,7 +28,7 @@ namespace ethko.Controllers
             ViewData["DBContacts"] = contacts;
             var companies = new SelectList(entities.Companies.ToList(), "Name", "Name");
             ViewData["DBCompanies"] = companies;
-            var AspNetUserList = new SelectList(entities.AspNetUsers.ToList(), "FName", "FName");
+            var AspNetUserList = new SelectList(entities.AspNetUsers.ToList(), "FullName", "FullName");
             ViewData["DBAspNetUsers"] = AspNetUserList;
             var leadStatus = new SelectList(entities.LeadStatuses.ToList(), "LeadStatusName", "LeadStatusName");
             ViewData["DBLeadStatuses"] = leadStatus;
@@ -61,9 +61,19 @@ namespace ethko.Controllers
             int intDate = int.Parse(date.ToString("yyyyMMdd"));
             entities.Leads.Add(leadModel);
             leadModel.InsDate = intDate;
-            string contactGroupName = Request.Form["ContactGroups"].ToString();
-            leadModel. = entities.ContactGroups.Where(m => m.ContactGroupName == contactGroupName).Select(m => m.ContactGroupId).FirstOrDefault();
-            //leadModel.UserId = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            leadModel.LstDate = intDate;
+            string referralSource = Request.Form["ReferralSources"].ToString();
+            string assignTo = Request.Form["LeadAssignTo"].ToString();
+            string leadStatus = Request.Form["LeadStatus"].ToString();
+            string fName = Request.Form["LeadStatus"].ToString();
+            string mName = Request.Form["LeadStatus"].ToString();
+            string lName = Request.Form["LeadStatus"].ToString();
+            leadModel.FullName = leadModel.FName+" "+leadModel.MName+" "+leadModel.LName;
+            leadModel.ReferralSourceId = entities.LeadReferralSources.Where(m => m.ReferralSourceName == referralSource).Select(m => m.ReferralSourceId).FirstOrDefault();
+            leadModel.AssignTo = entities.AspNetUsers.Where(m => m.FullName == assignTo).Select(m => m.Id).FirstOrDefault();
+            leadModel.LeadStatusId = entities.LeadStatuses.Where(m => m.LeadStatusName == leadStatus).Select(m => m.LeadStatusId).FirstOrDefault();
+            leadModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
+            leadModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
             entities.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -72,13 +82,15 @@ namespace ethko.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var contacts = from c in entities.Contacts
-                           join cg in entities.ContactGroups on c.ContactGroupId equals cg.ContactGroupId
-                           join d in entities.DimDates on c.InsDate equals d.DateKey
-                           join u in entities.AspNetUsers on c.FstUser equals u.Id into lj
-                           from x in lj.DefaultIfEmpty()
-                           where c.Archived == 0
-                           select new GetContactListViewModel() { ContactId = c.ContactId.ToString(), FName = c.FName, LName = c.LName, Email = c.Email, FullName = x.FName + " " + x.LName, InsDate = d.FullDateUSA.ToString(), ContactGroupList = cg.ContactGroupName };
+            var contacts = from l in entities.Leads
+                           //join cg in entities.ContactGroups on c.ContactGroupId equals cg.ContactGroupId
+                           //join d in entities.DimDates on c.InsDate equals d.DateKey
+                           //join u in entities.AspNetUsers on c.FstUser equals u.Id into lj
+                           //from x in lj.DefaultIfEmpty()
+                           where l.Archived == 0
+                           select new GetLeadListViewModel() { LeadId = l.LeadId.ToString(), 
+                               Email = l.Email, 
+                               FullName = l.FullName };
             return View(contacts.ToList());
         }
     }

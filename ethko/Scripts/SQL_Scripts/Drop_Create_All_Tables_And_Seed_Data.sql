@@ -41,6 +41,7 @@ CREATE TABLE [dbo].[AspNetUsers] (
     [FName]                VARCHAR (MAX)  NOT NULL,
     [LName]                VARCHAR (MAX)  NOT NULL,
     [MName]                VARCHAR (MAX)  NULL,
+	[FullName]                VARCHAR (MAX)  NOT NULL,
     [UserTypeId]           INT            NOT NULL,
     [Title]                VARCHAR (50)   NULL,
     [Archived]             SMALLINT       DEFAULT ((0)) NOT NULL,
@@ -553,8 +554,8 @@ CREATE TABLE [dbo].[Leads] (
 	[ReferralSourceId]       INT            NOT NULL,
 	[LeadStatusId]       INT            NOT NULL,
 	[AssignTo]       NVARCHAR (128)            NOT NULL,
-	[ReferredByContact]       INT            NOT NULL,
-	[ReferredByCompany]       INT            NOT NULL,
+	[ReferredByContact]       INT             NULL,
+	[ReferredByCompany]       INT             NULL,
     [Title]              VARCHAR (50)   NULL,
     [Archived]           SMALLINT       NOT NULL,
     [Email]              VARCHAR (MAX)  NOT NULL,
@@ -600,9 +601,9 @@ values
 ('Staff', CONVERT (INT,@CurrentDateChar));
 
 insert into aspnetusers
-(id, fname, lname, usertypeid, email, emailconfirmed, passwordhash, securitystamp,phonenumberconfirmed, twofactorenabled, lockoutenabled, accessfailedcount, username)
+(id, fname, lname,mname, fullname, usertypeid, email, emailconfirmed, passwordhash, securitystamp,phonenumberconfirmed, twofactorenabled, lockoutenabled, accessfailedcount, username)
 values
-('4b6983a2-7178-472b-b7ae-f96470ea8087', 'Robin','Ward',1,'system@steelcitysites.net', 0, 'AEc78Zla/rBy6zDF+GRskTyFtZ/FtsvAMp4BK5L/swVWUfXGFkHGx5SFq10kybaD6Q==','9229c419-dd65-49d2-bb7f-ad9d667221b8',0,0,1,0,'system@steelcitysites.net')
+('4b6983a2-7178-472b-b7ae-f96470ea8087', 'Robin','Ward','Conn','Robin Conn Ward',1,'system@steelcitysites.net', 0, 'AEc78Zla/rBy6zDF+GRskTyFtZ/FtsvAMp4BK5L/swVWUfXGFkHGx5SFq10kybaD6Q==','9229c419-dd65-49d2-bb7f-ad9d667221b8',0,0,1,0,'system@steelcitysites.net')
 
 insert into ContactGroups
 (ContactGroupName, InsDate, FstUser, LstDate, LstUser)
