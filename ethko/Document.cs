@@ -23,6 +23,7 @@ namespace ethko
         public int LstDate { get; set; }
         public string LstUser { get; set; }
         public byte[] RowVersion { get; set; }
+        public short Archived { get; set; }
     
         public virtual Case Case { get; set; }
         public virtual DocumentType DocumentType { get; set; }

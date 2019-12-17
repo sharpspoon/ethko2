@@ -21,6 +21,7 @@ namespace ethko
         public Nullable<int> LeadId { get; set; }
         public int AssignedTo { get; set; }
         public int DueDate { get; set; }
+        public short Archived { get; set; }
         public string FstUser { get; set; }
         public int InsDate { get; set; }
         public int LstDate { get; set; }

@@ -22,6 +22,7 @@ namespace ethko
     
         public int ReferralSourceId { get; set; }
         public string ReferralSourceName { get; set; }
+        public short Archived { get; set; }
         public string FstUser { get; set; }
         public int InsDate { get; set; }
         public int LstDate { get; set; }

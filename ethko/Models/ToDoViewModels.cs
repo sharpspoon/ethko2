@@ -19,5 +19,6 @@ namespace ethko.Models
         public int PriorityId { get; set; }
         [Display(Name = "InsDate")]
         public string InsDate { get; set; }
+        public string DueDate { get; set; }
     }
 }

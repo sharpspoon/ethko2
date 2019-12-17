@@ -1,7 +1,7 @@
 ﻿@model ethko.Office
 @using (Html.BeginForm("EditSave", "Manage", new { @class = "form-horizontal", role = "form", OfficeId = Model.OfficeId }))
 {
-    <h3>Office: <input name="NewOffice" class="form-control" type="text" placeholder=@Html.DisplayTextFor(m => m.OfficeName)></h3>
+    <h3>Office: <input name="NewOffice" class="form-control" type="text" placeholder=@Html.DisplayTextFor(m => m.OfficeName) required></h3>
     @Html.AntiForgeryToken()
     <input type="submit" name="SaveButton" value="Save" class="btn btn-success" />
 }

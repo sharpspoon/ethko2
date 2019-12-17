@@ -17,10 +17,16 @@ namespace ethko.Controllers
             var todos = from t in entities.ToDos
                         join p in entities.Priorities on t.ToDoPriorityId equals p.PriorityId
                         join d in entities.DimDates on t.InsDate equals d.DateKey
+                        join dd in entities.DimDates on t.DueDate equals dd.DateKey into d2
+                        from y in d2.DefaultIfEmpty()
                         join u in entities.AspNetUsers on t.FstUser equals u.Id into lj
                         from x in lj.DefaultIfEmpty()
-                            //where c.Archived == 0
-                        select new GetToDosViewModel() { ToDoId = t.ToDoId.ToString(), ToDoName = t.ToDoName, InsDate = d.FullDateUSA.ToString(), PriorityName = p.PriorityName };
+                            where t.Archived == 0
+                        select new GetToDosViewModel() { ToDoId = t.ToDoId.ToString(), 
+                            ToDoName = t.ToDoName, 
+                            InsDate = d.FullDateUSA.ToString(), 
+                            PriorityName = p.PriorityName,
+                            DueDate = y.FullDateUSA};
             return View(todos.ToList());
         }
 
@@ -50,6 +56,8 @@ namespace ethko.Controllers
             todoModel.InsDate = intDate;
             todoModel.LstDate = intDate;
             string priorityName = Request.Form["PriorityNames"].ToString();
+            string dueDate = Request.Form["addtododatetimepicker"].ToString();
+            todoModel.DueDate = entities.DimDates.Where(m => m.FullDateUSA == dueDate).Select(m => m.DateKey).FirstOrDefault();
             todoModel.ToDoPriorityId = entities.Priorities.Where(m => m.PriorityName == priorityName).Select(m => m.PriorityId).FirstOrDefault();
             todoModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
             todoModel.LstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();

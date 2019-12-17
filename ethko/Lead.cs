@@ -51,7 +51,7 @@ namespace ethko
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual Company Company { get; set; }
         public virtual Contact Contact { get; set; }
-        public virtual LeadReferralSource LeadReferralSource { get; set; }
         public virtual LeadStatus LeadStatus { get; set; }
+        public virtual LeadReferralSource LeadReferralSource { get; set; }
     }
 }

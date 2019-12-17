@@ -100,6 +100,7 @@
           </Key>
           <Property Name="BillingMethodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BillingMethodName" Type="varchar(max)" Nullable="false" />
+          <Property Name="Archived" Type="smallint" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="InsDate" Type="int" Nullable="false" />
           <Property Name="LstDate" Type="int" Nullable="false" />
@@ -123,6 +124,7 @@
           <Property Name="DateOpened" Type="int" Nullable="false" />
           <Property Name="Statute" Type="int" Nullable="false" />
           <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Archived" Type="smallint" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="InsDate" Type="int" Nullable="false" />
           <Property Name="LstDate" Type="int" Nullable="false" />
@@ -135,6 +137,7 @@
           </Key>
           <Property Name="CaseStageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CaseStageName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Archived" Type="smallint" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="InsDate" Type="int" Nullable="false" />
           <Property Name="LstDate" Type="int" Nullable="false" />
@@ -170,6 +173,7 @@
           </Key>
           <Property Name="ContactGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ContactGroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Archived" Type="smallint" Nullable="false" />
           <Property Name="InsDate" Type="int" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="LstDate" Type="int" Nullable="false" />
@@ -273,6 +277,7 @@
           <Property Name="DocumentTypeId" Type="int" Nullable="false" />
           <Property Name="CaseId" Type="int" Nullable="false" />
           <Property Name="DocumentName" Type="varchar(max)" Nullable="false" />
+          <Property Name="Archived" Type="smallint" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="InsDate" Type="int" Nullable="false" />
           <Property Name="LstDate" Type="int" Nullable="false" />
@@ -285,6 +290,7 @@
           </Key>
           <Property Name="DocumentTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DocumentTypeName" Type="varchar(max)" Nullable="false" />
+          <Property Name="Archived" Type="smallint" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="InsDate" Type="int" Nullable="false" />
           <Property Name="LstDate" Type="int" Nullable="false" />
@@ -297,6 +303,7 @@
           </Key>
           <Property Name="ReferralSourceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ReferralSourceName" Type="varchar(max)" Nullable="false" />
+          <Property Name="Archived" Type="smallint" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="InsDate" Type="int" Nullable="false" />
           <Property Name="LstDate" Type="int" Nullable="false" />
@@ -347,6 +354,7 @@
           </Key>
           <Property Name="LeadStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LeadStatusName" Type="varchar(max)" Nullable="false" />
+          <Property Name="Archived" Type="smallint" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="InsDate" Type="int" Nullable="false" />
           <Property Name="LstDate" Type="int" Nullable="false" />
@@ -521,6 +529,7 @@
           </Key>
           <Property Name="OfficeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OfficeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Archived" Type="smallint" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="InsDate" Type="int" Nullable="false" />
           <Property Name="LstDate" Type="int" Nullable="false" />
@@ -533,6 +542,7 @@
           </Key>
           <Property Name="PracticeAreaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PracticeAreaName" Type="varchar(max)" Nullable="false" />
+          <Property Name="Archived" Type="smallint" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="InsDate" Type="int" Nullable="false" />
           <Property Name="LstDate" Type="int" Nullable="false" />
@@ -545,6 +555,7 @@
           </Key>
           <Property Name="PriorityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PriorityName" Type="varchar(max)" Nullable="false" />
+          <Property Name="Archived" Type="smallint" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="InsDate" Type="int" Nullable="false" />
           <Property Name="LstDate" Type="int" Nullable="false" />
@@ -570,6 +581,7 @@
           <Property Name="LeadId" Type="int" />
           <Property Name="AssignedTo" Type="int" Nullable="false" />
           <Property Name="DueDate" Type="int" Nullable="false" />
+          <Property Name="Archived" Type="smallint" Nullable="false" />
           <Property Name="FstUser" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="InsDate" Type="int" Nullable="false" />
           <Property Name="LstDate" Type="int" Nullable="false" />
@@ -1091,6 +1103,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_ToBillingMethods" FromRole="BillingMethods" ToRole="Cases" />
+          <Property Name="Archived" Type="Int16" Nullable="false" />
         </EntityType>
         <EntityType Name="Case">
           <Key>
@@ -1120,9 +1133,10 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <NavigationProperty Name="Office" Relationship="Self.FK_Cases_ToOffices" FromRole="Cases" ToRole="Offices" />
           <NavigationProperty Name="PracticeArea" Relationship="Self.FK_Cases_ToPracticeAreas" FromRole="Cases" ToRole="PracticeAreas" />
           <NavigationProperty Name="Documents" Relationship="Self.FK_Documents_ToCases" FromRole="Cases" ToRole="Documents" />
-          <NavigationProperty Name="ToDos" Relationship="ethko_dbModel.FK_ToDos_ToCases" FromRole="Case" ToRole="ToDo" />
           <NavigationProperty Name="Contact" Relationship="ethko_dbModel.FK_Cases_ToContacts" FromRole="Case" ToRole="Contact" />
           <NavigationProperty Name="Contact1" Relationship="ethko_dbModel.FK_Cases_ToContacts2" FromRole="Case" ToRole="Contact" />
+          <Property Name="Archived" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="ToDos" Relationship="ethko_dbModel.FK_ToDos_ToCases" FromRole="Case" ToRole="ToDo" />
         </EntityType>
         <EntityType Name="CaseStage">
           <Key>
@@ -1136,6 +1150,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_ToCaseStages" FromRole="CaseStages" ToRole="Cases" />
+          <Property Name="Archived" Type="Int16" Nullable="false" />
         </EntityType>
         <EntityType Name="ContactGroup">
           <Key>
@@ -1148,6 +1163,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="LstDate" Type="Int32" Nullable="false" />
           <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Archived" Type="Int16" Nullable="false" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -1216,6 +1232,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Case" Relationship="Self.FK_Documents_ToCases" FromRole="Documents" ToRole="Cases" />
           <NavigationProperty Name="DocumentType" Relationship="Self.FK_Documents_ToDocumentTypes" FromRole="Documents" ToRole="DocumentTypes" />
+          <Property Name="Archived" Type="Int16" Nullable="false" />
         </EntityType>
         <EntityType Name="DocumentType">
           <Key>
@@ -1229,19 +1246,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Documents" Relationship="Self.FK_Documents_ToDocumentTypes" FromRole="DocumentTypes" ToRole="Documents" />
-        </EntityType>
-        <EntityType Name="LeadReferralSource">
-          <Key>
-            <PropertyRef Name="ReferralSourceId" />
-          </Key>
-          <Property Name="ReferralSourceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ReferralSourceName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="InsDate" Type="Int32" Nullable="false" />
-          <Property Name="LstDate" Type="Int32" Nullable="false" />
-          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Leads" Relationship="ethko_dbModel.FK_Leads_ToLeadReferralSources" FromRole="LeadReferralSource" ToRole="Lead" />
+          <Property Name="Archived" Type="Int16" Nullable="false" />
         </EntityType>
         <EntityType Name="LeadStatus">
           <Key>
@@ -1255,6 +1260,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Leads" Relationship="ethko_dbModel.FK_Leads_ToLeadStatuses" FromRole="LeadStatus" ToRole="Lead" />
+          <Property Name="Archived" Type="Int16" Nullable="false" />
         </EntityType>
         <EntityType Name="Notification">
           <Key>
@@ -1430,6 +1436,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_ToOffices" FromRole="Offices" ToRole="Cases" />
+          <Property Name="Archived" Type="Int16" Nullable="false" />
         </EntityType>
         <EntityType Name="PracticeArea">
           <Key>
@@ -1443,19 +1450,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_ToPracticeAreas" FromRole="PracticeAreas" ToRole="Cases" />
-        </EntityType>
-        <EntityType Name="Priority">
-          <Key>
-            <PropertyRef Name="PriorityId" />
-          </Key>
-          <Property Name="PriorityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PriorityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="InsDate" Type="Int32" Nullable="false" />
-          <Property Name="LstDate" Type="Int32" Nullable="false" />
-          <Property Name="LstUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="ToDos" Relationship="ethko_dbModel.FK_ToDos_ToPriorities" FromRole="Priority" ToRole="ToDo" />
+          <Property Name="Archived" Type="Int16" Nullable="false" />
         </EntityType>
         <EntityType Name="State">
           <Key>
@@ -1633,12 +1628,10 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySet Name="DimDates" EntityType="Self.DimDate" />
           <EntitySet Name="Documents" EntityType="Self.Document" />
           <EntitySet Name="DocumentTypes" EntityType="Self.DocumentType" />
-          <EntitySet Name="LeadReferralSources" EntityType="Self.LeadReferralSource" />
           <EntitySet Name="LeadStatuses" EntityType="Self.LeadStatus" />
           <EntitySet Name="Notifications" EntityType="Self.Notification" />
           <EntitySet Name="Offices" EntityType="Self.Office" />
           <EntitySet Name="PracticeAreas" EntityType="Self.PracticeArea" />
-          <EntitySet Name="Priorities" EntityType="Self.Priority" />
           <EntitySet Name="States" EntityType="Self.State" />
           <EntitySet Name="UserTypes" EntityType="Self.UserType" />
           <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
@@ -1686,15 +1679,6 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <EntitySet Name="ToDos" EntityType="ethko_dbModel.ToDo" />
-          <AssociationSet Name="FK_ToDos_ToCases" Association="ethko_dbModel.FK_ToDos_ToCases">
-            <End Role="Case" EntitySet="Cases" />
-            <End Role="ToDo" EntitySet="ToDos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ToDos_ToPriorities" Association="ethko_dbModel.FK_ToDos_ToPriorities">
-            <End Role="Priority" EntitySet="Priorities" />
-            <End Role="ToDo" EntitySet="ToDos" />
-          </AssociationSet>
           <EntitySet Name="Companies" EntityType="ethko_dbModel.Company" />
           <EntitySet Name="Contacts" EntityType="ethko_dbModel.Contact" />
           <AssociationSet Name="FK_Cases_ToContacts" Association="ethko_dbModel.FK_Cases_ToContacts">
@@ -1718,58 +1702,26 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             <End Role="Contact" EntitySet="Contacts" />
             <End Role="Lead" EntitySet="Leads" />
           </AssociationSet>
-          <AssociationSet Name="FK_Leads_ToLeadReferralSources" Association="ethko_dbModel.FK_Leads_ToLeadReferralSources">
-            <End Role="LeadReferralSource" EntitySet="LeadReferralSources" />
-            <End Role="Lead" EntitySet="Leads" />
-          </AssociationSet>
           <AssociationSet Name="FK_Leads_ToLeadStatuses" Association="ethko_dbModel.FK_Leads_ToLeadStatuses">
             <End Role="LeadStatus" EntitySet="LeadStatuses" />
             <End Role="Lead" EntitySet="Leads" />
           </AssociationSet>
+          <EntitySet Name="LeadReferralSources" EntityType="ethko_dbModel.LeadReferralSource" />
+          <EntitySet Name="Priorities" EntityType="ethko_dbModel.Priority" />
+          <EntitySet Name="ToDos" EntityType="ethko_dbModel.ToDo" />
+          <AssociationSet Name="FK_ToDos_ToCases" Association="ethko_dbModel.FK_ToDos_ToCases">
+            <End Role="Case" EntitySet="Cases" />
+            <End Role="ToDo" EntitySet="ToDos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leads_ToLeadReferralSources" Association="ethko_dbModel.FK_Leads_ToLeadReferralSources">
+            <End Role="LeadReferralSource" EntitySet="LeadReferralSources" />
+            <End Role="Lead" EntitySet="Leads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToDos_ToPriorities" Association="ethko_dbModel.FK_ToDos_ToPriorities">
+            <End Role="Priority" EntitySet="Priorities" />
+            <End Role="ToDo" EntitySet="ToDos" />
+          </AssociationSet>
           </EntityContainer>
-        <EntityType Name="ToDo">
-          <Key>
-            <PropertyRef Name="ToDoId" />
-          </Key>
-          <Property Name="ToDoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ToDoName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ToDoPriorityId" Type="Int32" Nullable="false" />
-          <Property Name="CaseId" Type="Int32" />
-          <Property Name="LeadId" Type="Int32" />
-          <Property Name="AssignedTo" Type="Int32" Nullable="false" />
-          <Property Name="DueDate" Type="Int32" Nullable="false" />
-          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="InsDate" Type="Int32" Nullable="false" />
-          <Property Name="LstDate" Type="Int32" Nullable="false" />
-          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Case" Relationship="ethko_dbModel.FK_ToDos_ToCases" FromRole="ToDo" ToRole="Case" />
-          <NavigationProperty Name="Priority" Relationship="ethko_dbModel.FK_ToDos_ToPriorities" FromRole="ToDo" ToRole="Priority" />
-        </EntityType>
-        <Association Name="FK_ToDos_ToCases">
-          <End Type="ethko_dbModel.Case" Role="Case" Multiplicity="0..1" />
-          <End Type="ethko_dbModel.ToDo" Role="ToDo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Case">
-              <PropertyRef Name="CaseId" />
-            </Principal>
-            <Dependent Role="ToDo">
-              <PropertyRef Name="CaseId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ToDos_ToPriorities">
-          <End Type="ethko_dbModel.Priority" Role="Priority" Multiplicity="1" />
-          <End Type="ethko_dbModel.ToDo" Role="ToDo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Priority">
-              <PropertyRef Name="PriorityId" />
-            </Principal>
-            <Dependent Role="ToDo">
-              <PropertyRef Name="ToDoPriorityId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Company">
           <Key>
             <PropertyRef Name="CompanyId" />
@@ -1898,8 +1850,8 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <NavigationProperty Name="AspNetUser" Relationship="ethko_dbModel.FK_Leads_ToAspNetUsers" FromRole="Lead" ToRole="AspNetUser" />
           <NavigationProperty Name="Company" Relationship="ethko_dbModel.FK_Leads_ToCompanies" FromRole="Lead" ToRole="Company" />
           <NavigationProperty Name="Contact" Relationship="ethko_dbModel.FK_Leads_ToContacts" FromRole="Lead" ToRole="Contact" />
-          <NavigationProperty Name="LeadReferralSource" Relationship="ethko_dbModel.FK_Leads_ToLeadReferralSources" FromRole="Lead" ToRole="LeadReferralSource" />
           <NavigationProperty Name="LeadStatus" Relationship="ethko_dbModel.FK_Leads_ToLeadStatuses" FromRole="Lead" ToRole="LeadStatus" />
+          <NavigationProperty Name="LeadReferralSource" Relationship="ethko_dbModel.FK_Leads_ToLeadReferralSources" FromRole="Lead" ToRole="LeadReferralSource" />
         </EntityType>
         <Association Name="FK_Leads_ToAspNetUsers">
           <End Type="ethko_dbModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
@@ -1937,6 +1889,78 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Leads_ToLeadStatuses">
+          <End Type="ethko_dbModel.LeadStatus" Role="LeadStatus" Multiplicity="1" />
+          <End Type="ethko_dbModel.Lead" Role="Lead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LeadStatus">
+              <PropertyRef Name="LeadStatusId" />
+            </Principal>
+            <Dependent Role="Lead">
+              <PropertyRef Name="LeadStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LeadReferralSource">
+          <Key>
+            <PropertyRef Name="ReferralSourceId" />
+          </Key>
+          <Property Name="ReferralSourceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReferralSourceName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Archived" Type="Int16" Nullable="false" />
+          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Leads" Relationship="ethko_dbModel.FK_Leads_ToLeadReferralSources" FromRole="LeadReferralSource" ToRole="Lead" />
+        </EntityType>
+        <EntityType Name="Priority">
+          <Key>
+            <PropertyRef Name="PriorityId" />
+          </Key>
+          <Property Name="PriorityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PriorityName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Archived" Type="Int16" Nullable="false" />
+          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="ToDos" Relationship="ethko_dbModel.FK_ToDos_ToPriorities" FromRole="Priority" ToRole="ToDo" />
+        </EntityType>
+        <EntityType Name="ToDo">
+          <Key>
+            <PropertyRef Name="ToDoId" />
+          </Key>
+          <Property Name="ToDoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ToDoName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ToDoPriorityId" Type="Int32" Nullable="false" />
+          <Property Name="CaseId" Type="Int32" />
+          <Property Name="LeadId" Type="Int32" />
+          <Property Name="AssignedTo" Type="Int32" Nullable="false" />
+          <Property Name="DueDate" Type="Int32" Nullable="false" />
+          <Property Name="Archived" Type="Int16" Nullable="false" />
+          <Property Name="FstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="InsDate" Type="Int32" Nullable="false" />
+          <Property Name="LstDate" Type="Int32" Nullable="false" />
+          <Property Name="LstUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Case" Relationship="ethko_dbModel.FK_ToDos_ToCases" FromRole="ToDo" ToRole="Case" />
+          <NavigationProperty Name="Priority" Relationship="ethko_dbModel.FK_ToDos_ToPriorities" FromRole="ToDo" ToRole="Priority" />
+        </EntityType>
+        <Association Name="FK_ToDos_ToCases">
+          <End Type="ethko_dbModel.Case" Role="Case" Multiplicity="0..1" />
+          <End Type="ethko_dbModel.ToDo" Role="ToDo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Case">
+              <PropertyRef Name="CaseId" />
+            </Principal>
+            <Dependent Role="ToDo">
+              <PropertyRef Name="CaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Leads_ToLeadReferralSources">
           <End Type="ethko_dbModel.LeadReferralSource" Role="LeadReferralSource" Multiplicity="1" />
           <End Type="ethko_dbModel.Lead" Role="Lead" Multiplicity="*" />
@@ -1949,15 +1973,15 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Leads_ToLeadStatuses">
-          <End Type="ethko_dbModel.LeadStatus" Role="LeadStatus" Multiplicity="1" />
-          <End Type="ethko_dbModel.Lead" Role="Lead" Multiplicity="*" />
+        <Association Name="FK_ToDos_ToPriorities">
+          <End Type="ethko_dbModel.Priority" Role="Priority" Multiplicity="1" />
+          <End Type="ethko_dbModel.ToDo" Role="ToDo" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="LeadStatus">
-              <PropertyRef Name="LeadStatusId" />
+            <Principal Role="Priority">
+              <PropertyRef Name="PriorityId" />
             </Principal>
-            <Dependent Role="Lead">
-              <PropertyRef Name="LeadStatusId" />
+            <Dependent Role="ToDo">
+              <PropertyRef Name="ToDoPriorityId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2053,6 +2077,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySetMapping Name="BillingMethods">
             <EntityTypeMapping TypeName="ethko_dbModel.BillingMethod">
               <MappingFragment StoreEntitySet="BillingMethods">
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
                 <ScalarProperty Name="BillingMethodId" ColumnName="BillingMethodId" />
                 <ScalarProperty Name="BillingMethodName" ColumnName="BillingMethodName" />
                 <ScalarProperty Name="FstUser" ColumnName="FstUser" />
@@ -2066,6 +2091,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySetMapping Name="Cases">
             <EntityTypeMapping TypeName="ethko_dbModel.Case">
               <MappingFragment StoreEntitySet="Cases">
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
                 <ScalarProperty Name="CaseId" ColumnName="CaseId" />
                 <ScalarProperty Name="ContactId" ColumnName="ContactId" />
                 <ScalarProperty Name="BillingContactId" ColumnName="BillingContactId" />
@@ -2090,6 +2116,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySetMapping Name="CaseStages">
             <EntityTypeMapping TypeName="ethko_dbModel.CaseStage">
               <MappingFragment StoreEntitySet="CaseStages">
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
                 <ScalarProperty Name="CaseStageId" ColumnName="CaseStageId" />
                 <ScalarProperty Name="CaseStageName" ColumnName="CaseStageName" />
                 <ScalarProperty Name="FstUser" ColumnName="FstUser" />
@@ -2103,6 +2130,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySetMapping Name="ContactGroups">
             <EntityTypeMapping TypeName="ethko_dbModel.ContactGroup">
               <MappingFragment StoreEntitySet="ContactGroups">
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
                 <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
                 <ScalarProperty Name="ContactGroupId" ColumnName="ContactGroupId" />
                 <ScalarProperty Name="ContactGroupName" ColumnName="ContactGroupName" />
@@ -2170,6 +2198,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySetMapping Name="Documents">
             <EntityTypeMapping TypeName="ethko_dbModel.Document">
               <MappingFragment StoreEntitySet="Documents">
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
                 <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
                 <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
                 <ScalarProperty Name="CaseId" ColumnName="CaseId" />
@@ -2185,21 +2214,9 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySetMapping Name="DocumentTypes">
             <EntityTypeMapping TypeName="ethko_dbModel.DocumentType">
               <MappingFragment StoreEntitySet="DocumentTypes">
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
                 <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
                 <ScalarProperty Name="DocumentTypeName" ColumnName="DocumentTypeName" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
-                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LeadReferralSources">
-            <EntityTypeMapping TypeName="ethko_dbModel.LeadReferralSource">
-              <MappingFragment StoreEntitySet="LeadReferralSources">
-                <ScalarProperty Name="ReferralSourceId" ColumnName="ReferralSourceId" />
-                <ScalarProperty Name="ReferralSourceName" ColumnName="ReferralSourceName" />
                 <ScalarProperty Name="FstUser" ColumnName="FstUser" />
                 <ScalarProperty Name="InsDate" ColumnName="InsDate" />
                 <ScalarProperty Name="LstDate" ColumnName="LstDate" />
@@ -2211,6 +2228,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySetMapping Name="LeadStatuses">
             <EntityTypeMapping TypeName="ethko_dbModel.LeadStatus">
               <MappingFragment StoreEntitySet="LeadStatuses">
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
                 <ScalarProperty Name="LeadStatusId" ColumnName="LeadStatusId" />
                 <ScalarProperty Name="LeadStatusName" ColumnName="LeadStatusName" />
                 <ScalarProperty Name="FstUser" ColumnName="FstUser" />
@@ -2387,6 +2405,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySetMapping Name="Offices">
             <EntityTypeMapping TypeName="ethko_dbModel.Office">
               <MappingFragment StoreEntitySet="Offices">
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
                 <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
                 <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
                 <ScalarProperty Name="FstUser" ColumnName="FstUser" />
@@ -2400,21 +2419,9 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <EntitySetMapping Name="PracticeAreas">
             <EntityTypeMapping TypeName="ethko_dbModel.PracticeArea">
               <MappingFragment StoreEntitySet="PracticeAreas">
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
                 <ScalarProperty Name="PracticeAreaId" ColumnName="PracticeAreaId" />
                 <ScalarProperty Name="PracticeAreaName" ColumnName="PracticeAreaName" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
-                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Priorities">
-            <EntityTypeMapping TypeName="ethko_dbModel.Priority">
-              <MappingFragment StoreEntitySet="Priorities">
-                <ScalarProperty Name="PriorityId" ColumnName="PriorityId" />
-                <ScalarProperty Name="PriorityName" ColumnName="PriorityName" />
                 <ScalarProperty Name="FstUser" ColumnName="FstUser" />
                 <ScalarProperty Name="InsDate" ColumnName="InsDate" />
                 <ScalarProperty Name="LstDate" ColumnName="LstDate" />
@@ -2462,24 +2469,6 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="ToDos">
-            <EntityTypeMapping TypeName="ethko_dbModel.ToDo">
-              <MappingFragment StoreEntitySet="ToDos">
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
-                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
-                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
-                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
-                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
-                <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
-                <ScalarProperty Name="LeadId" ColumnName="LeadId" />
-                <ScalarProperty Name="CaseId" ColumnName="CaseId" />
-                <ScalarProperty Name="ToDoPriorityId" ColumnName="ToDoPriorityId" />
-                <ScalarProperty Name="ToDoName" ColumnName="ToDoName" />
-                <ScalarProperty Name="ToDoId" ColumnName="ToDoId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Companies">
             <EntityTypeMapping TypeName="ethko_dbModel.Company">
               <MappingFragment StoreEntitySet="Companies">
@@ -2578,6 +2567,53 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
                 <ScalarProperty Name="LName" ColumnName="LName" />
                 <ScalarProperty Name="FName" ColumnName="FName" />
                 <ScalarProperty Name="LeadId" ColumnName="LeadId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LeadReferralSources">
+            <EntityTypeMapping TypeName="ethko_dbModel.LeadReferralSource">
+              <MappingFragment StoreEntitySet="LeadReferralSources">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="ReferralSourceName" ColumnName="ReferralSourceName" />
+                <ScalarProperty Name="ReferralSourceId" ColumnName="ReferralSourceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Priorities">
+            <EntityTypeMapping TypeName="ethko_dbModel.Priority">
+              <MappingFragment StoreEntitySet="Priorities">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="PriorityName" ColumnName="PriorityName" />
+                <ScalarProperty Name="PriorityId" ColumnName="PriorityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ToDos">
+            <EntityTypeMapping TypeName="ethko_dbModel.ToDo">
+              <MappingFragment StoreEntitySet="ToDos">
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="LstUser" ColumnName="LstUser" />
+                <ScalarProperty Name="LstDate" ColumnName="LstDate" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="FstUser" ColumnName="FstUser" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+                <ScalarProperty Name="LeadId" ColumnName="LeadId" />
+                <ScalarProperty Name="CaseId" ColumnName="CaseId" />
+                <ScalarProperty Name="ToDoPriorityId" ColumnName="ToDoPriorityId" />
+                <ScalarProperty Name="ToDoName" ColumnName="ToDoName" />
+                <ScalarProperty Name="ToDoId" ColumnName="ToDoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -39,6 +39,7 @@ namespace ethko
         public int LstDate { get; set; }
         public string LstUser { get; set; }
         public byte[] RowVersion { get; set; }
+        public short Archived { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual BillingMethod BillingMethod { get; set; }
@@ -47,9 +48,9 @@ namespace ethko
         public virtual PracticeArea PracticeArea { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Document> Documents { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ToDo> ToDos { get; set; }
         public virtual Contact Contact { get; set; }
         public virtual Contact Contact1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ToDo> ToDos { get; set; }
     }
 }
