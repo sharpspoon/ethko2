@@ -59,7 +59,23 @@
                                                     <a href='@Url.Action("ViewToDo", "ToDos", new { ToDoId = item.ToDoId})'>@Html.DisplayFor(modelItem => item.ToDoName)</a>
                                                 </td>
                                                 <td>
-                                                    <a href='@Url.Action("ViewToDo", "ToDos", new { PriorityId = item.PriorityId})'>@Html.DisplayFor(modelItem => item.PriorityName)</a>
+                                                    @if (item.PriorityName == "Critical")
+                                                    {
+                                                        <span class="badge badge-danger">@Html.DisplayFor(modelItem => item.PriorityName)</span>
+                                                    }
+                                                    @if (item.PriorityName == "High")
+                                                    {
+                                                        <span class="badge badge-warning">@Html.DisplayFor(modelItem => item.PriorityName)</span>
+                                                    }
+                                                    @if (item.PriorityName == "Medium")
+                                                    {
+                                                        <span class="badge badge-info">@Html.DisplayFor(modelItem => item.PriorityName)</span>
+                                                    }
+                                                    @if (item.PriorityName == "Low")
+                                                    {
+                                                        <span class="badge badge-success">@Html.DisplayFor(modelItem => item.PriorityName)</span>
+                                                    }
+
                                                 </td>
                                                 <td>
                                                     1
