@@ -1,105 +1,108 @@
 ﻿@model ethko.Models.AddCompanyViewModel
-<br />
-    <p>
-        <div class="col-md-12">
-            @using (Html.BeginForm("NewCompany", "Contacts", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary("", new { @class = "text-danger" })
-
-                <div class="form-group">
-                    <div class="col-md-2" align="left">
-                        Name
-                    </div>
-                    <div class="col-md-4" align="left">
-                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Name", required = "required" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-2" align="left">
-                        Email
-                    </div>
-                    <div class="col-md-10" align="left">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "example@ethko.com", required = "required" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-2" align="left">
-                        Website
-                    </div>
-                    <div class="col-md-10" align="left">
-                        @Html.TextBoxFor(m => m.Website, new { @class = "form-control", placeholder = "mycompany.com" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-2" align="left">
-                        Main Phone
-                    </div>
-                    <div class="col-md-10" align="left">
-                        @Html.TextBoxFor(m => m.MainPhone, new { @class = "form-control", placeholder = "555-555-5555" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-2" align="left">
-                        Fax Number
-                    </div>
-                    <div class="col-md-10" align="left">
-                        @Html.TextBoxFor(m => m.FaxNumber, new { @class = "form-control", placeholder = "555-555-5555" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-2" align="left">
-                        Address
-                    </div>
-                    <div class="col-md-10" align="left">
-                        @Html.TextBoxFor(m => m.Address, new { @class = "form-control", placeholder = "123 Main Street" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-2" align="left">
-                        Address 2
-                    </div>
-                    <div class="col-md-10" align="left">
-                        @Html.TextBoxFor(m => m.Address2, new { @class = "form-control", placeholder = "Apt B" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-2" align="left">
-                        City
-                    </div>
-                    <div class="col-md-10" align="left">
-                        @Html.TextBoxFor(m => m.City, new { @class = "form-control", placeholder = "Birmingham" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-2" align="left">
-                        State
-                    </div>
-                    <div class="col-md-10" align="left">
-                        @Html.TextBoxFor(m => m.State, new { @class = "form-control", placeholder = "AL" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-2" align="left">
-                        Zip
-                    </div>
-                    <div class="col-md-10" align="left">
-                        @Html.TextBoxFor(m => m.Zip, new { @class = "form-control", placeholder = "55555" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-2" align="left">
-                        Country
-                    </div>
-                    <div class="col-md-10" align="left">
-                        @Html.TextBoxFor(m => m.Country, new { @class = "form-control", placeholder = "USA" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" class="btn btn-success" value="Save Company" />
-                    </div>
-                </div>
-            }
+@using (Html.BeginForm("NewCompany", "Contacts", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        <label>Name</label>
+        <div class="form-row">
+            <div class="input-group col-md-12">
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Name", required = "required" })
+            </div>
         </div>
-    </p>
+    </div>
+
+    <div class="form-group">
+        <label>Email</label>
+        <div class="form-row">
+            <div class="input-group col-md-12">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "example@ethko.com", required = "required" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Website</label>
+        <div class="form-row">
+            <div class="input-group col-md-12">
+                @Html.TextBoxFor(m => m.Website, new { @class = "form-control", placeholder = "mycompany.com" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Main Phone</label>
+        <div class="form-row">
+            <div class="input-group col-md-12">
+                @Html.TextBoxFor(m => m.MainPhone, new { @class = "form-control", placeholder = "555-555-5555" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Fax</label>
+        <div class="form-row">
+            <div class="input-group col-md-12">
+                @Html.TextBoxFor(m => m.FaxNumber, new { @class = "form-control", placeholder = "555-555-5555" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Address</label>
+        <div class="form-row">
+            <div class="input-group col-md-12">
+                @Html.TextBoxFor(m => m.Address, new { @class = "form-control", placeholder = "123 Main Street" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Address 2</label>
+        <div class="form-row">
+            <div class="input-group col-md-12">
+                @Html.TextBoxFor(m => m.Address2, new { @class = "form-control", placeholder = "Apt B" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>City</label>
+        <div class="form-row">
+            <div class="input-group col-md-12">
+                @Html.TextBoxFor(m => m.City, new { @class = "form-control", placeholder = "Birmingham" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>State</label>
+        <div class="form-row">
+            <div class="input-group col-md-12">
+                @Html.TextBoxFor(m => m.State, new { @class = "form-control", placeholder = "AL" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Zip</label>
+        <div class="form-row">
+            <div class="input-group col-md-12">
+                @Html.TextBoxFor(m => m.Zip, new { @class = "form-control", placeholder = "55555" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Country</label>
+        <div class="form-row">
+            <div class="input-group col-md-12">
+                @Html.TextBoxFor(m => m.Country, new { @class = "form-control", placeholder = "USA" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-success" value="Save Company" />
+    </div>
+}
