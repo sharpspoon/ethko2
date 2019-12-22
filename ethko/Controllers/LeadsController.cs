@@ -83,14 +83,16 @@ namespace ethko.Controllers
         public ActionResult Index()
         {
             var contacts = from l in entities.Leads
-                           //join cg in entities.ContactGroups on c.ContactGroupId equals cg.ContactGroupId
-                           //join d in entities.DimDates on c.InsDate equals d.DateKey
+                           join ls in entities.LeadStatuses on l.LeadStatusId equals ls.LeadStatusId
+                           join lrs in entities.LeadReferralSources on l.ReferralSourceId equals lrs.ReferralSourceId
                            //join u in entities.AspNetUsers on c.FstUser equals u.Id into lj
                            //from x in lj.DefaultIfEmpty()
                            where l.Archived == 0
                            select new GetLeadListViewModel() { LeadId = l.LeadId.ToString(), 
                                Email = l.Email, 
-                               FullName = l.FullName };
+                               FullName = l.FullName,
+                               LeadStatus = ls.LeadStatusName,
+                               ReferralSource = lrs.ReferralSourceName};
             return View(contacts.ToList());
         }
     }

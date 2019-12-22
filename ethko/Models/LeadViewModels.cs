@@ -24,5 +24,7 @@ namespace ethko.Models
         public string LeadId { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
+        public string LeadStatus { get; set; }
+        public string ReferralSource { get; set; }
     }
 }
