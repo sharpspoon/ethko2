@@ -7,8 +7,8 @@ drop table IF EXISTS Cases
 drop table IF EXISTS BillingMethods
 drop table IF EXISTS Offices
 drop table IF EXISTS CaseStages
-drop table IF EXISTS PracticeAreas
 drop table IF EXISTS Leads
+drop table IF EXISTS PracticeAreas
 drop table IF EXISTS Contacts
 drop table IF EXISTS ContactGroups
 drop table IF EXISTS Companies
@@ -569,6 +569,7 @@ CREATE TABLE [dbo].[Leads] (
 	[AssignTo]       NVARCHAR (128)            NOT NULL,
 	[ReferredByContact]       INT             NULL,
 	[ReferredByCompany]       INT             NULL,
+	[DateAdded]          INT  NOT NULL,
     [Title]              VARCHAR (50)   NULL,
     [Archived]           SMALLINT       NOT NULL,
     [Email]              VARCHAR (MAX)  NOT NULL,

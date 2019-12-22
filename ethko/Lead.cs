@@ -26,6 +26,7 @@ namespace ethko
         public string AssignTo { get; set; }
         public Nullable<int> ReferredByContact { get; set; }
         public Nullable<int> ReferredByCompany { get; set; }
+        public int DateAdded { get; set; }
         public string Title { get; set; }
         public short Archived { get; set; }
         public string Email { get; set; }

@@ -68,9 +68,9 @@ namespace ethko.Controllers
             string practiceArea = Request.Form["PracticeAreas"].ToString();
             string assignTo = Request.Form["LeadAssignTo"].ToString();
             string leadStatus = Request.Form["LeadStatus"].ToString();
-            string fName = Request.Form["LeadStatus"].ToString();
-            string mName = Request.Form["LeadStatus"].ToString();
-            string lName = Request.Form["LeadStatus"].ToString();
+            string dateAdded = Request.Form["dateadded"].ToString();
+            int dateAddedInt = entities.DimDates.Where(m => m.FullDateUSA == dateAdded).Select(m => m.DateKey).FirstOrDefault();
+            leadModel.DateAdded = dateAddedInt;
             leadModel.FullName = leadModel.FName+" "+leadModel.MName+" "+leadModel.LName;
             leadModel.ReferralSourceId = entities.LeadReferralSources.Where(m => m.ReferralSourceName == referralSource).Select(m => m.ReferralSourceId).FirstOrDefault();
             leadModel.PracticeAreaId = entities.PracticeAreas.Where(m => m.PracticeAreaName == practiceArea).Select(m => m.PracticeAreaId).FirstOrDefault();
@@ -90,6 +90,9 @@ namespace ethko.Controllers
                            join ls in entities.LeadStatuses on l.LeadStatusId equals ls.LeadStatusId
                            join lrs in entities.LeadReferralSources on l.ReferralSourceId equals lrs.ReferralSourceId
                            join pa in entities.PracticeAreas on l.PracticeAreaId equals pa.PracticeAreaId
+                           join at in entities.AspNetUsers on l.AssignTo equals at.Id into lat
+                           from x in lat.DefaultIfEmpty()
+                           join dd in entities.DimDates on l.DateAdded equals dd.DateKey
                            //join u in entities.AspNetUsers on c.FstUser equals u.Id into lj
                            //from x in lj.DefaultIfEmpty()
                            where l.Archived == 0
@@ -98,7 +101,10 @@ namespace ethko.Controllers
                                FullName = l.FullName,
                                LeadStatus = ls.LeadStatusName,
                                ReferralSource = lrs.ReferralSourceName,
-                               PracticeArea = pa.PracticeAreaName};
+                               PracticeArea = pa.PracticeAreaName,
+                               PotentialValue = l.PotentialValue,
+                               AssignTo = x.FullName,
+                               DateAdded = dd.FullDateUSA};
             return View(contacts.ToList());
         }
     }

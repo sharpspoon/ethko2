@@ -326,6 +326,7 @@
           <Property Name="AssignTo" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="ReferredByContact" Type="int" />
           <Property Name="ReferredByCompany" Type="int" />
+          <Property Name="DateAdded" Type="int" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="50" />
           <Property Name="Archived" Type="smallint" Nullable="false" />
           <Property Name="Email" Type="varchar(max)" Nullable="false" />
@@ -1920,6 +1921,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
           <Property Name="AssignTo" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="ReferredByContact" Type="Int32" />
           <Property Name="ReferredByCompany" Type="Int32" />
+          <Property Name="DateAdded" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Archived" Type="Int16" Nullable="false" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -2639,6 +2641,7 @@ warning 6002: The table/view 'ethko_db.sys.database_firewall_rules' does not hav
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Archived" ColumnName="Archived" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
                 <ScalarProperty Name="ReferredByCompany" ColumnName="ReferredByCompany" />
                 <ScalarProperty Name="ReferredByContact" ColumnName="ReferredByContact" />
                 <ScalarProperty Name="AssignTo" ColumnName="AssignTo" />
