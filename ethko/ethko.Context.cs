@@ -47,9 +47,9 @@ namespace ethko
         public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
-        public virtual DbSet<Lead> Leads { get; set; }
         public virtual DbSet<LeadReferralSource> LeadReferralSources { get; set; }
         public virtual DbSet<Priority> Priorities { get; set; }
         public virtual DbSet<ToDo> ToDos { get; set; }
+        public virtual DbSet<Lead> Leads { get; set; }
     }
 }

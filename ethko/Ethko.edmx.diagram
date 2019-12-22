@@ -40,17 +40,18 @@
         <EntityTypeShape EntityType="ethko_dbModel.Contact" Width="1.5" PointX="0.75" PointY="1.125" />
         <AssociationConnector Association="ethko_dbModel.FK_Cases_ToContacts" />
         <AssociationConnector Association="ethko_dbModel.FK_Cases_ToContacts2" />
-        <EntityTypeShape EntityType="ethko_dbModel.Lead" Width="1.5" PointX="16.625" PointY="7.875" />
-        <AssociationConnector Association="ethko_dbModel.FK_Leads_ToAspNetUsers" />
-        <AssociationConnector Association="ethko_dbModel.FK_Leads_ToCompanies" />
-        <AssociationConnector Association="ethko_dbModel.FK_Leads_ToContacts" />
-        <AssociationConnector Association="ethko_dbModel.FK_Leads_ToLeadStatuses" />
         <EntityTypeShape EntityType="ethko_dbModel.LeadReferralSource" Width="1.5" PointX="14.375" PointY="18.875" />
         <EntityTypeShape EntityType="ethko_dbModel.Priority" Width="1.5" PointX="6" PointY="0.75" />
         <EntityTypeShape EntityType="ethko_dbModel.ToDo" Width="1.5" PointX="8.25" PointY="2.125" />
         <AssociationConnector Association="ethko_dbModel.FK_ToDos_ToCases" />
-        <AssociationConnector Association="ethko_dbModel.FK_Leads_ToLeadReferralSources" />
         <AssociationConnector Association="ethko_dbModel.FK_ToDos_ToPriorities" />
+        <EntityTypeShape EntityType="ethko_dbModel.Lead" Width="1.5" PointX="16.625" PointY="15.75" />
+        <AssociationConnector Association="ethko_dbModel.FK_Leads_ToAspNetUsers" />
+        <AssociationConnector Association="ethko_dbModel.FK_Leads_ToCompanies" />
+        <AssociationConnector Association="ethko_dbModel.FK_Leads_ToContacts" />
+        <AssociationConnector Association="ethko_dbModel.FK_Leads_ToLeadReferralSources" />
+        <AssociationConnector Association="ethko_dbModel.FK_Leads_ToLeadStatuses" />
+        <AssociationConnector Association="ethko_dbModel.FK_Leads_ToPracticeAreas" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

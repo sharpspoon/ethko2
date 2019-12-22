@@ -23,7 +23,7 @@
         <label>Email</label>
         <div class="form-row">
             <div class="input-group col-md-12">
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "example@ethko.com", type="email", required = "required" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "example@ethko.com", type = "email", required = "required" })
             </div>
         </div>
     </div>
@@ -103,6 +103,18 @@
                 @Html.DropDownList("LeadStatus", (IEnumerable<SelectListItem>)ViewData["DBLeadStatuses"], new { @class = "custom-select" })
                 <div class="input-group-append">
                     <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-dismiss="modal" data-target="#NewLeadStatusModalCenter">New</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Practice Area</label>
+        <div class="form-row">
+            <div class="input-group col-md-12">
+                @Html.DropDownList("PracticeAreas", (IEnumerable<SelectListItem>)ViewData["DBPracticeAreas"], new { @class = "custom-select" })
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-dismiss="modal" data-target="#NewPracticeAreaModalCenter">New</button>
                 </div>
             </div>
         </div>

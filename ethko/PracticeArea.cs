@@ -18,6 +18,7 @@ namespace ethko
         public PracticeArea()
         {
             this.Cases = new HashSet<Case>();
+            this.Leads = new HashSet<Lead>();
         }
     
         public int PracticeAreaId { get; set; }
@@ -31,5 +32,7 @@ namespace ethko
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Case> Cases { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Lead> Leads { get; set; }
     }
 }

@@ -22,6 +22,7 @@ namespace ethko
         public Nullable<int> PotentialValue { get; set; }
         public int ReferralSourceId { get; set; }
         public int LeadStatusId { get; set; }
+        public int PracticeAreaId { get; set; }
         public string AssignTo { get; set; }
         public Nullable<int> ReferredByContact { get; set; }
         public Nullable<int> ReferredByCompany { get; set; }
@@ -51,7 +52,8 @@ namespace ethko
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual Company Company { get; set; }
         public virtual Contact Contact { get; set; }
-        public virtual LeadStatus LeadStatus { get; set; }
         public virtual LeadReferralSource LeadReferralSource { get; set; }
+        public virtual LeadStatus LeadStatus { get; set; }
+        public virtual PracticeArea PracticeArea { get; set; }
     }
 }

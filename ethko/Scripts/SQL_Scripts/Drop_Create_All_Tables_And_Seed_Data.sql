@@ -565,6 +565,7 @@ CREATE TABLE [dbo].[Leads] (
 	[PotentialValue]          INT  NULL,
 	[ReferralSourceId]       INT            NOT NULL,
 	[LeadStatusId]       INT            NOT NULL,
+	[PracticeAreaId]       INT            NOT NULL,
 	[AssignTo]       NVARCHAR (128)            NOT NULL,
 	[ReferredByContact]       INT             NULL,
 	[ReferredByCompany]       INT             NULL,
@@ -595,7 +596,8 @@ CREATE TABLE [dbo].[Leads] (
 	CONSTRAINT [FK_Leads_ToLeadStatuses] FOREIGN KEY ([LeadStatusId]) REFERENCES [dbo].[LeadStatuses] ([LeadStatusId]),
 	CONSTRAINT [FK_Leads_ToAspNetUsers] FOREIGN KEY ([AssignTo]) REFERENCES [dbo].[AspNetUsers] ([Id]),
 	CONSTRAINT [FK_Leads_ToContacts] FOREIGN KEY ([ReferredByContact]) REFERENCES [dbo].[Contacts] ([ContactId]),
-	CONSTRAINT [FK_Leads_ToCompanies] FOREIGN KEY ([ReferredByCompany]) REFERENCES [dbo].[Companies] ([CompanyId])
+	CONSTRAINT [FK_Leads_ToCompanies] FOREIGN KEY ([ReferredByCompany]) REFERENCES [dbo].[Companies] ([CompanyId]),
+	CONSTRAINT [FK_Leads_ToPracticeAreas] FOREIGN KEY ([PracticeAreaId]) REFERENCES [dbo].[PracticeAreas] ([PracticeAreaId]),
 );
 
 

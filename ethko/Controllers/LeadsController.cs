@@ -24,6 +24,8 @@ namespace ethko.Controllers
         {
             var referralSources = new SelectList(entities.LeadReferralSources.ToList(), "ReferralSourceName", "ReferralSourceName");
             ViewData["DBReferralSources"] = referralSources;
+            var practiceAreas = new SelectList(entities.PracticeAreas.ToList(), "PracticeAreaName", "PracticeAreaName");
+            ViewData["DBPracticeAreas"] = practiceAreas;
             var contacts = new SelectList(entities.Contacts.ToList(), "FullName", "FullName");
             ViewData["DBContacts"] = contacts;
             var companies = new SelectList(entities.Companies.ToList(), "Name", "Name");
@@ -63,6 +65,7 @@ namespace ethko.Controllers
             leadModel.InsDate = intDate;
             leadModel.LstDate = intDate;
             string referralSource = Request.Form["ReferralSources"].ToString();
+            string practiceArea = Request.Form["PracticeAreas"].ToString();
             string assignTo = Request.Form["LeadAssignTo"].ToString();
             string leadStatus = Request.Form["LeadStatus"].ToString();
             string fName = Request.Form["LeadStatus"].ToString();
@@ -70,6 +73,7 @@ namespace ethko.Controllers
             string lName = Request.Form["LeadStatus"].ToString();
             leadModel.FullName = leadModel.FName+" "+leadModel.MName+" "+leadModel.LName;
             leadModel.ReferralSourceId = entities.LeadReferralSources.Where(m => m.ReferralSourceName == referralSource).Select(m => m.ReferralSourceId).FirstOrDefault();
+            leadModel.PracticeAreaId = entities.PracticeAreas.Where(m => m.PracticeAreaName == practiceArea).Select(m => m.PracticeAreaId).FirstOrDefault();
             leadModel.AssignTo = entities.AspNetUsers.Where(m => m.FullName == assignTo).Select(m => m.Id).FirstOrDefault();
             leadModel.LeadStatusId = entities.LeadStatuses.Where(m => m.LeadStatusName == leadStatus).Select(m => m.LeadStatusId).FirstOrDefault();
             leadModel.FstUser = entities.AspNetUsers.Where(m => m.Email == user).Select(m => m.Id).First();
@@ -85,6 +89,7 @@ namespace ethko.Controllers
             var contacts = from l in entities.Leads
                            join ls in entities.LeadStatuses on l.LeadStatusId equals ls.LeadStatusId
                            join lrs in entities.LeadReferralSources on l.ReferralSourceId equals lrs.ReferralSourceId
+                           join pa in entities.PracticeAreas on l.PracticeAreaId equals pa.PracticeAreaId
                            //join u in entities.AspNetUsers on c.FstUser equals u.Id into lj
                            //from x in lj.DefaultIfEmpty()
                            where l.Archived == 0
@@ -92,7 +97,8 @@ namespace ethko.Controllers
                                Email = l.Email, 
                                FullName = l.FullName,
                                LeadStatus = ls.LeadStatusName,
-                               ReferralSource = lrs.ReferralSourceName};
+                               ReferralSource = lrs.ReferralSourceName,
+                               PracticeArea = pa.PracticeAreaName};
             return View(contacts.ToList());
         }
     }

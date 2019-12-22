@@ -26,5 +26,6 @@ namespace ethko.Models
         public string Email { get; set; }
         public string LeadStatus { get; set; }
         public string ReferralSource { get; set; }
+        public string PracticeArea { get; set; }
     }
 }
