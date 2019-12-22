@@ -18,12 +18,10 @@
         <EntityTypeShape EntityType="ethko_dbModel.DimDate" Width="1.5" PointX="11.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ethko_dbModel.Document" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ethko_dbModel.DocumentType" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ethko_dbModel.LeadReferralSource" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ethko_dbModel.LeadStatus" Width="1.5" PointX="13.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ethko_dbModel.Notification" Width="1.5" PointX="5.75" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ethko_dbModel.Office" Width="1.5" PointX="0.75" PointY="32.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ethko_dbModel.PracticeArea" Width="1.5" PointX="0.75" PointY="36.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ethko_dbModel.Priority" Width="1.5" PointX="7.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ethko_dbModel.State" Width="1.5" PointX="7.75" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ethko_dbModel.UserType" Width="1.5" PointX="1.5" PointY="26.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ethko_dbModel.database_firewall_rules" Width="1.5" PointX="13.75" PointY="8.75" IsExpanded="true" />
@@ -38,9 +36,6 @@
         <AssociationConnector Association="ethko_dbModel.FK_Documents_ToCases" ManuallyRouted="false" />
         <AssociationConnector Association="ethko_dbModel.FK_Documents_ToDocumentTypes" ManuallyRouted="false" />
         <AssociationConnector Association="ethko_dbModel.AspNetUserRoles" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ethko_dbModel.ToDo" Width="1.5" PointX="10" PointY="0.75" />
-        <AssociationConnector Association="ethko_dbModel.FK_ToDos_ToCases" />
-        <AssociationConnector Association="ethko_dbModel.FK_ToDos_ToPriorities" />
         <EntityTypeShape EntityType="ethko_dbModel.Company" Width="1.5" PointX="14.375" PointY="11.75" />
         <EntityTypeShape EntityType="ethko_dbModel.Contact" Width="1.5" PointX="0.75" PointY="1.125" />
         <AssociationConnector Association="ethko_dbModel.FK_Cases_ToContacts" />
@@ -49,8 +44,13 @@
         <AssociationConnector Association="ethko_dbModel.FK_Leads_ToAspNetUsers" />
         <AssociationConnector Association="ethko_dbModel.FK_Leads_ToCompanies" />
         <AssociationConnector Association="ethko_dbModel.FK_Leads_ToContacts" />
-        <AssociationConnector Association="ethko_dbModel.FK_Leads_ToLeadReferralSources" />
         <AssociationConnector Association="ethko_dbModel.FK_Leads_ToLeadStatuses" />
+        <EntityTypeShape EntityType="ethko_dbModel.LeadReferralSource" Width="1.5" PointX="14.375" PointY="18.875" />
+        <EntityTypeShape EntityType="ethko_dbModel.Priority" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="ethko_dbModel.ToDo" Width="1.5" PointX="8.25" PointY="2.125" />
+        <AssociationConnector Association="ethko_dbModel.FK_ToDos_ToCases" />
+        <AssociationConnector Association="ethko_dbModel.FK_Leads_ToLeadReferralSources" />
+        <AssociationConnector Association="ethko_dbModel.FK_ToDos_ToPriorities" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
