@@ -37,7 +37,7 @@
             top: 0;
         }
     </style>
-    <style>
+    @*<style>
         body {
             padding-top: 60px;
             padding-bottom: 40px;
@@ -87,7 +87,7 @@
             top: 11px;
             left: -6px;
         }
-    </style>
+    </style>*@
     <style>
         .pace {
             -webkit-pointer-events: none;
@@ -122,66 +122,60 @@
 </head>
 <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <a href='@Url.Action("Index", "Home")'><h3>Ethko</h3></a>
-            @if (Request.IsAuthenticated)
-            {
-                <div id="top">
-                    <div class="btn-group dropleft">
-                        <div class="btn-group" role="group">
-                            <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-hourglass"></i> Start Timer
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                <form class="px-4 py-3">
-                                    <div class="clock" style="margin:2em;"></div>
-                                    <div class="message"></div>
-                                    <button type="submit" class="btn btn-primary">Sign in</button>
-                                </form>
-                                <div id="t" class="badge">00:00</div>
-                                <button id="btn">Start</button>
-                            </div>
-                        </div>
-                        <div class="btn-group" role="group">
-                            <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-plus"></i> Add Item
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-calendar-plus"></i> Add Event</a>
-                                <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-file"></i> Add Document</a>
-                                <button type="button" class="dropdown-item" data-toggle="modal" data-target="#NewToDoModalCenter">
-                                    <i class="fas fa-check"></i>
-                                    Add To-Do
-                                </button>
-                                <button type="button" class="dropdown-item" data-toggle="modal" data-target="#NewLeadModalCenter">
-                                    <i class="fas fa-child"></i>
-                                    Add Lead
-                                </button>
-                                <button type="button" class="dropdown-item" data-toggle="modal" data-target="#NewContactModalCenter">
-                                    <i class="fas fa-id-card"></i>
-                                    Add Contact
-                                </button>
-                                <button type="button" class="dropdown-item" data-toggle="modal" data-target="#NewCaseModalCenter">
-                                    <i class="fas fa-briefcase"></i>
-                                    Add Case
-                                </button>
-                                <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-envelope"></i> New Message</a>
-                                <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-clock"></i> Add Time Entry</a>
-                                <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-money-bill-wave"></i> Add Expense</a>
-                                <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-money-check-alt"></i> Add Invoice</a>
-                                <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-pencil-alt"></i> Add Note</a>
-                            </div>
-                        </div>
+    @if (Request.IsAuthenticated)
+    {
+        <div id="top">
+            <div class="btn-group dropleft">
+                <div class="btn-group" role="group">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-hourglass"></i> Start Timer
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                        <form class="px-4 py-3">
+                            <div class="clock" style="margin:2em;"></div>
+                            <div class="message"></div>
+                            <button type="submit" class="btn btn-primary">Sign in</button>
+                        </form>
+                        <div id="t" class="badge">00:00</div>
+                        <button id="btn">Start</button>
                     </div>
-
                 </div>
-            }
-            <div class="navbar-header">
-                @Html.Partial("_LoginPartial")
+                <div class="btn-group" role="group">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-plus"></i> Add Item
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                        <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-calendar-plus"></i> Add Event</a>
+                        <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-file"></i> Add Document</a>
+                        <button type="button" class="dropdown-item" data-toggle="modal" data-target="#NewToDoModalCenter">
+                            <i class="fas fa-check"></i>
+                            Add To-Do
+                        </button>
+                        <button type="button" class="dropdown-item" data-toggle="modal" data-target="#NewLeadModalCenter">
+                            <i class="fas fa-child"></i>
+                            Add Lead
+                        </button>
+                        <button type="button" class="dropdown-item" data-toggle="modal" data-target="#NewContactModalCenter">
+                            <i class="fas fa-id-card"></i>
+                            Add Contact
+                        </button>
+                        <button type="button" class="dropdown-item" data-toggle="modal" data-target="#NewCaseModalCenter">
+                            <i class="fas fa-briefcase"></i>
+                            Add Case
+                        </button>
+                        <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-envelope"></i> New Message</a>
+                        <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-clock"></i> Add Time Entry</a>
+                        <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-money-bill-wave"></i> Add Expense</a>
+                        <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-money-check-alt"></i> Add Invoice</a>
+                        <a class="dropdown-item" href='@Url.Action("Index", "Manage")'><i class="fas fa-pencil-alt"></i> Add Note</a>
+                    </div>
+                </div>
             </div>
+
         </div>
-    </div>
+    }
+    <center><a href='@Url.Action("Index", "Home")'><h3>Ethko</h3></a></center>
+    @Html.Partial("_LoginPartial")
     <div class="container body-content">
         @RenderBody()
         @RenderSection("SPAViews", required: false)
